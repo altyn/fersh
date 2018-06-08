@@ -11,13 +11,24 @@ let mix = require('laravel-mix');
  |
  */
 
+//  Front view
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     'resources/assets/js/app.js'
 ],  'public/js/app.js')
     .version();
+    
+mix.sass('resources/assets/web/app.scss', 'public/css')
+    .version();
 
 
-mix.sass('resources/assets/scss/app.scss', 'public/css')
+// Admin view
+mix.scripts([
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+    ], 'public/js/bash/app.js')
+    .version();
+
+mix.sass('resources/assets/bash/style.scss', 'public/css/bash')
     .version();

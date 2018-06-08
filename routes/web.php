@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::name('home')->get('/', function(){
+    return redirect('/ru');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => '/{lang}',], function (){
+    
+    Route::get('/', 'WebController@index');
+    
+});
