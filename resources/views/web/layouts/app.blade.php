@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" class="js">
-
 <head>
     <meta charset="UTF-8">
-    <title>
-        @yield('title')
-    </title>
+    <title> @yield('title') </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico')}}">
@@ -15,13 +12,18 @@
 
 </head>
 
-<body>
+@if($home == $locale)
+    <body class="homepage">
+@else
+    <body>
+@endif
+
+    @include('web.layouts.header')
 
     @yield('content')
     
     <script src="{{ mix('/js/app.js')}}"></script>
     @yield('scripts')
-
 
 </body>
 </html>

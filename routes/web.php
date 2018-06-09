@@ -19,5 +19,8 @@ Route::name('home')->get('/', function(){
 Route::group(['prefix' => '/{lang}',], function (){
     
     Route::get('/', 'WebController@index');
+    Route::get('/sign_in', 'UserController@signIn');
+    Route::get('/sign_up', 'UserController@signUp');
+    Route::get('/success', 'UserController@signInSuccess');
     
 });

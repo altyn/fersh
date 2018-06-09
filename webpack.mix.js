@@ -15,7 +15,7 @@ let mix = require('laravel-mix');
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-    'resources/assets/js/app.js'
+    'resources/assets/web/js/app.js'
 ],  'public/js/app.js')
     .version();
     

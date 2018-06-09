@@ -14021,30 +14021,6 @@ a.text-dark:focus {
 }
 
 @font-face {
-  font-family: 'fira_sans_bold';
-  src: url("/fonts/firasans/firasans-bold-webfont.eot");
-  src: url("/fonts/firasans/firasans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-bold-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-bold-webfont.woff") format("woff"), url("/fonts/firasans/firasans-bold-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-bold-webfont.svg#fira_sansbold") format("svg");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'fira_sans-bolditalic';
-  src: url("/fonts/firasans/firasans-bolditalic-webfont.eot");
-  src: url("/fonts/firasans/firasans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-bolditalic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-bolditalic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-bolditalic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-bolditalic-webfont.svg#fira_sansbold_italic") format("svg");
-  font-weight: bold;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'fira_sans_italic';
-  src: url("/fonts/firasans/firasans-italic-webfont.eot");
-  src: url("/fonts/firasans/firasans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-italic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-italic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-italic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-italic-webfont.svg#fira_sansitalic") format("svg");
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
   font-family: 'fira_sans_light';
   src: url("/fonts/firasans/firasans-light-webfont.eot");
   src: url("/fonts/firasans/firasans-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-light-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-light-webfont.woff") format("woff"), url("/fonts/firasans/firasans-light-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-light-webfont.svg#fira_sanslight") format("svg");
@@ -14056,6 +14032,22 @@ a.text-dark:focus {
   font-family: 'fira_sans_lightitalic';
   src: url("/fonts/firasans/firasans-lightitalic-webfont.eot");
   src: url("/fonts/firasans/firasans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-lightitalic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-lightitalic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-lightitalic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-lightitalic-webfont.svg#fira_sanslight_italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'fira_sans_regular';
+  src: url("/fonts/firasans/firasans-regular-webfont.eot");
+  src: url("/fonts/firasans/firasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-regular-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-regular-webfont.woff") format("woff"), url("/fonts/firasans/firasans-regular-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-regular-webfont.svg#fira_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_sans_italic';
+  src: url("/fonts/firasans/firasans-italic-webfont.eot");
+  src: url("/fonts/firasans/firasans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-italic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-italic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-italic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-italic-webfont.svg#fira_sansitalic") format("svg");
   font-weight: normal;
   font-style: italic;
 }
@@ -14077,10 +14069,557 @@ a.text-dark:focus {
 }
 
 @font-face {
-  font-family: 'fira_sans_regular';
-  src: url("/fonts/firasans/firasans-regular-webfont.eot");
-  src: url("/fonts/firasans/firasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-regular-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-regular-webfont.woff") format("woff"), url("/fonts/firasans/firasans-regular-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-regular-webfont.svg#fira_sansregular") format("svg");
+  font-family: 'fira_sans_bold';
+  src: url("/fonts/firasans/firasans-bold-webfont.eot");
+  src: url("/fonts/firasans/firasans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-bold-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-bold-webfont.woff") format("woff"), url("/fonts/firasans/firasans-bold-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-bold-webfont.svg#fira_sansbold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_sans-bolditalic';
+  src: url("/fonts/firasans/firasans-bolditalic-webfont.eot");
+  src: url("/fonts/firasans/firasans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-bolditalic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-bolditalic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-bolditalic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-bolditalic-webfont.svg#fira_sansbold_italic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'roboto_light';
+  src: url("/fonts/roboto/roboto-light-webfont.eot");
+  src: url("/fonts/roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-light-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-light-webfont.woff") format("woff"), url("/fonts/roboto/roboto-light-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-light-webfont.svg#robotolight") format("svg");
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_regular';
+  src: url("/fonts/roboto/roboto-regular-webfont.eot");
+  src: url("/fonts/roboto/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-regular-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-regular-webfont.woff") format("woff"), url("/fonts/roboto/roboto-regular-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-regular-webfont.svg#robotoregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_medium';
+  src: url("/fonts/roboto/roboto-medium-webfont.eot");
+  src: url("/fonts/roboto/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-medium-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-medium-webfont.woff") format("woff"), url("/fonts/roboto/roboto-medium-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_bold';
+  src: url("/fonts/roboto/roboto-bold-webfont.eot");
+  src: url("/fonts/roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-bold-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-bold-webfont.woff") format("woff"), url("/fonts/roboto/roboto-bold-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-bold-webfont.svg#robotobold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+.btn-reg {
+  background: #8e43e7;
+  color: #fff;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  padding: 10px 20px;
+}
+
+.btn-reg:hover,
+.btn-reg:active {
+  background: rgba(142, 67, 231, 0.5);
+  color: #fff;
+}
+
+.btn-reg:focus,
+.btn-reg:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+}
+
+.btn-reg .jam {
+  position: relative;
+  top: 1px;
+  padding-left: 5px;
+}
+
+.btn-sign {
+  background: #8e43e7;
+  color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.btn-sign:hover,
+.btn-sign:active {
+  background: rgba(142, 67, 231, 0.5);
+  color: #fff;
+}
+
+.btn-sign:focus,
+.btn-sign:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+}
+
+.btn-sign .jam {
+  position: relative;
+  top: 1px;
+  padding-left: 5px;
+}
+
+.navbar {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  padding: 1rem;
+}
+
+.navbar.light {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.navbar-brand {
+  color: #8e43e7;
+}
+
+.navbar-brand:hover {
+  color: rgba(142, 67, 231, 0.6);
+}
+
+.navbar-brand .badge-beta {
+  position: relative;
+  top: -15px;
+  font-size: 70%;
+  display: inline-block;
+  padding: 0.3em 0.5em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #ff6908;
+}
+
+.navbar-nav {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+}
+
+.navbar .nav-link {
+  color: #515053;
+}
+
+.navbar .nav-link:hover {
+  color: #ff6908;
+}
+
+#main-nav {
+  position: fixed;
+  z-index: 199;
+  left: -100%;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-transition: left 0.3s ease;
+  transition: left 0.3s ease;
+  background: #fff;
+  padding-top: 10px;
+}
+
+#main-nav.speed-in {
+  left: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.speed-in .nav-link {
+  color: #515053;
+  margin: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.speed-in .nav-link:hover {
+  background: none;
+  color: #ff6908;
+}
+
+#hamburger-menu {
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+  padding: 1rem 0;
+}
+
+#hamburger-menu .line {
+  display: block;
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+  background-clip: padding-box;
+  margin: 3px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: #8e43e7;
+  cursor: pointer;
+}
+
+#hamburger-menu.is-active .line:nth-child(1) {
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+#hamburger-menu.is-active .line:nth-child(3) {
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+#shadow-layer {
+  position: fixed;
+  z-index: 198;
+  left: 0;
+  top: 0;
+  display: none;
+  min-height: 100%;
+  width: 100%;
+  background: rgba(36, 37, 38, 0.25);
+  cursor: pointer;
+}
+
+#shadow-layer.is-visible {
+  display: block;
+  -webkit-animation: pd-fade-in 0.3s;
+  animation: pd-fade-in 0.3s;
+}
+
+.sign {
+  margin: 60px 0;
+  border-radius: 5px;
+}
+
+.sign-left {
+  text-align: center;
+}
+
+.sign-left img {
+  padding: 30px;
+  height: 350px;
+}
+
+.sign-right-top h3 {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: #8e43e7;
+}
+
+.sign-right-middle h5 {
+  font-family: "roboto_light", Arial, sans-serif;
+  color: rgba(81, 80, 83, 0.8);
+}
+
+.sign-right-middle .soc-icons {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.sign-right-middle .soc-icons li {
+  display: inline-block;
+}
+
+.sign-right-middle .soc-icons li a {
+  font-size: 40px;
+  color: rgba(81, 80, 83, 0.8);
+}
+
+.sign-right-middle .soc-icons li a .jam-facebook-square:hover {
+  color: #3b5998;
+}
+
+.sign-right-middle .soc-icons li a .jam-twitter-square:hover {
+  color: #1da1f2;
+}
+
+.sign-right-middle .soc-icons li a .jam-google-square:hover {
+  color: #dd4b39;
+}
+
+.sign-right-middle-line {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+  color: #8e43e7;
+  margin-bottom: 15px;
+}
+
+.sign-right-middle-line:before {
+  border-bottom: 1px solid rgba(142, 67, 231, 0.5);
+  border-top: 1px solid rgba(142, 67, 231, 0.5);
+  content: "";
+  margin: -5px auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  height: 5px;
+}
+
+.sign-right-middle-line span {
+  background: #fff;
+  padding: 0 15px;
+  font-size: 18px;
+}
+
+.sign-bottom {
+  font-family: "roboto_medium", Arial, sans-serif;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.sign-bottom a {
+  color: rgba(81, 80, 83, 0.8);
+}
+
+.sign-bottom a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.sign-bottom .sign-new {
+  position: relative;
+  display: block;
+}
+
+.sign-bottom .sign-new a {
+  color: rgba(81, 80, 83, 0.8);
+}
+
+.sign-bottom .sign-new a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.sign .form-control {
+  font-family: "roboto_light", Arial, sans-serif;
+  border-radius: 2px;
+  border-color: rgba(142, 67, 231, 0.3);
+  background: rgba(142, 67, 231, 0.03);
+}
+
+.sign .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: none;
+  color: #515053;
+}
+
+.sign .custom-control {
+  color: #515053;
+}
+
+.sign .custom-control-input:focus ~ .custom-control-label::before {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.sign .custom-control-input:checked ~ .custom-control-label::before {
+  background: #8e43e7;
+}
+
+.sign .custom-control-label {
+  font-family: "roboto_medium", Arial, sans-serif;
+  font-size: 14px;
+}
+
+.sign .custom-control-label:before {
+  border-radius: 0.09rem;
+}
+
+.sign .custom-control-label:after {
+  cursor: pointer;
+}
+
+.sign .terms {
+  position: relative;
+  font-family: "roboto_medium", Arial, sans-serif;
+  color: #515053;
+  top: 5px;
+}
+
+.sign .terms a {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.sign-success {
+  margin: 60px 0;
+}
+
+.sign-success h3 {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: #ff6908;
+}
+
+.sign-success h5 {
+  font-family: "roboto_light", Arial, sans-serif;
+  color: #515053;
+}
+
+.sign-success h5 span {
+  font-family: "roboto_regular", Arial, sans-serif;
+}
+
+.sign-success h5 a {
+  font-family: "roboto_regular", Arial, sans-serif;
+}
+
+.sign-success h5 a:hover {
+  text-decoration: underline;
+}
+
+.homepage {
+  background: url("/img/home/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.homepage-info {
+  width: 100%;
+  height: 90vh;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 0;
+}
+
+.homepage-info-text {
+  font-family: "fira_sans_bold", Arial, sans-serif;
+  color: #515053;
+}
+
+.homepage-info-block {
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.homepage-info-block h5 {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: #8e43e7;
+  text-transform: uppercase;
+}
+
+.homepage-info-block-cols {
+  padding: 15px 0;
+}
+
+.homepage-info-block-cols-info-left,
+.homepage-info-block-cols-info-right {
+  display: table-cell;
+}
+
+.homepage-info-block-cols-info-left {
+  padding-right: 15px;
+}
+
+.homepage-info-block-cols-info-left span {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: rgba(142, 67, 231, 0.5);
+  font-size: 36px;
+}
+
+.homepage-info-block-cols-info-right h5 {
+  color: rgba(81, 80, 83, 0.9);
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  text-transform: none;
+}
+
+.homepage-info-block-cols-info-right h6 {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: "roboto_light", Arial, sans-serif;
+}
+
+@media (max-width: 576px) {
+  h1,
+  .h1 {
+    font-size: 2rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 1.5rem;
+  }
+
+  h3,
+  .h3 {
+    font-size: 1.25rem;
+  }
+
+  h4,
+  .h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage-info {
+    height: inherit;
+  }
+}
+
+@media (max-width: 992px) {
+  #main-nav {
+    display: inline-block !important;
+  }
+}
+
+@media (min-width: 992px) {
+  #main-nav {
+    position: relative;
+    z-index: 0;
+    left: auto;
+    top: auto;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: none;
+    width: 100%;
+    text-align: right;
+  }
+
+  #hamburger-menu {
+    display: none;
+  }
 }
 
