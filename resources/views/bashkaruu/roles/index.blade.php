@@ -1,3 +1,8 @@
+@extends('bashkaruu.layouts.default')
+
+@section('title', 'Роли')
+
+@section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -43,3 +48,4 @@
         </tr>
     @endforeach
 </table>
+@endsection

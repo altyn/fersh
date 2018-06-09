@@ -35,5 +35,21 @@
             <span>Пользователи</span>
          </a>
       </li>
+      <li @if(explode('.', Route::currentRouteName())[0] == 'roles') class="active" @endif>
+         <a href="{{route('roles.index')}}">
+            <div class="icon-w">
+               @include('bashkaruu.partials.svg-icons.user')
+            </div>
+            <span>Роли</span>
+         </a>
+      </li>
+      <li @if(explode('.', Route::currentRouteName())[0] == 'permissions') class="active" @endif>
+         <a href="{{route('permissions.index')}}">
+            <div class="icon-w">
+               @include('bashkaruu.partials.svg-icons.user')
+            </div>
+            <span>Права</span>
+         </a>
+      </li>
    </ul>
 </div>

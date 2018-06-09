@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bash;
 
+use App\Http\Controllers\Controller;
 use \Spatie\Permission\Models\Role as Role;
 use \Spatie\Permission\Models\Permission as Permission;
 
@@ -22,7 +23,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin.roles.index',compact('roles'));
+        return view('bashkaruu.roles.index',compact('roles'));
     }
 
     /**
@@ -32,8 +33,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-        return view('admin.roles.create',compact('permission'));
+        $permissions = Permission::get();
+        return view('bashkaruu.roles.create',compact('permissions'));
     }
 
     /**
@@ -52,14 +53,14 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('roles.index')
             ->with('success','Role created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Roles\ModelName as Role  $role
+     * @param  \Spatie\Permission\Models\Permission as Role  $role
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,13 +70,13 @@ class RoleController extends Controller
             ->where("role_has_permissions.role_id",$id)
             ->get();
 
-        return view('admin.roles.show',compact('role','rolePermissions'));
+        return view('bashkaruu.roles.show',compact('role','rolePermissions'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Roles\ModelName as Role  $role
+     * @param  \Spatie\Permission\Models\Role as Role  $role
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,14 +87,14 @@ class RoleController extends Controller
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
 
-        return view('admin.roles.edit',compact('role','permission','rolePermissions'));
+        return view('bashkaruu.roles.edit',compact('role','permission','rolePermissions'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Roles\ModelName as Role  $role
+     * @param  \Spatie\Permission\Models\Role as Role  $role
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -109,20 +110,19 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('bashkaruu.roles.index')
             ->with('success','Role updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Roles\ModelName as Role  $role
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         Role::findOrFail($id)->delete();
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('roles.index')
             ->with('success','Role deleted successfully');
     }
 }

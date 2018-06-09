@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bash;
 
+use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission as Permission;
 use Spatie\Permission\Models\Role as Role;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-        return view('admin.permissions.index',compact('permissions'));
+        return view('bashkaruu.permissions.index',compact('permissions'));
     }
     /**
      * Show the form for creating a new resource.
@@ -30,7 +31,7 @@ class PermissionController extends Controller
     public function create()
     {
         $roles = Role::get(); //Get all roles
-        return view('admin.permissions.create',compact('roles'));
+        return view('bashkaruu.permissions.create',compact('roles'));
     }
     /**
      * Store a newly created resource in storage.
@@ -52,7 +53,7 @@ class PermissionController extends Controller
                 $role->permissions()->attach($permission);
             }
         }
-        return redirect()->route('admin.permissions.index')->with('success','Permission added successfully');
+        return redirect()->route('bashkaruu.permissions.index')->with('success','Permission added successfully');
     }
     /**
      * Display the specified resource.
@@ -73,7 +74,7 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission)
     {
-        return view('admin.permissions.edit', compact('permission'));
+        return view('bashkaruu.permissions.edit', compact('permission'));
     }
     /**
      * Update the specified resource in storage.
@@ -89,7 +90,7 @@ class PermissionController extends Controller
         ]);
         $permission->name=$request->name;
         $permission->save();
-        return redirect()->route('admin.permissions.index')
+        return redirect()->route('bashkaruu.permissions.index')
             ->with('success',
                 'Permission'. $permission->name.' updated!');
     }
@@ -102,7 +103,7 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $permission->delete();
-        return redirect()->route('admin.permissions.index')
+        return redirect()->route('bashkaruu.permissions.index')
             ->with('success',
                 'Permission deleted successfully!');
     }

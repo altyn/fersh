@@ -1,6 +1,7 @@
 @extends('web.layouts.app')
 
-@section('title', $translations['test'] )
+{{--@section('title', $translations['test'] )--}}
+@section('title', 'test' )
 
 @section('styles')
 

@@ -2,57 +2,136 @@
 
 namespace App\Http\Controllers\Bash;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
+use Spatie\Permission\Models\Role as Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $result = User::all();
-
-        return view('bashkaruu.users.index',[
-            'result' => $result
-        ]);
+        $users = User::latest()->paginate();
+        return view('bashkaruu.users.index',compact('users'));
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('bashkaruu.users.create', [
-            'row' => new User
-        ]);
+        $roles = Role::all()->except('guard_name', 'created_at', 'updated_at');
+        return view('bashkaruu.users.create', compact('roles'));
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        // dd($request);
-        $user = User::create($request->except('passwordConfirm'));
-        $user->password = bcrypt($request->password);
-        $user->save();
+        $this->validate($request, [
+            'login' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+        ]);
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+
+
+        return redirect()->route('users.index')
+            ->with('success','User created successfully');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        $row = User::findOrFail($id);
-        return view('bashkaruu.users.show',[
-            'row' => $row
-        ]);
+        $user = User::findOrFail($id);
+        return view('bashkaruu.users.show',compact('user'));
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        $row = User::findOrFail($id);
-        return view('bashkaruu.users.edit',[
-            'row' => $row
+        $user = User::findOrFail($id);
+        $roles = Role::get();
+        return view('bashkaruu.users.edit',compact('user', 'roles'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
         ]);
+
+
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = array_except($input,array('password'));
+        }
+
+
+        $user = User::findOrFail($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+
+
+        $user->assignRole($request->input('roles'));
+
+
+        return redirect()->route('users.index')
+            ->with('success','User updated successfully');
     }
-    public function update(Request $request, User $row)
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $row->update($request->except('passwordConfirm'));
-        return redirect()->route('users.show', $row);
-    }
-    public function destroy(User $row)
-    {
-        $row->delete();
-        return redirect()->route('users.index');
+        User::findOrFail($id)->delete();
+        return redirect()->route('users.index')->with('success',
+            'User successfully deleted.');
     }
 }

@@ -165,6 +165,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Other service Providers
+         */
+
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
     ],
 
     /*
@@ -194,9 +200,7 @@ return [
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
-        'Form' => Collective\Html\FormFacade::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
-        'Html' => Collective\Html\HtmlFacade::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
@@ -218,7 +222,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

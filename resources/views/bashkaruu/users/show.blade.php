@@ -1,70 +1,44 @@
 @extends('bashkaruu.layouts.default')
 
-@section('title', $row->login )
+@section('title', $user->login )
 
 @section('content')
 
-<div class="content-box">
 	<div class="row">
-		<div class="col-sm-12">
-			<div class="element-wrapper">
-				<h6 class="element-header">{{$row->login }}</h6>
+		<div class="col-lg-12 margin-tb">
+			<div class="pull-left">
+				<h2> Show User</h2>
+			</div>
+			<div class="pull-right">
+				<a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+			</div>
+		</div>
+	</div>
 
-				<div class="element-box timeline">
-					<div class="entry">
-						<div class="title">
-							<h3>Логин</h3>
-						</div>
-						<div class="body">
-							<p>{{$row->login}}</p>	
-						</div>
-					</div>
-					<div class="entry">
-						<div class="title">
-							<h3>Эл.дарек</h3>
-						</div>
-						<div class="body">
-							<p>{{$row->email}}</p>	
-						</div>
-					</div>
-					<div class="entry">
-						<div class="title">
-							<h3>Статус</h3>
-						</div>
-						<div class="body">
-							<p>
-							</p>
-						</div>
-					</div>
-					<div class="entry no-border">
-						<div class="title">
-							<h3>Роль</h3>
-						</div>
-						<div class="body">
-						</div>
-					</div>
-				</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<strong>Name:</strong>
+				{{ $user->login }}
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<strong>Email:</strong>
+				{{ $user->email }}
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<strong>Roles:</strong>
+				@if(!empty($user->getRoleNames()))
+					@foreach($user->getRoleNames() as $v)
+						<label class="badge badge-success">{{ $v }}</label>
+					@endforeach
+				@endif
 			</div>
 		</div>
 	</div>
-</div>
-<div class="content-panel">
-	<div class="element-wrapper">
-		<h6 class="element-header">Действия</h6>
-		<div class="element-box-tp">
-			<div class="el-buttons-list full-width">
-				<a class="btn btn-default" href="{{route('users.create')}}">
-					<span>Добавить</span>
-				</a>
-				<a class="btn btn-default" href="{{route('users.edit', $row)}}">
-					<span>Редактировать</span>
-				</a>
-				<a class="btn btn-default" href="{{route('users.delete', $row)}}">
-					<span>Удалить</span>
-				</a>	              	
-			</div>
-		</div>
-	</div>
-</div>
 
 @endsection
