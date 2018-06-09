@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/{{ app()->getLocale() }}/sign_up" class="btn btn-reg">Пройти регистрацию <span class="jam jam-arrow-right"></span> </a>
+                    <a href="#" class="btn btn-reg">Пройти регистрацию <span class="jam jam-arrow-right"></span> </a>
                 </div>
             </div>
         </div>
