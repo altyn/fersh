@@ -1,0 +1,139 @@
+.navbar{
+    font-family: $firasansmedium;
+    padding: 1rem;
+
+    &.light{
+        background: rgba($color: #000, $alpha: 0.02);
+    }
+    &-brand{
+        color: $violet;
+
+        &:hover {
+            color: rgba($color: $violet, $alpha: 0.6);
+        }
+
+        .badge-beta{
+            position: relative;
+            top: -15px;
+            font-size: 70%;
+            display: inline-block;
+            padding: 0.3em 0.5em;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            color: #fff;
+            background-color: $orange;
+        }
+    }
+
+    &-nav{
+        font-family: $firasansmedium;
+    }
+
+    .nav{
+        &-link {
+            color: $black;
+
+            &:hover{
+                color: $orange;
+            }
+        }
+    }
+}
+
+// Offset mobile menu
+#main-nav {
+    position: fixed;
+    z-index: 199;
+    left: -100%;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    @include boxshadow;
+    @include transition;
+    
+    background: #fff;
+    padding-top: 10px;
+    &.speed-in {
+        left: 0;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+
+}
+
+.speed-in{
+    .nav-link {
+        color: $black;
+        margin: 15px;
+        border-bottom: 1px solid #eee;
+        &:hover {
+            background: none;
+            color: $orange;
+        }
+    }
+
+}
+
+#hamburger-menu {
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    padding: 1rem 0;
+
+    .line {
+        display: block;
+        width: 24px;
+        height: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-clip: padding-box;
+        margin: 3px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background: $violet;
+        cursor: pointer;
+    }
+    &.is-active .line {
+        &:nth-child(1) {
+            opacity: 0;
+            -webkit-transform: translateX(-100%);
+            -moz-transform: translateX(-100%);
+            -ms-transform: translateX(-100%);
+            -o-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+        &:nth-child(3) {
+            opacity: 0;
+            -webkit-transform: translateX(100%);
+            -moz-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+            -o-transform: translateX(100%);
+            transform: translateX(100%);
+        }
+    }
+}
+
+#shadow-layer {
+    position: fixed;
+    z-index: 198;
+    left: 0;
+    top: 0;
+    display: none;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(36, 37, 38, 0.25);
+    cursor: pointer;
+
+    &.is-visible {
+        display: block;
+        -webkit-animation: pd-fade-in 0.3s;
+        -o-animation: pd-fade-in 0.3s;
+        animation: pd-fade-in 0.3s;
+    }
+}

@@ -1,0 +1,47 @@
+@media (max-width: 576px) {
+}
+
+@media (max-width: 768px) {
+    .homepage{
+        &-info{
+            height: inherit;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+
+    #main-nav {
+        display: inline-block !important;
+    }
+
+}
+
+@media (max-width: 1200px) {
+}
+
+
+// Min widths
+
+
+// MIN WIDTH
+@media (min-width: 992px) {
+    #main-nav {
+        position: relative;
+        z-index: 0;
+        left: auto;
+        top: auto;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: none;
+        width: 100%;
+        text-align: right;
+    }
+    #hamburger-menu {
+        display: none;
+    }
+}

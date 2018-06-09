@@ -1,0 +1,70 @@
+.homepage{
+    background: url('/img/home/bg.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    &-info{
+        width: 100%;
+        height: 90vh;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 30px 0;
+
+        &-text{
+            font-family: $firasansbold;
+            color: $black;
+        }
+
+        &-block{
+            background: #fff;
+            padding: 30px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 30px;
+
+            h5{
+                font-family: $firasansmedium;
+                color: $violet;
+                text-transform: uppercase;
+            }
+
+            &-cols{
+                padding: 15px 0;
+
+                &-info{
+                    &-left, &-right{
+                        display: table-cell;
+                    }
+
+                    &-left{
+                        padding-right: 15px;
+                        span{
+                            text-align: center;
+                            width: 100%;
+                            display: inline-block;
+                            font-family: $firasansmedium;
+                            color: rgba($color: $violet, $alpha: 0.5);
+                            font-size: 36px;
+                        }
+                    }
+                    &-right{
+                        h5{
+                            color: rgba($color: $black, $alpha: 0.9);
+                            font-family: $firasansmedium;
+                            text-transform: none;
+                        }
+
+                        h6{
+                            color: rgba($color: #000, $alpha: 0.7);
+                            font-family: $robotolight;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

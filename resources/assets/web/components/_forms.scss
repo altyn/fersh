@@ -1,0 +1,197 @@
+.sign{
+    margin: 60px 0;
+    border-radius: 5px;
+
+    &-left{
+        text-align: center;
+        img{
+            padding: 30px;
+            height: 350px;
+        }
+    }
+
+    &-right{
+        &-top{
+            h3{
+                font-family: $firasansmedium;
+                color: $violet;
+            }
+        }
+        &-middle{
+            h5{
+                font-family: $robotolight;
+                color: rgba($color: $black, $alpha: 0.8);
+            }
+            .soc-icons{
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+
+                li{
+                    display: inline-block;
+
+                    a{
+                        font-size: 40px;
+                        color: rgba($color: $black, $alpha: 0.8);
+
+                        .jam{
+                            &-facebook-square{
+                                &:hover{
+                                    color: #3b5998;
+                                }
+                            }
+                            &-twitter-square{
+                                &:hover{
+                                    color: #1da1f2;
+
+                                }
+                            }
+                            &-google-square{
+                                &:hover{
+                                    color: #dd4b39;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-line{
+                font-family: $firasansmedium;
+                position: relative;
+                text-transform: uppercase;
+                text-align: center;
+                color: $violet;
+                margin-bottom: 15px;
+
+                &:before {
+                    border-bottom: 1px solid rgba($color: $violet, $alpha: 0.5);;
+                    border-top: 1px solid rgba($color: $violet, $alpha: 0.5);;
+                    content: "";
+                    margin: -5px auto;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 100%;
+                    z-index: -1;
+                    height: 5px;
+                }
+                span{
+                    background: #fff;
+                    padding: 0 15px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    &-bottom{
+        font-family: $robotomedium;
+        font-size: 14px;
+        margin: 10px 0;
+        
+        a{
+            color: rgba($color: $black, $alpha: 0.8);
+            &:hover {
+                color: $link;
+                text-decoration: underline;
+            }
+        }
+
+        .sign-new{
+            position: relative;
+            display: block;
+            a{
+                color: rgba($color: $black, $alpha: 0.8);
+                &:hover {
+                    color: $link;
+                    text-decoration: underline;
+                }
+
+            }
+        }
+    }
+
+
+    .form{
+        &-control{
+            font-family: $robotolight;
+            border-radius: 2px;
+            border-color: rgba($color: $violet, $alpha: 0.3);
+            background: rgba($color: $violet, $alpha: 0.03);
+
+            &:focus{
+                box-shadow: none;
+                background: none;
+                color: $black;
+            }
+        }
+    }
+    .custom {
+        &-control {
+             color: $black;
+
+             &-input{
+                &:focus~.custom-control-label::before{
+                    box-shadow: none;
+                    outline: none;
+                }
+
+                &:checked~.custom-control-label::before {
+                    background: $violet;
+                }
+
+             }
+             &-label{
+                font-family: $robotomedium;
+                font-size: 14px;
+                &:before{
+                    border-radius: 0.09rem;
+                }
+                
+                &:after{
+                    cursor: pointer;
+                }
+             }
+        }
+    }
+
+    .terms{
+        position: relative;
+        font-family: $robotomedium;
+        color: $black;
+        top: 5px;
+
+        a{
+            text-decoration: underline;
+            color: $link;
+        }
+    }
+
+    &-success{
+        margin: 60px 0;
+        h3{
+            font-family: $firasansmedium;
+            color: $orange;
+        }
+        h5{
+            font-family: $robotolight;
+            color: $black;
+            
+            span{                
+                font-family: $robotoregular;
+            }
+            
+            a{
+                font-family: $robotoregular;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

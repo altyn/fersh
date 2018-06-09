@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('translations',  Translation::getAll());
             $view->with('current_url', Request::capture()->segment(2));
             $view->with('current_path', substr(Request::capture()->path(), 3));
-            $view->with('localeconst', '/'.Request::capture()->segment(1));
+            $view->with('home', '/'.Request::capture()->segment(1));
             $view->with('locale', \Request::getRequestUri());
             $view->with('fullpath', \Request::fullUrl());
         });

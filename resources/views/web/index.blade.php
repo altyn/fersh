@@ -1,13 +1,15 @@
 @extends('web.layouts.app')
 
-{{--@section('title', $translations['test'] )--}}
-@section('title', 'test' )
+@section('title', 'Freelance.kg' )
 
 @section('styles')
 
 @endsection
 
 @section('content')
+
+    @include('web.app.home')
+
 @endsection
 
 @section('scripts')
