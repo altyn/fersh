@@ -1,0 +1,43 @@
+html {
+    height: 100%;
+    font-size: $base-font-size;
+}
+body {
+    font-family: $base-font;
+    font-size: .875rem;
+
+    position: relative;
+
+    min-height: 100%;
+    color: $base-font-color;
+
+    background-color: $white;
+}
+a {
+    text-decoration: none;
+    @include transition(all 0.3s ease);
+    &:focus{
+        outline: none;
+    }
+}
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+svg {
+    display: block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+textarea{
+    resize:vertical;
+}

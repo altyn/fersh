@@ -1,0 +1,334 @@
+/* Bootstrap Select Overrides */
+
+.bootstrap-select{
+  >.dropdown-toggle{
+  	color: $vice-font-color;
+	  border-color: $form-border-color;
+	  background-color: $form-control-color;
+	  &.bs-placeholder,
+	  &.bs-placeholder:hover,
+		&.bs-placeholder:focus,
+		&.bs-placeholder:active{
+			color: $vice-font-color;
+		  border-color: $form-border-color;
+		  background-color: $form-control-color;
+		}
+  }
+  &.with-error{
+  	>.dropdown-toggle{
+	  	color: $red;
+		  border-color: $red;
+		  &.bs-placeholder,
+		  &.bs-placeholder:hover,
+			&.bs-placeholder:focus,
+			&.bs-placeholder:active{
+		  	color: $red;
+			  border-color: $red;
+			}
+	  }  	
+  }
+}
+.bootstrap-select.with-error>.dropdown-toggle,
+.bootstrap-select.with-error>.dropdown-toggle.bs-placeholder {
+  border-color: $red;
+}
+.bootstrap-select>.dropdown-toggle {
+  padding: .5rem .75rem;
+}
+.bootstrap-select .dropdown-toggle:focus {
+  outline: none !important;
+  @include box-shadow(none);
+}
+.btn-group.open .dropdown-toggle {
+  @include box-shadow(none);
+}
+.bootstrap-select.btn-group .dropdown-menu {
+  border-color: $form-border-color;
+  li {
+    a {
+      line-height: 1.125rem;
+      padding: .5rem 1.25rem;
+      color: $form-font-color;
+    }
+  }
+}
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+  margin: 0;
+}
+
+/* Bootstrap Datetimpicker Overrides */
+
+.bootstrap-datetimepicker-widget table td.day:hover,
+.bootstrap-datetimepicker-widget table td.hour:hover,
+.bootstrap-datetimepicker-widget table td.minute:hover,
+.bootstrap-datetimepicker-widget table td.second:hover,
+.bootstrap-datetimepicker-widget table thead tr:first-child th:hover,
+.bootstrap-datetimepicker-widget table td span:hover {
+  background: $form-control-color;
+}
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: $blue;
+}
+.bootstrap-datetimepicker-widget table td.today:before {
+  border-bottom-color: $blue;
+}
+.bootstrap-datetimepicker-widget table td {
+  font-family: $base-font;
+  font-weight: 500;
+}
+.bootstrap-datetimepicker-widget table td.old,
+.bootstrap-datetimepicker-widget table td.new {
+  font-family: $base-font;
+  color: $vice-font-color;
+}
+
+/* Jasny Bootstrap Overrides */
+
+.form-control .fileinput-filename {
+  padding-left: 2.5rem;
+}
+.fileinput-new.input-group .btn-file>span,
+.fileinput-new .input-group .btn-file>span {
+  white-space: nowrap;
+}
+.fileinput{
+	.thumbnail{
+		width: 250px;
+		height: 150px;
+	}
+}
+
+/* Checkboxes and Radios Overrides */
+
+.radio+.radio,
+.checkbox+.checkbox {
+  margin-top: 0;
+}
+.radio,
+.checkbox {
+  label {
+    &::before {
+      border-color: $form-border-color;
+    }
+  }
+}
+.checkbox {
+  margin-top: 1.25rem;
+  label {
+    &::after {
+      color: $vice-font-color;
+    }
+  }
+}
+.radio {
+  label {
+    &::after {
+      background-color: $vice-font-color;
+    }
+  }
+}
+
+/* Tagify */
+
+tags {
+  border-color: $form-border-color;
+  background: $form-control-color;
+  @include border-radius(.125rem);
+  tag {
+    margin: 0 0 0 .25rem;
+    padding: .25rem 0;
+    >div {
+      padding: .25rem 1.25rem .25rem .5rem;
+      color: $form-font-color;
+      >span {
+        font-family: $base-font;
+        font-weight: 500;
+        line-height: 1rem;
+        position: relative;
+        z-index: 1;
+        display: block;
+      }
+      &::before {
+        z-index: 0;
+        background-color: $form-border-color;
+        @include border-radius(.125rem);
+      }
+    }
+    x {
+      font-size: 1rem;
+      line-height: 1rem;
+      right: .25rem;
+      &:hover {
+        color: $form-font-color;
+        background: none;
+        +div {
+          color: $form-font-color;
+          &::before {
+            background: $form-border-color;
+          }
+          span {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    &:hover {
+      div {
+        &::before {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: $form-border-color;
+          @include box-shadow(none);
+        }
+      }
+    }
+  }
+  input.form-control {
+    display: none;
+    border: none;
+  }
+  >div {
+    margin: 0 .5rem;
+    padding: .25rem 0;
+    >input {
+      line-height: 1rem;
+      padding: .25rem 0;
+      &.placeholder {
+        ~span {
+          opacity: 1;
+        }
+      }
+    }
+    span {
+      font-family: $base-font;
+      font-weight: 500;
+      line-height: 1rem;
+      top: .5rem;
+      color: $form-font-color;
+    }
+  }
+}
+
+/* Bootstrap Overrides */
+
+.btn-default:active,
+.btn-default.active,
+.open>.btn-default.dropdown-toggle,
+.btn-default:active:hover,
+.btn-default:active:focus,
+.btn-default:active.focus,
+.btn-default.active:hover,
+.btn-default.active:focus,
+.btn-default.active.focus,
+.open>.btn-default.dropdown-toggle:hover,
+.open>.btn-default.dropdown-toggle:focus,
+.open>.btn-default.dropdown-toggle.focus {
+  color: $form-font-color;
+  border-color: $form-border-color;
+  background-color: $form-control-color;
+}
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  background-color: $form-control-color;
+}
+.btn-default:hover {
+  color: $form-font-color;
+  background-color: $form-control-color;
+}
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:hover,
+.btn-primary:active:focus,
+.btn-primary.active,
+.open>.btn-primary.dropdown-toggle {
+  background-color: $blue;
+  border-color: $blue;
+}
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger:active:hover,
+.btn-danger:active:focus,
+.btn-danger.active,
+.open>.btn-danger.dropdown-toggle {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+}
+.btn-default,
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default:active:hover,
+.btn-default:active:focus,
+.btn-default.active,
+.open>.btn-primary.dropdown-toggle {
+  color: $base-font-color;
+  border-color: $form-border-color;
+  background-color: $btn-default-color;
+}
+.btn-primary.disabled:hover,
+.btn-primary.disabled:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled]:hover,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary:hover,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary.focus {
+  opacity: .75;
+  border-color: transparent;
+  background-color: $blue;
+}
+.modal-content {
+  padding: 2rem;
+  @include border-radius(.125rem);
+  @include box-shadow(0 5px 20px rgba(0, 0, 0, .1));
+  .close {
+    opacity: .5;
+    color: $base-font-color;
+  }
+}
+.modal-header {
+  font-family: $base-font;
+  font-weight: 700;
+  font-size: 1.25rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+  padding: 0 0 1rem;
+  color: #16236c;
+  border-bottom: 1px solid #dae1f4;
+  &::after {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    display: block;
+    width: 22px;
+    height: 6px;
+    content: '';
+    border-radius: 2px;
+    background-color: #16236c;
+  }
+}
+.modal-body {
+  padding: 0;
+  p {
+    margin: 0;
+  }
+  .form-control {
+    display: inline-block;
+    width: auto;
+  }
+}
+.modal-footer {
+  margin-top: 1.5rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid $border-color;
+}

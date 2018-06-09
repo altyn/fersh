@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
-use App\Models\Roles\ModelName as Role;
+use Spatie\Permission\Models\Role as Role;
 
 class UserController extends Controller
 {

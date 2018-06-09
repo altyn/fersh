@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::name('home')->get('/', function(){
+    return redirect('/ru');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['middleware' => ['auth']], function() {
-    Route::resource('admin/roles','RoleController');
-    Route::resource('admin/users','UserController');
-    Route::resource('admin/permissions','PermissionController');
+Route::group(['prefix' => '/{lang}',], function (){
+    
+    Route::get('/', 'WebController@index');
+    
 });

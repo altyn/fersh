@@ -1,0 +1,69 @@
+.datepicker .dp-icon,
+.table-records-pages .dp-icon,
+.fileinput .dp-icon,
+.bootstrap-select .dp-icon {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+
+    background-repeat: no-repeat;
+
+    @include bg-size(100%);
+    &-previous {
+        background-image: url('/css/bash/img/icons/previous.svg');
+    }
+    &-next {
+        background-image: url('/css/bash/img/icons/next.svg');
+    }
+    &-up {
+        background-image: url('/css/bash/img/icons/up.svg');
+    }
+    &-down {
+        background-image: url('/css/bash/img/icons/down.svg');
+    }
+    &-file {
+        background-image: url('/css/bash/img/icons/file.svg');
+    }
+    &-check {
+        background-image: url('/css/bash/img/icons/check.svg');
+    }
+}
+.fileinput .dp-icon {
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+}
+.fileinput-new .dp-icon.fileinput-exists {
+    display: none;
+}
+.timepicker .dp-icon {
+    position: relative;
+    &::after {
+        position: absolute;
+        top: 17px;
+        left: 17px;
+
+        width: 20px;
+        height: 20px;
+
+        content: '';
+
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        @include bg-size(100%);
+    }
+    &-up {
+        &::after {
+            background-image: url('/css/bash/img/icons/up.svg');
+        }
+    }
+    &-down {
+        &::after {
+            background-image: url('/css/bash/img/icons/down.svg');
+        }
+    }
+}

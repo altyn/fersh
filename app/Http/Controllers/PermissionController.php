@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permissions\ModelName as Permission;
-use App\Models\Roles\ModelName as Role;
+use Spatie\Permission\Models\Permission as Permission;
+use Spatie\Permission\Models\Role as Role;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
