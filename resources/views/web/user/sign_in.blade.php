@@ -23,23 +23,25 @@
                         <div class="sign-right-middle">
                             <h5>Войдите с помощью учетной записи в других сервисах</h5>
                             <ul class="soc-icons">
-                                <li><a href="#"><span class="jam jam-facebook-square"></span></a></li>
-                                <li><a href="#"><span class="jam jam-twitter-square"></span></a></li>
-                                <li><a href="#"><span class="jam jam-google-square"></span></a></li>
+                                <li><a href="/auth/facebook/redirect/"><span class="jam jam-facebook-square"></span></a></li>
+                                <li><a href="/auth/twitter/redirect/"><span class="jam jam-twitter-square"></span></a></li>
+                                <li><a href="/auth/google/redirect/"><span class="jam jam-google-square"></span></a></li>
+                                <li><a href="/auth/github/redirect/"><span class="jam jam-github-square"></span></a></li>
                             </ul>
                             <div class="sign-right-middle-line">
                                 <span>или</span>
                             </div>
                         </div>
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" action="/{{ app()->getLocale() }}/sign_in" method="post" novalidate>
+                            @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="Почта" required>
+                                <input type="email" class="form-control" name="email" placeholder="Почта" required>
                                 <div class="invalid-feedback">
                                     Введите почту 
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Пароль" required>
+                                <input type="password" class="form-control" name="password" placeholder="Пароль" required>
                                 <div class="invalid-feedback">
                                     Введите пароль
                                 </div>
