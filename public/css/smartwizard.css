@@ -1,0 +1,345 @@
+@font-face {
+  font-family: 'fira_sans_light';
+  src: url("/fonts/firasans/firasans-light-webfont.eot");
+  src: url("/fonts/firasans/firasans-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-light-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-light-webfont.woff") format("woff"), url("/fonts/firasans/firasans-light-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-light-webfont.svg#fira_sanslight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_sans_lightitalic';
+  src: url("/fonts/firasans/firasans-lightitalic-webfont.eot");
+  src: url("/fonts/firasans/firasans-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-lightitalic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-lightitalic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-lightitalic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-lightitalic-webfont.svg#fira_sanslight_italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'fira_sans_regular';
+  src: url("/fonts/firasans/firasans-regular-webfont.eot");
+  src: url("/fonts/firasans/firasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-regular-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-regular-webfont.woff") format("woff"), url("/fonts/firasans/firasans-regular-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-regular-webfont.svg#fira_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_sans_italic';
+  src: url("/fonts/firasans/firasans-italic-webfont.eot");
+  src: url("/fonts/firasans/firasans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-italic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-italic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-italic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-italic-webfont.svg#fira_sansitalic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'fira_sans_medium';
+  src: url("/fonts/firasans/firasans-medium-webfont.eot");
+  src: url("/fonts/firasans/firasans-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-medium-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-medium-webfont.woff") format("woff"), url("/fonts/firasans/firasans-medium-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-medium-webfont.svg#fira_sansmedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_sans_mediumitalic';
+  src: url("/fonts/firasans/firasans-mediumitalic-webfont.eot");
+  src: url("/fonts/firasans/firasans-mediumitalic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-mediumitalic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-mediumitalic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-mediumitalic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-mediumitalic-webfont.svg#fira_sansmedium_italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'fira_sans_bold';
+  src: url("/fonts/firasans/firasans-bold-webfont.eot");
+  src: url("/fonts/firasans/firasans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-bold-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-bold-webfont.woff") format("woff"), url("/fonts/firasans/firasans-bold-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-bold-webfont.svg#fira_sansbold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_sans-bolditalic';
+  src: url("/fonts/firasans/firasans-bolditalic-webfont.eot");
+  src: url("/fonts/firasans/firasans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/firasans/firasans-bolditalic-webfont.woff2") format("woff2"), url("/fonts/firasans/firasans-bolditalic-webfont.woff") format("woff"), url("/fonts/firasans/firasans-bolditalic-webfont.ttf") format("truetype"), url("/fonts/firasans/firasans-bolditalic-webfont.svg#fira_sansbold_italic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'roboto_light';
+  src: url("/fonts/roboto/roboto-light-webfont.eot");
+  src: url("/fonts/roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-light-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-light-webfont.woff") format("woff"), url("/fonts/roboto/roboto-light-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-light-webfont.svg#robotolight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_regular';
+  src: url("/fonts/roboto/roboto-regular-webfont.eot");
+  src: url("/fonts/roboto/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-regular-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-regular-webfont.woff") format("woff"), url("/fonts/roboto/roboto-regular-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-regular-webfont.svg#robotoregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_medium';
+  src: url("/fonts/roboto/roboto-medium-webfont.eot");
+  src: url("/fonts/roboto/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-medium-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-medium-webfont.woff") format("woff"), url("/fonts/roboto/roboto-medium-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_bold';
+  src: url("/fonts/roboto/roboto-bold-webfont.eot");
+  src: url("/fonts/roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto/roboto-bold-webfont.woff2") format("woff2"), url("/fonts/roboto/roboto-bold-webfont.woff") format("woff"), url("/fonts/roboto/roboto-bold-webfont.ttf") format("truetype"), url("/fonts/roboto/roboto-bold-webfont.svg#robotobold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.sw-theme-custom {
+  margin: 30px 0;
+}
+
+.sw-theme-custom .sw-container {
+  min-height: 300px;
+}
+
+.sw-theme-custom .step-content {
+  border: none;
+  background-color: #f4f6fa;
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.sw-theme-custom .sw-toolbar {
+  background: #fff;
+  border-radius: 0 !important;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0 !important;
+}
+
+.sw-theme-custom .sw-toolbar-top {
+  border-bottom-color: #ddd !important;
+}
+
+.sw-theme-custom .sw-toolbar-bottom {
+  border-top-color: #ddd !important;
+  border-bottom-color: #ddd !important;
+  float: left;
+  padding: 0;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-prev {
+  background: #f4f6fa;
+  border: none;
+  color: #515053;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-prev:hover {
+  background: rgba(255, 105, 8, 0.8);
+  color: #fff;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-prev.disabled:hover {
+  background: #f4f6fa !important;
+  color: #515053 !important;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-prev:active,
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-prev:focus,
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-prev:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-next {
+  background: #4caf50;
+  border: none;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-next:hover {
+  background: rgba(76, 175, 80, 0.8);
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-next:active,
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-next:focus,
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-next:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+.sw-theme-custom > ul.step-anchor {
+  position: relative;
+  background: #fff;
+  border: 0px solid #ccc !important;
+  list-style: none;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+}
+
+.sw-theme-custom > ul.step-anchor:before {
+  content: " ";
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #f4f6fa;
+  border-radius: 3px;
+  z-order: 0;
+  z-index: 95;
+}
+
+.sw-theme-custom > ul.step-anchor > li {
+  border: none;
+  width: 25%;
+}
+
+.sw-theme-custom > ul.step-anchor > li > a {
+  position: relative;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  text-decoration: none;
+  outline-style: none;
+  z-index: 96;
+  display: block;
+}
+
+.sw-theme-custom > ul.step-anchor > li > a:before {
+  content: ' ';
+  position: absolute;
+  bottom: 2px;
+  left: 40%;
+  margin-top: 10px;
+  display: block;
+  border-radius: 50%;
+  color: #428bca;
+  background: #f4f6fa;
+  border: none;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+  z-index: 98;
+}
+
+.sw-theme-custom > ul.step-anchor > li > a:after {
+  content: ' ';
+  position: relative;
+  left: 42%;
+  bottom: 2px;
+  margin-top: 10px;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #f4f6fa;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+.sw-theme-custom > ul.step-anchor > li > a:hover {
+  color: #ccc;
+  background: transparent;
+}
+
+.sw-theme-custom > ul.step-anchor > li > a:focus {
+  color: #ccc;
+  border: none;
+}
+
+.sw-theme-custom > ul.step-anchor > li.clickable > a:hover {
+  color: #999;
+}
+
+.sw-theme-custom > ul.step-anchor > li.active > a {
+  color: #ff6908;
+}
+
+.sw-theme-custom > ul.step-anchor > li.active > a:hover {
+  border: none;
+}
+
+.sw-theme-custom > ul.step-anchor > li.active > a:after {
+  background: #ff6908;
+}
+
+.sw-theme-custom > ul.step-anchor > li.done > a {
+  color: #4caf50;
+}
+
+.sw-theme-custom > ul.step-anchor > li.done > a:after {
+  background: #4caf50;
+}
+
+.sw-theme-custom > ul.step-anchor > li.danger > a {
+  color: #d9534f;
+}
+
+.sw-theme-custom > ul.step-anchor > li.danger > a:after {
+  background: #d9534f;
+}
+
+.sw-theme-custom > ul.step-anchor > li.disabled > a {
+  color: #eee !important;
+}
+
+.sw-theme-custom > ul.step-anchor > li.disabled > a:hover {
+  color: #eee !important;
+}
+
+.sw-theme-custom > ul.step-anchor > li.disabled > a:after {
+  background: #eee;
+}
+
+/* Anchors styles */
+
+/* Active anchors */
+
+/* Done anchors */
+
+/* Danger anchors */
+
+/* Responsive CSS */
+
+@media screen and (max-width: 768px) {
+  .sw-theme-custom > ul.step-anchor:before {
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    width: 5px;
+    height: 100%;
+    background-color: #f4f6fa;
+    display: block;
+    margin-right: 10px;
+  }
+
+  .sw-theme-custom > ul.step-anchor > li {
+    margin-left: 20px;
+    display: block;
+    clear: both;
+  }
+
+  .sw-theme-custom > ul.step-anchor > li > a {
+    text-align: left;
+    margin-left: 0;
+    display: block;
+  }
+
+  .sw-theme-custom > ul.step-anchor > li > a:before {
+    top: 5px;
+    left: -23px;
+    margin-right: 10px;
+    display: block;
+  }
+
+  .sw-theme-custom > ul.step-anchor > li > a:after {
+    top: -38px;
+    left: -31px;
+    margin-right: 10px;
+    display: block;
+  }
+}
+

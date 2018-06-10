@@ -17,15 +17,13 @@ Route::name('home')->get('/', function(){
 });
 
 Route::group(['prefix' => '/{lang}',], function (){
-
+    
     Route::get('/', 'WebController@index');
-    Route::get('/sign_in', 'WebAuthController@showLoginForm');
-    Route::post('/sign_in', 'WebAuthController@login');
-    Route::get('/sign_up', 'WebAuthController@signUp');
-    Route::get('/success', 'WebAuthController@signInSuccess');
-
+    
+    // User manipulation 
+    Route::get('/sign_in', 'UserController@signIn');
+    Route::get('/sign_up', 'UserController@signUp');
+    Route::get('/success', 'UserController@signInSuccess');
+    Route::get('/profile/info', 'UserController@profileInfo');
+    
 });
-Route::get('/auth/social', 'WebAuthController@socialSignUp');
-Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');
-
-Route::get('/auth/{provider}/callback/', 'WebAuthController@handleProviderCallback');

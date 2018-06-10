@@ -11,19 +11,29 @@ let mix = require('laravel-mix');
  |
  */
 
-//  Front view
+//  Front js
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     'resources/assets/web/js/app.js'
 ],  'public/js/app.js')
     .version();
+
+    mix.scripts([
+    'node_modules/smartwizard/dist/js/jquery.smartWizard.min.js',
+],  'public/js/smartwizard.js')
+    .version();
     
+    //  Main css
 mix.sass('resources/assets/web/app.scss', 'public/css')
     .version();
 
+    // Smartwizard css
+mix.sass('resources/assets/web/components/smartwizard.scss', 'public/css')
+    .version();
 
-// Admin view
+
+// Admin side
 mix.scripts([
         'node_modules/jquery/dist/jquery.js',
         'node_modules/bootstrap/dist/js/bootstrap.bundle.js',

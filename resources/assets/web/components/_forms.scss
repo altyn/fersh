@@ -195,3 +195,53 @@
         }
     }
 }
+
+.infoform{
+    .form {
+        &-control {
+            font-family: $robotolight;
+            border-radius: 2px;
+            border-color: rgba($color: $black, $alpha: 0.15);
+            background: #fff;
+            &:focus {
+                box-shadow: none;
+                background: #fff;
+                color: $black;
+            }
+        }
+
+        &-group{
+            label{
+                font-family: $firasansmedium;
+                color: #656d9c;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .custom {
+        &-control {
+            color: $black;
+            &-input {
+                &:focus~.custom-control-label::before {
+                    box-shadow: none;
+                }
+                &:checked~.custom-control-label::before {
+                    background: $green;
+                }
+
+                &:checked+label {
+                    color:$green !important;
+                }
+            }
+            &-label {
+                font-size: 16px !important;
+                text-transform: uppercase;
+                color: rgba($color: $black, $alpha: 0.5) !important;
+                &:after {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
