@@ -1,0 +1,226 @@
+@import 'fonts';
+@import 'colors';
+
+.sw-theme-custom {
+    margin: 30px 0;
+    .sw-container {
+        min-height: 300px;
+    }
+    .step-content {
+        border: none;
+        background-color: $gray;
+        margin: 15px 0;
+        padding: 20px;
+        border-radius: 3px;
+    }
+    .sw-toolbar {
+        background: #fff;
+        border-radius: 0 !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 0 !important;
+    }
+    .sw-toolbar-top {
+        border-bottom-color: #ddd !important;
+    }
+    .sw-toolbar-bottom {
+        border-top-color: #ddd !important;
+        border-bottom-color: #ddd !important;
+        float: left;
+        padding: 0;
+        font-family: $firasansmedium;
+
+        .sw-btn-prev{
+            background: $gray;
+            border: none;
+            color: $black;
+
+            &:hover {
+                background: rgba($color: $orange, $alpha: 0.8);
+                color: #fff;
+            }
+
+            &.disabled{
+                &:hover {
+                    background: $gray !important;
+                    color: $black !important;
+                }
+            }
+
+
+            &:active,
+            &:focus,
+            &:visited {
+                box-shadow: none;
+                border: none;
+            }
+        }
+
+        .sw-btn-next{
+            background: $green;
+            border: none;
+
+            &:hover{
+                background: rgba($color: $green, $alpha: 0.8);
+            }
+
+            &:active,
+            &:focus,
+            &:visited {
+                box-shadow: none;
+                border: none;
+            }
+        }
+    }
+    >ul.step-anchor {
+        position: relative;
+        background: #fff;
+        border: 0px solid #ccc !important;
+        list-style: none;
+        font-family: $firasansmedium;
+        &:before {
+            content: " ";
+            position: absolute;
+            top: 45px;
+            bottom: 0;
+            width: 100%;
+            height: 5px;
+            background-color: $gray;
+            border-radius: 3px;
+            z-order: 0;
+            z-index: 95;
+        }
+        >li {
+            border: none;
+            width: 25%;
+            >a {
+                position: relative;
+                text-align: center;
+                background: transparent;
+                border: none;
+                color: #ccc;
+                text-decoration: none;
+                outline-style: none;
+                z-index: 96;
+                display: block;
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    bottom: 2px;
+                    left: 40%;
+                    margin-top: 10px;
+                    display: block;
+                    border-radius: 50%;
+                    color: #428bca;
+                    background: $gray;
+                    border: none;
+                    width: 30px;
+                    height: 30px;
+                    text-decoration: none;
+                    z-index: 98;
+                }
+                &:after {
+                    content: ' ';
+                    position: relative;
+                    left: 42%;
+                    bottom: 2px;
+                    margin-top: 10px;
+                    display: block;
+                    width: 15px;
+                    height: 15px;
+                    background: $gray;
+                    border-radius: 50%;
+                    z-index: 99;
+                }
+                &:hover {
+                    color: #ccc;
+                    background: transparent;
+                }
+                &:focus {
+                    color: #ccc;
+                    border: none;
+                }
+            }
+            &.clickable>a:hover {
+                color: #999;
+            }
+            &.active>a {
+                color: $orange;
+                &:hover {
+                    border: none;
+                }
+                &:after {
+                    background: $orange;
+                }
+            }
+            &.done>a {
+                color: $green;
+                &:after {
+                    background: $green;
+                }
+            }
+            &.danger>a {
+                color: #d9534f;
+                &:after {
+                    background: #d9534f;
+                }
+            }
+            &.disabled>a {
+                color: #eee !important;
+                &:hover {
+                    color: #eee !important;
+                }
+                &:after {
+                    background: #eee;
+                }
+            }
+        }
+    }
+}
+
+/* Anchors styles */
+
+/* Active anchors */
+
+/* Done anchors */
+
+/* Danger anchors */
+
+/* Responsive CSS */
+
+@media screen and (max-width: 768px) {
+    .sw-theme-custom>ul.step-anchor {
+        &:before {
+            top: 0;
+            bottom: 0;
+            left: 10px;
+            width: 5px;
+            height: 100%;
+            background-color: $gray;
+            display: block;
+            margin-right: 10px;
+        }
+        >li {
+            margin-left: 20px;
+            display: block;
+            clear: both;
+            >a {
+                text-align: left;
+                margin-left: 0;
+                display: block;
+                &:before {
+                    top: 5px;
+                    left: -23px;
+                    margin-right: 10px;
+                    display: block;
+                }
+                &:after {
+                    top: -38px;
+                    left: -31px;
+                    margin-right: 10px;
+                    display: block;
+                }
+            }
+        }
+    }
+}

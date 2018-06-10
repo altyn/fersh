@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "jam-icons": "^2.0.0"
+        "jam-icons": "^2.0.0",
+        "smartwizard": "^4.3.1"
     }
 }

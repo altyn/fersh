@@ -14498,6 +14498,53 @@ a:visited {
   text-decoration: underline;
 }
 
+.infoform .form-control {
+  font-family: "roboto_light", Arial, sans-serif;
+  border-radius: 2px;
+  border-color: rgba(81, 80, 83, 0.15);
+  background: #fff;
+}
+
+.infoform .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: #fff;
+  color: #515053;
+}
+
+.infoform .form-group label {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: #656d9c;
+  font-size: 15px;
+}
+
+.infoform .custom-control {
+  color: #515053;
+}
+
+.infoform .custom-control-input:focus ~ .custom-control-label::before {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.infoform .custom-control-input:checked ~ .custom-control-label::before {
+  background: #4caf50;
+}
+
+.infoform .custom-control-input:checked + label {
+  color: #4caf50 !important;
+}
+
+.infoform .custom-control-label {
+  font-size: 16px !important;
+  text-transform: uppercase;
+  color: rgba(81, 80, 83, 0.5) !important;
+}
+
+.infoform .custom-control-label:after {
+  cursor: pointer;
+}
+
 .homepage {
   background: url("/img/home/bg.png") no-repeat center center fixed;
   background-size: cover;
