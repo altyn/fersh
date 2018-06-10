@@ -27,15 +27,9 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
     protected $fillable = [
         'login',
         'email',
-        'freelancer',
         'created_at',
         'updated_at',
     ];
-
-    public function isFreelancer()
-    {
-        return $this->freelancer;
-    }
 
     public function getLogin()
     {

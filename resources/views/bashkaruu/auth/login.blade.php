@@ -15,4 +15,6 @@
 </div>
 {!! Form::close() !!}
 
-<a href="redirect">FB Login</a>
+<a href="login/redirect/facebook">FB Login</a>
+<a href="login/redirect/twitter">Twitter Login</a>
+<a href="login/redirect/github">Github Login</a>
