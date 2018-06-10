@@ -22,5 +22,7 @@ Route::middleware('auth')->group(function(){
 
 Auth::routes();
 
-Route::get('/redirect', 'SocialAuthController@redirect');
-Route::get('/callback', 'SocialAuthController@callback');
+//Route::get('/redirect/{provider}', 'SocialAuthController@redirect');
+//Route::get('/callback/{provider}', 'SocialAuthController@callback');
+Route::get('login/redirect/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/callback/{provider}', 'Auth\LoginController@handleProviderCallback');
