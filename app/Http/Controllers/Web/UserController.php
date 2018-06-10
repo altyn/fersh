@@ -7,10 +7,6 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function signIn() 
-    {
-    	return view('web.user.sign_in');
-    }
 
     public function signUp() 
     {
