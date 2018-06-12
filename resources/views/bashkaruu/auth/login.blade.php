@@ -14,8 +14,3 @@
     {!! Form::button('Кирүү', ['class' => 'btn btn-primary', 'type' => 'submit']); !!}
 </div>
 {!! Form::close() !!}
-
-<a href="login/redirect/facebook">FB Login</a>
-<a href="login/redirect/twitter">Twitter Login</a>
-<a href="login/redirect/twitter">Github Login</a>
-<a href="login/redirect/google">Google Login</a>

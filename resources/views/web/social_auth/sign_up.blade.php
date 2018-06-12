@@ -19,6 +19,11 @@
                     <div class="sign-right">
                         <div class="sign-right-top">
                             <h3>Регистрация</h3>
+                            @if(session('data'))
+                                data
+                            @else
+                                no
+                            @endif
                         </div>
                         <form class="needs-validation" novalidate>
                             <div class="form-group">

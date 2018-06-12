@@ -8,6 +8,14 @@ use Laravel\Socialite\Contracts\Provider;
 
 class SocialAccountService
 {
+    public function getUserInfo(Provider $provider){
+        $providerUser = $provider->user();
+        $providerName = class_basename($provider);
+
+        return $providerUser->getId();
+
+    }
+
     public function createOrGetUser(Provider $provider)
     {
 

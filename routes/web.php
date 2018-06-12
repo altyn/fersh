@@ -28,6 +28,6 @@ Route::group(['prefix' => '/{lang}',], function (){
 
 });
 
-Route::get('/auth/social', 'WebAuthController@socialSignUp');
+Route::get('/auth/social', 'WebAuthController@socialSignUp')->name('auth.social');
 Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback/', 'WebAuthController@handleProviderCallback');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Socialite;
@@ -24,13 +25,13 @@ class WebAuthController extends Controller
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
             return redirect('profile/info');
         } else {
-            return redirect()->away('/'.app()->getLocale().'/sign_in');
+            return redirect('/'.app()->getLocale().'/sign_in');
         }
     }
 
     public function logout() {
         Auth::logout();
-        return redirect()->away('/');
+        return redirect('/');
     }
 
     /**
@@ -48,18 +49,31 @@ class WebAuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback(SocialAccountService $service, $provider)
+    public function handleProviderCallback(Request $request, $provider)
     {
+        $memberInfo =  Socialite::driver($provider)->stateless()->user();
+//        return $this->validateLoginInfo($memberInfo,$provider);
+
+//        $email_user = $service->getUserInfo(Socialite::driver($provider))->user();
+
 //        dd($provider)
-//        $user = $service->createOrGetUser(Socialite::driver($provider));
 
-//        Auth::login($user);
+        $cross = "asfafsaf";
+        session([
+            'user_email' => $memberInfo->getEmail(),
+            'user_pic' => $memberInfo->getAvatar(),
+            ]);
+        session()->save();
 
-        return redirect('auth/social')->with([$provider]);
+//        dd($request->session());
+
+        return redirect()->route('auth.social');
     }
 
     public function socialSignUp(Request $request){
-//        dd($request);
-        return view('web.social_auth.sign_up');
+//        $data = $request->session()->get('data');
+//        dd($data);
+        dd($request->session());
+//        return view('web.social_auth.sign_up');
     }
 }
