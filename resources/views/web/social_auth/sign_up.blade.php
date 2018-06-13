@@ -19,11 +19,6 @@
                     <div class="sign-right">
                         <div class="sign-right-top">
                             <h3>Регистрация</h3>
-                            @if(session('data'))
-                                data
-                            @else
-                                no
-                            @endif
                         </div>
                         <form class="needs-validation" novalidate>
                             <div class="form-group">
@@ -33,7 +28,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="Почта" required>
+                                <input type="email" class="form-control" id="email" placeholder="Почта"
+                                       @if($user_details['email'])
+                                               value="{{ $user_details['email'] }}"
+                                       @endif
+                                       required>
                                 <div class="invalid-feedback">
                                     Введите почту
                                 </div>

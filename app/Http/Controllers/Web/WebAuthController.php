@@ -52,28 +52,14 @@ class WebAuthController extends Controller
     public function handleProviderCallback(Request $request, $provider)
     {
         $memberInfo =  Socialite::driver($provider)->stateless()->user();
-//        return $this->validateLoginInfo($memberInfo,$provider);
 
-//        $email_user = $service->getUserInfo(Socialite::driver($provider))->user();
+        $user_details['email'] = $memberInfo->getEmail();
+        $user_details['pic'] = $memberInfo->getAvatar();
 
-//        dd($provider)
-
-        $cross = "asfafsaf";
-        session([
-            'user_email' => $memberInfo->getEmail(),
-            'user_pic' => $memberInfo->getAvatar(),
-            ]);
-        session()->save();
-
-//        dd($request->session());
-
-        return redirect()->route('auth.social');
+        return view('web.social_auth.sign_up', compact('user_details'));
     }
 
     public function socialSignUp(Request $request){
-//        $data = $request->session()->get('data');
-//        dd($data);
-        dd($request->session());
-//        return view('web.social_auth.sign_up');
+        return view('web.social_auth.sign_up');
     }
 }
