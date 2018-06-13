@@ -20,17 +20,30 @@
                         <div class="sign-right-top">
                             <h3>Регистрация</h3>
                         </div>
-                        <form class="needs-validation" novalidate>
+                        {!! Form::open(['url' => 'auth/social', 'method' => 'post']) !!}
+
+                        {{--<form method="post" action="/auth/social/" class="needs-validation" novalidate>--}}
+                            {{--@csrf()--}}
+                            {{--@method('POST')--}}
                             <div class="form-group">
-                                <input type="text" class="form-control" id="login" placeholder="Логин" required>
+                                <input type="hidden" class="form-control" name="pr"
+                                       @if($user_details['pr'])
+                                       value="{{ $user_details['pr'] }}"
+                                       @endif
+                                       required>
+                                <input type="text" class="form-control" name="login" placeholder="Логин"
+                                       @if($user_details['nickname'])
+                                           value="{{ $user_details['nickname'] }}"
+                                       @endif
+                                       required>
                                 <div class="invalid-feedback">
                                     Введите ваш логин
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="Почта"
+                                <input type="email" class="form-control" name="email" placeholder="Почта"
                                        @if($user_details['email'])
-                                               value="{{ $user_details['email'] }}"
+                                           value="{{ $user_details['email'] }}"
                                        @endif
                                        required>
                                 <div class="invalid-feedback">
@@ -38,20 +51,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Пароль" required>
+                                <input type="password" class="form-control" name="password" placeholder="Пароль" required>
                                 <div class="invalid-feedback">
                                     Введите пароль
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="confirmpassword" placeholder="Повторите пароль" required>
+                                <input type="password" class="form-control" name="confirmpassword" placeholder="Повторите пароль" required>
                                 <div class="invalid-feedback">
                                     Повторите пароль
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="notify">
+                                    <input type="checkbox" class="custom-control-input" name="notify">
                                     <label class="custom-control-label" for="notify">Получать новости сервиса (не чаще раза в месяц)</label>
                                 </div>
                                 <span class="terms">Регистрируясь вы принимаете условия <a href="#">Пользовательского соглашения</a></span>
@@ -61,6 +74,7 @@
                         <div class="sign-bottom">
                             <a href="/{{ app()->getLocale() }}/sign_in" class="sign-new">Войдите с вашим аккаунтом</a>
                         </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

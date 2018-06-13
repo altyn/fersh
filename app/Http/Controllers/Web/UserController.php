@@ -22,4 +22,6 @@ class UserController extends Controller
     {
     	return view('web.user.profile.info');
     }
+
+
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\RequestException as GuzzleReqException;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Socialite;
-use App\Services\SocialAccountService;
+use App\Models\User\ModelName as User;
 use Illuminate\Support\Facades\Auth;
 
 class WebAuthController extends Controller
@@ -18,7 +19,6 @@ class WebAuthController extends Controller
 
     public function login(Request $request)
     {
-//        dd($request);
         $email = $request->input('email');
         $password = $request->input('password');
 
@@ -31,7 +31,7 @@ class WebAuthController extends Controller
 
     public function logout() {
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -49,17 +49,56 @@ class WebAuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback(Request $request, $provider)
+    public function handleProviderCallback($provider)
     {
-        $memberInfo =  Socialite::driver($provider)->stateless()->user();
+        try{
+            $memberInfo =  Socialite::driver($provider)->stateless()->user();
+            $user_details['nickname'] = $memberInfo->getNickName();
+            $user_details['email'] = $memberInfo->getEmail();
+            $user_details['pic'] = $memberInfo->getAvatar();
+            $user_details['pr'] = $provider;
 
-        $user_details['email'] = $memberInfo->getEmail();
-        $user_details['pic'] = $memberInfo->getAvatar();
+            $user = User::where(['email' => $memberInfo->getEmail()])->first();
 
-        return view('web.social_auth.sign_up', compact('user_details'));
+            if($user){
+                Auth::login($user);
+                return redirect()->route('home');
+            }else{
+                return view('web.social_auth.sign_up', compact('user_details'));
+            }
+
+        }catch (GuzzleReqException $exception){
+            $status_code = $exception->getResponse()->getStatusCode();
+            if ( $status_code == '400' || $status_code == '401') {
+                return redirect('/ru/sign_in');
+            }
+        }
+
     }
 
-    public function socialSignUp(Request $request){
-        return view('web.social_auth.sign_up');
+//    public function socialSignUp(Request $request)
+//    {
+//        $user = new User($request);
+//        if ($user){
+//            return redirect()->route('profile.info');
+//        } else {
+//            return back();
+//        }
+//    }
+    public function socialSignUp(Request $request)
+    {
+        $user = User::create([
+            'email' => $request->input('email'),
+            'login' => $request->input('login'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+        $user->save();
+
+        if ($user){
+            Auth::login($user);
+            return redirect()->route('profile.info');
+        } else {
+            return redirect()->back();
+        }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Http\Request;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\SocialAccount;
 use App\Models\User\ModelName as User;
@@ -16,9 +17,8 @@ class SocialAccountService
 
     }
 
-    public function createOrGetUser(Provider $provider)
+    public static function createOrGetUser(Provider $provider, Request $request)
     {
-
         $providerUser = $provider->user();
         $providerName = class_basename($provider);
 
@@ -40,8 +40,9 @@ class SocialAccountService
             if (!$user) {
 
                 $user = User::create([
-                    'email' => $providerUser->getEmail(),
-                    'login' => $providerUser->getName(),
+                    'email' => $request->input('email'),
+                    'login' => $request->input('login'),
+                    'password' => $request->input('password'),
                 ]);
             }
 

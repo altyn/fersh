@@ -23,11 +23,12 @@ Route::group(['prefix' => '/{lang}',], function (){
     // User manipulation 
     Route::get('/sign_in', 'WebAuthController@showLoginForm');
     Route::get('/sign_up', 'UserController@signUp');
+    Route::post('/sign_up', 'UserController@signUp');
     Route::get('/success', 'UserController@signInSuccess');
-    Route::get('/profile/info', 'UserController@profileInfo');
-
 });
 
-Route::get('/auth/social', 'WebAuthController@socialSignUp')->name('auth.social');
+Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
 Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback/', 'WebAuthController@handleProviderCallback');
+
+Route::post('/auth/social/', 'WebAuthController@socialSignUp')->name('social.register')->middleware('guest');

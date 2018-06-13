@@ -30,10 +30,9 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * RegisterController constructor.
      */
     public function __construct()
     {
@@ -48,11 +47,24 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+
+        return Validator::make($data,
+            [
+                'name'                  => 'required|max:255|unique:users',
+                'email'                 => 'required|email|max:255|unique:users',
+                'password'              => 'required|min:6|max:30|confirmed',
+                'password_confirmation' => 'required|same:password',
+            ],
+            [
+                'name.unique'                   => trans('auth.userNameTaken'),
+                'name.required'                 => trans('auth.userNameRequired'),
+                'email.required'                => trans('auth.emailRequired'),
+                'email.email'                   => trans('auth.emailInvalid'),
+                'password.required'             => trans('auth.passwordRequired'),
+                'password.min'                  => trans('auth.PasswordMin'),
+                'password.max'                  => trans('auth.PasswordMax'),
+            ]
+        );
     }
 
     /**
@@ -63,10 +75,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $user = User::create([
+            'name'              => $data['name'],
+            'email'             => $data['email'],
+            'password'          => Hash::make($data['password']),
         ]);
+
+        return $user;
     }
 }
