@@ -20,14 +20,15 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     Route::get('/', 'WebController@index');
 
-    // User manipulation 
-    Route::get('/sign_in', 'WebAuthController@showLoginForm');
+    // User manipulation
+    Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');
     Route::get('/sign_up', 'UserController@signUp');
     Route::post('/sign_up', 'UserController@signUp');
     Route::get('/success', 'UserController@signInSuccess');
+    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
 });
 
-Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
+
 Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback/', 'WebAuthController@handleProviderCallback');
 

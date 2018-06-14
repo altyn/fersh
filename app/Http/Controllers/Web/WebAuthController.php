@@ -8,14 +8,32 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
 use App\Models\User\ModelName as User;
-use Illuminate\Support\Facades\Auth;
-
+use Auth;
 class WebAuthController extends Controller
 {
     public function showLoginForm()
     {
         return view('web.user.sign_in');
     }
+
+//    public function login(Request $request)
+//    {
+//        // Validate the form data
+//        $this->validate($request, [
+//            'email'   => 'required|email',
+//            'password' => 'required|min:6'
+//        ]);
+//        // Attempt to log the user in
+//        if (Auth::guard('admin')->attempt([
+//                'email' => $request->email,
+//                'password' => $request->password
+//            ], $request->remember)) {
+//            // if successful, then redirect to their intended location
+//            return redirect(app()->getLocale().'/profile/info');
+//        }
+//        // if unsuccessful, then redirect back to the login with the form data
+//        return redirect()->back()->withInput($request->only('email', 'remember'));
+//    }
 
     public function login(Request $request)
     {
@@ -61,8 +79,8 @@ class WebAuthController extends Controller
             $user = User::where(['email' => $memberInfo->getEmail()])->first();
 
             if($user){
-                Auth::login($user);
-                return redirect()->route('home');
+                $this->login($user);
+                return redirect(app()->getLocale().'/profile/info');
             }else{
                 return view('web.social_auth.sign_up', compact('user_details'));
             }
@@ -90,15 +108,17 @@ class WebAuthController extends Controller
         $user = User::create([
             'email' => $request->input('email'),
             'login' => $request->input('login'),
+            'phone' => $request->input('phone'),
+            'pass' => $request->input('password'),
             'password' => Hash::make($request->input('password')),
         ]);
         $user->save();
-
-        if ($user){
+        if (Auth::attempt(['email' => $request->input('email'),
+                           'password' => $request->input('password')])){
             Auth::login($user);
-            return redirect()->route('profile.info');
+            return redirect(app()->getLocale().'/profile/info');
         } else {
-            return redirect()->back();
+            return redirect()->route('web.login');
         }
     }
 }

@@ -23,14 +23,9 @@
                         {!! Form::open(['url' => 'auth/social', 'method' => 'post']) !!}
 
                         {{--<form method="post" action="/auth/social/" class="needs-validation" novalidate>--}}
-                            {{--@csrf()--}}
+                            @csrf()
                             {{--@method('POST')--}}
                             <div class="form-group">
-                                <input type="hidden" class="form-control" name="pr"
-                                       @if($user_details['pr'])
-                                       value="{{ $user_details['pr'] }}"
-                                       @endif
-                                       required>
                                 <input type="text" class="form-control" name="login" placeholder="Логин"
                                        @if($user_details['nickname'])
                                            value="{{ $user_details['nickname'] }}"
@@ -48,6 +43,12 @@
                                        required>
                                 <div class="invalid-feedback">
                                     Введите почту
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="phone" placeholder="Телефон" required>
+                                <div class="invalid-feedback">
+                                    Введите ваш логин
                                 </div>
                             </div>
                             <div class="form-group">

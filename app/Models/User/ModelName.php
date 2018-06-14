@@ -27,6 +27,8 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
     protected $fillable = [
         'login',
         'email',
+        'password',
+        'phone',
         'created_at',
         'updated_at',
     ];
