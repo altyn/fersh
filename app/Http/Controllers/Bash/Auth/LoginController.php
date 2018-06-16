@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('web.user.sign_in');
+        return view('bashkaruu.layouts.login');
     }
 
     public function login(Request $request)
@@ -33,28 +33,28 @@ class LoginController extends Controller
         return redirect()->away('/bashkaruu');
     }
 
-//    /**
-//     * Redirect the user to the Social authentication page.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function redirectToProvider($provider)
-//    {
-//        return Socialite::driver($provider)->redirect();
-//    }
-//
-//    /**
-//     * Obtain the user information from Providers
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//
-//    public function handleProviderCallback(SocialAccountService $service, $provider)
-//    {
-//        $user = $service->createOrGetUser(Socialite::driver($provider));
-//
-//        Auth::login($user);
-//
-//        return redirect()->to('/bashkaruu');
-//    }
+   /**
+    * Redirect the user to the Social authentication page.
+    *
+    * @return \Illuminate\Http\Response
+    */
+   public function redirectToProvider($provider)
+   {
+       return Socialite::driver($provider)->redirect();
+   }
+
+   /**
+    * Obtain the user information from Providers
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+   public function handleProviderCallback(SocialAccountService $service, $provider)
+   {
+       $user = $service->createOrGetUser(Socialite::driver($provider));
+
+       Auth::login($user);
+
+       return redirect()->to('/bashkaruu');
+   }
 }

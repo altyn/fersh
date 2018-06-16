@@ -7,6 +7,12 @@
             height: inherit;
         }
     }
+
+    .sw-theme-custom>ul.step-anchor>li {
+        width: 100% !important;
+        padding: 10px 0 !important;
+        margin: 0 !important; 
+    }
 }
 
 @media (max-width: 992px) {
@@ -44,4 +50,5 @@
     #hamburger-menu {
         display: none;
     }
+
 }

@@ -27,7 +27,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     // Registration Routes...
     Route::get('/sign_up', 'WebAuthController@signUpForm')->name('web.register');
     Route::post('/sign_up', 'WebRegisterController@register');
-
+    
     // Password Reset Routes...
 
     Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
