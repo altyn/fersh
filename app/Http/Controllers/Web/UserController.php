@@ -13,11 +13,6 @@ class UserController extends Controller
     	return view('web.user.sign_up');
     }
     
-    public function signUpSuccess()
-    {
-    	return view('web.user.success');
-    }
-    
     public function profileInfo() 
     {
     	return view('web.user.profile.info');

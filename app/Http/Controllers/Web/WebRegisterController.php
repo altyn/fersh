@@ -18,7 +18,6 @@ class WebRegisterController extends RegisterController
         $this->middleware('guest');
     }
 
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -52,11 +51,15 @@ class WebRegisterController extends RegisterController
 
             if($row)
             {
+                $to_email = $data['email'];
                 session()->flash(
                     'message', "Your account has now been created!"
                 );
-                return redirect()->route('register.success');
+                return view('web.user.success', compact('to_email'));
+            } else {
+                return back();
             }
         }
     }
+
 }
