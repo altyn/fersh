@@ -78,24 +78,12 @@
         border: 0px solid #ccc !important;
         list-style: none;
         font-family: $firasansmedium;
-        &:before {
-            content: " ";
-            position: absolute;
-            top: 45px;
-            bottom: 0;
-            width: 100%;
-            height: 5px;
-            background-color: $gray;
-            border-radius: 3px;
-            z-order: 0;
-            z-index: 95;
-        }
         >li {
             border: none;
             width: 25%;
             >a {
                 position: relative;
-                text-align: center;
+                text-align: left;
                 background: transparent;
                 border: none;
                 color: #ccc;
@@ -105,10 +93,8 @@
                 display: block;
                 &:before {
                     content: ' ';
-                    position: absolute;
-                    bottom: 2px;
-                    left: 40%;
-                    margin-top: 10px;
+                    position: relative;
+                    float: left;
                     display: block;
                     border-radius: 50%;
                     color: #428bca;
@@ -118,19 +104,6 @@
                     height: 30px;
                     text-decoration: none;
                     z-index: 98;
-                }
-                &:after {
-                    content: ' ';
-                    position: relative;
-                    left: 42%;
-                    bottom: 2px;
-                    margin-top: 10px;
-                    display: block;
-                    width: 15px;
-                    height: 15px;
-                    background: $gray;
-                    border-radius: 50%;
-                    z-index: 99;
                 }
                 &:hover {
                     color: #ccc;
