@@ -50,7 +50,7 @@ class WebAuthController extends Controller
         $password = $request->input('password');
 
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
-            return redirect('profile/info');
+            return redirect()->route('profile.info');
         } else {
             return redirect('/'.app()->getLocale().'/sign_in');
         }
