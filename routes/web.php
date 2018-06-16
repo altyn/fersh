@@ -22,8 +22,9 @@ Route::group(['prefix' => '/{lang}',], function (){
     // Authentication Routes...
     Route::get('/sign_in', 'WebAuthController@showLoginForm');
     Route::post('/logout', 'WebAuthController@logout');
-    Route::get('/success', 'UserController@signInSuccess');
-    
+
+    Route::get('/success', 'UserController@signUpSuccess')->name('register.success');
+
     // Registration Routes...
     Route::get('/sign_up', 'WebAuthController@signUpForm')->name('web.register');
     Route::post('/sign_up', 'WebRegisterController@register');
@@ -34,10 +35,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     $this->get('admin/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     $this->post('admin/password/reset', 'Auth\ResetPasswordController@reset');
 
-    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
-
-
-    // Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
+    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
 });
 
 

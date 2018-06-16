@@ -14,7 +14,7 @@ class UserController extends Controller
     	return view('web.user.sign_up');
     }
     
-    public function signInSuccess() 
+    public function signUpSuccess()
     {
     	return view('web.user.success');
     }
