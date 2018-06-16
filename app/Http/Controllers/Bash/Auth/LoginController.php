@@ -18,13 +18,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $login = $request->input('login');
+        $email = $request->input('email');
         $password = $request->input('password');
 
-        if (auth()->attempt(['login' => $login, 'password' => $password])) {
-            // dd(auth()->user());
-            return redirect()->away('/bashkaruu');
-            // return redirect()->intended('/bashkaruu');
+        if (auth()->attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->intended('bashkaruu/');
         } else {
             return redirect()->away('login');
         }

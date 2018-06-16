@@ -12,8 +12,5 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
-        '/auth/social/',
-        '/bashkaruu/login/'
     ];
 }

@@ -14183,6 +14183,29 @@ a:visited {
   padding-left: 5px;
 }
 
+.btn-group-toggle .btn {
+  background: #fff;
+  border-color: rgba(75, 192, 78, 0.5);
+  color: #333;
+  font-size: 0.875rem;
+}
+
+.btn-group-toggle .btn:not([disabled]):not(.disabled).active {
+  background-color: #4BC04E;
+  border-color: rgba(75, 192, 78, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-group-toggle .btn-secondary {
+  color: rgba(81, 80, 83, 0.5);
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto !important;
+}
+
 .navbar {
   font-family: "fira_sans_medium", Arial, sans-serif;
   padding: 1rem;
@@ -14510,6 +14533,9 @@ a:visited {
           box-shadow: none;
   background: #fff;
   color: #515053;
+  border: 1px solid #656d9c;
+  -webkit-box-shadow: 0 0 4px rgba(135, 121, 189, 0.53);
+          box-shadow: 0 0 4px rgba(135, 121, 189, 0.53);
 }
 
 .infoform .form-group label {
@@ -14528,11 +14554,11 @@ a:visited {
 }
 
 .infoform .custom-control-input:checked ~ .custom-control-label::before {
-  background: #4caf50;
+  background: #4BC04E;
 }
 
 .infoform .custom-control-input:checked + label {
-  color: #4caf50 !important;
+  color: #4BC04E !important;
 }
 
 .infoform .custom-control-label {
@@ -14640,6 +14666,12 @@ a:visited {
 @media (max-width: 768px) {
   .homepage-info {
     height: inherit;
+  }
+
+  .sw-theme-custom > ul.step-anchor > li {
+    width: 100% !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
   }
 }
 

@@ -16,6 +16,11 @@ class WebAuthController extends Controller
         return view('web.user.sign_in');
     }
 
+    public function signUpForm()
+    {
+        return view('web.user.sign_up');
+    }
+
 //    public function login(Request $request)
 //    {
 //        // Validate the form data
@@ -35,6 +40,10 @@ class WebAuthController extends Controller
 //        return redirect()->back()->withInput($request->only('email', 'remember'));
 //    }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function login(Request $request)
     {
         $email = $request->input('email');
@@ -47,6 +56,9 @@ class WebAuthController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout() {
         Auth::logout();
         return redirect()->route('home');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
+use App\Models\Country\ModelName as Country;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -20,8 +21,8 @@ class UserController extends Controller
     
     public function profileInfo() 
     {
-    	return view('web.user.profile.info');
+        $data['countries'] = Country::orderBy('country_id', 'asc')->get();
+    	return view('web.user.profile.info', $data);
     }
-
 
 }

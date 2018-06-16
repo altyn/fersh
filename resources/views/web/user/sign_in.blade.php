@@ -33,10 +33,11 @@
                             </div>
                         </div>
 
-                        {!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}
+{{--                        {!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}--}}
 
                         {{--<form class="needs-validation" action="/{{ app()->getLocale() }}/sign_in" method="post" novalidate>--}}
-                            {{--@csrf--}}
+                        <form class="needs-validation" action="{{ route('login') }}" method="post" novalidate>
+                            @csrf
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Почта" required>
                                 <div class="invalid-feedback">
@@ -50,8 +51,8 @@
                                 </div>
                             </div>
                             <button class="btn btn-sign" type="submit">Войти</button>
-                        {{--</form>--}}
-                        {!! Form::close() !!}
+                        </form>
+{{--                        {!! Form::close() !!}--}}
                         <div class="sign-bottom">
                             <a href="#">Напомнить пароль</a>
                             <a href="/{{ app()->getLocale() }}/sign_up" class="sign-new">Зарегистрируйте новый аккаунт</a>

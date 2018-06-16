@@ -20,11 +20,8 @@
                         <div class="sign-right-top">
                             <h3>Регистрация</h3>
                         </div>
-                        {!! Form::open(['url' => 'auth/social', 'method' => 'post']) !!}
-
-                        {{--<form method="post" action="/auth/social/" class="needs-validation" novalidate>--}}
+                        {!! Form::open(['url' => 'ru/sign_up', 'method' => 'post']) !!}
                             @csrf()
-                            {{--@method('POST')--}}
                             <div class="form-group">
                                 <input type="text" class="form-control" name="login" placeholder="Логин"
                                        @if($user_details['nickname'])
