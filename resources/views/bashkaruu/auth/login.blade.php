@@ -1,8 +1,8 @@
 <h4 class="auth-header">Авторизация</h4>
 {!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}
 <div class="form-group">
-    {!! Form::label('login', 'Логин'); !!}
-    {!! Form::text('login', null, ['class' => 'form-control', 'placeholder' => 'Логинизди жазыңыз' ]) !!}
+    {!! Form::label('email', 'Email'); !!}
+    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Логинизди жазыңыз' ]) !!}
     <div class="pre-icon os-icon os-icon-user-male-circle"></div>
 </div>
 <div class="form-group">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\RequestException as GuzzleReqException;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Socialite;
 use App\Models\User\ModelName as User;
 use Auth;
+
 class WebAuthController extends Controller
 {
     public function showLoginForm()
@@ -41,13 +43,14 @@ class WebAuthController extends Controller
 //    }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param $data
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function login(Request $request)
+    public function login($data)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $email = $data['email'];
+        $password = $data['password'];
+//        dd($data);
 
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('profile.info');
@@ -57,7 +60,7 @@ class WebAuthController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function logout() {
         Auth::logout();
@@ -90,9 +93,18 @@ class WebAuthController extends Controller
 
             $user = User::where(['email' => $memberInfo->getEmail()])->first();
 
-            if($user){
+            if($user)
+            {
                 $this->login($user);
-                return redirect(app()->getLocale().'/profile/info');
+//                if (Auth::attempt(['email' => $request->input('email'),
+//                    'password' => $request->input('password')])){
+//                    Auth::login($user);
+//                    return redirect(app()->getLocale().'/profile/info');
+//                } else {
+//                    return redirect()->route('web.login');
+//                }
+//                $this->login($user);
+//                dd($provider);
             }else{
                 return view('web.social_auth.sign_up', compact('user_details'));
             }
@@ -106,15 +118,10 @@ class WebAuthController extends Controller
 
     }
 
-//    public function socialSignUp(Request $request)
-//    {
-//        $user = new User($request);
-//        if ($user){
-//            return redirect()->route('profile.info');
-//        } else {
-//            return back();
-//        }
-//    }
+    /**
+     * @param Request $request
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function socialSignUp(Request $request)
     {
         $user = User::create([
