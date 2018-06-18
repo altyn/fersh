@@ -20,7 +20,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::get('/', 'WebController@index');
 
     // Authentication Routes...
-    Route::get('/sign_in', 'WebAuthController@showLoginForm');
+    Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');
     Route::post('/logout', 'WebAuthController@logout');
 
 

@@ -18,8 +18,10 @@ class Admin
     {
         if (Auth::user() &&  Auth::user()->isAdmin == 1) {
             return $next($request);
+        } else if(Auth::user() &&  Auth::user()->isAdmin == 0) {
+            return redirect(app()->getLocale().'/profile/info');
+        } else {
+            return redirect(app()->getLocale().'/sign_in');
         }
-
-        return redirect('/');
     }
 }
