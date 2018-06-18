@@ -28,13 +28,12 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::get('/sign_up', 'WebAuthController@signUpForm')->name('web.register');
     Route::post('/sign_up', 'WebRegisterController@register');
     
-    // Password Reset Routes...
-
+    // Profile Info Routes
      Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
 //    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
 });
 
- Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
+Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
 
 
 

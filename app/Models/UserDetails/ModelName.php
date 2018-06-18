@@ -11,8 +11,8 @@ class ModelName extends Model
     protected $guarded = ['id'];
     protected $fillable = [
         'user_id',
-        'f_name',
-        'l_name',
+        'first_name',
+        'last_name',
         'birthday',
         'country',
         'city',
@@ -21,6 +21,12 @@ class ModelName extends Model
         'contacts',
         'spec',
         'bio',
+    ];
+
+    protected $casts = [
+        'contacts' => 'json',
+        'spec' => 'json',
+        'bio' => 'json',
     ];
 
     public function user()

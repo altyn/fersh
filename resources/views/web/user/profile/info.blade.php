@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="lastname">Фамилия</label>
-                                <input type="text" class="form-control" id="last_name" name="first_name" required>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>

@@ -23,9 +23,9 @@ class CreateUserDetailsTable extends Migration
             $table->string('city');
             $table->string('sex');
             $table->boolean('freelancer');
-            $table->json('contacts'); // site, mail, phone, whatsapp, tg, facebook, twitter
-            $table->json('spec'); // spec, skills, sphere, experience, rate, payment_method, firm
-            $table->json('bio');
+            $table->json('contacts')->nullable(); // site, mail, phone, whatsapp, tg, facebook, twitter
+            $table->json('spec')->nullable(); // spec, skills, sphere, experience, rate, payment_method, firm
+            $table->json('bio')->nullable();
             $table->timestamps();
         });
     }

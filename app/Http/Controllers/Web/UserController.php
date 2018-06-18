@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Models\Country\ModelName as Country;
+use App\Models\UserDetails\ModelName as UserDetails;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -42,28 +43,62 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function profileStore(Request $request)
     {
-        $data = $request->all();
-//        dd($data['bio'][app()->getLocale()]['full']);
-
-//        $this->validate($request, [
-//            'login' => 'required',
-//            'email' => 'required|email|unique:users,email',
-//            'password' => 'required|same:confirm-password',
-//        ]);
-
         $input = $request->all();
-        $input['user_id'] = auth()->user()->getAuthIdentifier();
-        dd($input['user_id'] = auth()->user()->getAuthIdentifier());
 
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user_details = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
 
+        if($user_details=null){
+            $request->user_id = auth()->user()->getAuthIdentifier();
+            $request->birthday = date(today());
+            $request->freelancer = true;
+            $request->sex = male;
 
-        return redirect()->route('users.index')
-            ->with('success','User created successfully');
+            $validatedData = $request->validate([
+                'user_id' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'birthday' => 'required',
+                'country' => 'required',
+                'city' => 'required',
+                'sex' => 'required',
+                'freelancer' => 'required',
+                'contacts' => 'required',
+                'spec' => 'required',
+                'bio' => 'required',
+            ]);
+
+            // The question is valid...
+            $row = UserDetails::create($validatedData);
+//            $user = new UserDetails;
+//            $user->user_id = auth()->user()->getAuthIdentifier();
+//            $user->first_name = $input['first_name'];
+//            $user->last_name = $input['last_name'];
+//            $user->birthday = date(today());
+//            $user->country = 1;
+//            $user->city = $input['city'];
+//            $user->sex = 'male';
+//            $user->freelancer = 1;
+//            $user->contacts = $input['contacts'];
+//            $user->spec = $input['spec'];
+//            $user->bio = $input['bio'];
+
+            if($row){
+                return redirect()->route('home')
+                    ->with('success','Your profile updated successfully');
+            } else {
+                dd($row);
+            }
+            dd($request);
+//            $user = UserDetails::create($input);
+        } else {
+            dd($input);
+            return redirect()->back();
+        }
+
     }
 
 }
