@@ -14206,6 +14206,10 @@ a:visited {
   margin: 0 auto !important;
 }
 
+.display-none {
+  display: none;
+}
+
 .navbar {
   font-family: "fira_sans_medium", Arial, sans-serif;
   padding: 1rem;
@@ -14683,6 +14687,10 @@ a:visited {
     width: 100% !important;
     padding: 10px 0 !important;
     margin: 0 !important;
+  }
+
+  .sw-theme-custom .step-content-inner {
+    padding: 15px !important;
   }
 }
 

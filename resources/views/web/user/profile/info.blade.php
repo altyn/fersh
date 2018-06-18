@@ -373,14 +373,14 @@
                 next: "Продолжить", 
                 previous: 'Назад'
             },
-             toolbarSettings: {
+            toolbarSettings: {
                 toolbarPosition: 'bottom', // none, top, bottom, both
                 toolbarButtonPosition: 'right', // left, right
                 showNextButton: true, // show/hide a Next button
                 showPreviousButton: true, // show/hide a Previous button
                 toolbarExtraButtons: [
 			        $('<button type="submit"></button>').text('Сохранить')
-                        .addClass('btn sw-btn-finish')
+                        .addClass('btn sw-btn-finish display-none')
                         .on('click', function(){ 
                             alert('Finsih button click');                            
                     })
@@ -389,12 +389,11 @@
         });
 
         $("#stepbystep").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
-            if($('button.sw-btn-next').hasClass('disabled')){
-                $('.sw-btn-group-extra').show(); // show the button extra only in the last page
+            if(stepNumber != '3'){
+                $('.sw-btn-finish').hide(); 
             }else{
-                $('.sw-btn-group-extra').hide();                
+                $('.sw-btn-finish').show();
             }
-
         });
 
         var skillsInput = document.querySelector('input[name=skills]'),
