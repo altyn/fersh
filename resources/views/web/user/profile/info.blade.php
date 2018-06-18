@@ -4,7 +4,7 @@
 
 @section('styles')
 
-<link rel="stylesheet" href="{{ mix('/css/smartwizard.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/smartwizard.css') }}">
 
 @endsection
 
@@ -134,14 +134,14 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-12">
                                 <label for="website">Сайт</label>
-                                <input type="text" class="form-control" id="website" name="contacts[website]" required>
+                                <input type="text" class="form-control" id="website" name="contacts[{{app()->getLocale()}}][website]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="email">Почта</label>
-                                <input type="text" class="form-control" id="email" name="contacts[email]" required>
+                                <input type="text" class="form-control" id="email" name="contacts[{{app()->getLocale()}}][email]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
@@ -150,7 +150,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-12">
                                 <label for="phone">Телефон</label>
-                                <input type="text" class="form-control" id="phone"  name="contacts[phone]" required>
+                                <input type="text" class="form-control" id="phone"  name="contacts[{{app()->getLocale()}}][phone]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
@@ -159,14 +159,14 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-12">
                                 <label for="whatspapp">WhatsApp</label>
-                                <input type="text" class="form-control" id="whatspapp" name="contacts[whatsapp]" required>
+                                <input type="text" class="form-control" id="whatspapp" name="contacts[{{app()->getLocale()}}][whatsapp]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="telegram">Telegram</label>
-                                <input type="text" class="form-control" id="telegram" name="contacts[telegram]" required>
+                                <input type="text" class="form-control" id="telegram" name="contacts[{{app()->getLocale()}}][telegram]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
@@ -177,14 +177,14 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-12">
                                 <label for="facebook">Facebook</label>
-                                <input type="text" class="form-control" id="facebook" name="contacts[facebook]" required>
+                                <input type="text" class="form-control" id="facebook" name="contacts[{{app()->getLocale()}}][facebook]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="twitter">Twitter</label>
-                                <input type="text" class="form-control" id="twitter" name="contacts[twitter]" required>
+                                <input type="text" class="form-control" id="twitter" name="contacts[{{app()->getLocale()}}][twitter]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
@@ -198,7 +198,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="bio">Специализация </label>
-                            <input type="text" class="form-control" id="bio" required>
+                            <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][spec]" required>
                             <small>Напишите, что именно вы делаете лучше других</small>
                             <div class="invalid-feedback">
                                 Заполните поле
@@ -208,7 +208,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="skills">Ключевые навыки (до 15 штук) * </label>
-                            <input type="text" class="form-control" id="skills" required>
+                            <input type="text" class="form-control" id="skills" name="spec[{{app()->getLocale()}}][skills]" required>
                             <div class="invalid-feedback">
                                 Заполните поле
                             </div>
@@ -217,7 +217,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="bio">Сфера деятельности </label>
-                            <input type="text" class="form-control" id="bio" required>
+                            <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][sphere]" required>
                             <div class="invalid-feedback">
                                 Заполните поле
                             </div>
@@ -226,7 +226,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="bio">Опыт работы</label>
-                            <input type="text" class="form-control" id="bio" required>
+                            <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][experience]" required>
                             <div class="invalid-feedback">
                                 Заполните поле
                             </div>
@@ -235,7 +235,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="bio">Стоимость работы</label>
-                            <input type="text" class="form-control" id="bio" required>
+                            <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][rate]" required>
                             <div class="invalid-feedback">
                                 Заполните поле
                             </div>
@@ -244,7 +244,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="bio">Способ оплаты</label>
-                            <input type="text" class="form-control" id="bio" required>
+                            <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][payment_method]" required>
                             <div class="invalid-feedback">
                                 Заполните поле
                             </div>
@@ -253,7 +253,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-12">
                             <label for="bio">Форма собственности</label>
-                            <input type="text" class="form-control" id="bio" required>
+                            <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][firm]" required>
                             <div class="invalid-feedback">
                                 Заполните поле
                             </div>
@@ -263,8 +263,14 @@
                 <div id="step4">
                     <div class="form-group row">
                         <div class="col-12">
+                            <label for="bio">Опишите свой профессиональный опыт в кратце</label>
+                            <textarea name="bio[{{app()->getLocale()}}][short]" id="" cols="100" rows="30"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
                             <label for="bio">Опишите свой профессиональный опыт, расскажите о наиболее сильных личностных качествах и специфических проектных решениях, которые выделяют вас среди других специалистов.</label>
-                            <textarea name="" id="" cols="100" rows="30"></textarea>
+                            <textarea name="bio[{{app()->getLocale()}}][full]" id="" cols="100" rows="30"></textarea>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+         $this->middleware('auth');
     }
 
     /**
@@ -45,7 +45,25 @@ class UserController extends Controller
      */
     public function profileStore(Request $request)
     {
-        dd($request);
+        $data = $request->all();
+//        dd($data['bio'][app()->getLocale()]['full']);
+
+//        $this->validate($request, [
+//            'login' => 'required',
+//            'email' => 'required|email|unique:users,email',
+//            'password' => 'required|same:confirm-password',
+//        ]);
+
+        $input = $request->all();
+        $input['user_id'] = auth()->user()->getAuthIdentifier();
+        dd($input['user_id'] = auth()->user()->getAuthIdentifier());
+
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+
+
+        return redirect()->route('users.index')
+            ->with('success','User created successfully');
     }
 
 }
