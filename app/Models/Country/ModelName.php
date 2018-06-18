@@ -16,6 +16,9 @@ class ModelName extends Model
         'title_en'
     ];
 
+    /**
+     * @return mixed
+     */
     public function getTitle()
     {
     	$lc = app()->getLocale();
@@ -24,5 +27,13 @@ class ModelName extends Model
     	} else {
     		return $this->title_en;
     	}
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->country_id;
     }
 }

@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        //  $this->middleware('auth');
+          $this->middleware('auth');
     }
 
     /**
@@ -30,6 +30,10 @@ class UserController extends Controller
     public function signUp()
     {
     	return view('web.user.sign_up');
+    }
+
+    public function profile(){
+        return view('profile.index');
     }
 
     /**
@@ -49,54 +53,26 @@ class UserController extends Controller
     {
         $input = $request->all();
 
-        $user_details = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+        $user_details = UserDetails::where('user_id','=', auth()->user()->getAuthIdentifier())->count();
 
-        if($user_details=null){
-            $request->user_id = auth()->user()->getAuthIdentifier();
-            $request->birthday = date(today());
-            $request->freelancer = true;
-            $request->sex = male;
-
-            $validatedData = $request->validate([
-                'user_id' => 'required',
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'birthday' => 'required',
-                'country' => 'required',
-                'city' => 'required',
-                'sex' => 'required',
-                'freelancer' => 'required',
-                'contacts' => 'required',
-                'spec' => 'required',
-                'bio' => 'required',
-            ]);
-
-            // The question is valid...
-            $row = UserDetails::create($validatedData);
-//            $user = new UserDetails;
-//            $user->user_id = auth()->user()->getAuthIdentifier();
-//            $user->first_name = $input['first_name'];
-//            $user->last_name = $input['last_name'];
-//            $user->birthday = date(today());
-//            $user->country = 1;
-//            $user->city = $input['city'];
-//            $user->sex = 'male';
-//            $user->freelancer = 1;
-//            $user->contacts = $input['contacts'];
-//            $user->spec = $input['spec'];
-//            $user->bio = $input['bio'];
-
+        if($user_details == 0){
+            $input['user_id'] = auth()->user()->getAuthIdentifier();
+            $input['birthday'] = $input['year'].'-'.$input['month'].'-'.$input['day'];
+//            dd($input);
+            $input['sex'] = $input['sex'] == 'male' ? true : false;
+            // The question is valid?..
+            $row = UserDetails::create($input);
             if($row){
-                return redirect()->route('home')
+                return redirect('ru/profile')
                     ->with('success','Your profile updated successfully');
             } else {
-                dd($row);
+                return redirect()->back();
             }
-            dd($request);
-//            $user = UserDetails::create($input);
         } else {
-            dd($input);
-            return redirect()->back();
+            session()->flash(
+                'message', "Пользователь стакими даными существует!"
+            );
+            return redirect('ru/profile');
         }
 
     }

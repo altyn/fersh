@@ -43,12 +43,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="phone" placeholder="Телефон" required>
-                                <div class="invalid-feedback">
-                                    Введите ваш логин
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Пароль" required>
                                 <div class="invalid-feedback">
                                     Введите пароль

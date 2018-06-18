@@ -82,7 +82,7 @@
                                     <select class="form-control" id="country" name="country" required>
                                         <option disabled selected value style="display: none">-- Выберите страну --</option>
                                         @foreach($countries as $row)
-                                            <option value="{{$row->getTitle()}}">{{$row->getTitle()}}</option>
+                                            <option value="{{$row->getId()}}">{{$row->getTitle()}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -101,10 +101,10 @@
                                 <div class="d-block">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-secondary">
-                                            <input type="radio" name="gender" value="male" id="male" name="sex" autocomplete="off">Мужчина
+                                            <input type="radio" value="male" id="male" name="sex" autocomplete="off">Мужчина
                                         </label>
                                         <label class="btn btn-secondary">
-                                            <input type="radio" name="gender" value="female" id="female" name="sex" autocomplete="off">Женщина
+                                            <input type="radio" value="female" id="female" name="sex" autocomplete="off">Женщина
                                         </label>
                                     </div>
                                 </div>
@@ -115,11 +115,11 @@
                                 <label for="location">Роль</label>
                                 <div class="d-block">
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="freelancer" name="freelancer" class="custom-control-input">
+                                        <input type="radio" id="freelancer" value="1" name="freelancer" class="custom-control-input">
                                         <label class="custom-control-label" for="freelancer">Фрилансер</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customer" name="freelancer" class="custom-control-input">
+                                        <input type="radio" id="customer" value="0" name="freelancer" class="custom-control-input">
                                         <label class="custom-control-label" for="customer">Заказчик</label>
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@
                             <div class="col-12">
                                 <label for="bio">Стоимость работы</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control col-3" placeholder="500" name="rate" aria-describedby="valuta">
+                                    <input type="text" class="form-control col-3" placeholder="500" name="spec[{{app()->getLocale()}}][rate]" aria-describedby="valuta">
                                     <div class="input-group-append">
                                         <select class="input-group-text" id="valuta" name="spec[{{app()->getLocale()}}][currency]" required>
                                             <option disabled selected value="1" style="display: none">Доллар</option>
