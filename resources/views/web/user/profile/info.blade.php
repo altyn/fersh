@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="lastname">Фамилия</label>
-                                <input type="text" class="form-control" id="last_name" name="first_name" required>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
@@ -99,10 +99,10 @@
                                 <div class="d-block">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-secondary">
-                                            <input type="radio" name="gender" value="male" id="male" name="sex" autocomplete="off">Мужчина
+                                            <input type="radio" value="male" id="male" name="sex" autocomplete="off">Мужчина
                                         </label>
                                         <label class="btn btn-secondary">
-                                            <input type="radio" name="gender" value="female" id="female" name="sex" autocomplete="off">Женщина
+                                            <input type="radio" value="female" id="female" name="sex" autocomplete="off">Женщина
                                         </label>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-12">
                                 <label for="website">Сайт</label>
-                                <input type="text" class="form-control" id="website" name="contacts[website]" required>
+                                <input type="text" class="form-control" id="website" name="contacts[{{app()->getLocale()}}][website]" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
                                 </div>
@@ -263,8 +263,14 @@
                 <div id="step4">
                     <div class="form-group row">
                         <div class="col-12">
+                            <label for="bio">Опишите свой профессиональный опыт в кратце.</label>
+                            <textarea name="bio[short]" id="" cols="100" rows="30"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
                             <label for="bio">Опишите свой профессиональный опыт, расскажите о наиболее сильных личностных качествах и специфических проектных решениях, которые выделяют вас среди других специалистов.</label>
-                            <textarea name="" id="" cols="100" rows="30"></textarea>
+                            <textarea name="bio[long]" id="" cols="100" rows="30"></textarea>
                         </div>
                     </div>
                 </div>
