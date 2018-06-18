@@ -99,7 +99,7 @@ class WebAuthController extends Controller
 //                if (Auth::attempt(['email' => $request->input('email'),
 //                    'password' => $request->input('password')])){
 //                    Auth::login($user);
-//                    return redirect(app()->getLocale().'/profile/info');
+                    return redirect(app()->getLocale().'/profile/info');
 //                } else {
 //                    return redirect()->route('web.login');
 //                }

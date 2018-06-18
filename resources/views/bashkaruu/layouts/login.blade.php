@@ -13,24 +13,22 @@
 		<div class="auth-box-w">
 			<div class="logo-w"><img alt="" src="{{asset('img/admin/logo-big.png')}}"></div>
             <h4 class="auth-header">Авторизация</h4>
-
-            {!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}
-            	<div class="form-group">
-            		{!! Form::label('login', 'Login'); !!}
-            		{!! Form::text('login', null, ['class' => 'form-control']) !!}
-            		@include('bashkaruu.partials.svg-icons.user')
-            	</div>
-
-            	<div class="form-group">
-            		{!! Form::label('password', 'Пароль'); !!}
-            		{!! Form::password('password', ['class' => 'form-control']) !!}
-            		@include('bashkaruu.partials.svg-icons.key')
-            	</div>
-
-            	<div class="buttons-w">
-            		{!! Form::button('Войти', ['class' => 'btn btn-primary', 'type' => 'submit']); !!}
-            	</div>
-            {!! Form::close() !!}
+			<form class="needs-validation" action="{{ url('bashkaruu/login') }}" method="post" novalidate>
+				@csrf
+				<div class="form-group">
+					<input type="email" class="form-control" name="email" placeholder="Почта" required>
+					<div class="invalid-feedback">
+						Введите почту
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name="password" placeholder="Пароль" required>
+					<div class="invalid-feedback">
+						Введите пароль
+					</div>
+				</div>
+				<button class="btn btn-sign" type="submit">Войти</button>
+			</form>
 		</div>
 	</div>
 
