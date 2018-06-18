@@ -18,11 +18,11 @@ class CreateUserDetailsTable extends Migration
             $table->integer('user_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->date('birthday');
-            $table->integer('country');
-            $table->string('city');
-            $table->string('sex');
-            $table->boolean('freelancer');
+            $table->date('birthday')->nullable();
+            $table->integer('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('sex')->nullable();
+            $table->boolean('freelancer')->nullable();
             $table->json('contacts')->nullable(); // site, mail, phone, whatsapp, tg, facebook, twitter
             $table->json('spec')->nullable(); // spec, skills, sphere, experience, rate, payment_method, firm
             $table->json('bio')->nullable();

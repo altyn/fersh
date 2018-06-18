@@ -222,7 +222,7 @@
                             <div class="col-12">
                                 <label for="bio">Сфера деятельности </label>
                                 <div class="d-block">
-                                    <select class="sphera-multi form-control" name="states[]" multiple="multiple"></select>
+                                    <select class="sphera-multi form-control" name="spec[{{app()->getLocale()}}][sphere]" multiple="multiple"></select>
                                     <small>Вы можете выбрать максимум 7 сфер</small>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@
                             <div class="col-12">
                                 <label for="bio">Опыт работы</label>
                                 <div class="d-block">
-                                    <select class="form-control" id="year" name="year" required>
+                                    <select class="form-control" id="year" name="spec[{{app()->getLocale()}}][experience]" required>
                                         <option disabled selected value="2" style="display: none">более года</option>
                                         <option value="1">менее года</option>
                                         <option value="2">более года</option>
@@ -246,16 +246,16 @@
                             <div class="col-12">
                                 <label for="bio">Стоимость работы</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control col-3" placeholder="500" aria-describedby="valuta">
+                                    <input type="text" class="form-control col-3" placeholder="500" name="rate" aria-describedby="valuta">
                                     <div class="input-group-append">
-                                        <select class="input-group-text" id="valuta" name="year" required>
+                                        <select class="input-group-text" id="valuta" name="spec[{{app()->getLocale()}}][currency]" required>
                                             <option disabled selected value="1" style="display: none">Доллар</option>
                                             <option value="2">Сом</option>
                                         </select>
                                     </div>
                                     <label for="inputPassword" class="col-1 col-form-label">за</label>
                                     <div class="d-block">
-                                        <select class="form-control" id="year" name="year" required>
+                                        <select class="form-control" id="year" name="spec[{{app()->getLocale()}}][value]" required>
                                             <option disabled selected value="1" style="display: none">за час</option>
                                             <option value="2">за месяц</option>
                                             <option value="3">за проект</option>
@@ -271,15 +271,15 @@
                                 <label for="bio">Способ оплаты</label>
                                 <div class="d-block">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="nalichnyi">
+                                        <input type="checkbox" class="custom-control-input" name="spec[{{app()->getLocale()}}][payment_method][cash]" id="nalichnyi">
                                         <label class="custom-control-label" for="nalichnyi">Наличный расчет</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="beznalichnyi">
+                                        <input type="checkbox" class="custom-control-input" name="spec[{{app()->getLocale()}}][payment_method][bank]" id="beznalichnyi">
                                         <label class="custom-control-label" for="beznalichnyi">безналичный расчет</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="elektron">
+                                        <input type="checkbox" class="custom-control-input" name="spec[{{app()->getLocale()}}][payment_method][electron]" id="elektron">
                                         <label class="custom-control-label" for="elektron">Электронные деньги</label>
                                     </div>
                                 </div>
@@ -290,15 +290,15 @@
                                 <label for="bio">Форма собственности</label>
                                 <div class="d-block">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="uridicheskoe">
+                                        <input type="checkbox" class="custom-control-input" id="uridicheskoe" name="spec[{{app()->getLocale()}}][firm][LLC]">
                                         <label class="custom-control-label" for="uridicheskoe">Юридическое лицо</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="individ">
+                                        <input type="checkbox" class="custom-control-input" id="individ" name="spec[{{app()->getLocale()}}][firm][own_company]">
                                         <label class="custom-control-label" for="individ">Индивидуальный предприниматель</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="phisizeskoe">
+                                        <input type="checkbox" class="custom-control-input" id="phisizeskoe" name="spec[{{app()->getLocale()}}][firm][self]">
                                         <label class="custom-control-label" for="phisizeskoe">Физическое лицо</label>
                                     </div>
                                 </div>
@@ -328,7 +328,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit">H</button>
     </form>
 </div>
 
