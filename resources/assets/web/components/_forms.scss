@@ -202,7 +202,7 @@
             font-family: $robotolight;
             border-radius: 2px;
             border-color: rgba($color: $black, $alpha: 0.15);
-            background: #fff;
+            background: #fafbfe;
             &:focus {
                 box-shadow: none;
                 background: #fff;
@@ -240,6 +240,18 @@
                 font-size: 16px !important;
                 text-transform: uppercase;
                 color: rgba($color: $black, $alpha: 0.5) !important;
+                &:after {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &-checkbox{
+            .custom-control-label {
+                font-family: $robotoregular;
+                font-size: 16px !important;
+                text-transform: inherit;
+                color: rgba($color: $black, $alpha: 0.8) !important;
                 &:after {
                     cursor: pointer;
                 }
