@@ -285,7 +285,7 @@
 
 .sw-theme-custom > ul.step-anchor > li.active > a:after {
   content: "";
-  background: #4BC04E;
+  background: #c2f2c3;
   -webkit-transform: scale(1);
   transform: scale(1);
 }

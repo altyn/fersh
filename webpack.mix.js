@@ -28,8 +28,8 @@ mix.scripts([
 mix.sass('resources/assets/web/app.scss', 'public/css')
     .version();
 
-    // Smartwizard css
-mix.sass('resources/assets/web/components/smartwizard.scss', 'public/css')
+    // Profile inf page css
+mix.sass('resources/assets/web/components/_profile_info.scss', 'public/css')
     .version();
 
 

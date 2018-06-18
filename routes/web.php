@@ -30,10 +30,11 @@ Route::group(['prefix' => '/{lang}',], function (){
     
     // Password Reset Routes...
 
-    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
+    // Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
+    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
 });
 
-Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
+// Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
 
 
 
