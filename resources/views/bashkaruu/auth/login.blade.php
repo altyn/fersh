@@ -1,16 +1,17 @@
 <h4 class="auth-header">Авторизация</h4>
-{!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}
-<div class="form-group">
-    {!! Form::label('email', 'Email'); !!}
-    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Логинизди жазыңыз' ]) !!}
-    <div class="pre-icon os-icon os-icon-user-male-circle"></div>
-</div>
-<div class="form-group">
-    {!! Form::label('password', 'Сырсөз'); !!}
-    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Сырсөзүңүздү жазыңыз']) !!}
-    <div class="pre-icon os-icon os-icon-fingerprint"></div>
-</div>
-<div class="buttons-w">
-    {!! Form::button('Кирүү', ['class' => 'btn btn-primary', 'type' => 'submit']); !!}
-</div>
-{!! Form::close() !!}
+<form class="needs-validation" action="{{ route('bash.login') }}" method="post" novalidate>
+    @csrf
+    <div class="form-group">
+        <input type="email" class="form-control" name="email" placeholder="Почта" required>
+        <div class="invalid-feedback">
+            Введите почту
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Пароль" required>
+        <div class="invalid-feedback">
+            Введите пароль
+        </div>
+    </div>
+    <button class="btn btn-sign" type="submit">Войти</button>
+</form>

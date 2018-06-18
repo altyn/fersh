@@ -163,6 +163,10 @@
   padding: 15px 20px;
 }
 
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-finish {
+  padding: 15px 20px;
+}
+
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-prev {
   background: #656d9c;
   border: none;
@@ -199,6 +203,24 @@
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-next:active,
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-next:focus,
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-next:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-finish {
+  background: #f44336;
+  border: none;
+  color: #fff;
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-finish:hover {
+  background: rgba(244, 67, 54, 0.8);
+}
+
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-finish:active,
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-finish:focus,
+.sw-theme-custom .sw-toolbar-bottom .sw-btn-finish:visited {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: none;

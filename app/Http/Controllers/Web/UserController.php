@@ -8,6 +8,20 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+
+    /**
+     *
+     */
+    public function index(){
+
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -24,6 +38,14 @@ class UserController extends Controller
     {
         $data['countries'] = Country::orderBy('country_id', 'asc')->get();
     	return view('web.user.profile.info', $data);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function profileStore(Request $request)
+    {
+        dd($request);
     }
 
 }

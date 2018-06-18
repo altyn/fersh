@@ -20,7 +20,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::get('/', 'WebController@index');
 
     // Authentication Routes...
-    Route::get('/sign_in', 'WebAuthController@showLoginForm');
+    Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');
     Route::post('/logout', 'WebAuthController@logout');
 
 
@@ -33,6 +33,8 @@ Route::group(['prefix' => '/{lang}',], function (){
     // Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
     Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
 });
+
+// Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
 
 
 

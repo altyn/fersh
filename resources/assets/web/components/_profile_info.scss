@@ -63,6 +63,10 @@
             padding: 15px 20px;
         }
 
+        .sw-btn-finish{
+            padding: 15px 20px;
+        }
+
         .sw-btn-prev{
             background: #656d9c;
             border: none;
@@ -97,6 +101,23 @@
 
             &:hover{
                 background: rgba($color: $green, $alpha: 0.8);
+            }
+
+            &:active,
+            &:focus,
+            &:visited {
+                box-shadow: none;
+                border: none;
+            }
+        }
+        
+        .sw-btn-finish{
+            background: $red;
+            border: none;
+            color: #fff;
+
+            &:hover{
+                background: rgba($color: $red, $alpha: 0.8);
             }
 
             &:active,
