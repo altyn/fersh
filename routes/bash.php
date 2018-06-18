@@ -18,6 +18,9 @@ Route::middleware('auth')->group(function(){
 	Route::name('roles.delete')->get('roles/{role}/delete', 'RoleController@destroy');
 	Route::name('permissions.delete')->get('permissions/{permission}/delete', 'PermissionController@destroy');
 
+	// Auth Controllers
+//    Route::get('/login', 'Auth\LoginController@login')->name('login');
+//    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
 Auth::routes();
