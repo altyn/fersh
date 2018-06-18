@@ -33,6 +33,8 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
 });
 
+Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
+
 
 
 Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');

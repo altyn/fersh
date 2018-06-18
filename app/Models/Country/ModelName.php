@@ -12,7 +12,7 @@ class ModelName extends Model
 
     protected $fillable = [
         'country_id', 
-    		'title_ru',
+        'title_ru',
         'title_en'
     ];
 

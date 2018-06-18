@@ -50,8 +50,6 @@ class WebAuthController extends Controller
     {
         $email = $data['email'];
         $password = $data['password'];
-//        dd($data);
-
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('profile.info');
         } else {
@@ -82,7 +80,7 @@ class WebAuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback($provider, Request $request)
     {
         try{
             $memberInfo =  Socialite::driver($provider)->stateless()->user();
@@ -96,15 +94,6 @@ class WebAuthController extends Controller
             if($user)
             {
                 $this->login($user);
-//                if (Auth::attempt(['email' => $request->input('email'),
-//                    'password' => $request->input('password')])){
-//                    Auth::login($user);
-                    return redirect(app()->getLocale().'/profile/info');
-//                } else {
-//                    return redirect()->route('web.login');
-//                }
-//                $this->login($user);
-//                dd($provider);
             }else{
                 return view('web.social_auth.sign_up', compact('user_details'));
             }
@@ -133,7 +122,7 @@ class WebAuthController extends Controller
         ]);
         $user->save();
         if (Auth::attempt(['email' => $request->input('email'),
-                           'password' => $request->input('password')])){
+                           'password' => $user['password']])){
             Auth::login($user);
             return redirect(app()->getLocale().'/profile/info');
         } else {

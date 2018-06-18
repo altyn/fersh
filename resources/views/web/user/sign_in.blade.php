@@ -32,10 +32,6 @@
                                 <span>или</span>
                             </div>
                         </div>
-
-{{--                        {!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}--}}
-
-                        {{--<form class="needs-validation" action="/{{ app()->getLocale() }}/sign_in" method="post" novalidate>--}}
                         <form class="needs-validation" action="{{ route('login') }}" method="post" novalidate>
                             @csrf
                             <div class="form-group">
@@ -52,7 +48,6 @@
                             </div>
                             <button class="btn btn-sign" type="submit">Войти</button>
                         </form>
-{{--                        {!! Form::close() !!}--}}
                         <div class="sign-bottom">
                             <a href="#">Напомнить пароль</a>
                             <a href="/{{ app()->getLocale() }}/sign_up" class="sign-new">Зарегистрируйте новый аккаунт</a>
