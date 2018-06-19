@@ -15,6 +15,7 @@ class UserController extends Controller
     public function __construct()
     {
         //   $this->middleware('auth');
+        
     }
 
     /**
@@ -33,7 +34,7 @@ class UserController extends Controller
     }
 
     public function profile(){
-        return view('profile.index');
+        return view('web.user.profile.index');
     }
 
     /**
@@ -63,7 +64,7 @@ class UserController extends Controller
             // The question is valid?..
             $row = UserDetails::create($input);
             if($row){
-                return redirect('ru/profile')
+                return redirect(app()->getLocale().'/profile')
                     ->with('success','Your profile updated successfully');
             } else {
                 return redirect()->back();
@@ -72,7 +73,7 @@ class UserController extends Controller
             session()->flash(
                 'message', "Пользователь стакими даными существует!"
             );
-            return redirect('ru/profile');
+            return redirect(app()->getLocale().'/profile');
         }
 
     }

@@ -95,13 +95,13 @@ class WebAuthController extends Controller
             {
                 $this->login($user);
             }else{
-                return view('web.social_auth.sign_up', compact('user_details'));
+                return view('web.user.social_auth.sign_up', compact('user_details'));
             }
 
         }catch (GuzzleReqException $exception){
             $status_code = $exception->getResponse()->getStatusCode();
             if ( $status_code == '400' || $status_code == '401') {
-                return redirect('/ru/sign_in');
+                return redirect(app()->getLocale().'/sign_in');
             }
         }
 
