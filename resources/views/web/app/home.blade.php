@@ -17,7 +17,6 @@
                             <div class="col-md-4 col-12">
                                 <div class="homepage-info-block-cols-info">
                                     <div class="homepage-info-block-cols-info-left">                                    
-                                        <span class="homepage-info-block-cols-info-number">1</span>
                                         <span class="jam jam-user-square"></span>
                                     </div>
                                     <div class="homepage-info-block-cols-info-right">
@@ -28,44 +27,40 @@
                             <div class="col-md-4 col-12">
                                 <div class="homepage-info-block-cols-info">                              
                                     <div class="homepage-info-block-cols-info-left">                                    
-                                        <span class="homepage-info-block-cols-info-number">2</span>
                                         <span class="jam jam-calendar"></span>
                                     </div>
                                     <div class="homepage-info-block-cols-info-right">
-                                        <h5>Клиенты легко найдут ваши услуги 365 дней в году;</h5>
+                                        <h5>Клиенты легко найдут ваши услуги 365 дней в году</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="homepage-info-block-cols-info">                              
                                     <div class="homepage-info-block-cols-info-left">                                    
-                                        <span class="homepage-info-block-cols-info-number">3</span>
                                         <span class="jam jam-bell"></span>
                                     </div>
                                     <div class="homepage-info-block-cols-info-right">
-                                        <h5>Мы заботимся о привлечении клиентов;</h5>
+                                        <h5>Мы заботимся о привлечении клиентов</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="homepage-info-block-cols-info">                              
                                     <div class="homepage-info-block-cols-info-left">                                    
-                                        <span class="homepage-info-block-cols-info-number">4</span>
                                         <span class="jam jam-coin"></span>
                                     </div>
                                     <div class="homepage-info-block-cols-info-right">
-                                        <h5>Вы работаете с прямыми заказчиками без комиссий;</h5>
+                                        <h5>Вы работаете с прямыми заказчиками без комиссий</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="homepage-info-block-cols-info">                              
                                     <div class="homepage-info-block-cols-info-left">                                    
-                                        <span class="homepage-info-block-cols-info-number">5</span>
                                         <span class="jam jam-star"></span>
                                     </div>
                                     <div class="homepage-info-block-cols-info-right">
-                                        <h5>Берем продвижение ваших услуг на себя;</h5>
+                                        <h5>Берем продвижение ваших услуг на себя</h5>
                                     </div>
                                 </div>
                             </div>

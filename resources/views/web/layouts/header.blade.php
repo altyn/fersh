@@ -12,6 +12,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Тарифы</a>
                     </li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Кадыров Элдос</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <button class="dropdown-item" type="button">Профиль</button>
+                                <button class="dropdown-item" type="button">Выход</button>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
