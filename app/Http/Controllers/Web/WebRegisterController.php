@@ -25,41 +25,43 @@ class WebRegisterController extends RegisterController
     public function register(Request $request)
     {
         $data = $request->all();
-        $validatedData = Validator::make($data,
+        $data['provider_user_id'] = $request->session()->get('user_soc_id');
+        $data['provider_name'] = $request->session()->get('user_provider');
+        $validator = Validator::make($data,
                 [
-                    'login'                 => 'required|max:255|unique:users',
-                    'email'                 => 'required|email|max:255|unique:users',
-                    'password'              => 'required|min:6|max:30|confirmed',
-                    'password_confirmation' => 'required|same:password',
+                    'login'                 => 'bail|required|max:255|unique:users',
+                    'email'                 => 'bail|required|email|max:255|unique:users',
+                    'password'              => 'bail|required|min:6|max:30|confirmed',
                 ],
                 [
-                    'login.unique'          => trans('auth.userNameTaken'),
-                    'login.required'        => trans('auth.userNameRequired'),
-                    'email.required'        => trans('auth.emailRequired'),
-                    'email.email'           => trans('auth.emailInvalid'),
-                    'password.required'     => trans('auth.passwordRequired'),
-                    'password.min'          => trans('auth.PasswordMin'),
-                    'password.max'          => trans('auth.PasswordMax'),
+                    'login.unique'          => 'Пользователь с таким именем уже существует',
+                    'login.required'        => 'Нужно ввести имя пользователя',
+                    'email.unique'          => 'Пользователь с такой почтой уже существует',
+                    'email.required'        => 'Нужно ввести email пользователя',
+                    'email.email'           => 'Email должен быть вида email@email.com',
+                    'password.required'     => 'Требуется ввести пароль',
+                    'password.min'          => 'Пароль не может быть меньше 6 символов',
+                    'password.max'          => 'Пароль не может превышать 30 символов',
+                    'password.confirmed'    => 'Введенные пароли не совпадают',
                 ]
             );
 
         // The user data is valid...
-        if($validatedData)
-        {
+        if($validator->fails()){
+            return redirect(app()->getLocale().'/sign_up')->withErrors($validator)->withInput();
+        } else {
             $data['password'] = Hash::make($data['password']);
             $row = User::create($data);
 
             if($row)
             {
                 $to_email = $data['email'];
-                session()->flash(
-                    'message', "Your account has now been created!"
-                );
                 return view('web.user.success', compact('to_email'));
             } else {
                 return back();
             }
         }
+
     }
 
 }

@@ -28,7 +28,8 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
         'login',
         'email',
         'password',
-        'phone',
+        'provider_user_id',
+        'provider_name',
         'created_at',
         'updated_at',
     ];
@@ -41,6 +42,10 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getAuthPassword() {
+        return $this->passwod;
     }
 
 }

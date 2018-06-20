@@ -21,18 +21,22 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     // Authentication Routes...
     Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');
+//    Route::post('/sign_in', 'WebAuthController@login')->name('web.login.post');
     Route::post('/logout', 'WebAuthController@logout');
 
 
     // Registration Routes...
     Route::get('/sign_up', 'WebAuthController@signUpForm')->name('web.register');
-    Route::post('/sign_up', 'WebRegisterController@register');
+    Route::get('/sign', 'WebAuthController@test')->name('web.register.test');
+    Route::post('/sign_up', 'WebRegisterController@register')->name('web.register.post');
+
     
     // Password Reset Routes...
 
-    //  Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
-     Route::get('/profile', 'UserController@profile')->name('profile');
-   Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
+      Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
+    Route::get('/profile', 'UserController@profile')->name('profile')->middleware('auth');
+//    Route::get('/profile', 'UserController@profile')->name('profile');
+//    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
 });
 
  Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post');

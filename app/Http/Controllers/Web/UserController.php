@@ -59,9 +59,7 @@ class UserController extends Controller
         if($user_details == 0){
             $input['user_id'] = auth()->user()->getAuthIdentifier();
             $input['birthday'] = $input['year'].'-'.$input['month'].'-'.$input['day'];
-//            dd($input);
             $input['sex'] = $input['sex'] == 'male' ? true : false;
-            // The question is valid?..
             $row = UserDetails::create($input);
             if($row){
                 return redirect(app()->getLocale().'/profile')
