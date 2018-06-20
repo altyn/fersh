@@ -18,9 +18,16 @@ class WebAuthController extends Controller
         return view('web.user.sign_in');
     }
 
-    public function signUpForm()
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function signUpForm(Request $request)
     {
-        return view('web.user.sign_up');
+        $user_details['email'] = session()->get('user_email');
+        $user_details['nickname'] = session()->get('user_nickname');
+        $user_details['avatar'] = session()->get('user_avatar');
+        return view('web.user.sign_up', compact('user_details'));
     }
 
 //    public function login(Request $request)
@@ -84,10 +91,10 @@ class WebAuthController extends Controller
     {
         try{
             $memberInfo =  Socialite::driver($provider)->stateless()->user();
-            $user_details['nickname'] = $memberInfo->getNickName();
-            $user_details['email'] = $memberInfo->getEmail();
-            $user_details['pic'] = $memberInfo->getAvatar();
-            $user_details['pr'] = $provider;
+            $user_nickname = $memberInfo->getNickName();
+            $user_email = $memberInfo->getEmail();
+            $user_avatar = $memberInfo->getAvatar();
+            $user_provider = $provider;
 
             $user = User::where(['email' => $memberInfo->getEmail()])->first();
 
@@ -95,7 +102,11 @@ class WebAuthController extends Controller
             {
                 $this->login($user);
             }else{
-                return view('web.user.social_auth.sign_up', compact('user_details'));
+                session()->put('user_nickname', $user_nickname);
+                session()->put('user_email', $user_email);
+                session()->put('user_avatar', $user_avatar);
+                session()->put('user_provider', $user_provider);
+                return redirect(app()->getLocale().'/sign_up');
             }
 
         }catch (GuzzleReqException $exception){
@@ -104,7 +115,6 @@ class WebAuthController extends Controller
                 return redirect(app()->getLocale().'/sign_in');
             }
         }
-
     }
 
     /**
