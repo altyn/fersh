@@ -24,9 +24,10 @@
                     <div class="sign-right-middle">
                         <h5>Войдите с помощью учетной записи в других сервисах</h5>
                         <ul class="soc-icons">
-                            <li><a href="#"><span class="jam jam-facebook-square"></span></a></li>
-                            <li><a href="#"><span class="jam jam-twitter-square"></span></a></li>
-                            <li><a href="#"><span class="jam jam-google-square"></span></a></li>
+                            <li><a href="/auth/facebook/redirect/"><span class="jam jam-facebook-square"></span></a></li>
+                            <li><a href="/auth/twitter/redirect/"><span class="jam jam-twitter-square"></span></a></li>
+                            <li><a href="/auth/google/redirect/"><span class="jam jam-google-square"></span></a></li>
+                            <li><a href="/auth/github/redirect/"><span class="jam jam-github-square"></span></a></li>
                         </ul>
                         <div class="sign-right-middle-line">
                             <span>или</span>
@@ -48,7 +49,11 @@
                         </div>
                     @endif
                         <div class="form-group">
-                            <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">
+                            @if($user_details['avatar'])
+                                <div id='avatar-upload' style="background-image: url('{{ $user_details['avatar']}}')">
+                            @else
+                                <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">
+                            @endif
                                 <div class="hvr-rectangle-out">
                                     <input type="file" name="avatar" id='getval'  class="upload w180" id="imag">
                                 </div>

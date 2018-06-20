@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Bash\Auth;
+namespace App\Http\Controllers\Web\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,14 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showLoginForm()
-    {
-        return view('bashkaruu.layouts.login');
-    }
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -26,9 +18,9 @@ class LoginController extends Controller
         $password = $request->input('password');
 
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->intended('bashkaruu/');
+            return redirect()->intended(app()->getLocale().'/profile/info/');
         } else {
-            return redirect()->away('/bashkaruu');
+            return redirect(app()->getLocale().'/sign_in');
         }
     }
 
@@ -37,7 +29,7 @@ class LoginController extends Controller
      */
     public function logout() {
         Auth::logout();     
-        return redirect()->away('/bashkaruu');
+        return redirect()->route('home');
     }
 
 }

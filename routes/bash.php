@@ -19,7 +19,7 @@ Route::middleware('admin')->group(function(){
     Route::name('permissions.delete')->get('permissions/{permission}/delete', 'PermissionController@destroy');
 
     // Auth Controllers
-    Route::get('/login', 'Auth\LoginController@login');
+    Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/logout', 'Auth\LoginController@logout')->name('bash.logout');
 });
 
