@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="container">
-    <form action="/profile/info" method="POST">
+    <form action="/profile/info" method="POST" class="needs-validation" novalidate>
     @csrf
         <div id="stepbystep">
             <ul>
@@ -30,14 +30,14 @@
                     <div class="step-content-inner col-centered col-md-8 col-12" >
                         <div class="form-group row">
                             <div class="col-md-6 col-12">
-                                <label for="name">Имя</label>
-                                <input type="text" class="form-control" id="first_name" name="first_name" required>
-                                <div class="invalid-feedback">
+                                <label for="name">Имя<span class="required">*</span></label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required >
+                                <div class="invalid-feedback help-block with-errors">
                                     Заполните поле
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="lastname">Фамилия</label>
+                                <label for="lastname">Фамилия<span class="required">*</span></label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
@@ -49,7 +49,7 @@
                                 <label for="lastname">Дата рождения</label>
                                 <div class="form-group row">
                                     <div class="col">
-                                        <select class="form-control" id="day" name="day" required>
+                                        <select class="form-control" id="day" name="day">
                                             <option disabled selected value style="display: none">День</option>
                                             @for($i = 1; $i <= 31; $i++)
                                                 <option value="{{$i}}">{{$i}}</option>
@@ -57,7 +57,7 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control" id="month" name="month" required>
+                                        <select class="form-control" id="month" name="month">
                                             <option disabled selected value style="display: none">Месяц</option>
                                             @for($i = 1; $i <= 12; $i++)
                                                 <option value="{{$i}}">{{$i}}</option>
@@ -65,7 +65,7 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control" id="year" name="year" required>
+                                        <select class="form-control" id="year" name="year">
                                             <option disabled selected value style="display: none">Год</option>
                                             @for($i = 2001; $i > 1960; $i--)
                                                 <option value="{{$i}}">{{$i}}</option>
@@ -79,7 +79,7 @@
                             <div class="col-md-6">
                                 <label for="country">Страна</label>
                                 <div class="d-block">
-                                    <select class="form-control" id="country" name="country" required>
+                                    <select class="form-control" id="country" name="country">
                                         <option disabled selected value style="display: none">-- Выберите страну --</option>
                                         @foreach($countries as $row)
                                             <option value="{{$row->getId()}}">{{$row->getTitle()}}</option>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="location">Город</label>
+                                <label for="location">Город<span class="required">*</span></label>
                                 <input type="text" class="form-control" id="location" name="city" required>
                                 <div class="invalid-feedback">
                                     Заполните поле
@@ -97,7 +97,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <label for="location">Пол</label>
+                                <label for="location">Пол<span class="required">*</span></label>
                                 <div class="d-block">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-secondary">
@@ -112,7 +112,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 col-12">
-                                <label for="location">Роль</label>
+                                <label for="location">Роль<span class="required">*</span></label>
                                 <div class="d-block">
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" id="freelancer" value="1" name="freelancer" class="custom-control-input">
@@ -250,6 +250,7 @@
                                     <div class="input-group-append">
                                         <select class="input-group-text" id="valuta" name="spec[{{app()->getLocale()}}][currency]" required>
                                             <option disabled selected value="1" style="display: none">Доллар</option>
+                                            <option value="1">Доллар</option>
                                             <option value="2">Сом</option>
                                         </select>
                                     </div>
@@ -257,6 +258,7 @@
                                     <div class="d-block">
                                         <select class="form-control" id="year" name="spec[{{app()->getLocale()}}][value]" required>
                                             <option disabled selected value="1" style="display: none">за час</option>
+                                            <option value="1">за час</option>
                                             <option value="2">за месяц</option>
                                             <option value="3">за проект</option>
                                         </select>
@@ -340,32 +342,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var data = [{
-                "text": "Group 1",
-                "children": [{
-                        "id": 1,
-                        "text": "Option 1.1"
-                    },
-                    {
-                        "id": 2,
-                        "text": "Option 1.2"
-                    }
-                ]
-            },
-            {
-                "text": "Group 2",
-                "children": [{
-                        "id": 3,
-                        "text": "Option 2.1"
-                    },
-                    {
-                        "id": 4,
-                        "text": "Option 2.2"
-                    }
-                ]
-            }
-        ];
-
         $('#stepbystep').smartWizard({
             theme: 'custom',
             lang: {
@@ -384,7 +360,7 @@
                         alert('Finsih button click');
                     })
                 ]
-            },
+            }
         });
 
         $("#stepbystep").on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
@@ -409,14 +385,43 @@
             console.log(e, e.detail);
         }
 
-        var $sphera = $(".sphera-multi").select2({
-            theme: "bootstrap4",
-            width: '100%',
-            data: data,
-            maximumSelectionLength: 3
-        });
+        var url = "//free.test/js/data.json";
+        jQuery.getJSON(url).done(
+            function( data ) {
 
+                jQuery('.sphera-multi').select2({
+                    placeholder: 'Выберите ваши сферы',
+                    allowClear: true,
+                    minimumInputLength: 0,
+                    multiple: true,
+                    data: data,
+                    theme: "bootstrap4",
+                    width: '100%',
+                    maximumSelectionLength: 7
+                });
+            }
+        );
     });
+</script>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 </script>
 
 @endsection
