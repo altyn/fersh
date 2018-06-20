@@ -3,43 +3,70 @@
         <div class="row">
             <div class="col-md-8 col-12">
                 <div class="homepage-info-text">
-                    <h2>Фрилансеры зарабатывают из любого места и в удобное для себя время</h2>
-                    <h5>Выполняя задания заказчиков, опытные фрилансеры зарабатывают 120 000–150 000 сомов месяц</h5>
+                    <h2>Каталог фриланс услуг в Кыргызстане</h2>
+                    {{-- <h5>Выполняя задания заказчиков, опытные фрилансеры зарабатывают 120 000–150 000 сомов месяц</h5> --}}
                 </div>
             </div>
             <div class="col-12">
                 <div class="homepage-info-block">
-                    <h5>Как это работает?</h5>
+                    {{-- <h5>Каталог фриланс услуг в Кыргызстане</h5> --}}
+                    <h5>Что Вы получите после регистрации:</h5>
+                    {{-- <h6 class="homepage-info-block-small">Что Вы получите после регистрации:</h6> --}}
                     <div class="homepage-info-block-cols">
                         <div class="row">
-                            <div class="col-md-4 col-12 homepage-info-block-cols-info">
-                                <div class="homepage-info-block-cols-info-left">
-                                    <img src="{{ asset('img/home/check.png') }}" class="img-fluid">
-                                    <span>1</span>
-                                </div>
-                                <div class="homepage-info-block-cols-info-right">
-                                    <h5>Больше доверия</h5>
-                                    <h6>Выполняя проекты, ты получаешь работы в портфолио, деньги, рейтинг</h6>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-12 homepage-info-block-cols-info">
-                                <div class="homepage-info-block-cols-info-left">
-                                    <img src="{{ asset('img/home/check.png') }}" class="img-fluid">
-                                    <span>2</span>
-                                </div>
-                                <div class="homepage-info-block-cols-info-right">
-                                    <h5>Больше доверия</h5>
-                                    <h6>Выполняя проекты, ты получаешь работы в портфолио, деньги, рейтинг</h6>
+                            <div class="col-md-4 col-12">
+                                <div class="homepage-info-block-cols-info">
+                                    <div class="homepage-info-block-cols-info-left">                                    
+                                        <span class="homepage-info-block-cols-info-number">1</span>
+                                        <span class="jam jam-user-square"></span>
+                                    </div>
+                                    <div class="homepage-info-block-cols-info-right">
+                                        <h5>Персональный аккаунт заменит вам сайт</h5>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-12 homepage-info-block-cols-info">
-                                <div class="homepage-info-block-cols-info-left">
-                                    <img src="{{ asset('img/home/check.png') }}" class="img-fluid">
-                                    <span>3</span>
+                            <div class="col-md-4 col-12">
+                                <div class="homepage-info-block-cols-info">                              
+                                    <div class="homepage-info-block-cols-info-left">                                    
+                                        <span class="homepage-info-block-cols-info-number">2</span>
+                                        <span class="jam jam-calendar"></span>
+                                    </div>
+                                    <div class="homepage-info-block-cols-info-right">
+                                        <h5>Клиенты легко найдут ваши услуги 365 дней в году;</h5>
+                                    </div>
                                 </div>
-                                <div class="homepage-info-block-cols-info-right">
-                                    <h5>Больше доверия</h5>
-                                    <h6>Выполняя проекты, ты получаешь работы в портфолио, деньги, рейтинг</h6>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="homepage-info-block-cols-info">                              
+                                    <div class="homepage-info-block-cols-info-left">                                    
+                                        <span class="homepage-info-block-cols-info-number">3</span>
+                                        <span class="jam jam-bell"></span>
+                                    </div>
+                                    <div class="homepage-info-block-cols-info-right">
+                                        <h5>Мы заботимся о привлечении клиентов;</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="homepage-info-block-cols-info">                              
+                                    <div class="homepage-info-block-cols-info-left">                                    
+                                        <span class="homepage-info-block-cols-info-number">4</span>
+                                        <span class="jam jam-coin"></span>
+                                    </div>
+                                    <div class="homepage-info-block-cols-info-right">
+                                        <h5>Вы работаете с прямыми заказчиками без комиссий;</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="homepage-info-block-cols-info">                              
+                                    <div class="homepage-info-block-cols-info-left">                                    
+                                        <span class="homepage-info-block-cols-info-number">5</span>
+                                        <span class="jam jam-star"></span>
+                                    </div>
+                                    <div class="homepage-info-block-cols-info-right">
+                                        <h5>Берем продвижение ваших услуг на себя;</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>

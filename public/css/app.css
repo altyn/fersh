@@ -14127,18 +14127,18 @@ a:visited {
 }
 
 .btn-reg {
-  background: #8e43e7;
   color: #fff;
   border-radius: 30px;
   text-transform: uppercase;
-  font-family: "fira_sans_medium", Arial, sans-serif;
+  font-family: "roboto_medium", Arial, sans-serif;
   padding: 10px 20px;
+  background: rgba(142, 67, 231, 0.5);
 }
 
 .btn-reg:hover,
 .btn-reg:active {
-  background: rgba(142, 67, 231, 0.5);
   color: #fff;
+  background: #8e43e7;
 }
 
 .btn-reg:focus,
@@ -14185,7 +14185,7 @@ a:visited {
 
 .btn-group-toggle .btn {
   background: #fff;
-  border-color: rgba(75, 192, 78, 0.5);
+  border-color: rgba(101, 109, 156, 0.5);
   color: #333;
   font-size: 0.875rem;
 }
@@ -14525,6 +14525,92 @@ a:visited {
   text-decoration: underline;
 }
 
+.sign #avatar-upload {
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  height: 160px;
+  width: 160px;
+  border: 1px solid #dee2e6;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.sign #avatar-upload:hover input.upload {
+  display: block;
+}
+
+.sign #avatar-upload:hover .hvr-rectangle-out {
+  display: inline-block;
+}
+
+.sign #avatar-upload .jam {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: right;
+  right: 0;
+  color: #8e43e7;
+  padding: 6px;
+  pointer: none;
+  font-size: 20px;
+}
+
+.sign #avatar-upload .upload-img.jam {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  pointer: none;
+}
+
+.sign #avatar-upload-title {
+  color: #8e43e7;
+  text-align: center;
+}
+
+.sign .upload-img {
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+
+.sign #profile-upload:hover + .upload-img {
+  opacity: 1;
+}
+
+.sign input.upload {
+  z-index: 1;
+  left: 0;
+  margin: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0;
+  opacity: 0;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  background: #ccc;
+  width: 100%;
+  display: none;
+}
+
+.sign .hvr-rectangle-out {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  vertical-align: middle;
+  position: relative;
+  background: transparent;
+}
+
 .infoform .form-control {
   font-family: "roboto_light", Arial, sans-serif;
   border-radius: 2px;
@@ -14591,6 +14677,27 @@ a:visited {
   cursor: pointer;
 }
 
+.infoform .has-error .with-errors {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.infoform .has-error .form-control:invalid {
+  border-color: #dc3545;
+}
+
+.infoform .has-error .form-control:invalid:focus {
+  border-color: #dc3545;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.infoform .has-error label {
+  color: #dc3545;
+}
+
 .homepage {
   background: url("/img/home/bg.png") no-repeat center center fixed;
   background-size: cover;
@@ -14598,7 +14705,7 @@ a:visited {
 
 .homepage-info {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14623,36 +14730,66 @@ a:visited {
 }
 
 .homepage-info-block h5 {
-  font-family: "fira_sans_medium", Arial, sans-serif;
+  font-family: "roboto_bold", Arial, sans-serif;
   color: #8e43e7;
   text-transform: uppercase;
 }
 
+.homepage-info-block-small {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: rgba(142, 67, 231, 0.7);
+  text-transform: uppercase;
+  border-bottom: 1px dashed;
+  display: inline-block;
+}
+
 .homepage-info-block-cols {
-  padding: 15px 0;
+  padding: 45px 0 15px 0;
+}
+
+.homepage-info-block-cols-info {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.homepage-info-block-cols-info-number {
+  text-align: left;
+  width: 100%;
+  display: inline-block;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: rgba(142, 67, 231, 0.4);
+  font-size: 36px;
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  top: -23px;
 }
 
 .homepage-info-block-cols-info-left,
 .homepage-info-block-cols-info-right {
   display: table-cell;
+  vertical-align: middle;
 }
 
 .homepage-info-block-cols-info-left {
   padding-right: 15px;
 }
 
-.homepage-info-block-cols-info-left span {
+.homepage-info-block-cols-info-left .jam {
   text-align: center;
   width: 100%;
   display: inline-block;
-  font-family: "fira_sans_medium", Arial, sans-serif;
-  color: rgba(142, 67, 231, 0.5);
+  color: #8e43e7;
   font-size: 36px;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
 }
 
 .homepage-info-block-cols-info-right h5 {
   color: rgba(81, 80, 83, 0.9);
-  font-family: "fira_sans_medium", Arial, sans-serif;
+  font-family: "roboto_medium", Arial, sans-serif;
   text-transform: none;
 }
 
