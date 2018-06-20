@@ -11,18 +11,18 @@ a:visited {
 .btn{
 
     &-reg {
-        background: $violet;
         color: #fff;
         border-radius: 30px;
-
+        
         text-transform: uppercase;
-        font-family: $firasansmedium;
+        font-family: $robotomedium;
         padding: 10px 20px;
-
+        background: rgba($color: $violet, $alpha: 0.5);
+        
         &:hover,
         &:active {
-            background: rgba($color: $violet, $alpha: 0.5);
             color: #fff;
+            background: $violet;
         }
 
         &:focus, &:visited  {
