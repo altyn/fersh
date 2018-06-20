@@ -33,6 +33,18 @@
                         </div>
                         <form class="needs-validation" novalidate>
                             <div class="form-group">
+                                <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">
+                                    <div class="hvr-rectangle-out">
+                                        <input type="file" name="avatar" id='getval'  class="upload w180" id="imag">
+                                    </div>
+                                    <div class="upload-img">
+                                        <span class="jam jam-camera">upload Image</span>
+                                    </div>
+                                        <span class="jam jam-camera"></span>
+                                </div>
+                                <div id="avatar-upload-title">Загрузить аватар</div>
+                            </div>
+                            <div class="form-group">
                                 <input type="text" class="form-control" id="login" placeholder="Логин" required>
                                 <div class="invalid-feedback">
                                     Введите ваш логин 
@@ -77,5 +89,20 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    document.getElementById('getval').addEventListener('change', readURL, true);
+    function readURL(){
+        var file = document.getElementById("getval").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function(){
+            document.getElementById('avatar-upload').style.backgroundImage = "url(" + reader.result + ")";        
+        }
+        if(file){
+            reader.readAsDataURL(file);
+        }else{
+        }
+    }
+</script>
 
 @endsection

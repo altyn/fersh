@@ -14525,6 +14525,92 @@ a:visited {
   text-decoration: underline;
 }
 
+.sign #avatar-upload {
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  height: 160px;
+  width: 160px;
+  border: 1px solid #dee2e6;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.sign #avatar-upload:hover input.upload {
+  display: block;
+}
+
+.sign #avatar-upload:hover .hvr-rectangle-out {
+  display: inline-block;
+}
+
+.sign #avatar-upload .jam {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: right;
+  right: 0;
+  color: #8e43e7;
+  padding: 6px;
+  pointer: none;
+  font-size: 20px;
+}
+
+.sign #avatar-upload .upload-img.jam {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  pointer: none;
+}
+
+.sign #avatar-upload-title {
+  color: #8e43e7;
+  text-align: center;
+}
+
+.sign .upload-img {
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+
+.sign #profile-upload:hover + .upload-img {
+  opacity: 1;
+}
+
+.sign input.upload {
+  z-index: 1;
+  left: 0;
+  margin: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0;
+  opacity: 0;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  background: #ccc;
+  width: 100%;
+  display: none;
+}
+
+.sign .hvr-rectangle-out {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  vertical-align: middle;
+  position: relative;
+  background: transparent;
+}
+
 .infoform .form-control {
   font-family: "roboto_light", Arial, sans-serif;
   border-radius: 2px;
