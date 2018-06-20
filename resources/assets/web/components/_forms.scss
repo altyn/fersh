@@ -261,5 +261,30 @@
                 }
             }
         }
+
+    }
+    .has-error{
+        .with-errors {
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+        }
+
+        .form-control{
+            &:invalid{
+                border-color: #dc3545;
+
+                &:focus{
+                    border-color: #dc3545;
+                    -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                }
+            }
+        }
+
+        label{
+            color: #dc3545;
+        }
     }
 }
