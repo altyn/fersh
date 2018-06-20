@@ -375,7 +375,7 @@
         console.log(e, e.detail);
     }
 
-    var url = "//free.test/js/data.json";
+    var url = "{{ asset('js/data.json') }}";
     jQuery.getJSON(url).done(
         function (data) {
             jQuery('.sphera-multi').select2({
