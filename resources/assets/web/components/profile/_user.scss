@@ -1,0 +1,69 @@
+.user{
+    &-header{
+        &-link{
+            line-height: 35px;
+            white-space: nowrap;
+
+            &-img, &-login{
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            &-img{
+                border-radius: 50%;
+                border: 1px solid #eee;
+                // img{
+                //     height: 40px;
+                //     width: auto;
+                // }
+            }
+            &-login{
+                color: $black;
+                font-family: $robotoregular;
+                cursor: pointer;
+
+                &:hover{
+                    color: #000;
+                }
+
+                .jam{
+                    top: 1px;
+                    position: relative;
+                }
+            }
+        }
+
+        .dropdown{
+
+            @include boxshadow;
+            
+            &-menu{
+                border: none;
+                padding: 0;
+                min-width: 100%;
+                margin-top: 15px;
+            }
+            &-item{
+                font-family: $robotoregular;
+                padding: 10px 20px;
+                border-bottom: 1px dashed #eee;
+
+                .jam{
+                    padding-right: 5px;
+                }
+                
+                &:hover,
+                &:focus,
+                &:visited {
+                    background: #f8f9fa;
+                    color: $black;
+                }
+
+                &:last-child{
+                    border-bottom: none;
+                }
+
+            }
+        }
+    }
+}

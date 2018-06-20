@@ -14960,3 +14960,67 @@ tags > div span {
   color: #5d77bc;
 }
 
+.user-header-link {
+  line-height: 35px;
+  white-space: nowrap;
+}
+
+.user-header-link-img,
+.user-header-link-login {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-header-link-img {
+  border-radius: 50%;
+  border: 1px solid #eee;
+}
+
+.user-header-link-login {
+  color: #515053;
+  font-family: "roboto_regular", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.user-header-link-login:hover {
+  color: #000;
+}
+
+.user-header-link-login .jam {
+  top: 1px;
+  position: relative;
+}
+
+.user-header .dropdown {
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.user-header .dropdown-menu {
+  border: none;
+  padding: 0;
+  min-width: 100%;
+  margin-top: 15px;
+}
+
+.user-header .dropdown-item {
+  font-family: "roboto_regular", Arial, sans-serif;
+  padding: 10px 20px;
+  border-bottom: 1px dashed #eee;
+}
+
+.user-header .dropdown-item .jam {
+  padding-right: 5px;
+}
+
+.user-header .dropdown-item:hover,
+.user-header .dropdown-item:focus,
+.user-header .dropdown-item:visited {
+  background: #f8f9fa;
+  color: #515053;
+}
+
+.user-header .dropdown-item:last-child {
+  border-bottom: none;
+}
+

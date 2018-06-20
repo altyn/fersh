@@ -12,15 +12,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Тарифы</a>
                     </li>
-                    <li>
-                        <div class="dropdown">
-                            <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Кадыров Элдос</a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <button class="dropdown-item" type="button">Профиль</button>
-                                <button class="dropdown-item" type="button">Выход</button>
-                            </div>
+                    {{-- <li class="nav-item dropdown user-header">
+                        <a class="user-header-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="user-header-link-img">
+                                <img src="{{ asset('img/sign/avatar.png') }}" width="36" height="36" class="d-inline-block align-top" alt="">
+                            </div>   
+                            <span class="user-header-link-login">Кадыров Элдос <span class="jam jam-chevron-down"></span></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><span class="jam jam-user-circle"></span>Профиль</a>
+                            <a class="dropdown-item" href="#"><span class="jam jam-log-out"></span>Выход</a>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
