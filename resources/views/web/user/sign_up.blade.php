@@ -16,7 +16,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="sign-right-middle">
+                    <form class="sign-right-middle needs-validation" action="{{ url('/ru/sign_up') }}" method='post' novalidate>
+                        @csrf()
                         <div class="sign-right-top">
                             <h3>Регистрация</h3>
                         </div>
@@ -30,7 +31,7 @@
                             <li><a href="/auth/google/redirect/"><span class="jam jam-google-square"></span></a></li>
                             <li><a href="/auth/github/redirect/"><span class="jam jam-github-square"></span></a></li>
                         </ul>
-                        @if ($errors->has('login') || $errors->has('email'))
+                        @if ($errors->has('login') || $errors->has('email') || $errors->has('password'))
                             <div class="alert alert-danger">
                                 <ul>
                                     @if($errors->first('login'))
@@ -39,11 +40,12 @@
                                     @if($errors->first('email') )
                                         <li>{{ $errors->first('email') }}</li>
                                     @endif
+                                    @if($errors->first('password') )
+                                        <li>{{ $errors->first('password') }}</li>
+                                    @endif
                                 </ul>
                             </div>
                         @endif
-                        {!! Form::open(['url' => 'ru/sign_up', 'method' => 'post']) !!}
-                        @csrf()
                         <div class="form-group">
                             <input type="text" class="form-control" name="login" placeholder="Логин"
                                 @if($user_details['nickname'])
@@ -71,7 +73,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="confirmpassword" placeholder="Повторите пароль" required>
+                            <input type="password" class="form-control" name="password_confirmation" placeholder="Повторите пароль" required>
                             <div class="invalid-feedback">
                                 Повторите пароль
                             </div>
@@ -84,12 +86,10 @@
                             <span class="terms">Регистрируясь вы принимаете условия <a href="#">Пользовательского соглашения</a></span>
                         </div>
                         <button class="btn btn-sign" type="submit">Зарегистрироваться</button>
-                        </form>
                         <div class="sign-bottom">
                             <a href="/{{ app()->getLocale() }}/sign_in" class="sign-new">Войдите с вашим аккаунтом</a>
                         </div>
-                        {!! Form::close() !!}
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

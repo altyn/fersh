@@ -25,42 +25,30 @@ class WebRegisterController extends RegisterController
     public function register(Request $request)
     {
         $data = $request->all();
-        $validatedData = Validator::make($data,
+        $data['provider_user_id'] = $request->session()->get('user_soc_id');
+        $data['provider_name'] = $request->session()->get('user_provider');
+        $validator = Validator::make($data,
                 [
                     'login'                 => 'bail|required|max:255|unique:users',
                     'email'                 => 'bail|required|email|max:255|unique:users',
-                    'password'              => 'required|min:6|max:30|confirmed',
-                    'password_confirmation' => 'required|same:password',
+                    'password'              => 'bail|required|min:6|max:30|confirmed',
                 ],
                 [
-//                    'login.unique'          => trans('auth.userNameTaken'),
                     'login.unique'          => 'Пользователь с таким именем уже существует',
-//                    'login.required'        => trans('auth.userNameRequired'),
                     'login.required'        => 'Нужно ввести имя пользователя',
-//                    'email.required'        => trans('auth.emailRequired'),
                     'email.unique'          => 'Пользователь с такой почтой уже существует',
                     'email.required'        => 'Нужно ввести email пользователя',
-//                    'email.email'           => trans('auth.emailInvalid'),
                     'email.email'           => 'Email должен быть вида email@email.com',
-//                    'password.required'     => trans('auth.passwordRequired'),
-                    'password.required'     => trans('auth.passwordRequired'),
-//                    'password.min'          => trans('auth.PasswordMin'),
-                    'password.min'          => trans('auth.PasswordMin'),
-//                    'password.max'          => trans('auth.PasswordMax'),
-                    'password.max'          => trans('auth.PasswordMax'),
+                    'password.required'     => 'Требуется ввести пароль',
+                    'password.min'          => 'Пароль не может быть меньше 6 символов',
+                    'password.max'          => 'Пароль не может превышать 30 символов',
+                    'password.confirmed'    => 'Введенные пароли не совпадают',
                 ]
             );
 
-//        dd($validatedData->errors());
         // The user data is valid...
-        if($validatedData->fails()){
-            $request->session()->flash('message.level', 'danger');
-            $request->session()->flash('message.content', 'username or email exists!');
-//            session()->flash(
-//                'message', "Your account has now been created!"
-//            );
-//            dd($validatedData);
-            return back()->withErrors($validatedData);
+        if($validator->fails()){
+            return redirect(app()->getLocale().'/sign_up')->withErrors($validator)->withInput();
         } else {
             $data['password'] = Hash::make($data['password']);
             $row = User::create($data);
@@ -68,11 +56,6 @@ class WebRegisterController extends RegisterController
             if($row)
             {
                 $to_email = $data['email'];
-                $request->session()->flash('message.level', 'success');
-                $request->session()->flash('message.content', 'Post was successfully added!');
-//                session()->flash(
-//                    'message', "Your account has now been created!"
-//                );
                 return view('web.user.success', compact('to_email'));
             } else {
                 return back();
