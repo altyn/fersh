@@ -165,7 +165,6 @@
                                 <label for="bio">Выберите сферу, в которой Вы специализируетесь</label>
                                 <div class="d-block">
                                     <select class="sphera-multi form-control" name="spec[{{app()->getLocale()}}][sphere]" multiple="multiple"></select>
-                                    <small>Вы можете выбрать максимум 7 сфер</small>
                                 </div>
                             </div>
                         </div>
@@ -349,14 +348,12 @@
     jQuery.getJSON(url).done(
         function (data) {
             jQuery('.sphera-multi').select2({
-                placeholder: 'Выберите ваши сферы',
+                placeholder: 'Выберите сферу',
                 allowClear: true,
-                minimumInputLength: 0,
-                multiple: true,
+                multiple: false,
                 data: data,
                 theme: "bootstrap4",
                 width: '100%',
-                maximumSelectionLength: 7
             });
         }
     );

@@ -1,0 +1,187 @@
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar
+}
+
+.table-responsive>.table-bordered {
+    border: 0
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #dde2ec;
+    border-radius: 4px;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out
+}
+
+.form-control::-ms-expand {
+    background-color: transparent;
+    border: 0
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #047bf8;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #636c72;
+    opacity: 1
+}
+
+.form-control:-ms-input-placeholder {
+    color: #636c72;
+    opacity: 1
+}
+
+.form-control::-ms-input-placeholder {
+    color: #636c72;
+    opacity: 1
+}
+
+.form-control::placeholder {
+    color: #636c72;
+    opacity: 1
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.1rem + 4px)
+}
+
+select.form-control:focus::-ms-value {
+    color: #495057;
+    background-color: #fff
+}
+
+.form-control-file,
+.form-control-range {
+    display: block;
+    width: 100%
+}
+
+.col-form-label {
+    padding-top: calc(.375rem + 2px);
+    padding-bottom: calc(.375rem + 2px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5
+}
+
+.col-form-label-lg {
+    padding-top: calc(.5rem + 2px);
+    padding-bottom: calc(.5rem + 2px);
+    font-size: 1.25rem;
+    line-height: 1.5
+}
+
+.col-form-label-sm {
+    padding-top: calc(.25rem + 2px);
+    padding-bottom: calc(.25rem + 2px);
+    font-size: .8rem;
+    line-height: 1.5
+}
+
+.form-control-plaintext {
+    display: block;
+    width: 100%;
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+    background-color: transparent;
+    border: solid transparent;
+    border-width: 2px 0
+}
+
+.form-control-plaintext.form-control-sm,
+.input-group-sm>.form-control-plaintext.form-control,
+.input-group-sm>.input-group-prepend>.form-control-plaintext.input-group-text,
+.input-group-sm>.input-group-append>.form-control-plaintext.input-group-text,
+.input-group-sm>.input-group-prepend>.form-control-plaintext.btn,
+.all-wrapper .input-group-sm>.input-group-prepend>.form-control-plaintext.fc-button,
+.input-group-sm>.input-group-append>.form-control-plaintext.btn,
+.all-wrapper .input-group-sm>.input-group-append>.form-control-plaintext.fc-button,
+.form-control-plaintext.form-control-lg,
+.input-group-lg>.form-control-plaintext.form-control,
+.input-group-lg>.input-group-prepend>.form-control-plaintext.input-group-text,
+.input-group-lg>.input-group-append>.form-control-plaintext.input-group-text,
+.input-group-lg>.input-group-prepend>.form-control-plaintext.btn,
+.all-wrapper .input-group-lg>.input-group-prepend>.form-control-plaintext.fc-button,
+.input-group-lg>.input-group-append>.form-control-plaintext.btn,
+.all-wrapper .input-group-lg>.input-group-append>.form-control-plaintext.fc-button {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.form-control-sm,
+.input-group-sm>.form-control,
+.input-group-sm>.input-group-prepend>.input-group-text,
+.input-group-sm>.input-group-append>.input-group-text,
+.input-group-sm>.input-group-prepend>.btn,
+.all-wrapper .input-group-sm>.input-group-prepend>.fc-button,
+.input-group-sm>.input-group-append>.btn,
+.all-wrapper .input-group-sm>.input-group-append>.fc-button {
+    padding: .25rem .5rem;
+    font-size: .8rem;
+    line-height: 1.5;
+    border-radius: 4px
+}
+
+select.form-control-sm:not([size]):not([multiple]),
+.input-group-sm>select.form-control:not([size]):not([multiple]),
+.input-group-sm>.input-group-prepend>select.input-group-text:not([size]):not([multiple]),
+.input-group-sm>.input-group-append>select.input-group-text:not([size]):not([multiple]),
+.input-group-sm>.input-group-prepend>select.btn:not([size]):not([multiple]),
+.all-wrapper .input-group-sm>.input-group-prepend>select.fc-button:not([size]):not([multiple]),
+.input-group-sm>.input-group-append>select.btn:not([size]):not([multiple]),
+.all-wrapper .input-group-sm>.input-group-append>select.fc-button:not([size]):not([multiple]) {
+    height: calc(1.7rem + 4px)
+}
+
+.form-control-lg,
+.input-group-lg>.form-control,
+.input-group-lg>.input-group-prepend>.input-group-text,
+.input-group-lg>.input-group-append>.input-group-text,
+.input-group-lg>.input-group-prepend>.btn,
+.all-wrapper .input-group-lg>.input-group-prepend>.fc-button,
+.input-group-lg>.input-group-append>.btn,
+.all-wrapper .input-group-lg>.input-group-append>.fc-button {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 6px
+}
+
+select.form-control-lg:not([size]):not([multiple]),
+.input-group-lg>select.form-control:not([size]):not([multiple]),
+.input-group-lg>.input-group-prepend>select.input-group-text:not([size]):not([multiple]),
+.input-group-lg>.input-group-append>select.input-group-text:not([size]):not([multiple]),
+.input-group-lg>.input-group-prepend>select.btn:not([size]):not([multiple]),
+.all-wrapper .input-group-lg>.input-group-prepend>select.fc-button:not([size]):not([multiple]),
+.input-group-lg>.input-group-append>select.btn:not([size]):not([multiple]),
+.all-wrapper .input-group-lg>.input-group-append>select.fc-button:not([size]):not([multiple]) {
+    height: calc(2.875rem + 4px)
+}

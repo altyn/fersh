@@ -37,6 +37,7 @@ mix.sass('resources/assets/web/components/_profile_info.scss', 'public/css')
 mix.scripts([
         'node_modules/jquery/dist/jquery.js',
         'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+        'resources/assets/bash/js/main.js',
     ], 'public/js/bash/app.js');
 
 mix.sass('resources/assets/bash/style.scss', 'public/css/bash');

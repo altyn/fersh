@@ -33,7 +33,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all()->except('guard_name', 'created_at', 'updated_at');
-        return view('bashkaruu.users.create', compact('roles'));
+        $user =  new User;
+        return view('bashkaruu.users.create', compact('roles', 'user'));
     }
 
     /**
@@ -96,12 +97,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
         ]);
-
 
         $input = $request->all();
         if(!empty($input['password'])){
@@ -110,14 +112,11 @@ class UserController extends Controller
             $input = array_except($input,array('password'));
         }
 
-
         $user = User::findOrFail($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
 
-
         $user->assignRole($request->input('roles'));
-
 
         return redirect()->route('users.index')
             ->with('success','User updated successfully');

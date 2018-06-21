@@ -19,7 +19,7 @@
         }
 
         &-block{
-            background: #fff;
+            background: rgba($color: #fff, $alpha: 0.9);
             padding: 30px;
             width: 100%;
             border-radius: 5px;
@@ -73,7 +73,6 @@
                             z-index: 2;
                             position: relative;
                             overflow: hidden;
-                            background: #fff;
                         }
                     }
                     &-right{
