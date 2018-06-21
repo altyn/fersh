@@ -20,7 +20,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::all();        
         return view('bashkaruu.permissions.index',compact('permissions'));
     }
     /**

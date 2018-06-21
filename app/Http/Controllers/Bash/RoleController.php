@@ -34,7 +34,8 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::get();
-        return view('bashkaruu.roles.create',compact('permissions'));
+        $role = new Role;
+        return view('bashkaruu.roles.create',compact('permissions', 'role'));
     }
 
     /**
