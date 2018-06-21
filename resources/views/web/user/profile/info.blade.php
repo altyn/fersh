@@ -29,6 +29,20 @@
                     </div>
                     <div class="step-content-inner col-centered col-md-8 col-12" id="form-step-0" role="form" data-toggle="validator" novalidate="true">
                         <div class="row">
+                            <div class="form-group avatar-upload col-12">
+                                <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">
+                                    <div class="hvr-rectangle-out">
+                                        <input type="file" name="avatar" id='getval'  class="upload w180" id="imag">
+                                    </div>
+                                    <div class="upload-img">
+                                        <span class="jam jam-camera">upload Image</span>
+                                    </div>
+                                        <span class="jam jam-camera"></span>
+                                </div>
+                                <div id="avatar-upload-title">Загрузите Ваше фото</div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 col-12 form-group">
                                 <label for="name">Имя<span class="required">*</span></label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" required>
@@ -84,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for="location">Город<span class="required">*</span></label>
+                                <label for="location">Локация<span class="required">*</span></label>
                                 <input type="text" class="form-control" id="location" name="city" required>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -129,39 +143,13 @@
                     <div class="step-content-inner col-centered col-md-8 col-12" id="form-step-1" role="form" data-toggle="validator" novalidate="true">
                         <div class="row">
                             <div class="form-group col-md-6 col-12">
-                                <label for="email">Почта<span class="required">*</span></label>
+                                <label for="email">Ваш электронный адрес<span class="required">*</span></label>
                                 <input type="email" class="form-control" id="email" name="contacts[{{app()->getLocale()}}][email]">
                                 <div class="help-block with-errors"></div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="form-group col-md-6 col-12">
-                                <label for="website">Сайт</label>
-                                <input type="text" class="form-control" id="website" name="contacts[{{app()->getLocale()}}][website]">
-                            </div>
-                            <div class="form-group col-md-6 col-12">
-                                <label for="phone">Телефон</label>
-                                <input type="text" class="form-control" id="phone"  name="contacts[{{app()->getLocale()}}][phone]">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-12 form-group">
-                                <label for="whatspapp">WhatsApp</label>
-                                <input type="text" class="form-control" id="whatspapp" name="contacts[{{app()->getLocale()}}][whatsapp]">
-                            </div>
-                            <div class="col-md-6 col-12 form-group">
-                                <label for="telegram">Telegram</label>
-                                <input type="text" class="form-control" id="telegram" name="contacts[{{app()->getLocale()}}][telegram]">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 col-12">
-                                <label for="facebook">Facebook</label>
-                                <input type="text" class="form-control" id="facebook" name="contacts[{{app()->getLocale()}}][facebook]">
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <label for="twitter">Twitter</label>
-                                <input type="text" class="form-control" id="twitter" name="contacts[{{app()->getLocale()}}][twitter]">
+                                <label for="phone">Ваш номер телефона <span class="required">*</span></label>
+                                <input type="tel" name="contacts[{{app()->getLocale()}}][phone]" id="phone" placeholder="996 (555) 555-555" autocomplete="tel" maxlength="18" class="form-control" required />
                             </div>
                         </div>
                     </div>
@@ -174,23 +162,7 @@
                     <div class="step-content-inner col-centered col-md-8 col-12" id="form-step-2" role="form" data-toggle="validator" novalidate="true">
                         <div class="form-group row">
                             <div class="col-12">
-                                <label for="bio">Специализация <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="bio" name="spec[{{app()->getLocale()}}][spec]" required>
-                                <small>Напишите, что именно вы делаете лучше других</small>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <label for="skills">Ключевые навыки (до 15 штук) <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="skills" name="spec[{{app()->getLocale()}}][skills]" required>
-                                <small>Напишите ваши навыки через запятую</small>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <label for="bio">Сфера деятельности </label>
+                                <label for="bio">Выберите сферу, в которой Вы специализируетесь</label>
                                 <div class="d-block">
                                     <select class="sphera-multi form-control" name="spec[{{app()->getLocale()}}][sphere]" multiple="multiple"></select>
                                     <small>Вы можете выбрать максимум 7 сфер</small>
@@ -199,6 +171,14 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
+                                <label for="skills">Опишите услуги, которые Вы оказываете в выбранной сфере<span class="required">*</span></label>
+                                <input type="text" class="form-control" id="skills" name="spec[{{app()->getLocale()}}][skills]" required>
+                                <small>Напишите каждое предложение(слово) через запятую</small>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6 col-12">
                                 <label for="bio">Опыт работы</label>
                                 <div class="d-block">
                                     <select class="form-control" id="year" name="spec[{{app()->getLocale()}}][experience]">
@@ -211,12 +191,11 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12">
+                            <div class="col-md-6 col-12">
                                 <label for="bio">Стоимость работы</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control col-3" placeholder="500" name="spec[{{app()->getLocale()}}][rate]" aria-describedby="valuta">
+                                    <label for="valuta" class="col-2 col-form-label">от</label>
+                                    <input type="text" class="form-control col-10" placeholder="500" name="spec[{{app()->getLocale()}}][rate]" aria-describedby="valuta">
                                     <div class="input-group-append">
                                         <select class="input-group-text" id="valuta" name="spec[{{app()->getLocale()}}][currency]">
                                             <option disabled selected value="1" style="display: none">Доллар</option>
@@ -224,19 +203,10 @@
                                             <option value="2">Сом</option>
                                         </select>
                                     </div>
-                                    <label for="inputPassword" class="col-1 col-form-label">за</label>
-                                    <div class="d-block">
-                                        <select class="form-control" id="year" name="spec[{{app()->getLocale()}}][value]">
-                                            <option disabled selected value="1" style="display: none">за час</option>
-                                            <option value="1">за час</option>
-                                            <option value="2">за месяц</option>
-                                            <option value="3">за проект</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
-                                <div class="col-md-6 col-12">
-                            </div>
+                        </div>
+                        <div class="form-group row">
                         </div>
                         <div class="form-group row">
                             <div class="col-12">
@@ -248,7 +218,7 @@
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" name="spec[{{app()->getLocale()}}][payment_method][bank]" id="beznalichnyi">
-                                        <label class="custom-control-label" for="beznalichnyi">безналичный расчет</label>
+                                        <label class="custom-control-label" for="beznalichnyi">Безналичный расчет</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" name="spec[{{app()->getLocale()}}][payment_method][electron]" id="elektron">
@@ -361,21 +331,21 @@
         }
     });
 
+
     var skillsInput = document.querySelector('input[id=skills]'),
         skills = new Tagify(skillsInput, {
             whitelist: []
         })
     skills.on('remove', onRemoveTag);
-
     function onRemoveTag(e) {
         console.log(e, e.detail);
     }
-
     function onAddTag(e) {
         console.log(e, e.detail);
     }
 
-    var url = "{{ asset('js/data.json') }}";
+
+    var url = "{{ asset('js/datamini.json') }}";
     jQuery.getJSON(url).done(
         function (data) {
             jQuery('.sphera-multi').select2({
@@ -390,6 +360,25 @@
             });
         }
     );
+
+    document.getElementById('getval').addEventListener('change', readURL, true);
+    function readURL(){
+        var file = document.getElementById("getval").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function(){
+            document.getElementById('avatar-upload').style.backgroundImage = "url(" + reader.result + ")";        
+        }
+        if(file){
+            reader.readAsDataURL(file);
+        }else{
+        }
+    }
+
+    document.getElementById('phone').addEventListener('input', function (e) {
+        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})/);
+        e.target.value = !x[2] ? x[1] : '+' + x[1] + ' (' + x[2] + ') ' + x[3] + (x[3] ? '-' + x[3] : '');
+    });
+
 </script>
 
 @endsection

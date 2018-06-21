@@ -297,7 +297,7 @@
         background-color: #fafbfe;
     }
     .select2-results__group {
-        font-family: $firasansmedium;
+        font-family: $robotoregular;
         color: #fff;
         background: #656d9c;
         font-weight: normal;
@@ -307,7 +307,7 @@
 
     .select2-results__option .select2-results__option{
         padding: 10px 15px 10px 30px;
-        font-family: $firasansmedium;
+        font-family: $robotoregular;
         background: #656d9cc9;
         color: #fff;
         border-bottom: 1px solid #7b81aa;
@@ -315,6 +315,27 @@
         &:hover{
             background: #656d9c;
         }
+    }
+
+    .select2-results__option{
+       padding: 10px 15px;
+       font-family: $robotoregular;
+       background: #656d9cc9;
+       color: #fff;
+       border-bottom: 1px solid #7b81aa;
+       &:hover {
+           background: #656d9c;
+       }
+    }
+
+    .select2-results__option--highlighted[aria-selected] {
+        background-color: #656d9c;
+        color: #fff;
+    }
+
+    .select2-results__option[aria-selected=true]{
+        background-color: #656d9c;
+        color: #fff;
     }
 
     .select2-dropdown {

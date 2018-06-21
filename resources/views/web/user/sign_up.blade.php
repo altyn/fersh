@@ -49,22 +49,6 @@
                         </div>
                     @endif
                         <div class="form-group">
-                            @if($user_details['avatar'])
-                                <div id='avatar-upload' style="background-image: url('{{ $user_details['avatar']}}')">
-                            @else
-                                <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">
-                            @endif
-                                <div class="hvr-rectangle-out">
-                                    <input type="file" name="avatar" id='getval'  class="upload w180" id="imag">
-                                </div>
-                                <div class="upload-img">
-                                    <span class="jam jam-camera">upload Image</span>
-                                </div>
-                                    <span class="jam jam-camera"></span>
-                            </div>
-                            <div id="avatar-upload-title">Загрузить аватар</div>
-                        </div>
-                        <div class="form-group">
                             <input type="text" class="form-control" name="login" placeholder="Логин"
                                 @if($user_details['nickname'])
                                     value="{{ $user_details['nickname'] }}"
@@ -98,7 +82,7 @@
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="notify">
-                                <label class="custom-control-label" for="notify">Получать новости сервиса (не чаще раза в месяц)</label>
+                                <label class="custom-control-label" for="notify">Получать информацию о заказах и новостях сайта</label>
                             </div>
                             <span class="terms">Регистрируясь вы принимаете условия <a href="#">Пользовательского соглашения</a></span>
                         </div>
