@@ -1,10 +1,14 @@
+header{
+    margin-bottom: 20px;
+}
+
 .navbar{
     font-family: $firasansmedium;
     padding: 1rem;
 
     &.light{
         background: rgba($color: #000, $alpha: 0.02);
-        // background: $graynew;
+        z-index: 3;
     }
     &-brand{
         color: $violet;

@@ -31,8 +31,17 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     // Password Reset Routes...
 
-    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info')->middleware('auth');
-    Route::get('/profile', 'UserController@profile')->name('profile')->middleware('auth');
+    Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
+
+        Route::get('/', 'UserController@profile')->name('profile');
+        Route::get('/info', 'UserController@profileInfo')->name('profile.info');
+    });
+
+    Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
+
+        Route::get('/name', 'FreelancerController@index');
+    });
+
 //    Route::get('/profile', 'UserController@profile')->name('profile');
 //    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
 });

@@ -66,4 +66,145 @@
             }
         }
     }
+
+    &-profile {
+        &-aside{
+            .profile {
+                &-ava {
+                    width: 200px;
+                    height: 200px;
+                    margin: 20px auto;
+                    overflow: hidden;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    border-radius: 50%;
+                    position: relative;
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+
+                        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+                        -moz-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+                        -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+                    }
+                }
+                &-title{
+                    font-size: 13px;
+                    color: $violetnew;
+                    text-transform: uppercase;
+                    margin: 0px 0 15px 0;
+                }
+                &-info{
+                    padding: 0 15px;
+                    margin: 20px 0;
+                    text-align: center;
+
+                    &-name{
+                        font-family: $robotobold;
+                        font-size: 20px;
+                        color: $violetnew;
+                    }
+                    &-spec{
+                        color: #666;
+                        font-size: 16px;
+                        font-family: $robotomedium;
+                    }
+
+                    &-loc{
+                        font-family: $robotolight;
+                        margin: 5px 0;
+                        color: $formtitle;
+                    }
+
+                    &-contact{
+                        border-top: 1px dashed #dbe2f0;
+                        padding: 20px 0 15px 0;
+
+                        &-list{
+                            margin-bottom: 10px;
+                        }
+
+                        &-capture{
+                            font-family: $robotolight;
+                            color: #8e9bb6;
+                        }
+
+                        &-body{
+                            font-weight: 400;
+                        }
+                    }
+
+                    &-skills{
+                        padding: 0;
+                        margin: 0;
+                        list-style-type: none;
+
+                        li{
+                            display: inline-block;
+                            padding: 5px 10px;
+                            background: $violetnew;
+                            font-family: $robotomedium;
+                            color: #fff;
+                            margin-bottom: 5px;
+                            
+                        }
+                    }
+                }
+            }
+        }
+        &-content{
+            margin: 20px 0;
+            box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
+            height: 100%;
+
+            &-title{
+                padding: 20px 20px 10px 20px;
+                font-family: $robotomedium;
+                background: $gray;
+                text-transform: uppercase;
+                color: #56606F;
+            }
+
+            &-body{
+                padding: 20px;
+            }
+            
+            &-list{
+                padding: 2px 0;
+
+                &-capture, &-body{
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+                &-capture {
+                    font-family: $robotomedium;
+                    color: #56606F;
+                    padding-right: 10px;
+                }
+
+                &-body {
+                    font-weight: 400;
+                }
+            }
+
+            &-about{
+                margin: 10px 0;
+            }
+        }
+
+        &-portfolio{
+            &-item{
+                margin-bottom: 30px;
+                
+                &-title{
+                    padding: 10px 0;
+                    font-family: $robotomedium;
+                    color: #56606F;
+                }
+            }
+        }
+    }
 }

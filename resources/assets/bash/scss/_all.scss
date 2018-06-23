@@ -508,7 +508,7 @@ mark,
     font-size: 80%;
     color: #636c72;
     &::before {
-        content: "— ";
+        content: "— ";
     }
 }
 
@@ -13809,10 +13809,9 @@ body {
     -ms-flex: 0 0 260px;
     flex: 0 0 260px;
     border-right: 0px solid rgba(0, 0, 0, 0.05);
-
-    .has-sub-menu{
-        a{
-            span{
+    .has-sub-menu {
+        a {
+            span {
                 font-family: $robotoregular !important;
             }
         }
