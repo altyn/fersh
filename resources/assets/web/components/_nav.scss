@@ -7,7 +7,8 @@ header{
     padding: 1rem;
 
     &.light{
-        background: rgba($color: #000, $alpha: 0.02);
+        background: #fff;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
         z-index: 3;
     }
     &-brand{

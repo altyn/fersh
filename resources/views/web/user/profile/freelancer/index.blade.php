@@ -12,12 +12,18 @@
             <div class="col-md-3 col-12">
                 <div class="user-profile-aside">
                     <div class="profile-ava">
-                        <img class="img-fluid"  src="{{ asset('img/home/ava.jpg') }}" alt="">
+                        <div class="profile-ava-img">
+                            <img class="img-fluid"  src="{{ asset('img/home/ava.jpg') }}" alt="">
+                        </div>
+                        <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
                     </div>
                     <div class="profile-info">
                         <div class="profile-info-name">Яна Куликовская</div>
                         <div class="profile-info-spec">Веб дизайнер</div>
-                        <div class="profile-info-loc"> <span class="jam jam-map-marker"></span>Кыргызстан, Бишкек, 28 лет</div>
+                        <div class="profile-info-loc"> 
+                            <span class="profile-info-loc-span">
+                            </span>Кыргызстан, Бишкек, 28 лет
+                        </div>
                     </div>
                     <div class="profile-info-contact">
                         <h6 class="profile-title">
@@ -34,30 +40,18 @@
                     </div>
                     <div class="profile-info-contact">
                         <h6 class="profile-title">
-                            Соцальные сети
+                            Журнал
                         </h6>
                         <div class="profile-info-contact-list">
-                            <div class="profile-info-contact-capture">Facebook</div>
-                            <div class="profile-info-contact-body">facebook.com/yana</div>
+                            <div class="profile-info-contact-capture">Зарегистрирован</div>
+                            <div class="profile-info-contact-body">25.10.2017</div>
                         </div>
                         <div class="profile-info-contact-list">
-                            <div class="profile-info-contact-capture">Twitter</div>
-                            <div class="profile-info-contact-body">@yana</div>
+                            <div class="profile-info-contact-capture">Был последний раз</div>
+                            <div class="profile-info-contact-body">24.06.2018</div>
                         </div>
                     </div>
-                    <div class="profile-info-contact">
-                        <h6 class="profile-title mt-3">
-                            Услуги
-                        </h6>
-                        <div class="profile-info-contact-list">
-                            <ul class="profile-info-skills">
-                                <li><span>Adobe Photoshop</span></li>
-                                <li><span>Adobe XD</span></li>
-                                <li><span>UI/UX</span></li>
-                                <li><span>Брендбуки</span></li>
-                            </ul>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="col-md-9 col-12">
@@ -89,6 +83,16 @@
                         </br>
                             Занимаюсь разработкой логотипов, фирменного стиля, иконок, рекламных, журнальных и книжных иллюстраций. Рисую открытки, иллюстрации для web, для рекламы и бизнеса. Занимаюсь разработкой логотипов, фирменного стиля, иконок, рекламных, журнальных и книжных иллюстраций. Рисую открытки, иллюстрации для web, для рекламы и бизнеса. 
                         </div>
+
+                        <div class="user-profile-content-list">
+                            <div class="user-profile-content-list-skill-title">Услуги</div>
+                            <ul class="user-profile-content-list-skill-list">
+                                <li><span>Adobe Photoshop</span></li>
+                                <li><span>Adobe XD</span></li>
+                                <li><span>UI/UX</span></li>
+                                <li><span>Брендбуки</span></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="user-profile-content-title">
                         <h6>Портфолио</h6>
@@ -97,32 +101,43 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="user-profile-portfolio-item">
-                                    <img  class="img-fluid" src="{{ asset('img/home/3.png') }}" alt="">
-                                    <div class="user-profile-portfolio-item-title">Редизайн сайта экологической компании.</div>
+                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/3.png') }}" alt=""></a>
+                                    <div class="user-profile-portfolio-item-title"><a href="#">Редизайн сайта экологической компании.</a></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="user-profile-portfolio-item">
-                                    <img  class="img-fluid" src="{{ asset('img/home/4.png') }}" alt="">
-                                    <div class="user-profile-portfolio-item-title">Инфографика для турфирмы.</div>
+                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/4.png') }}" alt=""></a>
+                                    <div class="user-profile-portfolio-item-title"><a href="#">Инфографика для турфирмы.</a></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="user-profile-portfolio-item">
-                                    <img  class="img-fluid" src="{{ asset('img/home/5.jpg') }}" alt="">
-                                    <div class="user-profile-portfolio-item-title">Эксперимент с оттенками фиолетового цвета</div>
+                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/5.jpg') }}" alt=""></a>
+                                    <div class="user-profile-portfolio-item-title"><a href="#">Эксперимент с оттенками фиолетового цвета</a></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="user-profile-portfolio-item">
-                                    <img  class="img-fluid" src="{{ asset('img/home/6.png') }}" alt="">
-                                    <div class="user-profile-portfolio-item-title">Иллюстрация обычного фрилансера</div>
+                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/6.png') }}" alt=""></a>
+                                    <div class="user-profile-portfolio-item-title"><a href="#">Иллюстрация обычного фрилансера</a></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="user-profile-portfolio-item">
+                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/7.jpg') }}" alt=""></a>
+                                    <div class="user-profile-portfolio-item-title"><a href="#">Иконка маршрутного такси.</a></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="user-profile-portfolio-item-alls">
                                     <img  class="img-fluid" src="{{ asset('img/home/7.jpg') }}" alt="">
-                                    <div class="user-profile-portfolio-item-title">Иконка маршрутного такси.</div>
+                                    <div class="user-profile-portfolio-item-alls-overlay">
+                                        <a href="#">
+                                            <div class="user-profile-portfolio-item-alls-number">+14</div>
+                                            <div class="user-profile-portfolio-item-alls-text">смотреть всё</div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -136,5 +151,11 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 
 @endsection
