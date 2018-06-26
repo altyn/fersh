@@ -40,6 +40,12 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
 
         Route::get('/name', 'FreelancerController@index');
+
+        Route::group(['prefix' => 'edit'], function(){
+
+            Route::get('/personal', 'FreelancerController@personal')->name('freelancer.edit.personal');
+            Route::get('/contacts', 'FreelancerController@contacts')->name('freelancer.edit.contacts');
+        });
     });
 
 //    Route::get('/profile', 'UserController@profile')->name('profile');

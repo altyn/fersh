@@ -143,3 +143,54 @@ header{
         animation: pd-fade-in 0.3s;
     }
 }
+
+
+.list{
+    &-menu{
+        padding: 0;
+        margin: 0;
+        font-family: $robotomedium;
+        list-style-type: none;
+        margin-bottom: 30px;
+        
+        &-title{
+            color: $orange;
+            font-family: $robotobold;
+            padding: 15px 20px;
+            background: rgba($color: $violetgray, $alpha: 0.1);
+        }
+        &-item{
+            border-bottom: 1px solid #eee;
+
+            &:last-child{
+                border-bottom: none;
+            }
+            
+            .jam{
+                padding-right: 5px;
+            }
+            
+            a{
+                padding: 15px;
+                position: relative;
+                display: block;
+                color: $violetgray;
+                background: rgba($color: $violetnew, $alpha: 0.06);
+                
+                &:hover{
+                    color: $violetnew;
+                    background: rgba($color: $violetnew, $alpha: 0.1);
+                }
+
+                &.active{
+                   color: $violetnew;
+                   background: rgba($color: $violetnew, $alpha: 0.1);
+                }
+            }
+
+            &-title{
+
+            }
+        }
+    }
+}

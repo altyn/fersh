@@ -14201,6 +14201,51 @@ a:visited {
   color: rgba(81, 80, 83, 0.5);
 }
 
+.btn-save,
+.btn-cancel {
+  background: #4BC04E;
+  color: #fff;
+  border-radius: 3px;
+  font-family: "roboto_regular", Arial, sans-serif;
+  padding: 5px 10px;
+  display: inline-block;
+}
+
+.btn-save:hover,
+.btn-save:active,
+.btn-cancel:hover,
+.btn-cancel:active {
+  background: rgba(75, 192, 78, 0.5);
+  color: #fff;
+}
+
+.btn-save:focus,
+.btn-save:visited,
+.btn-cancel:focus,
+.btn-cancel:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+}
+
+.btn-save {
+  background: #4BC04E;
+}
+
+.btn-save:hover,
+.btn-save:active {
+  background: rgba(75, 192, 78, 0.7);
+}
+
+.btn-cancel {
+  background: #ccd8ef;
+}
+
+.btn-cancel:hover,
+.btn-cancel:active {
+  background: rgba(204, 216, 239, 0.7);
+}
+
 .col-centered {
   float: none;
   margin: 0 auto !important;
@@ -14208,6 +14253,14 @@ a:visited {
 
 .display-none {
   display: none;
+}
+
+.inner {
+  margin: 40px 0;
+}
+
+.save {
+  margin: 30px 0;
 }
 
 header {
@@ -14341,6 +14394,51 @@ header {
   display: block;
   -webkit-animation: pd-fade-in 0.3s;
   animation: pd-fade-in 0.3s;
+}
+
+.list-menu {
+  padding: 0;
+  margin: 0;
+  font-family: "roboto_medium", Arial, sans-serif;
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+
+.list-menu-title {
+  color: #ff6908;
+  font-family: "roboto_bold", Arial, sans-serif;
+  padding: 15px 20px;
+  background: rgba(119, 125, 158, 0.1);
+}
+
+.list-menu-item {
+  border-bottom: 1px solid #eee;
+}
+
+.list-menu-item:last-child {
+  border-bottom: none;
+}
+
+.list-menu-item .jam {
+  padding-right: 5px;
+}
+
+.list-menu-item a {
+  padding: 15px;
+  position: relative;
+  display: block;
+  color: #777D9E;
+  background: rgba(116, 96, 238, 0.06);
+}
+
+.list-menu-item a:hover {
+  color: #7460EE;
+  background: rgba(116, 96, 238, 0.1);
+}
+
+.list-menu-item a.active {
+  color: #7460EE;
+  background: rgba(116, 96, 238, 0.1);
 }
 
 .sign {
@@ -15221,7 +15319,7 @@ tags > div span {
 }
 
 .user-profile-aside .profile-info-spec {
-  color: #666;
+  color: #777D9E;
   font-size: 16px;
   font-family: "roboto_medium", Arial, sans-serif;
 }
@@ -15449,5 +15547,16 @@ tags > div span {
 .user-profile-portfolio-item-alls-overlay a {
   color: #fff;
   text-align: center;
+}
+
+.user-profile-portfolio-item-alls-overlay a:hover {
+  border-bottom: 1px dashed;
+}
+
+.user-profile .infoform {
+  padding: 20px;
+  -webkit-box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
+          box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
+  height: 100%;
 }
 
