@@ -25,4 +25,24 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.edit.contacts');
     }
 
+    public function specialization(){
+
+        return view('web.user.profile.freelancer.edit.specialization');
+    }
+
+    public function portfolio(){
+
+        return view('web.user.profile.freelancer.edit.portfolio');
+    }
+
+    public function changepassword(){
+
+        return view('web.user.profile.freelancer.edit.changepassword');
+    }
+
+    public function notifications(){
+
+        return view('web.user.profile.freelancer.edit.notifications');
+    }
+
 }

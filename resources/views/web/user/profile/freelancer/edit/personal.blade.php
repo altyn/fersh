@@ -15,6 +15,9 @@
 
                 <div class="col-md-9 col-12">
                     <div class="infoform">
+                        <div class="infoform-title">
+                            <h6>Личная информация</h6>
+                        </div>
                         <div class="row">
                             <div class="form-group avatar-upload col-12">
                                 <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">

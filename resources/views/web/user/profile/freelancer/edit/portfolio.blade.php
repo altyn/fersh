@@ -29,6 +29,7 @@
                                 <input type="tel" name="contacts[{{app()->getLocale()}}][phone]" id="phone" placeholder="996 (555) 555-555" autocomplete="tel" maxlength="18" class="form-control" required />
                             </div>
                         </div>
+
                         <div class="form-group save">
                             <a href="#" class="btn btn-save mr-2" role="button">Сохранить</a>
                             <a href="#" class="btn btn-cancel" role="button">Отмена</a>

@@ -107,10 +107,10 @@ a:visited {
     }
 
     &-save {
-        background: $green;
+        background: $violetnew;
         &:hover,
         &:active {
-            background: rgba($color: $green, $alpha: 0.7);
+            background: rgba($color: $violetnew, $alpha: 0.7);
         }
     }
 

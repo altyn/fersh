@@ -2,7 +2,7 @@
                     <ul class="list-menu">
                         <li class="list-menu-item list-menu-title"><span class="jam jam-coin"></span>Финансы</li>
                         <li class="list-menu-item">
-                            <a href="#">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/tariff">
                                 <span class="jam jam-box"></span>
                                 <span class="list-menu-item-title">Тариф</span>
                             </a>
@@ -11,37 +11,37 @@
                     <ul class="list-menu">
                         <li class="list-menu-item list-menu-title"><span class="jam jam-alert"></span>Профиль</li>
                         <li class="list-menu-item">
-                            <a href="#" class="active">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/personal" class="active">
                                 <span class="jam jam-user"></span>
                                 <span class="list-menu-item-title">Личная информация</span>
                             </a>
                         </li>
                         <li class="list-menu-item">
-                            <a href="#">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/contacts">
                                 <span class="jam jam-phone"></span>
                                 <span class="list-menu-item-title">Контакты</span>
                             </a>
                         </li>
                         <li class="list-menu-item">
-                            <a href="#">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/specialization">
                                 <span class="jam jam-star"></span>
                                 <span class="list-menu-item-title">Специализация</span>
                             </a>
                         </li>
                         <li class="list-menu-item">
-                            <a href="#">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/portfolio">
                                 <span class="jam jam-picture"></span>
                                 <span class="list-menu-item-title">Портфолио</span>
                             </a>
                         </li>
                         <li class="list-menu-item">
-                            <a href="#">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/changepassword">
                                 <span class="jam jam-key"></span>
                                 <span class="list-menu-item-title">Смена пароля</span>
                             </a>
                         </li>
                         <li class="list-menu-item">
-                            <a href="#">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/personal/notifications">
                                 <span class="jam jam-inbox"></span>
                                 <span class="list-menu-item-title">Почтовые уведомления</span>
                             </a>

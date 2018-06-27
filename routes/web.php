@@ -42,9 +42,12 @@ Route::group(['prefix' => '/{lang}',], function (){
         Route::get('/name', 'FreelancerController@index');
 
         Route::group(['prefix' => 'edit'], function(){
-
-            Route::get('/personal', 'FreelancerController@personal')->name('freelancer.edit.personal');
-            Route::get('/contacts', 'FreelancerController@contacts')->name('freelancer.edit.contacts');
+            Route::get('/personal', 'FreelancerController@personal');
+            Route::get('/contacts', 'FreelancerController@contacts');
+            Route::get('/specialization', 'FreelancerController@specialization');
+            Route::get('/portfolio', 'FreelancerController@portfolio');
+            Route::get('/changepassword', 'FreelancerController@changepassword');
+            Route::get('/notifications', 'FreelancerController@notifications');
         });
     });
 

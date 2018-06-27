@@ -14229,12 +14229,12 @@ a:visited {
 }
 
 .btn-save {
-  background: #4BC04E;
+  background: #7460EE;
 }
 
 .btn-save:hover,
 .btn-save:active {
-  background: rgba(75, 192, 78, 0.7);
+  background: rgba(116, 96, 238, 0.7);
 }
 
 .btn-cancel {
@@ -15558,5 +15558,16 @@ tags > div span {
   -webkit-box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
           box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
   height: 100%;
+}
+
+.user-profile .infoform-title {
+  font-family: "roboto_bold", Arial, sans-serif;
+  color: #7460EE;
+  margin-bottom: 15px;
+}
+
+.user-profile .infoform-title h6 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
 }
 
