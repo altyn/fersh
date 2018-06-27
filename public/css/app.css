@@ -15300,6 +15300,30 @@ tags > div span {
   border-radius: 50%;
 }
 
+.user-profile-aside .profile-ava .noverify {
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 6px solid white;
+  margin: 0 auto;
+  bottom: -20px;
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+  background: #fff;
+}
+
+.user-profile-aside .profile-ava .noverify .jam {
+  color: #fff;
+  background: #515053;
+  font-weight: bold;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
 .user-profile-aside .profile-title {
   font-size: 13px;
   color: #7460EE;

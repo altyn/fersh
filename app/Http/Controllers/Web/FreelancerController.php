@@ -19,8 +19,13 @@ class FreelancerController extends Controller
 
     public function index(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
-        return view('web.user.profile.freelancer.index', compact('freelancer'));
-//        return $freelancer;
+        // dd($freelancer);
+        $birthDate = explode("-", $freelancer->birthday);
+        $age = (date("Y") - $birthDate[0]);
+        $country = Country::where('country_id', $freelancer->country)->first();
+        $isVerify = User::where('id', auth()->id())->first();
+
+        return view('web.user.profile.freelancer.index', compact('freelancer', 'country', 'age', 'isVerify'));
     }
 
     public function edit(){

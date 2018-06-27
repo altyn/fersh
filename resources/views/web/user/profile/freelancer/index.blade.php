@@ -15,14 +15,18 @@
                         <div class="profile-ava-img">
                             <img class="img-fluid"  src="{{ asset('img/home/ava.jpg') }}" alt="">
                         </div>
+                        @if($isVerify->activated == '1')
+                        {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
+                        @else
                         <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
+                        @endif
                     </div>
                     <div class="profile-info">
                         <div class="profile-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}}</div>
-                        <div class="profile-info-spec">Веб дизайнер</div>
+                        <div class="profile-info-spec">{{ $freelancer->bio['ru']['short'] }}</div>
                         <div class="profile-info-loc"> 
                             <span class="profile-info-loc-span">
-                            </span>Кыргызстан, {{ $freelancer->city }}, 28 лет
+                            </span>{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет
                         </div>
                     </div>
                     <div class="profile-info-contact">
@@ -44,7 +48,7 @@
                         </h6>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Зарегистрирован</div>
-                            <div class="profile-info-contact-body">25.10.2017</div>
+                            <div class="profile-info-contact-body">{{ $freelancer->getdate() }}</div>
                         </div>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Был последний раз</div>

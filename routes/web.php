@@ -45,8 +45,6 @@ Route::group(['prefix' => '/{lang}',], function (){
             Route::get('/changepassword', 'FreelancerController@changepassword');
             Route::get('/notifications', 'FreelancerController@notifications');
         });
-
-        
     });
 
 //    Route::get('/profile', 'UserController@profile')->name('profile');
