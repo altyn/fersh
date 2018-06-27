@@ -85,10 +85,10 @@
                                         </div>
                                         <div class="col">
                                             <select class="form-control" id="year" name="year">
-                                                <option selected 
                                                 @if($freelancer->birthday)
-                                                    value="{{ date('Y', strtotime($freelancer->birthday))  }}"> {{ date('Y', strtotime($freelancer->birthday)) }}
-                                                @endif</option>
+                                                <option selected value="{{ date('Y', strtotime($freelancer->birthday))  }}"> {{ date('Y', strtotime($freelancer->birthday)) }}
+                                                </option>
+                                                @endif
                                                 @for($i = 2001; $i > 1960; $i--)
                                                     <option value="{{$i}}">{{$i}}</option>
                                                 @endfor

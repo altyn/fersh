@@ -13,7 +13,7 @@
                 <div class="user-profile-aside">
                     <div class="profile-ava">
                         <div class="profile-ava-img">
-                            <img class="img-fluid"  src="{{ asset('img/home/ava.jpg') }}" alt="">
+                            <img class="img-fluid"  src="{{ asset($freelancer->avatar) }}" alt="">
                         </div>
                         @if($isVerify->activated == '1')
                         {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
