@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('errorTitle', app()->getLocale() == 'ru' ? 'Не найдена' : ((app()->getLocale() == 'ky') ? 'Табылган жок' : 'Not found'));
             $view->with('translations',  Translation::getAll());
             $view->with('current_url', Request::capture()->segment(2));
+            $view->with('current_four', Request::capture()->segment(4));
             $view->with('current_path', substr(Request::capture()->path(), 3));
             $view->with('home', '/'.Request::capture()->segment(1));
             $view->with('locale', \Request::getRequestUri());

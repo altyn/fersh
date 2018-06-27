@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="form-group save">
-                            <a href="#" class="btn btn-save mr-2" role="button">Сохранить</a>
+                            <button type="submit" class="btn btn-save mr-2">Сохранить</button>
                             <a href="#" class="btn btn-cancel" role="button">Отмена</a>
                         </div>
                     </div>

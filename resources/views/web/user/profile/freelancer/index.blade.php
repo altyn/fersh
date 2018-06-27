@@ -62,11 +62,19 @@
                     <div class="user-profile-content-body">
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Стоимость работы:</div>
-                            <div class="user-profile-content-list-body">от {{ $freelancer->spec['ru']['rate'] }} сомов. за проект</div>
+                            <div class="user-profile-content-list-body">от 
+                                @if(!empty($freelancer->spec['ru']['rate']))
+                                {{ $freelancer->spec['ru']['rate'] }} 
+                                @endif
+                                сомов. за проект</div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
-                            <div class="user-profile-content-list-body">Более {{ $freelancer->spec['ru']['experience'] }} лет </div>
+                            <div class="user-profile-content-list-body">Более
+                                @if(!empty($freelancer->spec['ru']['experience']))
+                                {{ $freelancer->spec['ru']['experience'] }} 
+                                @endif
+                                лет </div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Форма собственности:</div>

@@ -2,7 +2,12 @@
 
 @section('title', 'Freelance.kg' )
 
+<link rel="stylesheet" href="{{ asset('/css/tagify.css')}}">
+
 @section('styles')
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('/css/_profile_info.css') }}">
 
 @endsection
 
@@ -105,7 +110,7 @@
                         </div>
 
                         <div class="form-group save">
-                            <a href="#" class="btn btn-save mr-2" role="button">Сохранить</a>
+                            <button type="submit" class="btn btn-save mr-2">Сохранить</button>
                             <a href="#" class="btn btn-cancel" role="button">Отмена</a>
                         </div>
                     </div>
@@ -118,19 +123,37 @@
 
 @section('scripts')
 
+<script src="{{ asset('/js/tagify.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 <script>
-    document.getElementById('getval').addEventListener('change', readURL, true);
-    function readURL(){
-        var file = document.getElementById("getval").files[0];
-        var reader = new FileReader();
-        reader.onloadend = function(){
-            document.getElementById('avatar-upload').style.backgroundImage = "url(" + reader.result + ")";        
-        }
-        if(file){
-            reader.readAsDataURL(file);
-        }else{
-        }
+    var skillsInput = document.querySelector('input[id=skills]'),
+        skills = new Tagify(skillsInput, {
+            whitelist: []
+        })
+
+    skills.on('remove', onRemoveTag);
+    function onRemoveTag(e) {
+        console.log(e, e.detail);
     }
+    function onAddTag(e) {
+        console.log(e, e.detail);
+    }
+
+
+    var url = "{{ asset('js/datamini.json') }}";
+    jQuery.getJSON(url).done(
+        function (data) {
+            jQuery('.sphera-multi').select2({
+                placeholder: 'Выберите сферу',
+                allowClear: true,
+                multiple: false,
+                data: data,
+                theme: "bootstrap4",
+                width: '100%',
+            });
+        }
+    );
 </script>
 
 @endsection

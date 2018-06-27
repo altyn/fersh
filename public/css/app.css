@@ -14206,7 +14206,7 @@ a:visited {
   background: #4BC04E;
   color: #fff;
   border-radius: 3px;
-  font-family: "roboto_regular", Arial, sans-serif;
+  font-family: "roboto_light", Arial, sans-serif;
   padding: 5px 10px;
   display: inline-block;
 }
@@ -15557,7 +15557,7 @@ tags > div span {
   padding: 20px;
   -webkit-box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
           box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
-  height: 100%;
+  border-radius: 3px;
 }
 
 .user-profile .infoform-title {
