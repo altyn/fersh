@@ -113,8 +113,8 @@
                             @if(isset($freelancer->bio['ru']['short']))
                                 {{ $freelancer->bio['ru']['short'] }}
                             @endif
-                        </br>
-                        </br>
+                        <br>
+                        <br>
                             @if(isset($freelancer->bio['ru']['full']))
                                 {{ $freelancer->bio['ru']['full'] }}
                             @endif
@@ -123,10 +123,7 @@
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-skill-title">Услуги</div>
                             <ul class="user-profile-content-list-skill-list">
-                                <li><span>Adobe Photoshop</span></li>
-                                <li><span>Adobe XD</span></li>
-                                <li><span>UI/UX</span></li>
-                                <li><span>Брендбуки</span></li>
+                                <li><span>{{ $freelancer->spec['ru']['skills'] }}</span></li>
                             </ul>
                         </div>
                     </div>

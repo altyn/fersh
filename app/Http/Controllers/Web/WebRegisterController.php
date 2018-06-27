@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\WelcomeInfoMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class WebRegisterController extends RegisterController
@@ -56,6 +58,7 @@ class WebRegisterController extends RegisterController
             if($row)
             {
                 $to_email = $data['email'];
+                Mail::to($to_email)->send(new WelcomeInfoMail($row));
                 return view('web.user.success', compact('to_email'));
             } else {
                 return back();
