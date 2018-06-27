@@ -20,12 +20,16 @@ class FreelancerController extends Controller
     public function index(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
         // dd($freelancer);
-        $birthDate = explode("-", $freelancer->birthday);
-        $age = (date("Y") - $birthDate[0]);
-        $country = Country::where('country_id', $freelancer->country)->first();
-        $isVerify = User::where('id', auth()->id())->first();
-
-        return view('web.user.profile.freelancer.index', compact('freelancer', 'country', 'age', 'isVerify'));
+        
+        if($freelancer == null){
+            return redirect(app()->getLocale().'/profile/info');
+        }else{
+            $birthDate = explode("-", $freelancer->birthday);
+            $age = (date("Y") - $birthDate[0]);
+            $country = Country::where('country_id', $freelancer->country)->first();
+            $isVerify = User::where('id', auth()->id())->first();
+            return view('web.user.profile.freelancer.index', compact('freelancer', 'country', 'age', 'isVerify'));
+        }
     }
 
     public function edit(){
@@ -45,8 +49,29 @@ class FreelancerController extends Controller
     }
 
     public function specialization(){
+        $freelancer = UserDetails::where('user_id', auth()->id())->first();
 
-        return view('web.user.profile.freelancer.edit.specialization');
+        // $data = asset('js/datamini.json');
+
+        $string = file_get_contents(asset('js/datamini.json'));
+        $json_a=json_decode($string,true);
+        
+        foreach ($json_a as $key => $value){
+            if($freelancer->spec['ru']['sphere'] == $value['id']){
+                $sphere = $value;
+                break;
+            }
+        }
+
+
+        return view('web.user.profile.freelancer.edit.specialization', compact('freelancer', 'sphere'));
+    }
+
+    public function specializationPost(Request $request){
+
+        $row = UserDetails::where('user_id', auth()->id())->first();
+        $row->update($request->all());
+        return Redirect::back()->withSuccess('Личная информация обновлена');
     }
 
     public function portfolio(){
