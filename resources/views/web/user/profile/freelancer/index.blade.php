@@ -18,11 +18,11 @@
                         <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
                     </div>
                     <div class="profile-info">
-                        <div class="profile-info-name">Яна Куликовская</div>
+                        <div class="profile-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}}</div>
                         <div class="profile-info-spec">Веб дизайнер</div>
                         <div class="profile-info-loc"> 
                             <span class="profile-info-loc-span">
-                            </span>Кыргызстан, Бишкек, 28 лет
+                            </span>Кыргызстан, {{ $freelancer->city }}, 28 лет
                         </div>
                     </div>
                     <div class="profile-info-contact">
@@ -31,11 +31,11 @@
                         </h6>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Электронный адрес</div>
-                            <div class="profile-info-contact-body">eldos.kadyrov@gmail.com</div>
+                            <div class="profile-info-contact-body">{{ $freelancer->contacts['ru']['email'] }}</div>
                         </div>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Телефонный номер</div>
-                            <div class="profile-info-contact-body">+996 555 555 555</div>
+                            <div class="profile-info-contact-body">{{ $freelancer->contacts['ru']['phone'] }}</div>
                         </div>
                     </div>
                     <div class="profile-info-contact">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Был последний раз</div>
-                            <div class="profile-info-contact-body">24.06.2018</div>
+                            <div class="profile-info-contact-body">{{ date('d.m.Y') }}</div>
                         </div>
                     </div>
                    
@@ -62,26 +62,50 @@
                     <div class="user-profile-content-body">
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Стоимость работы:</div>
-                            <div class="user-profile-content-list-body">от 30 000 сомов. за проект</div>
+                            <div class="user-profile-content-list-body">от {{ $freelancer->spec['ru']['rate'] }} сомов. за проект</div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
-                            <div class="user-profile-content-list-body">Более 5 лет </div>
+                            <div class="user-profile-content-list-body">Более {{ $freelancer->spec['ru']['experience'] }} лет </div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Форма собственности:</div>
-                            <div class="user-profile-content-list-body">ИП, Физ. лицо</div>
+                            <div class="user-profile-content-list-body">
+                                @if(isset($freelancer->spec['ru']['firm']['LLC']))
+                                    Юр лицо,
+                                @endif
+                                @if(isset($freelancer->spec['ru']['firm']['self']))
+                                    ИП,
+                                @endif
+                                @if(isset($freelancer->spec['ru']['firm']['own_company']))
+                                    Физ. лицо
+                                @endif
+                            </div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Способы оплаты:</div>
-                            <div class="user-profile-content-list-body">наличный расчёт, безналичный расчёт, электронные деньги</div>
+                            <div class="user-profile-content-list-body">
+                                @if(isset($freelancer->spec['ru']['payment_method']['cash']))
+                                    наличный расчёт,
+                                @endif
+                                @if(isset($freelancer->spec['ru']['payment_method']['bank']))
+                                    безналичный расчёт,
+                                @endif
+                                @if(isset($freelancer->spec['ru']['payment_method']['electron']))
+                                    электронные деньги
+                                @endif
+                            </div>
                         </div>
 
                         <div class="user-profile-content-about">
-                            Занимаюсь разработкой логотипов, фирменного стиля, иконок, рекламных, журнальных и книжных иллюстраций. Рисую открытки, иллюстрации для web, для рекламы и бизнеса.
+                            @if(isset($freelancer->bio['ru']['short']))
+                                {{ $freelancer->bio['ru']['short'] }}
+                            @endif
                         </br>
                         </br>
-                            Занимаюсь разработкой логотипов, фирменного стиля, иконок, рекламных, журнальных и книжных иллюстраций. Рисую открытки, иллюстрации для web, для рекламы и бизнеса. Занимаюсь разработкой логотипов, фирменного стиля, иконок, рекламных, журнальных и книжных иллюстраций. Рисую открытки, иллюстрации для web, для рекламы и бизнеса. 
+                            @if(isset($freelancer->bio['ru']['full']))
+                                {{ $freelancer->bio['ru']['full'] }}
+                            @endif
                         </div>
 
                         <div class="user-profile-content-list">

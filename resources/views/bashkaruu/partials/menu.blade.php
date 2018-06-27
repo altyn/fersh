@@ -119,6 +119,7 @@
             </a>
             <div class="sub-menu-w">
                 <ul class="sub-menu">
+                    <li><a href="{{ route('freelancers.index') }}">Все</a></li>
                     <li><a href="#">Активные</a></li>
                     <li><a href="#">Неактивные</a></li>
                 </ul>
