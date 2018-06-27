@@ -123,7 +123,11 @@
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-skill-title">Услуги</div>
                             <ul class="user-profile-content-list-skill-list">
-                                <li><span>{{ $freelancer->spec['ru']['skills'] }}</span></li>
+                                @if($skills)
+                                    @foreach($skills as $skill)
+                                        <li><span>{{ $skill }}</span></li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>

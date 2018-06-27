@@ -18,7 +18,7 @@
                         <div class="infoform-title">
                             <h6>Изменить пароль</h6>
                         </div>
-                        <form action="{{ route('freelancerChangepassword') }}" method="POST">
+                        <form action="/{{app()->getLocale()}}/freelancer/edit/changepassword" method="POST">
                             @csrf
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">

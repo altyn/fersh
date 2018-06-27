@@ -23,7 +23,7 @@
                         <div class="infoform-title">
                             <h6>Специализация</h6>
                         </div>
-                        <form action="{{ route('specializationPost') }}" method="POST">
+                        <form action="/{{app()->getLocale()}}/freelancer/edit/personal" method="POST">
                             @csrf
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">

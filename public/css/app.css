@@ -14717,93 +14717,69 @@ header {
 }
 
 .infoform .avatar-upload {
-  margin-bottom: 15px;
-}
-
-.infoform .avatar-upload #avatar-upload {
-  background-image: url("");
-  background-size: cover;
-  background-position: center;
-  height: 160px;
-  width: 160px;
-  border: 1px solid #dee2e6;
   position: relative;
-  margin: 0 auto;
-  border-radius: 50%;
+  max-width: 205px;
+  margin: 20px auto;
 }
 
-.infoform .avatar-upload #avatar-upload:hover input.upload {
-  display: block;
+.infoform .avatar-upload .btn-file {
+  position: absolute;
+  right: 12px;
+  z-index: 99 !important;
+  top: 10px;
 }
 
-.infoform .avatar-upload #avatar-upload:hover .hvr-rectangle-out {
+.infoform .avatar-upload .btn-file label {
   display: inline-block;
-}
-
-.infoform .avatar-upload #avatar-upload .jam {
-  margin: auto;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  text-align: right;
-  right: 0;
-  color: #656d9c;
-  padding: 6px;
-  pointer: none;
-  font-size: 20px;
-}
-
-.infoform .avatar-upload #avatar-upload .upload-img.jam {
-  margin: auto;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  right: 0;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 6px;
-  pointer: none;
-}
-
-.infoform .avatar-upload #avatar-upload-title {
-  color: #656d9c;
-  text-align: center;
-}
-
-.infoform .avatar-upload .upload-img {
-  opacity: 0;
-  -webkit-transition: opacity 1s linear;
-  transition: opacity 1s linear;
-}
-
-.infoform .avatar-upload #profile-upload:hover + .upload-img {
-  opacity: 1;
-}
-
-.infoform .avatar-upload input.upload {
-  z-index: 1;
-  left: 0;
-  margin: 0;
-  bottom: 0;
-  top: 0;
-  padding: 0;
-  opacity: 0;
-  outline: none;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  position: absolute;
-  background: #ccc;
-  width: 100%;
-  display: none;
+  font-weight: normal;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  z-index: 100 !important;
 }
 
-.infoform .avatar-upload .hvr-rectangle-out {
+.infoform .avatar-upload .btn-file label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+
+.infoform .avatar-upload .btn-file label span.jam {
+  color: #757575;
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.infoform .avatar-upload .fileinput-preview,
+.infoform .avatar-upload .thumbnail {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.infoform .avatar-upload .fileinput-preview img,
+.infoform .avatar-upload .thumbnail img {
   width: 100%;
   height: 100%;
-  display: none;
-  position: absolute;
-  vertical-align: middle;
-  position: relative;
-  background: transparent;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .infoform .form-control {

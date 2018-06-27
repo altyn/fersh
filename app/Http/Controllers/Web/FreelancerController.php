@@ -14,38 +14,39 @@ use Illuminate\Support\Facades\Hash;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 class FreelancerController extends Controller
 {
 
-    public function index(){
-        $freelancer = UserDetails::where('user_id', auth()->id())->first();
-        // dd($freelancer);
-        
+    
+    public function index($lang, $id){
+        $freelancer = UserDetails::where('user_id', $id)->first();
+
         if($freelancer == null){
             return redirect(app()->getLocale().'/profile/info');
         }else{
             $birthDate = explode("-", $freelancer->birthday);
             $age = (date("Y") - $birthDate[0]);
             $country = Country::where('country_id', $freelancer->country)->first();
-            $isVerify = User::where('id', auth()->id())->first();
-            return view('web.user.profile.freelancer.index', compact('freelancer', 'country', 'age', 'isVerify'));
+            $isVerify = User::where('id', $id)->first();
+            $skills = explode(',', $freelancer->spec['ru']['skills']);
+            return view('web.user.profile.freelancer.index', compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
         }
-    }
-
-    public function edit(){
-
-        return redirect(app()->getLocale().'/freelancer/edit/personal');
     }
 
     public function personal(){
 
-        $data['countries'] = Country::orderBy('country_id', 'asc')->get();
-        return view('web.user.profile.freelancer.edit.personal', $data);
+        $freelancer = UserDetails::where('user_id', auth()->id())->first();
+        $countries = Country::orderBy('country_id', 'asc')->get();
+
+        return view('web.user.profile.freelancer.edit.personal', compact('freelancer', 'countries'));
     }
 
     public function contacts(){
+        $freelancer = UserDetails::where('user_id', auth()->id())->first();
 
-        return view('web.user.profile.freelancer.edit.contacts');
+        return view('web.user.profile.freelancer.edit.contacts', compact('freelancer'));
     }
 
     public function specialization(){
@@ -54,7 +55,7 @@ class FreelancerController extends Controller
         // $data = asset('js/datamini.json');
 
         $string = file_get_contents(asset('js/datamini.json'));
-        $json_a=json_decode($string,true);
+        $json_a = json_decode($string,true);
         
         foreach ($json_a as $key => $value){
             if($freelancer->spec['ru']['sphere'] == $value['id']){
@@ -67,11 +68,35 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.edit.specialization', compact('freelancer', 'sphere'));
     }
 
-    public function specializationPost(Request $request){
+    public function updateFreelancer(Request $request){
 
         $row = UserDetails::where('user_id', auth()->id())->first();
-        $row->update($request->all());
-        return Redirect::back()->withSuccess('Личная информация обновлена');
+        $row->update($request->except('avatar'));
+
+        if($request->hasFile('avatar'))
+        {
+            $file = $request->file('avatar');
+            $dir  = 'img/freelancer/avatar/'.$row->id.'/';
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
+            }
+
+            $btw = time();
+
+            $name50 = $btw.uniqid().'50.'.$file->getClientOriginalExtension();
+            $name85 = $btw.uniqid().'85.'.$file->getClientOriginalExtension();
+            $name100 = $btw.uniqid().'100.'.$file->getClientOriginalExtension();
+            $name180 = $btw.uniqid().'180.'.$file->getClientOriginalExtension();
+            Image::make($_FILES['avatar']['tmp_name'])->fit(50, 50)->save($dir.$name50);
+            Image::make($_FILES['avatar']['tmp_name'])->fit(85, 85)->save($dir.$name85);
+            Image::make($_FILES['avatar']['tmp_name'])->fit(100, 100)->save($dir.$name100);
+            Image::make($_FILES['avatar']['tmp_name'])->fit(180, 180)->save($dir.$name180);
+
+            $row->avatar = $dir.$name180;
+            $row->save();
+        }
+        
+        return Redirect::back()->withSuccess('Информация обновлена');
     }
 
     public function portfolio(){
