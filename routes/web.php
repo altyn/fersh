@@ -35,6 +35,16 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
         Route::get('/name', 'FreelancerController@index');
+
+        Route::group(['prefix' => 'edit'], function(){
+            Route::get('/', 'FreelancerController@edit');
+            Route::get('/personal', 'FreelancerController@personal');
+            Route::get('/contacts', 'FreelancerController@contacts');
+            Route::get('/specialization', 'FreelancerController@specialization');
+            Route::get('/portfolio', 'FreelancerController@portfolio');
+            Route::get('/changepassword', 'FreelancerController@changepassword');
+            Route::get('/notifications', 'FreelancerController@notifications');
+        });
     });
 
 //    Route::get('/profile', 'UserController@profile')->name('profile');
@@ -44,6 +54,7 @@ Route::group(['prefix' => '/{lang}',], function (){
 Auth::routes();
 
 Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
+Route::name('freelancerChangepassword')->post('ru/freelancer/edit/changepassword', 'FreelancerController@changepasswordPost')->middleware('auth');
 
 Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback/', 'WebAuthController@handleProviderCallback');

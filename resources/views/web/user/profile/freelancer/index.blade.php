@@ -15,14 +15,18 @@
                         <div class="profile-ava-img">
                             <img class="img-fluid"  src="{{ asset('img/home/ava.jpg') }}" alt="">
                         </div>
+                        @if($isVerify->activated == '1')
+                        {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
+                        @else
                         <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
+                        @endif
                     </div>
                     <div class="profile-info">
                         <div class="profile-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}}</div>
-                        <div class="profile-info-spec">Веб дизайнер</div>
+                        <div class="profile-info-spec">{{ $freelancer->bio['ru']['short'] }}</div>
                         <div class="profile-info-loc"> 
                             <span class="profile-info-loc-span">
-                            </span>Кыргызстан, {{ $freelancer->city }}, 28 лет
+                            </span>{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет
                         </div>
                     </div>
                     <div class="profile-info-contact">
@@ -44,7 +48,7 @@
                         </h6>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Зарегистрирован</div>
-                            <div class="profile-info-contact-body">25.10.2017</div>
+                            <div class="profile-info-contact-body">{{ $freelancer->getdate() }}</div>
                         </div>
                         <div class="profile-info-contact-list">
                             <div class="profile-info-contact-capture">Был последний раз</div>
@@ -62,11 +66,19 @@
                     <div class="user-profile-content-body">
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Стоимость работы:</div>
-                            <div class="user-profile-content-list-body">от {{ $freelancer->spec['ru']['rate'] }} сомов. за проект</div>
+                            <div class="user-profile-content-list-body">от 
+                                @if(!empty($freelancer->spec['ru']['rate']))
+                                {{ $freelancer->spec['ru']['rate'] }} 
+                                @endif
+                                сомов. за проект</div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
-                            <div class="user-profile-content-list-body">Более {{ $freelancer->spec['ru']['experience'] }} лет </div>
+                            <div class="user-profile-content-list-body">Более
+                                @if(!empty($freelancer->spec['ru']['experience']))
+                                {{ $freelancer->spec['ru']['experience'] }} 
+                                @endif
+                                лет </div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Форма собственности:</div>

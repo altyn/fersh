@@ -149,7 +149,7 @@
                             </div>
                             <div class="form-group col-md-6 col-12">
                                 <label for="phone">Ваш номер телефона <span class="required">*</span></label>
-                                <input type="tel" name="contacts[{{app()->getLocale()}}][phone]" id="phone" placeholder="996 (555) 555-555" autocomplete="tel" maxlength="18" class="form-control" required />
+                                <input type="tel" name="contacts[{{app()->getLocale()}}][phone]" id="phone" placeholder="+996 555 555-555"  class="form-control" required />
                             </div>
                         </div>
                     </div>
@@ -370,11 +370,6 @@
         }else{
         }
     }
-
-    document.getElementById('phone').addEventListener('input', function (e) {
-        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})/);
-        e.target.value = !x[2] ? x[1] : '+' + x[1] + ' (' + x[2] + ') ' + x[3] + (x[3] ? '-' + x[3] : '');
-    });
 
 </script>
 

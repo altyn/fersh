@@ -21,6 +21,8 @@ class ModelName extends Model
         'contacts',
         'spec',
         'bio',
+        'created_at',
+        'updated_at'
     ];
 
     protected $casts = [
@@ -32,6 +34,14 @@ class ModelName extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Methods
+    public function getDate()
+    {
+        $fullDate = $this->created_at;
+        $date = date('d.m.Y', strtotime($fullDate));
+        return $date;
     }
 
 }

@@ -85,4 +85,40 @@ a:visited {
             }
         }
     }
+
+    &-save,
+    &-cancel {
+        background: $green;
+        color: #fff;
+        border-radius: 3px;
+        font-family: $robotolight;
+        padding: 5px 10px;
+        display: inline-block;
+        &:hover,
+        &:active {
+            background: rgba($color: $green, $alpha: 0.5);
+            color: #fff;
+        }
+        &:focus,
+        &:visited {
+            box-shadow: none;
+            color: #fff;
+        }
+    }
+
+    &-save {
+        background: $violetnew;
+        &:hover,
+        &:active {
+            background: rgba($color: $violetnew, $alpha: 0.7);
+        }
+    }
+
+    &-cancel {
+        background: $bluehalf;
+        &:hover,
+        &:active {
+            background: rgba($color: $bluehalf, $alpha: 0.7);
+        }
+    }
 }

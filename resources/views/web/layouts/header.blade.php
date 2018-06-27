@@ -21,7 +21,8 @@
                                 <span class="user-header-link-login">{{ Auth::user()->login }} <span class="jam jam-chevron-down"></span></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/name"><span class="jam jam-user-circle"></span>Профиль</a>
+                                <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/name"><span class="jam jam-user-circle"></span>Профиль</a>
+                                <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/edit"><span class="jam jam-cog"></span>Настройки</a>
                                 <a class="dropdown-item" href="#"><span class="jam jam-log-out"></span>Выход</a>
                             </div>
                         </li>
