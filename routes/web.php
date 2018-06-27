@@ -28,17 +28,12 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::get('/sign_up', 'WebAuthController@signUpForm')->name('web.register');
     Route::post('/sign_up', 'WebRegisterController@register')->name('web.register.post');
 
-
-    // Password Reset Routes...
-
     Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
-
         Route::get('/', 'UserController@profile')->name('profile');
         Route::get('/info', 'UserController@profileInfo')->name('profile.info');
     });
 
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
-
         Route::get('/name', 'FreelancerController@index');
 
         Route::group(['prefix' => 'edit'], function(){
@@ -56,7 +51,6 @@ Route::group(['prefix' => '/{lang}',], function (){
 });
 
 Auth::routes();
-
 
 Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
 
