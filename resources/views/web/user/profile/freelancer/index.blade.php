@@ -14,7 +14,7 @@
                     <div class="profile-ava">
                         <div class="profile-ava-img">
                             @if(isset($freelancer->avatar['100x100']))
-                            <img class="img-fluid"  src="{{ asset($freelancer->avatar['100x100']) }}" alt="">
+                                <img class="img-fluid"  src="{{ asset($freelancer->avatar['100x100']) }}" alt="">
                             @endif
                         </div>
                         @if($isVerify->activated == '1')

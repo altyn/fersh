@@ -18,8 +18,11 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class FreelancerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    
     public function index($lang, $id){
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
 
@@ -37,16 +40,13 @@ class FreelancerController extends Controller
     }
 
     public function personal(){
-
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
         $countries = Country::orderBy('country_id', 'asc')->get();
-
         return view('web.user.profile.freelancer.edit.personal', compact('freelancer', 'countries'));
     }
 
     public function contacts(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
-
         return view('web.user.profile.freelancer.edit.contacts', compact('freelancer'));
     }
 
@@ -110,7 +110,6 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.edit.portfolio');
     }
 
-    
     public function notifications(){
         
         return view('web.user.profile.freelancer.edit.notifications');
