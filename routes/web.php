@@ -47,6 +47,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     });
 
     Route::name('updateFreelancer')->post('/freelancer/edit/personal', 'FreelancerController@updateFreelancer');
+    Route::name('deleteFreelancerAvatar')->post('/freelancer/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
     Route::name('freelancerChangepassword')->post('/freelancer/edit/changepassword', 'FreelancerController@changepasswordPost');
 //    Route::get('/profile', 'UserController@profile')->name('profile');
 //    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');

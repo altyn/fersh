@@ -6,13 +6,14 @@
 @section('styles')
 
 <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('/css/_profile_info.css') }}">
 
 @endsection
 
 @section('content')
 <div class="container">
-    <form action="/profile/info" method="POST" id="myForm" role="form" data-toggle="validator" class="needs-validation" novalidate>
+    <form action="/profile/info" method="POST" id="myForm" role="form" data-toggle="validator" class="needs-validation" novalidate enctype="multipart/form-data">
     @csrf
         <div id="stepbystep">
             <ul>
@@ -30,16 +31,15 @@
                     <div class="step-content-inner col-centered col-md-8 col-12" id="form-step-0" role="form" data-toggle="validator" novalidate="true">
                         <div class="row">
                             <div class="form-group avatar-upload col-12">
-                                <div id='avatar-upload' style="background-image: url('{{ asset('img/sign/avatar.png') }}')">
-                                    <div class="hvr-rectangle-out">
-                                        <input type="file" name="avatar" id='getval'  class="upload w180" id="imag">
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail">
                                     </div>
-                                    <div class="upload-img">
-                                        <span class="jam jam-camera">upload Image</span>
-                                    </div>
-                                        <span class="jam jam-camera"></span>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput"></div>
+                                    <span class="btn btn-default btn-file">
+                                        <label for="imageUpload"><span class="jam jam-pencil"></span></label>
+                                        {!! Form::file('avatar', null, ["class" => "form-control"]) !!}
+                                    </span>
                                 </div>
-                                <div id="avatar-upload-title">Загрузите Ваше фото</div>
                             </div>
                         </div>
                         <div class="row">
@@ -274,6 +274,7 @@
 
 @endsection @section('scripts')
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <script src="{{ asset('/js/tagify.js')}}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="{{ mix('/js/smartwizard.js')}}"></script>
@@ -358,18 +359,6 @@
         }
     );
 
-    document.getElementById('getval').addEventListener('change', readURL, true);
-    function readURL(){
-        var file = document.getElementById("getval").files[0];
-        var reader = new FileReader();
-        reader.onloadend = function(){
-            document.getElementById('avatar-upload').style.backgroundImage = "url(" + reader.result + ")";        
-        }
-        if(file){
-            reader.readAsDataURL(file);
-        }else{
-        }
-    }
 
 </script>
 

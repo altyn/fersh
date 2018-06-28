@@ -31,13 +31,16 @@
                                 <div class="form-group avatar-upload col-12">
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail">
-                                            <img class="img-fluid" src="{{ asset($freelancer->avatar['100x100']) }}">
+                                            @if($freelancer->avatar)
+                                            <img src="{{ asset($freelancer->avatar['360x360']) }}">
+                                            @endif
                                         </div>
                                         <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput"></div>
                                         <span class="btn btn-default btn-file">
                                             <label for="imageUpload"><span class="jam jam-pencil"></span></label>
                                             {!! Form::file('avatar', null, ["class" => "form-control"]) !!}
                                         </span>
+                                        <a href="/{{app()->getLocale()}}/freelancer/edit/deletefreelanceravatar" onclick="event.preventDefault(); document.getElementById('delete-avatar').submit();" class="delete-avatar">Удалить аватар</a>
                                     </div>
                                 </div>
                             </div>
@@ -152,6 +155,9 @@
                                 <button type="submit" class="btn btn-save mr-2">Сохранить</button>
                                 <a href="#" class="btn btn-cancel" role="button">Отмена</a>
                             </div>
+                        </form>
+                        <form id="delete-avatar" action="/{{app()->getLocale()}}/freelancer/edit/deletefreelanceravatar" method="POST" style="display: none;">
+                            {{ csrf_field() }}
                         </form>
                     </div>
                 </div>

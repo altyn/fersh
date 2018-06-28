@@ -4,6 +4,7 @@
             line-height: 35px;
             white-space: nowrap;
 
+
             &-img, &-login{
                 display: inline-block;
                 vertical-align: middle;
@@ -11,11 +12,12 @@
 
             &-img{
                 border-radius: 50%;
-                border: 1px solid #eee;
-                // img{
-                //     height: 40px;
-                //     width: auto;
-                // }
+                overflow: hidden;
+                margin: 0 5px;
+                img{
+                    height: 36px;
+                    width: auto;
+                }
             }
             &-login{
                 color: $black;
@@ -89,12 +91,36 @@
                         -moz-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
                         -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
                         
-                        img {
+                        img,  .no-ava{
                             position: absolute;
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
-    
+                        }
+                        .no-ava{                            
+                            height: 100%;
+                            width: 100%;
+                            margin: 0 auto;
+
+                            display: -webkit-box;
+                            display: flex;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            flex-flow: column;
+
+                            font-family: $robotolight;
+                            color: $black2;
+
+                            &:hover{
+                                background: $gray;
+                            }
+
+                            span{
+                                border-bottom: 1px dashed rgba($color: $black2, $alpha: 0.5);
+                            }
+
                         }
                     }
                     .verify{

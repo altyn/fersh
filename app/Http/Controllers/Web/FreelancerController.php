@@ -25,7 +25,6 @@ class FreelancerController extends Controller
 
     public function index($lang, $id){
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-
         if($freelancer == null){
             return redirect(app()->getLocale().'/profile/info');
         }else{
@@ -84,25 +83,32 @@ class FreelancerController extends Controller
 
             $btw = time();
 
-            $name50 = $btw.uniqid().'50.'.$file->getClientOriginalExtension();
-            $name85 = $btw.uniqid().'85.'.$file->getClientOriginalExtension();
-            $name100 = $btw.uniqid().'100.'.$file->getClientOriginalExtension();
-            $name180 = $btw.uniqid().'180.'.$file->getClientOriginalExtension();
+            $name50 = $btw.uniqid().'_50.'.$file->getClientOriginalExtension();
+            $name100 = $btw.uniqid().'_100.'.$file->getClientOriginalExtension();
+            $name200 = $btw.uniqid().'_200.'.$file->getClientOriginalExtension();
+            $name360 = $btw.uniqid().'_360.'.$file->getClientOriginalExtension();
             Image::make($_FILES['avatar']['tmp_name'])->fit(50, 50)->save($dir.$name50);
-            Image::make($_FILES['avatar']['tmp_name'])->fit(85, 85)->save($dir.$name85);
             Image::make($_FILES['avatar']['tmp_name'])->fit(100, 100)->save($dir.$name100);
-            Image::make($_FILES['avatar']['tmp_name'])->fit(180, 180)->save($dir.$name180);
+            Image::make($_FILES['avatar']['tmp_name'])->fit(200, 200)->save($dir.$name200);
+            Image::make($_FILES['avatar']['tmp_name'])->fit(360, 360)->save($dir.$name360);
 
             $avatar['50x50'] = $dir.$name50;
-            $avatar['85x85'] = $dir.$name85;
             $avatar['100x100'] = $dir.$name100;
-            $avatar['180x180'] = $dir.$name180;
+            $avatar['200x200'] = $dir.$name200;
+            $avatar['360x360'] = $dir.$name360;
 
             $row->avatar = $avatar;
             $row->save();
         }
         
         return Redirect::back()->withSuccess('Информация обновлена');
+    }
+   
+    public function deleteFreelancerAvatar(Request $request){
+        $row = UserDetails::where('user_id', auth()->id())->first();
+        $row->avatar = null;
+        $row->save();
+        return Redirect::back()->withSuccess('Аватар удалён');
     }
 
     public function portfolio(){

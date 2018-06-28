@@ -13,8 +13,10 @@
                 <div class="user-profile-aside">
                     <div class="profile-ava">
                         <div class="profile-ava-img">
-                            @if(isset($freelancer->avatar['100x100']))
-                                <img class="img-fluid"  src="{{ asset($freelancer->avatar['100x100']) }}" alt="">
+                            @if(isset($freelancer->avatar['200x200']))
+                                <img class="img-fluid"  src="{{ asset($freelancer->avatar['200x200']) }}" alt="">
+                            @else
+                                <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
                             @endif
                         </div>
                         @if($isVerify->activated == '1')
