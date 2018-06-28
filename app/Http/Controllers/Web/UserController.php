@@ -42,8 +42,14 @@ class UserController extends Controller
      */
     public function profileInfo()
     {
-        $data['countries'] = Country::orderBy('country_id', 'asc')->get();
-    	return view('web.user.profile.info', $data);
+        $user_details = UserDetails::where('user_id','=', auth()->user()->getAuthIdentifier())->count();
+
+        if ($user_details != 0){
+            return redirect()->route('home');
+        } else {
+            $data['countries'] = Country::orderBy('country_id', 'asc')->get();
+            return view('web.user.profile.info', $data);
+        }
     }
 
     /**
