@@ -55,10 +55,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('home', '/'.Request::capture()->segment(1));
             $view->with('locale', \Request::getRequestUri());
             $view->with('fullpath', \Request::fullUrl());
-            $view->with('userinfoavatar', json_decode($freelancer->avatar, true)['50x50']);
-            $view->with('userinfo', $freelancer);
-
-            
+            if($freelancer){
+                $view->with('userinfoavatar', json_decode($freelancer->avatar, true)['50x50']);
+                $view->with('userinfo', $freelancer);
+            }
         });
     }
 

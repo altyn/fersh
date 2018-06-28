@@ -16,9 +16,17 @@
                         <li class="nav-item dropdown user-header">
                             <a class="user-header-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="user-header-link-img">
-                                    <img src="{{ asset($userinfoavatar) }}" class="d-inline-block align-top" alt="">
+                                    @if(!empty($userinfoavatar))
+                                        <img src="{{ asset($userinfoavatar) }}" class="d-inline-block align-top" alt="">
+                                    @else
+                                        <img src="{{ asset('img/home/avatar.png') }}" class="d-inline-block align-top" alt="">
+                                    @endif
                                 </div>
-                                <span class="user-header-link-login">{{ $userinfo->first_name }} {{ $userinfo->last_name }} <span class="jam jam-chevron-down"></span></span>
+                                @if(!empty($userinfo))
+                                    <span class="user-header-link-login">{{ $userinfo->first_name }} {{ $userinfo->last_name }} <span class="jam jam-chevron-down"></span></span>
+                                @else
+                                    <span class="user-header-link-login">Профиль<span class="jam jam-chevron-down"></span></span>
+                                @endif
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/{{ auth()->id()}}"><span class="jam jam-user-circle"></span>Профиль</a>

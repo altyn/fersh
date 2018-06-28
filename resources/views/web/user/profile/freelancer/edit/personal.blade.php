@@ -41,7 +41,6 @@
                                             {!! Form::file('avatar', null, ["class" => "form-control"]) !!}
                                         </span>
                                         <a href="/{{app()->getLocale()}}/freelancer/edit/deletefreelanceravatar" onclick="event.preventDefault(); document.getElementById('delete-avatar').submit();" class="delete-avatar">Удалить аватар</a>
-                                        
                                     </div>
                                 </div>
                             </div>
