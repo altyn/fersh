@@ -67,9 +67,7 @@ class UserController extends Controller
             $input['user_id'] = auth()->user()->getAuthIdentifier();
             $input['birthday'] = $input['year'].'-'.$input['month'].'-'.$input['day'];
             $input['sex'] = $input['sex'] == 'male' ? true : false;
-            
             $row = UserDetails::create($input);
-            
             if($request->hasFile('avatar'))
             {
                 $file = $request->file('avatar');
