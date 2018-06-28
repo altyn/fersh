@@ -18,11 +18,19 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class FreelancerController extends Controller
 {
+    /**
+     * FreelancerController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+    /**
+     * @param $lang
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function index($lang, $id){
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
         if($freelancer == null){
@@ -38,17 +46,26 @@ class FreelancerController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function personal(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
         $countries = Country::orderBy('country_id', 'asc')->get();
         return view('web.user.profile.freelancer.edit.personal', compact('freelancer', 'countries'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function contacts(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
         return view('web.user.profile.freelancer.edit.contacts', compact('freelancer'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function specialization(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
 
@@ -68,6 +85,10 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.edit.specialization', compact('freelancer', 'sphere'));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function updateFreelancer(Request $request){
 
         $row = UserDetails::where('user_id', auth()->id())->first();
@@ -103,7 +124,11 @@ class FreelancerController extends Controller
         
         return Redirect::back()->withSuccess('Информация обновлена');
     }
-   
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteFreelancerAvatar(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
         $row->avatar = null;
@@ -111,21 +136,34 @@ class FreelancerController extends Controller
         return Redirect::back()->withSuccess('Аватар удалён');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function portfolio(){
 
         return view('web.user.profile.freelancer.edit.portfolio');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function notifications(){
         
         return view('web.user.profile.freelancer.edit.notifications');
     }
-    
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function changepassword(){
 
         return view('web.user.profile.freelancer.edit.changepassword');
     }
 
+    /**
+     * @param array $data
+     * @return mixed
+     */
     public function changepassword_rules(array $data){
         
         $messages = [
@@ -140,8 +178,12 @@ class FreelancerController extends Controller
         ], $messages);
 
         return $validator;
-    } 
+    }
 
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function changepasswordPost(Request $request){
 
         if (Auth::Check())

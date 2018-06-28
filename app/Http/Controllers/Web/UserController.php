@@ -60,6 +60,8 @@ class UserController extends Controller
      */
     public function profileStore(Request $request)
     {
+
+
         $input = $request->except('avatar');
         $user_details = UserDetails::where('user_id','=', auth()->user()->getAuthIdentifier())->count();
         
