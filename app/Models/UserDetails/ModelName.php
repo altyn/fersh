@@ -28,6 +28,7 @@ class ModelName extends Model
 
     protected $casts = [
         'contacts' => 'json',
+        'avatar' => 'json',
         'spec' => 'json',
         'bio' => 'json',
     ];

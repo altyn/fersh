@@ -92,7 +92,12 @@ class FreelancerController extends Controller
             Image::make($_FILES['avatar']['tmp_name'])->fit(100, 100)->save($dir.$name100);
             Image::make($_FILES['avatar']['tmp_name'])->fit(180, 180)->save($dir.$name180);
 
-            $row->avatar = $dir.$name180;
+            $avatar['50x50'] = $dir.$name50;
+            $avatar['85x85'] = $dir.$name85;
+            $avatar['100x100'] = $dir.$name100;
+            $avatar['180x180'] = $dir.$name180;
+
+            $row->avatar = $avatar;
             $row->save();
         }
         

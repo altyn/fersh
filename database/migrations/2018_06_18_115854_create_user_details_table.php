@@ -18,6 +18,7 @@ class CreateUserDetailsTable extends Migration
             $table->integer('user_id')->unique();
             $table->string('first_name');
             $table->string('last_name');
+            $table->json('avatar')->nullable();
             $table->date('birthday')->nullable();
             $table->integer('country')->nullable();
             $table->string('city')->nullable();

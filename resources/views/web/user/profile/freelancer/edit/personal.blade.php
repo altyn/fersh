@@ -31,7 +31,7 @@
                                 <div class="form-group avatar-upload col-12">
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail">
-                                            <img class="img-fluid" src="{{ asset($freelancer->avatar) }}">
+                                            <img class="img-fluid" src="{{ asset($freelancer->avatar['100x100']) }}">
                                         </div>
                                         <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput"></div>
                                         <span class="btn btn-default btn-file">
