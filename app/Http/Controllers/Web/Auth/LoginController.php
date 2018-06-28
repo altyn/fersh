@@ -6,21 +6,25 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+// use Validator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+
 class LoginController extends Controller
 {
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
+
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $credentials = $request->only('email', 'password');
 
-        if (auth()->attempt(['email' => $email, 'password' => $password])) {
+        if (auth()->attempt($credentials)) {
             return redirect()->intended(app()->getLocale().'/profile/info/');
         } else {
-            return redirect(app()->getLocale().'/sign_in');
+            return Redirect::back()->withErrors('Пароль или логин введен неверно.');
         }
     }
 

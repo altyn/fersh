@@ -8,8 +8,11 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
-use App\Models\Translation\ModelName as Translation;
 use Illuminate\View\View;
+
+use Illuminate\Support\Facades\DB;
+use App\Models\Translation\ModelName as Translation;
+use App\Models\UserDetails\ModelName as UserDetails;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view)
         {
+            $freelancer = DB::table('user_details')->where('user_id', auth()->id())->select('first_name', 'last_name', 'avatar')->first();
             $view->with('errorTitle', app()->getLocale() == 'ru' ? 'Не найдена' : ((app()->getLocale() == 'ky') ? 'Табылган жок' : 'Not found'));
             $view->with('translations',  Translation::getAll());
             $view->with('current_url', Request::capture()->segment(2));
@@ -51,6 +55,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('home', '/'.Request::capture()->segment(1));
             $view->with('locale', \Request::getRequestUri());
             $view->with('fullpath', \Request::fullUrl());
+            $view->with('userinfoavatar', json_decode($freelancer->avatar, true)['50x50']);
+            $view->with('userinfo', $freelancer);
+
+            
         });
     }
 

@@ -14761,10 +14761,20 @@ header {
   margin: auto;
 }
 
+.infoform .avatar-upload .fileinput {
+  text-align: center;
+}
+
+.infoform .avatar-upload .fileinput .delete-avatar {
+  font-family: "roboto_light", Arial, sans-serif;
+  color: #f44336;
+  border-bottom: 1px dashed rgba(244, 67, 54, 0.5);
+}
+
 .infoform .avatar-upload .fileinput-preview,
 .infoform .avatar-upload .thumbnail {
-  width: 192px;
-  height: 192px;
+  width: 250px;
+  height: 250px;
   position: relative;
   border-radius: 100%;
   border: 6px solid #F8F8F8;
@@ -14774,12 +14784,11 @@ header {
 
 .infoform .avatar-upload .fileinput-preview img,
 .infoform .avatar-upload .thumbnail img {
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .infoform .form-control {
@@ -15174,7 +15183,13 @@ tags > div span {
 
 .user-header-link-img {
   border-radius: 50%;
-  border: 1px solid #eee;
+  overflow: hidden;
+  margin: 0 5px;
+}
+
+.user-header-link-img img {
+  height: 36px;
+  width: auto;
 }
 
 .user-header-link-login {
@@ -15244,12 +15259,42 @@ tags > div span {
   -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
 }
 
-.user-profile-aside .profile-ava-img img {
+.user-profile-aside .profile-ava-img img,
+.user-profile-aside .profile-ava-img .no-ava {
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.user-profile-aside .profile-ava-img .no-ava {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  font-family: "roboto_light", Arial, sans-serif;
+  color: #414954;
+}
+
+.user-profile-aside .profile-ava-img .no-ava:hover {
+  background: #f4f6fa;
+}
+
+.user-profile-aside .profile-ava-img .no-ava span {
+  border-bottom: 1px dashed rgba(65, 73, 84, 0.5);
 }
 
 .user-profile-aside .profile-ava .verify {

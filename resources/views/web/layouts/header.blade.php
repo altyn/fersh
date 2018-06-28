@@ -16,9 +16,9 @@
                         <li class="nav-item dropdown user-header">
                             <a class="user-header-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="user-header-link-img">
-                                    <img src="{{ asset('img/sign/avatar.png') }}" width="36" height="36" class="d-inline-block align-top" alt="">
+                                    <img src="{{ asset($userinfoavatar) }}" class="d-inline-block align-top" alt="">
                                 </div>
-                                <span class="user-header-link-login">{{ Auth::user()->login }} <span class="jam jam-chevron-down"></span></span>
+                                <span class="user-header-link-login">{{ $userinfo->first_name }} {{ $userinfo->last_name }} <span class="jam jam-chevron-down"></span></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/{{ auth()->id()}}"><span class="jam jam-user-circle"></span>Профиль</a>

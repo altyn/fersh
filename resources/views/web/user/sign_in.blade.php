@@ -32,6 +32,13 @@
                     </div>
                     <form class="needs-validation" action="{{ route('login') }}" method="post" novalidate>
                         @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-2 mb-2" role="alert">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Почта" required>
                             <div class="invalid-feedback">
