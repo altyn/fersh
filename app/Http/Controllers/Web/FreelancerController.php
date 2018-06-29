@@ -12,6 +12,7 @@ use App\Models\UserDetails\ModelName as UserDetails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
+use Input;
 use Illuminate\Support\Facades\Redirect;
 
 use Intervention\Image\ImageManagerStatic as Image;
@@ -145,9 +146,48 @@ class FreelancerController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function portfolio(){
 
-        return view('web.user.profile.freelancer.edit.portfolio');
+        return view('web.user.profile.freelancer.edit.portfolio.index');
+    }
+
+    public function portfolioAdd(){
+
+        return view('web.user.profile.freelancer.edit.portfolio.add');
+    }
+
+    public function portfolioUpdate(){
+
+        return view('web.user.profile.freelancer.edit.portfolio.update');
+    }
+
+    public function portfolioDelete(){
+
+        return view('web.user.profile.freelancer.edit.portfolio.delete');
+    }
+
+    public function uploadPortfolioFiles(Request $request){
+
+        if($request->hasFile('file'))
+            {
+                $file = $request->file('file');
+                $dir  = 'img/freelancer/portfolio/'.auth()->id().'/';
+                if (!file_exists($dir)) {
+                    mkdir($dir, 0777, true);
+                }
+                $btw = time();
+
+                $name50 = $btw.uniqid().'_50.'.$file->getClientOriginalExtension();
+                Image::make($_FILES['file']['tmp_name'])->save($dir.$name50);
+
+                if($name50){
+                    return response()->json('success', 200);
+                } else {
+                    return response()->json('error', 400);
+                }
+            }
+
     }
 
     /**

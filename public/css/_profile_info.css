@@ -119,7 +119,7 @@
 .sw-theme-custom .step-content-top h4 {
   text-transform: uppercase;
   font-family: "fira_sans_medium", Arial, sans-serif;
-  color: #4BC04E;
+  color: #43d084;
 }
 
 .sw-theme-custom .step-content-top span {
@@ -192,12 +192,12 @@
 }
 
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-next {
-  background: #4BC04E;
+  background: #43d084;
   border: none;
 }
 
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-next:hover {
-  background: rgba(75, 192, 78, 0.8);
+  background: rgba(67, 208, 132, 0.8);
 }
 
 .sw-theme-custom .sw-toolbar-bottom .sw-btn-next:active,
@@ -277,7 +277,7 @@
 
 .sw-theme-custom > ul.step-anchor > li > a:after {
   content: "";
-  background: #4BC04E;
+  background: #43d084;
   height: 2px;
   position: absolute;
   width: 100%;
@@ -298,9 +298,9 @@
 }
 
 .sw-theme-custom > ul.step-anchor > li.active > a .jam-check {
-  border: 2px solid #4BC04E;
+  border: 2px solid #43d084;
   background: #C2F2C3;
-  color: #4BC04E;
+  color: #43d084;
 }
 
 .sw-theme-custom > ul.step-anchor > li.active > a:hover {
@@ -315,22 +315,22 @@
 }
 
 .sw-theme-custom > ul.step-anchor > li.done > a {
-  color: #4BC04E;
+  color: #43d084;
 }
 
 .sw-theme-custom > ul.step-anchor > li.done > a:after {
-  background: #4BC04E;
+  background: #43d084;
 }
 
 .sw-theme-custom > ul.step-anchor > li.done > a .jam-check {
-  border: 2px solid #4BC04E;
-  background: #4BC04E;
+  border: 2px solid #43d084;
+  background: #43d084;
   color: #fff;
 }
 
 .sw-theme-custom > ul.step-anchor > li.done > a:after {
   content: "";
-  background: #4BC04E;
+  background: #43d084;
   -webkit-transform: scale(1);
   transform: scale(1);
 }
