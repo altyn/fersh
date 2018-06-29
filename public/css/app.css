@@ -14718,7 +14718,8 @@ header {
 
 .infoform .avatar-upload {
   position: relative;
-  max-width: 205px;
+  max-width: 300px;
+  width: 100%;
   margin: 20px auto;
 }
 
@@ -14769,6 +14770,7 @@ header {
   font-family: "roboto_light", Arial, sans-serif;
   color: #f44336;
   border-bottom: 1px dashed rgba(244, 67, 54, 0.5);
+  font-size: 14px;
 }
 
 .infoform .avatar-upload .fileinput-preview,
@@ -15366,7 +15368,7 @@ tags > div span {
 .user-profile-aside .profile-info-spec {
   color: #777D9E;
   font-size: 16px;
-  font-family: "roboto_medium", Arial, sans-serif;
+  font-family: "roboto_regular", Arial, sans-serif;
 }
 
 .user-profile-aside .profile-info-loc {
@@ -15599,7 +15601,6 @@ tags > div span {
 }
 
 .user-profile .infoform {
-  padding: 20px;
   -webkit-box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
           box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
   border-radius: 3px;
@@ -15607,12 +15608,18 @@ tags > div span {
 
 .user-profile .infoform-title {
   font-family: "roboto_bold", Arial, sans-serif;
-  color: #7460EE;
-  margin-bottom: 15px;
+  color: #ff6908;
+  padding: 18px 20px;
+  background: rgba(119, 125, 158, 0.1);
+  border-bottom: 1px solid #eee;
 }
 
 .user-profile .infoform-title h6 {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.user-profile .infoform form {
+  padding: 20px;
 }
 

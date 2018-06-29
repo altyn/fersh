@@ -30,7 +30,9 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/{{ auth()->id()}}"><span class="jam jam-user-circle"></span>Профиль</a>
+                                @if(!empty($userinfo))
                                 <a class="dropdown-item" href="/{{app()->getLocale()}}/freelancer/edit/personal"><span class="jam jam-cog"></span>Настройки</a>
+                                @endif
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><span class="jam jam-log-out"></span>Выход</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}

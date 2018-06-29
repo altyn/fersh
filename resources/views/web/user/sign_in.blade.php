@@ -25,6 +25,7 @@
                         <ul class="soc-icons">
                             <li><a href="/auth/facebook/redirect/"><span class="jam jam-facebook-square"></span></a></li>
                             <li><a href="/auth/github/redirect/"><span class="jam jam-github-square"></span></a></li>
+                            <li><a href="#"><span class="jam jam-google-square"></span></a></li>
                         </ul>
                         <div class="sign-right-middle-line">
                             <span>или</span>
