@@ -46,5 +46,11 @@
                                 <span class="list-menu-item-title">Почтовые уведомления</span>
                             </a>
                         </li>
+                        <li class="list-menu-item">
+                            <a href="/{{ app()->getLocale()}}/freelancer/edit/accounts" @if($current_four == 'accounts') class="active" @endif>
+                                <span class="jam jam-facebook-circle"></span>
+                                <span class="list-menu-item-title">Связанные аккаунты</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>

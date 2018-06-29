@@ -43,6 +43,7 @@ Route::group(['prefix' => '/{lang}',], function (){
             Route::get('/portfolio', 'FreelancerController@portfolio');
             Route::get('/changepassword', 'FreelancerController@changepassword');
             Route::get('/notifications', 'FreelancerController@notifications');
+            Route::get('/accounts', 'FreelancerController@accounts');
         });
     });
 

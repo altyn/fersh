@@ -15488,6 +15488,22 @@ tags > div span {
   color: #56606F;
 }
 
+.user-profile-content-title h6 {
+  display: inline-block;
+}
+
+.user-profile-content-title-right {
+  float: right;
+}
+
+.user-profile-content-title-right a {
+  color: #56606F;
+}
+
+.user-profile-content-title-right a:hover {
+  color: #ff6908;
+}
+
 .user-profile-content-body {
   padding: 20px;
 }
@@ -15502,12 +15518,13 @@ tags > div span {
 }
 
 .user-profile-content-list-capture {
-  font-family: "roboto_medium", Arial, sans-serif;
+  font-family: "roboto_bold", Arial, sans-serif;
   color: #414954;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 .user-profile-content-list-body {
+  font-family: "roboto_regular", Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -15537,6 +15554,7 @@ tags > div span {
 
 .user-profile-content-about {
   margin: 10px 0;
+  font-family: "roboto_regular", Arial, sans-serif;
 }
 
 .user-profile-portfolio-item {

@@ -160,6 +160,14 @@ class FreelancerController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */   
+    public function accounts(){
+        
+        return view('web.user.profile.freelancer.edit.accounts');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function changepassword(){
 

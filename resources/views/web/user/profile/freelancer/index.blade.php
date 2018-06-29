@@ -20,9 +20,9 @@
                             @endif
                         </div>
                         @if($isVerify->activated == '1')
-                        {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
+                            <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
                         @else
-                        <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
+                            {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
                         @endif
                     </div>
                     <div class="profile-info">
@@ -66,6 +66,13 @@
                 <div class="user-profile-content">
                     <div class="user-profile-content-title">
                         <h6>Информация</h6>
+                        @if(auth()->user())
+                            <div class="user-profile-content-title-right">
+                                <a href="/{{ app()->getLocale()}}/freelancer/edit/personal">
+                                    <span class="jam jam-cog" data-toggle="tooltip" data-placement="left" title="Редактировать"></span>
+                                </a>
+                            </div>
+                        @endif
                     </div>
                     <div class="user-profile-content-body">
                         <div class="user-profile-content-list">
@@ -137,6 +144,13 @@
                     </div>
                     <div class="user-profile-content-title">
                         <h6>Портфолио</h6>
+                        @if(auth()->user())
+                            <div class="user-profile-content-title-right">
+                                <a href="/{{ app()->getLocale()}}/freelancer/edit/portfolio">
+                                    <span class="jam jam-cog" data-toggle="tooltip" data-placement="left" title="Редактировать"></span>
+                                </a>
+                            </div>
+                        @endif
                     </div>
                     <div class="user-profile-content-body user-profile-portfolio">
                         <div class="row">

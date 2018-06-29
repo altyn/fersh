@@ -288,6 +288,22 @@
                 background: $gray;
                 text-transform: uppercase;
                 color: #56606F;
+
+                h6{
+                    display: inline-block;
+                }
+
+                &-right {
+
+                    float: right;
+                    a{
+                        color: #56606F;
+
+                        &:hover{
+                            color: $orange;
+                        }
+                    }
+                }
             }
 
             &-body{
@@ -302,12 +318,13 @@
                 }
 
                 &-capture {
-                    font-family: $robotomedium;
+                    font-family: $robotobold;
                     color: $black2;
-                    padding-right: 10px;
+                    padding-right: 15px;
                 }
-
+                
                 &-body {
+                    font-family: $robotoregular;
                     font-weight: 400;
                 }
 
@@ -338,6 +355,7 @@
 
             &-about{
                 margin: 10px 0;
+                font-family: $robotoregular;
             }
         }
         &-portfolio{
