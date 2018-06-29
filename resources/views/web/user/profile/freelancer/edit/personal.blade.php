@@ -40,7 +40,9 @@
                                             <label for="imageUpload"><span class="jam jam-pencil"></span></label>
                                             {!! Form::file('avatar', null, ["class" => "form-control"]) !!}
                                         </span>
+                                        @if($freelancer->avatar)
                                         <a href="/{{app()->getLocale()}}/freelancer/edit/deletefreelanceravatar" onclick="event.preventDefault(); document.getElementById('delete-avatar').submit();" class="delete-avatar">Удалить аватар</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

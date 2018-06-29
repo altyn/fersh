@@ -16,24 +16,11 @@
                 <div class="col-md-9 col-12">
                     <div class="infoform">
                         <div class="infoform-title">
-                            <h6>Контакты</h6>
+                            <h6>Портфолио</h6>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-md-6 col-12">
-                                <label for="email">Ваш электронный адрес<span class="required">*</span></label>
-                                <input type="email" class="form-control" id="email" name="contacts[{{app()->getLocale()}}][email]">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group col-md-6 col-12">
-                                <label for="phone">Ваш номер телефона <span class="required">*</span></label>
-                                <input type="tel" name="contacts[{{app()->getLocale()}}][phone]" id="phone" placeholder="996 (555) 555-555" autocomplete="tel" maxlength="18" class="form-control" required />
-                            </div>
-                        </div>
-
-                        <div class="form-group save">
-                            <button type="submit" class="btn btn-save mr-2">Сохранить</button>
-                            <a href="#" class="btn btn-cancel" role="button">Отмена</a>
-                        </div>
+                        <form action="#">
+                            <h6>Страница на стадии разработки</h6>
+                        </form>
                     </div>
                 </div>
             </div>

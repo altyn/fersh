@@ -131,6 +131,12 @@ class FreelancerController extends Controller
      */
     public function deleteFreelancerAvatar(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
+        
+        if($row->avatar['50x50']) unlink($row->avatar['50x50']);
+        if($row->avatar['100x100']) unlink($row->avatar['100x100']);
+        if($row->avatar['200x200']) unlink($row->avatar['200x200']);
+        if($row->avatar['360x360']) unlink($row->avatar['360x360']);
+        
         $row->avatar = null;
         $row->save();
         return Redirect::back()->withSuccess('Аватар удалён');

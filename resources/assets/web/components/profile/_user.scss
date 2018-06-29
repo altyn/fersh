@@ -188,7 +188,7 @@
                     &-spec{
                         color: $violetgray;
                         font-size: 16px;
-                        font-family: $robotomedium;
+                        font-family: $robotoregular;
                     }
 
                     &-loc{
@@ -400,19 +400,24 @@
             }
         }
         .infoform{
-            padding: 20px;
             box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
             border-radius: 3px;
 
             &-title{
                 font-family: $robotobold;
-                color: $violetnew;
+                color: $orange;
+                padding: 18px 20px;
+                background: rgba($color: $violetgray, $alpha: 0.1);
+                border-bottom: 1px solid #eee;
 
                 h6{
-                    border-bottom: 1px solid #eee;
-                    padding-bottom: 10px
+                    padding: 0;
+                    margin: 0;
                 }
-                margin-bottom: 15px;
+            }
+
+            form{
+                padding: 20px;
             }
         }
     }

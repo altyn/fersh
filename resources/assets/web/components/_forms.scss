@@ -283,7 +283,8 @@
 
     .avatar-upload {
         position: relative;
-        max-width: 205px;
+        max-width: 300px;
+        width: 100%;
         margin: 20px auto;
         .btn-file {
             position: absolute;
@@ -327,6 +328,7 @@
                 font-family: $robotolight;
                 color: $red;
                 border-bottom: 1px dashed rgba($color: $red, $alpha: 0.5);
+                font-size: 14px;
             }
         }
         .fileinput-preview,
