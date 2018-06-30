@@ -3,6 +3,7 @@
 Route::middleware('admin')->group(function(){
 
 	Route::name('bashkaruu.index')->get('/', 'BashController@index');
+
     // Resource routes
     Route::resource('users', 'UserController');
     Route::resource('freelancers', 'FreelancerController');

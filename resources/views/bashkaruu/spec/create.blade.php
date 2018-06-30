@@ -1,6 +1,6 @@
-@extends('bashkaruu.layout')
+@extends('bashkaruu.layouts.default')
 
-@section('title', 'Жаңы которуу' )
+@section('title', 'Новая специализация' )
 
 @section('styles')
 @endsection
@@ -8,11 +8,11 @@
 
 @section('content')
 <div class="element-wrapper">
-	<h6 class="element-header">Жаңы которуу</h6>
+	<h6 class="element-header">Новая специализация</h6>
 
 	<div class="element-box">
-		{!! Form::model($row, ['id' => 'createForm', 'route' => 'translations.store', 'enctype' => 'multipart/form-data']) !!}
-			@include('bashkaruu.translations.form', $row)
+		{!! Form::model($row, ['id' => 'createForm', 'route' => 'spec.store', 'enctype' => 'multipart/form-data']) !!}
+			@include('bashkaruu.spec.form', $row)
 		{!! Form::close() !!}
 	</div>
 </div>

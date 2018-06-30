@@ -1,4 +1,4 @@
-@extends('bashkaruu.layout')
+@extends('bashkaruu.layouts.default')
 
 @section('title')
 
@@ -7,16 +7,16 @@
 
 @section('content')
 	<div class="element-wrapper">
-		<h6 class="element-header">{{$row->ky}}</h6>
+		<h6 class="element-header">{{$row['title']['ru']}}</h6>
 
 		<div class="element-box">
 			{!! Form::model($row, 
 				[	'id' => 'editForm',
-					'route' => ['translations.update', $row], 
+					'route' => ['spec.update', $row],
 					'method' => 'PUT', 
 					'enctype' => 'multipart/form-data'
 				]) !!}
-				@include('bashkaruu.translations.formedit', $row)
+				@include('bashkaruu.spec.formedit', $row)
 			{!! Form::close() !!}
 		</div>
 	</div>

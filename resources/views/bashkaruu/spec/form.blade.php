@@ -1,27 +1,21 @@
 <fieldset class="form-group">
    <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-12">
          <div class="form-group">
-            {!! Form::label('key', 'keyword'); !!}
-            {!! Form::text('key', null, ['class' => 'form-control']) !!}
+            {!! Form::label('title[ky]', 'Кыргызча'); !!}
+            {!! Form::text('title[ky]', null, ['class' => 'form-control']) !!}
          </div>
       </div>
       <div class="col-sm-12">
          <div class="form-group">
-            {!! Form::label('ky', 'Кыргызча'); !!}
-            {!! Form::text('ky', null, ['class' => 'form-control']) !!}
+            {!! Form::label('title[ru]', 'На русском'); !!}
+            {!! Form::text('title[ru]', null, ['class' => 'form-control']) !!}
          </div>
       </div>
       <div class="col-sm-12">
          <div class="form-group">
-            {!! Form::label('ru', 'На русском'); !!}
-            {!! Form::text('ru', null, ['class' => 'form-control']) !!}
-         </div>
-      </div>
-      <div class="col-sm-12">
-         <div class="form-group">
-            {!! Form::label('en', 'English'); !!}
-            {!! Form::text('en', null, ['class' => 'form-control']) !!}
+            {!! Form::label('title[en]', 'English'); !!}
+            {!! Form::text('title[en]', null, ['class' => 'form-control']) !!}
          </div>
       </div>
    </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Bash;
 
 use App\Models\Spec\ModelName as Spec;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class SpecController extends Controller
 {
@@ -32,7 +33,13 @@ class SpecController extends Controller
      */
     public function store(Request $request)
     {
-        $row = Spec::create($request->except('created_at'));
+        $validatedData = $request->validate([
+            'title.ru' => 'required'
+        ]);
+        $row = Spec::create($validatedData);
+        session()->flash(
+            'message', "Your spec has now been published!"
+        );
         return redirect()->route('spec.index');
 
     }
@@ -41,19 +48,20 @@ class SpecController extends Controller
      * @param Spec $row
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Spec $row)
+    public function show($id)
     {
-        return view('bashkaruu.spec.show',[
-            'row' => $row
-        ]);
+        $row = Spec::findOrFail($id);
+//        return response()->json($row);
+        return view('bashkaruu.spec.show', compact('row'));
     }
 
     /**
      * @param Translation $row
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Translation $row)
+    public function edit($id)
     {
+        $row = Spec::findOrFail($id);
         return view('bashkaruu.spec.edit',[
             'row' => $row
         ]);
@@ -85,17 +93,7 @@ class SpecController extends Controller
      */
     public function specsjs()
     {
-        $rows = Spec::orderBy('id','asc')->get();
-//        $data=array();
-//        foreach ($rows as $row) {
-//            $data[]=array(
-//                'id'=>$row->id,
-//                'ru'=>$row->ru,
-//            );
-//        }
-//        $result = array(
-//            'data' => $data
-//        );
+        $rows = Spec::select('id', 'title')->orderBy('id','asc')->get();
         return response()->json($rows, 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
