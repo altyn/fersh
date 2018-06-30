@@ -14,7 +14,8 @@ class SpecController extends Controller
      */
     public function index()
     {
-        return view('bashkaruu.spec.index');
+        $rows = Spec::all()->except('created_at', 'updated_at');
+        return view('bashkaruu.spec.index', compact('rows'));
     }
 
     /**
@@ -36,7 +37,9 @@ class SpecController extends Controller
         $validatedData = $request->validate([
             'title.ru' => 'required'
         ]);
-        $row = Spec::create($validatedData);
+
+        Spec::create($validatedData);
+
         session()->flash(
             'message', "Your spec has now been published!"
         );
@@ -72,9 +75,11 @@ class SpecController extends Controller
      * @param Spec $row
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Spec $row)
+    public function update(Request $request, $id)
     {
-        $row->update($request->all());
+        $row = Spec::findOrFail($id);
+        $row->update($request->except('created_at'));
+
         return redirect()->route('spec.show', $row);
     }
 
@@ -82,9 +87,11 @@ class SpecController extends Controller
      * @param Spec $row
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Spec $row)
+    public function destroy($id)
     {
-        $row->delete();
+        $spec = Spec::findOrFail($id);
+        $spec->delete();
+
         return redirect()->route('spec.index');
     }
 

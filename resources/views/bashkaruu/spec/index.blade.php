@@ -28,7 +28,37 @@
 					</tr>
 				</thead>
                 <tbody>
-
+                @foreach ($rows as $row)
+                    <tr>
+                        <td>{{ $row->id }}</td>
+                        <td>
+                            @if(isset($row->title['ky']))
+                                {{ $row->title['ky']}}
+                            @endif
+                        </td>
+                        <td>
+                            @if(isset($row->title['ru']))
+                                {{ $row->title['ru']}}
+                            @endif
+                        </td>
+                        <td>
+                            @if(isset($row->title['en']))
+                                {{ $row->title['en']}}
+                            @endif
+                        </td>
+                        <td class="dataTables_actions">
+                            <a class="item_edit" href="{{ route('spec.show',$row->id) }}">
+                                <i class="os-icon os-icon-mail-18"></i>
+                            </a>
+                            <a class="item_edit" href="{{ route('spec.edit',$row->id) }}">
+                                <i class="os-icon os-icon-ui-49"></i>
+                            </a>
+                            <a class="item_edit" href="{{ route('spec.delete', $row->id) }}">
+                                <i class="os-icon os-icon-cancel-circle item_remove_icon"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
 			</table>
 		</div>
@@ -38,38 +68,9 @@
 @endsection
 
 @section('scripts')
-{{--<script>--}}
-	{{--$(document).ready(function() {--}}
-	    {{--var table = $('#datatables').DataTable( {--}}
-	        {{--ajax: "{{ route('specsjs') }}",--}}
-	        {{--columns: [--}}
-	        	{{--{ 	"data": "id" },--}}
-	            {{--{ 	"data": "title"},--}}
-	            {{--{ 	"data": "title"},--}}
-	            {{--{ 	"data": "title"},--}}
-	            {{--{--}}
-			      	{{--"data": null,--}}
-			      	{{--"className": "dataTables_actions",--}}
-			      	{{--"render": function ( data, type, row ) {--}}
-			      		{{--return '<a href="{{Request::url()}}/'+data.id+'/edit" class="item_edit"><i class="os-icon os-icon-ui-49 item_edit_icon"></i></a>';--}}
-				    {{--}--}}
-			    {{--}--}}
-	        {{--]--}}
-	    {{--});--}}
-
-	 	{{--$('#datatables tbody').on( 'click', 'tr', function () {--}}
-
-			{{--if ( $(this).hasClass('selected') ) {--}}
-	            {{--$(this).removeClass('selected');--}}
-	        {{--}--}}
-	        {{--else {--}}
-	            {{--table.$('tr.selected').removeClass('selected');--}}
-	            {{--$(this).addClass('selected');--}}
-	        {{--}--}}
- 			{{--var data = table.row('.selected').data();--}}
-	        {{--window.location.href = "spec/"+ data.id;--}}
-    	{{--});--}}
-    {{--});--}}
-
-{{--</script>--}}
+    <script>
+        $(document).ready(function() {
+            $('#datatables').DataTable();
+        });
+    </script>
 @endsection

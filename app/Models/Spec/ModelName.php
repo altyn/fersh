@@ -22,7 +22,7 @@ class ModelName extends Model
     ];
 
     protected $fillable = [
-        'name'
+        'title'
     ];
 
     /**
