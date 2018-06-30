@@ -33,12 +33,6 @@ class WebAuthController extends Controller
         return view('web.user.sign_up', compact('user_details'));
     }
 
-
-    /**
-     * @param $data
-     * @return RedirectResponse|\Illuminate\Routing\Redirector
-     */
-
     /**
      * @return RedirectResponse
      */
