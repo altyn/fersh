@@ -33,6 +33,7 @@ Route::group(['prefix' => '/{lang}',], function (){
         Route::get('/info', 'UserController@profileInfo')->name('profile.info');
     });
 
+    // Freeelancer info manipulations...
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
         Route::get('/{id}', 'FreelancerController@index');
 
@@ -40,17 +41,23 @@ Route::group(['prefix' => '/{lang}',], function (){
             Route::get('/personal', 'FreelancerController@personal');
             Route::get('/contacts', 'FreelancerController@contacts');
             Route::get('/specialization', 'FreelancerController@specialization');
-            Route::get('/portfolio', 'FreelancerController@portfolio');
             Route::get('/changepassword', 'FreelancerController@changepassword');
             Route::get('/notifications', 'FreelancerController@notifications');
+            Route::get('/accounts', 'FreelancerController@accounts');
+
+            Route::group(['prefix' => 'portfolio'], function(){
+                Route::get('/', 'FreelancerController@portfolio');
+                Route::get('/add', 'FreelancerController@portfolioAdd');
+                Route::get('/update', 'FreelancerController@portfolioUpdate');
+                Route::post('/delete', 'FreelancerController@portfolioDelete');
+            });
         });
+        Route::name('uploadPortfolioFiles')->post('/edit/portfolio/uploadpictures', 'FreelancerController@uploadPortfolioFiles');
+        Route::name('updateFreelancer')->post('/edit/personal', 'FreelancerController@updateFreelancer');
+        Route::name('deleteFreelancerAvatar')->post('/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
+        Route::name('freelancerChangepassword')->post('/edit/changepassword', 'FreelancerController@changepasswordPost');
     });
 
-    Route::name('updateFreelancer')->post('/freelancer/edit/personal', 'FreelancerController@updateFreelancer');
-    Route::name('deleteFreelancerAvatar')->post('/freelancer/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
-    Route::name('freelancerChangepassword')->post('/freelancer/edit/changepassword', 'FreelancerController@changepasswordPost');
-//    Route::get('/profile', 'UserController@profile')->name('profile');
-//    Route::get('/profile/info', 'UserController@profileInfo')->name('profile.info');
 });
 
 Auth::routes();
