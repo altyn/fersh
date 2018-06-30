@@ -9,9 +9,11 @@ Route::middleware('admin')->group(function(){
     Route::resource('translations', 'TranslationController');
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
+    Route::resource('spec', 'SpecController');
 
     // Json
     Route::get('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
+    Route::get('specsjs', array('as'=>'specsjs','uses'=>'SpecController@specsjs'));
 
     // Delete routes
     Route::name('users.delete')->get('users/{user}/delete', 'UserController@destroy');
@@ -19,6 +21,7 @@ Route::middleware('admin')->group(function(){
     Route::name('roles.delete')->get('roles/{role}/delete', 'RoleController@destroy');
     Route::name('permissions.delete')->get('permissions/{permission}/delete', 'PermissionController@destroy');
     Route::name('freelancers.delete')->get('freelancers/{freelancer}/delete', 'FreelancerController@destroy');
+    Route::name('spec.delete')->get('spec/{spec}/delete', 'SpecController@destroy');
 
     // Auth Controllers
     Route::get('/login', 'Auth\LoginController@showLoginForm');

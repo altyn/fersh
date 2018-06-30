@@ -1,6 +1,6 @@
-@extends('bashkaruu.layout')
+@extends('bashkaruu.layouts.default')
 
-@section('title', 'Которуулар' )
+@section('title', 'Специализации' )
 
 @section('content')
 
@@ -11,7 +11,7 @@
 
 		<div class="element-box-content clearfix">
 			<div class="float-left">
-	          <a class="mr-2 mb-2 btn btn-success" href="translations/create">
+	          <a class="mr-2 mb-2 btn btn-success" href="spec/create">
 	            <i class="fa fa-plus"></i> Жаңы которуу</a>
 	        </div>
 		</div>
@@ -39,7 +39,7 @@
 <script>
 	$(document).ready(function() {
 	    var table = $('#datatables').DataTable( {
-	        ajax: "{{ route('translationsjs') }}",
+	        ajax: "{{ route('specsjs') }}",
 	        columns: [
 	        	{ 	"data": "id" },
 	            { 	"data": "key"},
@@ -58,7 +58,7 @@
 		        url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Kyrgyz.json'
 		    }
 	    });
-		
+
 	 	$('#datatables tbody').on( 'click', 'tr', function () {
 
 			if ( $(this).hasClass('selected') ) {
@@ -72,7 +72,7 @@
 	        window.location.href = "translations/"+ data.id;
     	});
     });
-	
+
 </script>
 
 @endsection
