@@ -39,10 +39,10 @@
 <script>
 	$(document).ready(function() {
 	    var table = $('#datatables').DataTable( {
-	        ajax: "{{ route('translationsjs') }}",
+	        ajax: "{{ route('specsjs') }}",
 	        columns: [
 	        	{ 	"data": "id" },
-	            { 	"data": "key"},
+	            { 	"data": "title"},
 	            { 	"data": "ky"},
 	            { 	"data": "ru"},
 	            { 	"data": "en"},

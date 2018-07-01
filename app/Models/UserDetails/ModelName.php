@@ -22,6 +22,7 @@ class ModelName extends Model
         'contacts',
         'spec',
         'bio',
+        'views',
         'created_at',
         'updated_at'
     ];

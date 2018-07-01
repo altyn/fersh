@@ -125,7 +125,7 @@
                 </ul>
             </div>
         </li>
-        <li class=" has-sub-menu">
+        <li class="has-sub-menu">
             <a href="#">
                 <div class="icon-w">
                     <div class="os-icon os-icon-user-male-circle"></div>
@@ -136,6 +136,19 @@
                 <ul class="sub-menu">
                     <li><a href="#">Активные</a></li>
                     <li><a href="#">Неактивные</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="has-sub-menu">
+            <a href="#">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-user-male-circle"></div>
+                </div>
+                <span>Специализации</span>
+            </a>
+            <div class="sub-menu-w">
+                <ul class="sub-menu">
+                    <li><a href="{{ route('spec.index') }}">Все</a></li>
                 </ul>
             </div>
         </li>

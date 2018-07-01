@@ -27,6 +27,7 @@ class CreateUserDetailsTable extends Migration
             $table->json('contacts')->nullable(); // site, mail, phone, whatsapp, tg, facebook, twitter
             $table->json('spec')->nullable(); // spec, skills, sphere, experience, rate, payment_method, firm
             $table->json('bio')->nullable();
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }
