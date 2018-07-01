@@ -14880,6 +14880,68 @@ header {
   color: #dc3545;
 }
 
+.infoform .fileinput-cover .thumbnail {
+  border: 1px dashed #c2cdda;
+  border-radius: 3px;
+}
+
+.infoform .fileinput-controls {
+  position: absolute !important;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  min-height: 150px;
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.infoform .fileinput-controls:hover {
+  border: 1px dashed #007bff;
+  background: #f4f6fa;
+  border-radius: 3px;
+}
+
+.infoform .fileinput-controls .fileinput-new,
+.infoform .fileinput-controls .fileinput-exists {
+  font-size: 30px;
+  cursor: pointer;
+  color: #656d9c;
+}
+
+.infoform .fileinput-controls .fileinput-new:hover .jam-trash,
+.infoform .fileinput-controls .fileinput-exists:hover .jam-trash {
+  color: #f44336;
+}
+
+.infoform .fileinput-controls .fileinput-new:hover .jam-pencil,
+.infoform .fileinput-controls .fileinput-exists:hover .jam-pencil {
+  color: #007bff;
+}
+
+.custom-label {
+  font-family: "fira_sans_medium", Arial, sans-serif;
+  color: #656d9c;
+  font-size: 15px;
+}
+
+.input-img {
+  height: 17px;
+  width: 17px;
+  padding: 2px;
+}
+
 .homepage {
   background: url("/img/home/bgi.png") no-repeat center center fixed;
   background-size: cover;
