@@ -121,4 +121,30 @@ a:visited {
             background: rgba($color: $bluehalf, $alpha: 0.7);
         }
     }
+
+    &-add {
+        color: #fff;
+        border-radius: 3px;
+        font-family: $robotolight;
+        padding: 5px 10px;
+        background: $green;
+        -webkit-box-shadow: -1px 1px 10px rgba(67, 208, 132, 0.8);
+        box-shadow: -1px 1px 10px rgba(67, 208, 132, 0.8);
+
+        &:hover,
+        &:active {
+            color: #fff;
+            background: rgba($color: $green, $alpha: 0.8);
+        }
+        &:focus,
+        &:visited {
+            box-shadow: none;
+            color: #fff;
+        }
+        .jam {
+            position: relative;
+            top: 1px;
+            padding-right: 5px;
+        }
+    }
 }

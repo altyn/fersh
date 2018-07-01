@@ -14246,6 +14246,35 @@ a:visited {
   background: rgba(204, 216, 239, 0.7);
 }
 
+.btn-add {
+  color: #fff;
+  border-radius: 3px;
+  font-family: "roboto_light", Arial, sans-serif;
+  padding: 5px 10px;
+  background: #43d084;
+  -webkit-box-shadow: -1px 1px 10px rgba(67, 208, 132, 0.8);
+  box-shadow: -1px 1px 10px rgba(67, 208, 132, 0.8);
+}
+
+.btn-add:hover,
+.btn-add:active {
+  color: #fff;
+  background: rgba(67, 208, 132, 0.8);
+}
+
+.btn-add:focus,
+.btn-add:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+}
+
+.btn-add .jam {
+  position: relative;
+  top: 1px;
+  padding-right: 5px;
+}
+
 .col-centered {
   float: none;
   margin: 0 auto !important;
@@ -14940,6 +14969,7 @@ header {
   height: 17px;
   width: 17px;
   padding: 2px;
+  opacity: 0.6;
 }
 
 .homepage {
@@ -15690,7 +15720,7 @@ tags > div span {
 
 .user-profile .infoform-title {
   font-family: "roboto_bold", Arial, sans-serif;
-  color: #ff6908;
+  color: #7460EE;
   padding: 18px 20px;
   background: rgba(119, 125, 158, 0.1);
   border-bottom: 1px solid #eee;
@@ -15707,5 +15737,26 @@ tags > div span {
 
 .user-profile .infoform form {
   padding: 20px;
+}
+
+.user-portfolio-empty {
+  min-height: 40vh;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  font-family: "roboto_light", Arial, sans-serif;
+  color: #414954;
 }
 

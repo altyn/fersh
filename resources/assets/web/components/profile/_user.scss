@@ -423,7 +423,7 @@
 
             &-title{
                 font-family: $robotobold;
-                color: $orange;
+                color: $violetnew;
                 padding: 18px 20px;
                 background: rgba($color: $violetgray, $alpha: 0.1);
                 border-bottom: 1px solid #eee;
@@ -441,6 +441,24 @@
             form{
                 padding: 20px;
             }
+        }
+    }
+
+    &-portfolio{
+        &-empty {
+            min-height: 40vh;
+
+            width: 100%;
+            margin: 0 auto;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            flex-flow: column;
+            font-family: $robotolight;
+            color: $black2;
         }
     }
 }
