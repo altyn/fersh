@@ -16,11 +16,12 @@ class CreatePortfolioTable extends Migration
         Schema::create('portfolio', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable()->default(null);
-            $table->json('description'); // short, full
-            $table->json('files'); // 360x360: 520x400, original, desc, views}
-            $table->json('links');
+            $table->json('description')->nullable();
+            $table->json('cover')->nullable();
+            $table->json('files')->nullable();
+            $table->json('links')->nullable();
 
-            $table->json('tags');
+            $table->json('tags')->nullable();
             $table->integer('views')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');

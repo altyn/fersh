@@ -59,7 +59,15 @@
                             <div class="profile-info-contact-body">{{ date('d.m.Y') }}</div>
                         </div>
                     </div>
-                   
+                    <div class="profile-info-contact">
+                        <h6 class="profile-title">
+                            Статистика
+                        </h6>
+                        <div class="profile-info-contact-list">
+                            <div class="profile-info-contact-capture">Просмотры профиля</div>
+                            <div class="profile-info-contact-body">123</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-9 col-12">

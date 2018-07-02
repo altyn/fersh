@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\User\ModelName as User;
 use App\Models\UserDetails\ModelName as UserDetails;
+use App\Models\UserPortfolio\ModelName as UserPortfolio;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -132,15 +133,21 @@ class FreelancerController extends Controller
      */
     public function deleteFreelancerAvatar(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
-        
-        if($row->avatar['50x50']) unlink($row->avatar['50x50']);
-        if($row->avatar['100x100']) unlink($row->avatar['100x100']);
-        if($row->avatar['200x200']) unlink($row->avatar['200x200']);
-        if($row->avatar['360x360']) unlink($row->avatar['360x360']);
-        
-        $row->avatar = null;
-        $row->save();
-        return Redirect::back()->withSuccess('Аватар удалён');
+        if($row->avatar['50x50'] && $row->avatar['100x100'] && $row->avatar['200x200'] && $row->avatar['360x360']){
+            // $row->avatar = null;
+            // $row->save();
+            return Redirect::back()->withSuccess('Аватар не найден. Рекомендуем загрузить новый аватар');
+        }else{
+            if($row->avatar['50x50']) unlink($row->avatar['50x50']);
+            if($row->avatar['100x100']) unlink($row->avatar['100x100']);
+            if($row->avatar['200x200']) unlink($row->avatar['200x200']);
+            if($row->avatar['360x360']) unlink($row->avatar['360x360']);
+            
+            $row->avatar = null;
+            $row->save();
+            return Redirect::back()->withSuccess('Аватар удалён');
+        }
+
     }
 
     /**
@@ -157,6 +164,60 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.edit.portfolio.add');
     }
 
+    public function portfolioCreate(Request $request){
+
+        $row = UserPortfolio::create($request->except('file', 'cover'));
+        
+        $row->user_id = auth()->id();
+        // $row->save();
+        
+        if($request->hasFile('cover')){
+
+            $cover = $request->file('cover');
+            $directory  = 'img/freelancer/portfolio/'.$row->id.'/'.'cover/';
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+            $btw = time();
+            $title = $btw.uniqid().'_400x300.'.$cover->getClientOriginalExtension();
+            Image::make($_FILES['cover']['tmp_name'])->fit(400, 300)->save($directory.$title);
+            
+            $image = $directory.$title;
+            $row->cover = $image;
+            $row->save();
+            // return 'Success cover';
+        }
+
+        $files = $request->file('files');
+        
+        $count = count($files);
+        if($count==0){   
+            return "Фотографии не выбраны";
+        }
+        for($i=0;$i<$count;$i++){
+            $file = $files[$i];
+            if($file){
+                $btw = time();
+                $name = $btw.uniqid().'_full.'.$file->getClientOriginalExtension();
+                $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
+                if (!file_exists($dir)) {
+                    mkdir($dir, 0777, true);
+                }
+                $file->move($dir,$name);
+                $original = $dir.$name;
+            
+                // Image::make($original)->save($name);
+                $originals[] = $original;
+            } else
+                return  response()->json("ERROR",400);
+        }
+        $links['files'] = stripslashes('{' . trim(json_encode($originals), '[]') . '}');
+        $row->files = $links;
+        $row->save();
+        // return 'Success files';
+
+    }
+
     public function portfolioUpdate(){
 
         return view('web.user.profile.freelancer.edit.portfolio.update');
@@ -167,28 +228,6 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.edit.portfolio.delete');
     }
 
-    public function uploadPortfolioFiles(Request $request){
-
-        if($request->hasFile('file'))
-            {
-                $file = $request->file('file');
-                $dir  = 'img/freelancer/portfolio/'.auth()->id().'/';
-                if (!file_exists($dir)) {
-                    mkdir($dir, 0777, true);
-                }
-                $btw = time();
-
-                $name50 = $btw.uniqid().'_50.'.$file->getClientOriginalExtension();
-                Image::make($_FILES['file']['tmp_name'])->save($dir.$name50);
-
-                if($name50){
-                    return response()->json('success', 200);
-                } else {
-                    return response()->json('error', 400);
-                }
-            }
-
-    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

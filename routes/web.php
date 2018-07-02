@@ -53,6 +53,8 @@ Route::group(['prefix' => '/{lang}',], function (){
             });
         });
         Route::name('uploadPortfolioFiles')->post('/edit/portfolio/uploadpictures', 'FreelancerController@uploadPortfolioFiles');
+        Route::name('portfolioCreate')->post('/edit/portfolio/create', 'FreelancerController@portfolioCreate');
+        Route::name('portfolioEdit')->post('/edit/portfolio/edit', 'FreelancerController@portfolioEdit');
         Route::name('updateFreelancer')->post('/edit/personal', 'FreelancerController@updateFreelancer');
         Route::name('deleteFreelancerAvatar')->post('/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
         Route::name('freelancerChangepassword')->post('/edit/changepassword', 'FreelancerController@changepasswordPost');
