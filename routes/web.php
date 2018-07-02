@@ -35,28 +35,32 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     // Freeelancer info manipulations...
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
-        Route::get('/{id}', 'FreelancerController@index');
-
-        Route::group(['prefix' => 'edit'], function(){
-
-            Route::get('/personal', 'FreelancerController@personal');
-            Route::get('/contacts', 'FreelancerController@contacts');
-            Route::get('/specialization', 'FreelancerController@specialization');
-            Route::get('/changepassword', 'FreelancerController@changepassword');
-            Route::get('/notifications', 'FreelancerController@notifications');
-            Route::get('/accounts', 'FreelancerController@accounts');
-
+       
+        Route::group(['prefix' => '/{id}'], function(){
+            Route::get('/', 'FreelancerController@index');
             Route::group(['prefix' => 'portfolio'], function(){
                 Route::get('/', 'FreelancerController@portfolio');
                 Route::get('/add', 'FreelancerController@portfolioAdd');
                 Route::get('/update', 'FreelancerController@portfolioUpdate');
                 Route::post('/delete', 'FreelancerController@portfolioDelete');
             });
-
         });
-        Route::name('uploadPortfolioFiles')->post('/edit/portfolio/uploadpictures', 'FreelancerController@uploadPortfolioFiles');
-        Route::name('portfolioCreate')->post('/edit/portfolio/create', 'FreelancerController@portfolioCreate');
-        Route::name('portfolioEdit')->post('/edit/portfolio/edit', 'FreelancerController@portfolioEdit');
+
+        Route::get('/{id}', 'FreelancerController@index');
+
+        Route::group(['prefix' => 'edit'], function(){
+            Route::get('/personal', 'FreelancerController@personal');
+            Route::get('/contacts', 'FreelancerController@contacts');
+            Route::get('/specialization', 'FreelancerController@specialization');
+            Route::get('/changepassword', 'FreelancerController@changepassword');
+            Route::get('/notifications', 'FreelancerController@notifications');
+            Route::get('/accounts', 'FreelancerController@accounts');
+        });
+
+        // Post 
+        Route::name('portfolioCreate')->post('/portfolio/create', 'FreelancerController@portfolioCreate');
+        Route::name('portfolioEdit')->post('/portfolio/edit', 'FreelancerController@portfolioEdit');
+
         Route::name('updateFreelancer')->post('/edit/personal', 'FreelancerController@updateFreelancer');
         Route::name('deleteFreelancerAvatar')->post('/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
         Route::name('freelancerChangepassword')->post('/edit/changepassword', 'FreelancerController@changepasswordPost');

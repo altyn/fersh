@@ -46,7 +46,7 @@
                                 <div class="col-md-6 col-12">
                                     <label for="password_confirmation">Подтвердите пароль<span class="required">*</span></label>
                                     <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Подтвердите пароль"  class="form-control" required />
-                                     @if ($errors->has('password_confirmation'))
+                                    @if ($errors->has('password_confirmation'))
                                         <div class="alert alert-danger mt-2 mb-0" role="alert">
                                             {{ $errors->first('password_confirmation') }}
                                         </div>

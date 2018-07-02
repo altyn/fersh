@@ -134,7 +134,7 @@ class FreelancerController extends Controller
      */
     public function deleteFreelancerAvatar(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
-        if($row->avatar['50x50'] && $row->avatar['100x100'] && $row->avatar['200x200'] && $row->avatar['360x360']){
+        if(($row->avatar['50x50'] && $row->avatar['100x100'] && $row->avatar['200x200'] && $row->avatar['360x360']) == null){
             // $row->avatar = null;
             // $row->save();
             return Redirect::back()->withSuccess('Аватар не найден. Рекомендуем загрузить новый аватар');
@@ -155,15 +155,28 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function portfolio(){
-        return view('web.user.profile.freelancer.edit.portfolio.index');
+    public function portfolio($lang, $id){
+
+        $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+        if($freelancer == null){
+            return redirect(app()->getLocale().'/profile/info');
+        }else{
+            $birthDate = explode("-", $freelancer->birthday);
+            $age = (date("Y") - $birthDate[0]);
+            $country = Country::where('country_id', $freelancer->country)->first();
+            $isVerify = User::where('id', $id)->first();
+            $skills = explode(',', $freelancer->spec['ru']['skills']);
+            return view('web.user.profile.freelancer.portfolio.index',
+                compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+        }
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function portfolioAdd(){
-        return view('web.user.profile.freelancer.edit.portfolio.add');
+
+        return view('web.user.profile.freelancer.portfolio.add');
     }
 
     /**
@@ -171,10 +184,6 @@ class FreelancerController extends Controller
      * @return \Illuminate\Http\JsonResponse|string
      */
     public function portfolioCreate(Request $request){
-
-        /**
-         * TODO: Validation and multiple upload files
-         */
 
         $row = UserPortfolio::create($request->except('file', 'cover'));
         $row->user_id = auth()->user()->getAuthIdentifier();
@@ -221,17 +230,27 @@ class FreelancerController extends Controller
         $links['files'] = stripslashes('{' . trim(json_encode($originals), '[]') . '}');
         $row->files = $links;
         $row->save();
-        return redirect()->back();
+        // return 'Success files';
+
+        if($row){
+            return 'Success files';
+                // return redirect(app()->getLocale().'/profile')
+                    // ->with('success','Your profile updated successfully');
+            } else {
+                // return redirect()->back();
+                return 'Unsuccess';
+        }
+
     }
 
     public function portfolioUpdate(){
 
-        return view('web.user.profile.freelancer.edit.portfolio.update');
+        return view('web.user.profile.freelancer.portfolio.update');
     }
 
     public function portfolioDelete(){
 
-        return view('web.user.profile.freelancer.edit.portfolio.delete');
+        return view('web.user.profile.freelancer.portfolio.delete');
     }
 
     /**

@@ -66,7 +66,6 @@ class WebAuthController extends Controller
             $user_provider = $provider;
             $user_soc_id = $memberInfo->getId();
 
-//            dd($memberInfo);
             $user = User::where(['email' => $memberInfo->getEmail(),
                                  'provider_user_id' => $user_soc_id,
                                  'provider_name' => $user_provider])->first();

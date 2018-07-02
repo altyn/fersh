@@ -15381,6 +15381,7 @@ tags > div span {
           flex-flow: column;
   font-family: "roboto_light", Arial, sans-serif;
   color: #414954;
+  font-size: 14px;
 }
 
 .user-profile-aside .profile-ava-img .no-ava:hover {
@@ -15388,7 +15389,7 @@ tags > div span {
 }
 
 .user-profile-aside .profile-ava-img .no-ava span {
-  border-bottom: 1px dashed rgba(65, 73, 84, 0.5);
+  border-bottom: 1px dashed rgba(65, 73, 84, 0.39);
 }
 
 .user-profile-aside .profile-ava .verify {
@@ -15758,5 +15759,76 @@ tags > div span {
           flex-flow: column;
   font-family: "roboto_light", Arial, sans-serif;
   color: #414954;
+}
+
+.portfolio {
+  padding: 20px 0;
+}
+
+.portfolio-control {
+  position: relative;
+  display: block;
+}
+
+.portfolio-control-right {
+  text-align: right;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+  border-radius: 2px;
+  overflow: hidden;
+  -webkit-box-shadow: -1px 1px 10px #d7dbe8;
+          box-shadow: -1px 1px 10px #d7dbe8;
+}
+
+.portfolio-item-info {
+  height: 100px;
+  padding: 10px;
+}
+
+.portfolio-item-info-title {
+  font-family: "roboto_regular", Arial, sans-serif;
+  line-height: 20px;
+}
+
+.portfolio-item-info-title a {
+  color: #7460EE;
+}
+
+.portfolio-item-info-title a:hover {
+  border-bottom: 1px solid rgba(116, 96, 238, 0.6);
+}
+
+.portfolio-item-info-bottom {
+  border-top: 1px solid #dae0ea;
+  margin-top: 10px;
+  padding: 5px;
+  font-family: "roboto_light", Arial, sans-serif;
+}
+
+.portfolio-ul {
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio-ul-li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.portfolio-ul-li span {
+  display: table-cell;
+  vertical-align: middle;
+  color: #7684a0;
+}
+
+.portfolio-ul-li .jam {
+  padding-right: 5px;
+  font-size: 16px;
+}
+
+.portfolio-ul-li-text {
+  font-size: 14px;
 }
 
