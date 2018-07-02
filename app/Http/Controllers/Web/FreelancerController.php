@@ -100,6 +100,7 @@ class FreelancerController extends Controller
         {
             $file = $request->file('avatar');
             $dir  = 'img/freelancer/avatar/'.$row->id.'/';
+
             if (!file_exists($dir)) {
                 mkdir($dir, 0777, true);
             }
@@ -155,24 +156,31 @@ class FreelancerController extends Controller
      */
 
     public function portfolio(){
-
         return view('web.user.profile.freelancer.edit.portfolio.index');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function portfolioAdd(){
-
         return view('web.user.profile.freelancer.edit.portfolio.add');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|string
+     */
     public function portfolioCreate(Request $request){
 
-        $row = UserPortfolio::create($request->except('file', 'cover'));
-        
-        $row->user_id = auth()->id();
-        // $row->save();
-        
-        if($request->hasFile('cover')){
+        /**
+         * TODO: Validation and multiple upload files
+         */
 
+        $row = UserPortfolio::create($request->except('file', 'cover'));
+        $row->user_id = auth()->user()->getAuthIdentifier();
+        $row->save();
+
+        if($request->hasFile('cover')){
             $cover = $request->file('cover');
             $directory  = 'img/freelancer/portfolio/'.$row->id.'/'.'cover/';
             if (!file_exists($directory)) {
@@ -181,17 +189,16 @@ class FreelancerController extends Controller
             $btw = time();
             $title = $btw.uniqid().'_400x300.'.$cover->getClientOriginalExtension();
             Image::make($_FILES['cover']['tmp_name'])->fit(400, 300)->save($directory.$title);
-            
+
             $image = $directory.$title;
-            $row->cover = $image;
+            $row->cover = json_encode($image);
             $row->save();
-            // return 'Success cover';
         }
 
         $files = $request->file('files');
-        
+
         $count = count($files);
-        if($count==0){   
+        if($count==0){
             return "Фотографии не выбраны";
         }
         for($i=0;$i<$count;$i++){
@@ -205,7 +212,7 @@ class FreelancerController extends Controller
                 }
                 $file->move($dir,$name);
                 $original = $dir.$name;
-            
+
                 // Image::make($original)->save($name);
                 $originals[] = $original;
             } else
@@ -214,8 +221,7 @@ class FreelancerController extends Controller
         $links['files'] = stripslashes('{' . trim(json_encode($originals), '[]') . '}');
         $row->files = $links;
         $row->save();
-        // return 'Success files';
-
+        return redirect()->back();
     }
 
     public function portfolioUpdate(){
@@ -227,7 +233,6 @@ class FreelancerController extends Controller
 
         return view('web.user.profile.freelancer.edit.portfolio.delete');
     }
-
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

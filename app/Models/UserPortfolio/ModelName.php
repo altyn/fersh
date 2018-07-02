@@ -12,6 +12,7 @@ class ModelName extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
+        'user_id',
         'description',
         'files',
         'links',

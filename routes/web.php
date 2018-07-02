@@ -38,6 +38,7 @@ Route::group(['prefix' => '/{lang}',], function (){
         Route::get('/{id}', 'FreelancerController@index');
 
         Route::group(['prefix' => 'edit'], function(){
+
             Route::get('/personal', 'FreelancerController@personal');
             Route::get('/contacts', 'FreelancerController@contacts');
             Route::get('/specialization', 'FreelancerController@specialization');
@@ -51,6 +52,7 @@ Route::group(['prefix' => '/{lang}',], function (){
                 Route::get('/update', 'FreelancerController@portfolioUpdate');
                 Route::post('/delete', 'FreelancerController@portfolioDelete');
             });
+
         });
         Route::name('uploadPortfolioFiles')->post('/edit/portfolio/uploadpictures', 'FreelancerController@uploadPortfolioFiles');
         Route::name('portfolioCreate')->post('/edit/portfolio/create', 'FreelancerController@portfolioCreate');
