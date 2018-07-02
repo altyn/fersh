@@ -49,8 +49,8 @@
                     @endif
                         <div class="form-group">
                             <input type="text" class="form-control" name="login" placeholder="Логин"
-                                @if($user_details['nickname'])
-                                    value="{{ $user_details['nickname'] }}"
+                                @if($user_details['name'])
+                                    value="{{ $user_details['name'] }}"
                                 @endif
                                 required>
                             <div class="invalid-feedback">

@@ -16,14 +16,14 @@ class UserController extends Controller
      */
     public function __construct()
     {
-           $this->middleware('auth')->except('signUp');
-        
+        $this->middleware('auth')->except('signUp');
     }
 
     /**
      *
      */
-    public function index(){
+    public function index()
+    {
 
     }
 
@@ -60,8 +60,6 @@ class UserController extends Controller
      */
     public function profileStore(Request $request)
     {
-
-
         $input = $request->except('avatar');
         $user_details = UserDetails::where('user_id','=', auth()->user()->getAuthIdentifier())->count();
         

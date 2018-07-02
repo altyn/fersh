@@ -28,7 +28,7 @@ class WebAuthController extends Controller
     public function signUpForm(Request $request)
     {
         $user_details['email'] = session()->get('user_email');
-        $user_details['nickname'] = session()->get('user_nickname');
+        $user_details['name'] = session()->get('user_name');
         $user_details['avatar'] = session()->get('user_avatar');
         return view('web.user.sign_up', compact('user_details'));
     }
@@ -60,12 +60,13 @@ class WebAuthController extends Controller
     {
         try{
             $memberInfo =  Socialite::driver($provider)->stateless()->user();
-            $user_nickname = $memberInfo->getNickName();
+            $user_name = $memberInfo->getName();
             $user_email = $memberInfo->getEmail();
             $user_avatar = $memberInfo->getAvatar();
             $user_provider = $provider;
             $user_soc_id = $memberInfo->getId();
 
+            dd($memberInfo);
             $user = User::where(['email' => $memberInfo->getEmail(),
                                  'provider_user_id' => $user_soc_id,
                                  'provider_name' => $user_provider])->first();
@@ -78,7 +79,7 @@ class WebAuthController extends Controller
                     return redirect(app()->getLocale().'/sign_in');
                 }
             }else{
-                session()->put('user_nickname', $user_nickname);
+                session()->put('user_name', $user_name);
                 session()->put('user_email', $user_email);
                 session()->put('user_avatar', $user_avatar);
                 session()->put('user_provider', $user_provider);
