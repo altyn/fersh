@@ -25,7 +25,7 @@
                         <div class="infoform-title">
                             <h6>Добавить</h6>
                         </div>
-                        <form action="/{{ app()->getLocale() }}/freelancer/edit/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="newproject">
+                        <form action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="newproject">
                             @csrf
                             <div class="row">
                                 <div class="col-12 form-group">
@@ -128,7 +128,7 @@
         var token = "{{ Session::token() }}";
 
         var uploadPictures = new Dropzone("#uploadPictures", {
-            url: "/{{ app()->getLocale() }}/freelancer/edit/portfolio/create",
+            url: "/{{ app()->getLocale() }}/freelancer/portfolio/create",
             paramName: "files",
             params: {
                 _token: token

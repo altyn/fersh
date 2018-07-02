@@ -1,0 +1,70 @@
+.portfolio{
+    padding: 20px 0;
+    
+    &-control{
+        position: relative;
+        display: block;
+        
+        &-right{
+            text-align: right;
+        }
+    }
+
+    &-body{
+    }
+    
+    &-item {
+        margin-bottom: 30px;
+        border-radius: 2px;
+        overflow: hidden;
+        box-shadow: -1px 1px 10px #d7dbe8;
+
+        &-info{
+            height: 100px;
+            padding: 10px;
+
+            &-title {
+                font-family: $robotoregular;
+                line-height: 20px;
+                a {
+                    color: $violetnew;
+                    &:hover {
+                        border-bottom: 1px solid rgba($color: $violetnew, $alpha: 0.6);
+                    }
+                }
+            }
+
+            &-bottom{
+                border-top: 1px solid #dae0ea;
+                margin-top: 10px;
+                padding: 5px;
+                font-family: $robotolight;
+            }
+        }
+
+    }
+
+    &-ul{
+        padding: 0;
+        margin: 0;
+
+        &-li{
+            display: inline-block;
+            margin-right: 10px;
+            span{
+                display: table-cell;
+                vertical-align: middle;
+                color: #7684a0;
+            }
+
+            .jam{
+                padding-right: 5px;
+                font-size: 16px;
+            }
+
+            &-text{
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -112,13 +112,14 @@
 
                             font-family: $robotolight;
                             color: $black2;
+                            font-size: 14px;
 
                             &:hover{
                                 background: $gray;
                             }
 
                             span{
-                                border-bottom: 1px dashed rgba($color: $black2, $alpha: 0.5);
+                                border-bottom: 1px dashed rgba($color: $black2, $alpha: 0.39);
                             }
 
                         }
