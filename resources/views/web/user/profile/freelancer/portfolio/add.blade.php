@@ -25,7 +25,7 @@
                         <div class="infoform-title">
                             <h6>Добавить</h6>
                         </div>
-                        <form class="dropzone_f" action="/{{ app()->getLocale() }}/freelancer/edit/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="newproject">
+                        <form class="dropzone_f" action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="newproject">
                             @csrf
                             <div class="row">
                                 <div class="col-12 form-group">

@@ -185,6 +185,10 @@ class FreelancerController extends Controller
      */
     public function portfolioCreate(Request $request){
 
+        /**
+         * TODO: Validation and multiply files upload with dropzone in UI
+         */
+
         $row = UserPortfolio::create($request->except('file', 'cover'));
         $row->user_id = auth()->user()->getAuthIdentifier();
         $row->save();
@@ -233,12 +237,12 @@ class FreelancerController extends Controller
         // return 'Success files';
 
         if($row){
-            return 'Success files';
-                // return redirect(app()->getLocale().'/profile')
-                    // ->with('success','Your profile updated successfully');
+//            return 'Success files';
+                 return redirect(app()->getLocale().'/profile')
+                     ->with('success','Your profile updated successfully');
             } else {
-                // return redirect()->back();
-                return 'Unsuccess';
+                 return redirect()->back();
+//                return 'Unsuccess';
         }
 
     }
