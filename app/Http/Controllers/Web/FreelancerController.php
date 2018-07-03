@@ -35,6 +35,7 @@ class FreelancerController extends Controller
      */
     public function index($lang, $id){
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+        $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
         if($freelancer == null){
             return redirect(app()->getLocale().'/profile/info');
         }else{
@@ -44,7 +45,7 @@ class FreelancerController extends Controller
             $isVerify = User::where('id', $id)->first();
             $skills = explode(',', $freelancer->spec['ru']['skills']);
             return view('web.user.profile.freelancer.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios'));
         }
     }
 
