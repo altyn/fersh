@@ -2,11 +2,11 @@
     <ul class="list-menu">
         <li class="list-menu-item list-menu-title"><span class="jam jam-coin"></span>Портфолио</li>
         <li class="list-menu-item">
-            <a href="/{{ app()->getLocale()}}/freelancer/portfolio/" @if($current_three == 'portfolio') class="active" @endif>
+            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/" @if($current_three == 'portfolio') class="active" @endif>
                 <span class="jam jam-folder-open"></span>
                 <span class="list-menu-item-title">Мои проекты</span>
             </a>
-            <a href="/{{ app()->getLocale()}}/freelancer/portfolio/add" @if($current_four == 'add') class="active" @endif>
+            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/add" @if($current_four == 'add') class="active" @endif>
                 <span class="jam jam-plus"></span>
                 <span class="list-menu-item-title">Добавить проект</span>
             </a>

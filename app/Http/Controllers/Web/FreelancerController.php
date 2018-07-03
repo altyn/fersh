@@ -134,10 +134,10 @@ class FreelancerController extends Controller
      */
     public function deleteFreelancerAvatar(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
-        if(($row->avatar['50x50'] && $row->avatar['100x100'] && $row->avatar['200x200'] && $row->avatar['360x360']) == null){
+        if(!file_exists(asset($row->avatar['50x50']))){
             // $row->avatar = null;
             // $row->save();
-            return Redirect::back()->withSuccess('Аватар не найден. Рекомендуем загрузить новый аватар');
+            return Redirect::back()->withSuccess('Аватар удалён или временно перемещен в другое мест. Рекомендуем загрузить новый аватар');
         }else{
             if($row->avatar['50x50']) unlink($row->avatar['50x50']);
             if($row->avatar['100x100']) unlink($row->avatar['100x100']);
@@ -158,6 +158,7 @@ class FreelancerController extends Controller
     public function portfolio($lang, $id){
 
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+        $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
         if($freelancer == null){
             return redirect(app()->getLocale().'/profile/info');
         }else{
@@ -167,7 +168,7 @@ class FreelancerController extends Controller
             $isVerify = User::where('id', $id)->first();
             $skills = explode(',', $freelancer->spec['ru']['skills']);
             return view('web.user.profile.freelancer.portfolio.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios'));
         }
     }
 
@@ -175,7 +176,6 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function portfolioAdd(){
-
         return view('web.user.profile.freelancer.portfolio.add');
     }
 
@@ -188,6 +188,7 @@ class FreelancerController extends Controller
         /**
          * TODO: Validation and multiply files upload with dropzone in UI
          */
+
 
         $row = UserPortfolio::create($request->except('file', 'cover'));
         $row->user_id = auth()->user()->getAuthIdentifier();
@@ -204,47 +205,51 @@ class FreelancerController extends Controller
             Image::make($_FILES['cover']['tmp_name'])->fit(400, 300)->save($directory.$title);
 
             $image = $directory.$title;
-            $row->cover = json_encode($image);
+            $row->cover = $image;
             $row->save();
         }
 
         $files = $request->file('files');
 
-        $count = count($files);
-        if($count==0){
-            return "Фотографии не выбраны";
-        }
-        for($i=0;$i<$count;$i++){
-            $file = $files[$i];
-            if($file){
-                $btw = time();
-                $name = $btw.uniqid().'_full.'.$file->getClientOriginalExtension();
-                $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
-                if (!file_exists($dir)) {
-                    mkdir($dir, 0777, true);
-                }
-                $file->move($dir,$name);
-                $original = $dir.$name;
+        foreach($files as $key => $file)
+        {
+            $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
+            }
 
-                // Image::make($original)->save($name);
-                $originals[] = $original;
-            } else
-                return  response()->json("ERROR",400);
+            $btw = time();
+            $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
+            $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
+
+            Image::make($file)->fit(350, 220)->fit(180, 180)->save($dir.$thumb);
+            Image::make($file)->fit(825, 550)->save($dir.$full);
+
+            $thumb = $dir.$thumb;
+            $original = $dir.$full;
+
+            // Image::make($original)->save($name);
+            $thumbs[] = $thumb;
+            $originals[] = $original;
         }
-        $links['files'] = stripslashes('{' . trim(json_encode($originals), '[]') . '}');
+        // dd(json_encode($thumbs));
+        $links['thumbs'] = $thumbs;
+        $links['fulls'] = $originals;
         $row->files = $links;
         $row->save();
-        // return 'Success files';
 
         if($row){
-//            return 'Success files';
-                 return redirect(app()->getLocale().'/profile')
-                     ->with('success','Your profile updated successfully');
+                return Redirect::back()->withSuccess('Портфолио добавлено');
             } else {
                  return redirect()->back();
-//                return 'Unsuccess';
         }
 
+    }
+
+    public function portfolioView($lang, $id, $portfolioId){
+
+        $portfolio = UserPortfolio::where('id', $portfolioId)->first();
+        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio'));
     }
 
     public function portfolioUpdate(){

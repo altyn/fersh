@@ -25,6 +25,19 @@
         display: inline-block !important;
     }
 
+    .user-profile-aside .profile-ava-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .portfolio-item-info-title{
+        font-size: 14px;
+        line-height: 16px;
+    }
+    .portfolio-ul-li-text{
+        font-size: 12px !important;
+    }
+
 }
 
 @media (max-width: 1200px) {

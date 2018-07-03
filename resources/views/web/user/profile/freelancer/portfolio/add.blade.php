@@ -8,8 +8,10 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('/css/_profile_info.css') }}">
-<script src="{{ asset('js/dropzone.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
+
+<style>
+ 
+</style>
 
 @endsection
 
@@ -25,8 +27,13 @@
                         <div class="infoform-title">
                             <h6>Добавить</h6>
                         </div>
-                        <form class="dropzone_f" action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="newproject">
+                        <form  action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    {{ $message }}
+                                </div>
+						    @endif
                             <div class="row">
                                 <div class="col-12 form-group">
                                     <label for="title">Название проекта<span class="required">*</span></label>
@@ -51,18 +58,18 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12 form-group">
                                             <label for="files">Обложка проекта</label>
-                                            <div class="fileinput fileinput-new input-group fileinput-cover" data-provides="fileinput">
-                                                <div class="fileinput-new thumbnail" style="width: auto; height: 150px;">
+                                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                                                     <img src="{{ asset('img/freelancer/portfolio/sample.png') }}">
                                                 </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: auto; max-height: 150px;"></div>
-                                                <div class="fileinput-controls">
-                                                    <span class="btn btn-file">
-                                                        <span class="fileinput-new"><span class="jam jam-plus"></span></span>
-                                                        <span class="fileinput-exists"><span class="jam jam-pencil"></span></span>
+                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                                                <div>
+                                                    <span class="btn btn-outline-primary btn-file">
+                                                        <span class="fileinput-new">Выбрать файл</span>
+                                                        <span class="fileinput-exists">Изменить</span>
                                                         <input type="file" class="form-control" id="cover" name="cover">
                                                     </span>
-                                                    <a href="#" class="btn fileinput-exists" data-dismiss="fileinput"><div class="jam jam-trash"></div></a>
+                                                    <a href="#" class="btn btn-outline-danger fileinput-exists" data-dismiss="fileinput">Очистить</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,10 +100,24 @@
                                 </div>
                                 <div class="col-12 form-group">
                                     <label for="files">Картинки</label>
-                                    <div class="d-block">
-                                        <small>Иллюстрации проекта Загрузите одну или более картинок, которые проиллюстрируют ваш проект. Картинки будут выводиться в полном размере. Поддерживаются форматы png и jpg.</small>
-                                        <div id="uploadPictures" class="dropzone">
-                                            <input name="files[]" type="file" multiple />
+                                    <div class="d-block portfolio-file-add">
+                                        <small class="d-block">Иллюстрации проекта</small>
+                                        <small>Загрузите одну или более картинок, которые проиллюстрируют ваш проект. Картинки будут выводиться в полном размере. Поддерживаются форматы png и jpg.</small>
+                                        
+                                        <div class="backhighlighter mt-4 mb-4">
+                                            <div class="col">
+                                                <div class="imgfiles row">
+                                                    <div class="form-group col-md-3">
+                                                        <div class="img-picker">
+                                                            <div class="form-control btn btn-default btn-block img-upload-btn">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span class="jam jam-plus"></span>
+                                                                <input type="file" name="files[]" multiple onchange="getval(this);">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,55 +142,25 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 
 <script>
-    {{--Dropzone.autoDiscover = false;--}}
-    {{--$(document).ready(function(){--}}
+    function getval(sel) {
+        if (sel.files && sel.files[0]) {
+            var reader = new FileReader();
 
-        {{--var token = "{{ Session::token() }}";--}}
+            reader.onload = function (e) {
+                $('<img class="preview" src="'+e.target.result+'" alt="your image" />').insertAfter(sel);
+                $(sel).closest('.img-upload-btn').css('background-image','url('+e.target.result+')' )
+                $('<button class="btn btn-link deletor" onclick="deletor(this);"><small>X</small></button>').insertAfter(sel);
+            //$(sel).css('visibility','hidden')
+            }
 
-        {{--var uploadPictures = new Dropzone("#uploadPictures", {--}}
-            {{--url: "/{{ app()->getLocale() }}/freelancer/edit/portfolio/create",--}}
-            {{--paramName: "files",--}}
-            {{--params: {--}}
-                {{--_token: token--}}
-            {{--},--}}
-            {{--maxFilesize: 100,--}}
-            {{--maxFiles: 20,--}}
-            {{--parallelUploads: 20,--}}
-            {{--uploadMultiple: true,--}}
-            {{--thumbnailWidth: 220,--}}
-            {{--thumbnailHeight: 220,--}}
-            {{--acceptedFiles: 'image/*, application/pdf' ,--}}
-            {{--addRemoveLinks: true,--}}
-            {{--autoProcessQueue: false,--}}
-            {{--dictCancelUpload: 'Отменить',--}}
-            {{--dictCancelUploadConfirmation: 'Удалить',--}}
-            {{--dictRemoveFile : 'Удалить',--}}
-            {{--dictDefaultMessage: 'Выберите картинки',--}}
-             {{--init: function () {--}}
-                {{--var uploadPictures = this;--}}
+            reader.readAsDataURL(sel.files[0]);
+        }
 
-                {{--$("#button").click(function (e) {--}}
-                    {{--e.preventDefault();--}}
-                    {{--uploadPictures.processQueue();--}}
-                {{--});--}}
-
-                {{--this.on('sending', function(file, xhr, formData) {--}}
-                    {{--var data = $('#newproject').serializeArray();--}}
-
-                    {{--$.each(data, function(key, el) {--}}
-                        {{--formData.append(el.name, el.value);--}}
-                        {{--// formData.append('File', cover);--}}
-                    {{--});--}}
-                    {{--formData.append("cover", $("input[name=cover]")[0].files[0]);--}}
-                {{--});--}}
-
-                {{--this.on("success", function(file, responseText) {--}}
-                    {{--console.log(file);--}}
-                    {{--console.log(responseText);--}}
-                {{--});--}}
-            {{--}--}}
-        {{--});--}}
-    {{--});--}}
+            $('.imgfiles').append('<div class="form-group col-md-3"><div class="img-picker"><div class="form-control btn btn-default btn-block img-upload-btn"><span class="jam jam-plus"></span><input type="file" name="files[]" onchange="getval(this);"></div></div></div>');
+        }
+    function deletor(id){
+        $(id).closest('.col-md-3').remove();
+    }    
 
     var tagsInput = document.querySelector('input[id=tags]'),
         tags = new Tagify(tagsInput, {

@@ -36,14 +36,15 @@ Route::group(['prefix' => '/{lang}',], function (){
     // Freeelancer info manipulations...
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
        
-//        Route::group(['prefix' => '/{id}'], function(){
-            Route::get('/', 'FreelancerController@index');
+        Route::group(['prefix' => '/{id}'], function(){
+        // Route::get('/', 'FreelancerController@index');
             Route::group(['prefix' => 'portfolio'], function(){
                 Route::get('/', 'FreelancerController@portfolio');
                 Route::get('/add', 'FreelancerController@portfolioAdd');
                 Route::get('/update', 'FreelancerController@portfolioUpdate');
                 Route::post('/delete', 'FreelancerController@portfolioDelete');
-//            });
+                Route::get('/{portfolioId}', 'FreelancerController@portfolioView'); 
+           });
         });
 
         Route::get('/{id}', 'FreelancerController@index');
