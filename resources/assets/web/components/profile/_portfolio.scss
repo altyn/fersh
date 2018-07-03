@@ -198,18 +198,77 @@
 
     &-view{
         &-top{
+            margin-bottom: 30px;
             &-left,
             &-right {
                 display: inline-block;
+                float: left;
             }
             &-left{
+                margin-bottom: 15px;
                 img{
                     position: relative;
                     display: block;
                     border-radius: 3px;
-                    box-shadow: 5px 8px 45px rgba($color: $violetnew, $alpha: 0.6);
+                    box-shadow: 5px 8px 45px rgba($color: #b6c9fc, $alpha: 1);
                     overflow: hidden;
                 }
+            }
+            &-right{
+                padding: 15px 30px;
+
+                &-title{
+                    display: block;
+                    padding-bottom: 10px;
+
+                    h2{
+                        color: $violetnew;
+                    }
+                }
+
+                &-tags{
+                    padding: 15px 0;
+                    margin: 0;
+                    border-top: 1px solid rgba($color: $violetnew, $alpha: 0.2);
+                    border-bottom: 1px solid rgba($color: $violetnew, $alpha: 0.2);
+
+                    li{
+                        display: inline-block;
+
+                        &:last-child{
+                            span.jam{
+                                display: none;
+                            }
+                        }
+
+                        span{
+                            font-family: $robotomedium;
+                            text-transform: uppercase;
+                            color: rgba($color: $violetnew, $alpha: 0.8);
+                            font-size: 14px;
+
+                            &.jam{
+                                position: relative;
+                                top: -3px;
+                                font-size: 5px;
+                                padding: 0 8px;
+                                color: rgba(116, 96, 238, 0.4);
+                            }
+                        }
+                    }
+                }
+
+                &-desc{
+                    padding: 15px 0;
+                    font-family: $robotoregular;
+                }
+            }
+        }
+
+        &-middle{
+            img{
+                border-radius: 3px;
+                box-shadow: 5px 8px 45px rgba($color: #b6c9fc, $alpha: 1);
             }
         }
     }

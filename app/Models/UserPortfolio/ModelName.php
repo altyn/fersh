@@ -42,4 +42,10 @@ class ModelName extends Model
         return $date;
     }
 
+    public function incrementViewed($step = 1)
+    {
+        $this->views += $step;
+        $this->save();
+    }
+
 }

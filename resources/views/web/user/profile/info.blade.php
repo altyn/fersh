@@ -108,8 +108,8 @@
                                 <label for="location">Пол<span class="required">*</span></label>
                                 <div class="d-block">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary">
-                                            <input type="radio" value="1" id="male" name="sex" autocomplete="off">Мужчина
+                                        <label class="btn btn-secondary active">
+                                            <input type="radio" value="1" id="male" name="sex" autocomplete="off" checked>Мужчина
                                         </label>
                                         <label class="btn btn-secondary">
                                             <input type="radio" value="0" id="female" name="sex" autocomplete="off">Женщина

@@ -222,17 +222,15 @@ class FreelancerController extends Controller
             $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
             $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
 
-            Image::make($file)->fit(350, 220)->fit(180, 180)->save($dir.$thumb);
-            Image::make($file)->fit(825, 550)->save($dir.$full);
+            Image::make($file)->fit(180, 180)->save($dir.$thumb);
+            Image::make($file)->save($dir.$full);
 
             $thumb = $dir.$thumb;
             $original = $dir.$full;
 
-            // Image::make($original)->save($name);
             $thumbs[] = $thumb;
             $originals[] = $original;
         }
-        // dd(json_encode($thumbs));
         $links['thumbs'] = $thumbs;
         $links['fulls'] = $originals;
         $row->files = $links;
@@ -241,15 +239,17 @@ class FreelancerController extends Controller
         if($row){
                 return Redirect::back()->withSuccess('Портфолио добавлено');
             } else {
-                 return redirect()->back();
+                return redirect()->back();
         }
 
     }
 
     public function portfolioView($lang, $id, $portfolioId){
 
-        $portfolio = UserPortfolio::where('id', $portfolioId)->first();
-        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio'));
+        $portfolio = UserPortfolio::findOrFail($portfolioId);
+        $portfolio->incrementViewed();
+        $tags = explode(',', $portfolio->tags['ru']['tags']);
+        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags'));
     }
 
     public function portfolioUpdate(){
