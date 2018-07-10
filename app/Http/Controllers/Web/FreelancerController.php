@@ -34,18 +34,35 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function index($lang, $id){
-        $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-        if($freelancer == null){
-            return redirect(app()->getLocale().'/profile/info');
-        }else{
-            $birthDate = explode("-", $freelancer->birthday);
-            $age = (date("Y") - $birthDate[0]);
-            $country = Country::where('country_id', $freelancer->country)->first();
-            $isVerify = User::where('id', $id)->first();
-            $skills = explode(',', $freelancer->spec['ru']['skills']);
-            return view('web.user.profile.freelancer.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+
+        if (0 != \auth()->user()->isAdmin){
+            $freelancer = UserDetails::where('user_id', $id)->first();
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else{
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', $id)->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+            }
+        } else {
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else {
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+            }
         }
+
     }
 
     /**
@@ -154,7 +171,6 @@ class FreelancerController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function portfolio($lang, $id){
 
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
@@ -246,19 +262,29 @@ class FreelancerController extends Controller
 
     }
 
+    /**
+     * @param $lang
+     * @param $id
+     * @param $portfolioId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function portfolioView($lang, $id, $portfolioId){
 
         $portfolio = UserPortfolio::where('id', $portfolioId)->first();
         return view('web.user.profile.freelancer.portfolio.view', compact('portfolio'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function portfolioUpdate(){
-
         return view('web.user.profile.freelancer.portfolio.update');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function portfolioDelete(){
-
         return view('web.user.profile.freelancer.portfolio.delete');
     }
 
@@ -266,7 +292,6 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function notifications(){
-        
         return view('web.user.profile.freelancer.edit.notifications');
     }
 
@@ -274,7 +299,6 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */   
     public function accounts(){
-        
         return view('web.user.profile.freelancer.edit.accounts');
     }
 
@@ -282,7 +306,6 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function changepassword(){
-
         return view('web.user.profile.freelancer.edit.changepassword');
     }
 
