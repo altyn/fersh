@@ -34,35 +34,19 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function index($lang, $id){
-
-        if (0 != \auth()->user()->isAdmin){
-            $freelancer = UserDetails::where('user_id', $id)->first();
-            if($freelancer == null){
-                return redirect(app()->getLocale().'/profile/info');
-            }else{
-                $birthDate = explode("-", $freelancer->birthday);
-                $age = (date("Y") - $birthDate[0]);
-                $country = Country::where('country_id', $freelancer->country)->first();
-                $isVerify = User::where('id', $id)->first();
-                $skills = explode(',', $freelancer->spec['ru']['skills']);
-                return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
-            }
-        } else {
-            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-            if($freelancer == null){
-                return redirect(app()->getLocale().'/profile/info');
-            }else {
-                $birthDate = explode("-", $freelancer->birthday);
-                $age = (date("Y") - $birthDate[0]);
-                $country = Country::where('country_id', $freelancer->country)->first();
-                $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
-                $skills = explode(',', $freelancer->spec['ru']['skills']);
-                return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
-            }
+        $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+        $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
+        if($freelancer == null){
+            return redirect(app()->getLocale().'/profile/info');
+        }else{
+            $birthDate = explode("-", $freelancer->birthday);
+            $age = (date("Y") - $birthDate[0]);
+            $country = Country::where('country_id', $freelancer->country)->first();
+            $isVerify = User::where('id', $id)->first();
+            $skills = explode(',', $freelancer->spec['ru']['skills']);
+            return view('web.user.profile.freelancer.index',
+                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios'));
         }
-
     }
 
     /**
@@ -171,6 +155,7 @@ class FreelancerController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function portfolio($lang, $id){
 
         $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
@@ -238,17 +223,15 @@ class FreelancerController extends Controller
             $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
             $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
 
-            Image::make($file)->fit(350, 220)->fit(180, 180)->save($dir.$thumb);
-            Image::make($file)->fit(825, 550)->save($dir.$full);
+            Image::make($file)->fit(180, 180)->save($dir.$thumb);
+            Image::make($file)->save($dir.$full);
 
             $thumb = $dir.$thumb;
             $original = $dir.$full;
 
-            // Image::make($original)->save($name);
             $thumbs[] = $thumb;
             $originals[] = $original;
         }
-        // dd(json_encode($thumbs));
         $links['thumbs'] = $thumbs;
         $links['fulls'] = $originals;
         $row->files = $links;
@@ -257,34 +240,26 @@ class FreelancerController extends Controller
         if($row){
                 return Redirect::back()->withSuccess('Портфолио добавлено');
             } else {
-                 return redirect()->back();
+                return redirect()->back();
         }
 
     }
 
-    /**
-     * @param $lang
-     * @param $id
-     * @param $portfolioId
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function portfolioView($lang, $id, $portfolioId){
 
-        $portfolio = UserPortfolio::where('id', $portfolioId)->first();
-        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio'));
+        $portfolio = UserPortfolio::findOrFail($portfolioId);
+        $portfolio->incrementViewed();
+        $tags = explode(',', $portfolio->tags['ru']['tags']);
+        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function portfolioUpdate(){
+
         return view('web.user.profile.freelancer.portfolio.update');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function portfolioDelete(){
+
         return view('web.user.profile.freelancer.portfolio.delete');
     }
 
@@ -292,6 +267,7 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function notifications(){
+        
         return view('web.user.profile.freelancer.edit.notifications');
     }
 
@@ -299,6 +275,7 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */   
     public function accounts(){
+        
         return view('web.user.profile.freelancer.edit.accounts');
     }
 
@@ -306,6 +283,7 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function changepassword(){
+
         return view('web.user.profile.freelancer.edit.changepassword');
     }
 

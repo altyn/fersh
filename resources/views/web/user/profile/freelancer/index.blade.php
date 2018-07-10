@@ -96,56 +96,47 @@
                         <h6>Портфолио</h6>
                         @if(auth()->user())
                             <div class="user-profile-content-title-right">
-                                <a href="/{{ app()->getLocale()}}/freelancer/{{$freelancer->id}}/portfolio">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio">
                                     <span class="jam jam-cog" data-toggle="tooltip" data-placement="left" title="Редактировать"></span>
                                 </a>
                             </div>
                         @endif
                     </div>
                     <div class="user-profile-content-body user-profile-portfolio">
+                        @if($portfolios)
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="user-profile-portfolio-item">
-                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/3.png') }}" alt=""></a>
-                                    <div class="user-profile-portfolio-item-title"><a href="#">Редизайн сайта экологической компании.</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-profile-portfolio-item">
-                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/4.png') }}" alt=""></a>
-                                    <div class="user-profile-portfolio-item-title"><a href="#">Инфографика для турфирмы.</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-profile-portfolio-item">
-                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/5.jpg') }}" alt=""></a>
-                                    <div class="user-profile-portfolio-item-title"><a href="#">Эксперимент с оттенками фиолетового цвета</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-profile-portfolio-item">
-                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/6.png') }}" alt=""></a>
-                                    <div class="user-profile-portfolio-item-title"><a href="#">Иллюстрация обычного фрилансера</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-profile-portfolio-item">
-                                    <a href="#"><img  class="img-fluid" src="{{ asset('img/home/7.jpg') }}" alt=""></a>
-                                    <div class="user-profile-portfolio-item-title"><a href="#">Иконка маршрутного такси.</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-profile-portfolio-item-alls">
-                                    <img  class="img-fluid" src="{{ asset('img/home/7.jpg') }}" alt="">
-                                    <div class="user-profile-portfolio-item-alls-overlay">
-                                        <a href="#">
-                                            <div class="user-profile-portfolio-item-alls-number">+14</div>
-                                            <div class="user-profile-portfolio-item-alls-text">смотреть всё</div>
-                                        </a>
+                            @foreach($portfolios as $portfolio)
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="portfolio-item">
+                                    <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/{{ $portfolio->id }}" class="portfolio-item-img">
+                                        <img class="img-fluid" src="{{ asset($portfolio->cover) }}" alt="">
+                                        <div class="portfolio-item-img-overlay" id="showOverlay">
+                                            <ul class="portfolio-ul">
+                                                {{-- <li class="portfolio-ul-li likes">
+                                                    <span class="jam jam-heart"></span>
+                                                    <span class="portfolio-ul-li-text">123</span>
+                                                </li> --}}
+                                                {{-- <li class="portfolio-ul-li comments">
+                                                    <span class="jam jam-message"></span>
+                                                    <span class="portfolio-ul-li-text">5</span>
+                                                </li> --}}
+                                                <li class="portfolio-ul-li views">
+                                                    <span class="jam jam-eye"></span>
+                                                    <span class="portfolio-ul-li-text">{{ $portfolio->views }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                    <div class="portfolio-item-info">
+                                        <div class="portfolio-item-info-title">
+                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/{{ $portfolio->id }}">{{ $portfolio->description['ru']['title'] }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
+                        @endif
                     </div>
                 </div>
 
