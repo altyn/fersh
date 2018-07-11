@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="portfolio-view-middle ">
-                            <h6><span class="jam jam-link"></span> {{ count($portfolio->files['fulls']) }} файла</h6>
+                            <h6 class="mb-3"><span class="jam jam-link"></span> {{ count($portfolio->files['fulls']) }} файла</h6>
                             <div class="d-block">
                                 <div class="row">
                                     @foreach($portfolio->files['thumbs'] as $file)

@@ -19,15 +19,13 @@
     <div class="container user-profile">
         <div class="inner">
             <div class="row">
-
                 @include('web.user.profile.freelancer.edit.sidebar')
-
                 <div class="col-md-9 col-12">
                     <div class="infoform">
                         <div class="infoform-title">
                             <h6>Добавить</h6>
                         </div>
-                        <form  action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data">
+                        <form  action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="uploadPortfolio">
                             @csrf
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -103,7 +101,6 @@
                                     <div class="d-block portfolio-file-add">
                                         <small class="d-block">Иллюстрации проекта</small>
                                         <small>Загрузите одну или более картинок, которые проиллюстрируют ваш проект. Картинки будут выводиться в полном размере. Поддерживаются форматы png и jpg.</small>
-                                        
                                         <div class="backhighlighter mt-4 mb-4">
                                             <div class="col">
                                                 <div class="imgfiles row">
@@ -123,6 +120,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div id="loader">
+                                    <div class="loader"></div>
+                                    <div class="loader-text">Загружаются картинки...</div>
+                                </div>
                                 <button type="submit" id="button" class="btn btn-save mr-2">Сохранить</button>
                                 <a href="#" class="btn btn-cancel" role="button">Отмена</a>
                             </div>
@@ -142,6 +143,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 
 <script>
+    $('#loader').hide();
+    $("#uploadPortfolio").on("submit", function(){
+        $('#loader').show();
+    })
+
     function getval(sel) {
         if (sel.files && sel.files[0]) {
             var reader = new FileReader();

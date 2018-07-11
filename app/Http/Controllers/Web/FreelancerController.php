@@ -195,6 +195,11 @@ class FreelancerController extends Controller
         $row->user_id = auth()->user()->getAuthIdentifier();
         $row->save();
 
+        $validator = Validator::make($request->all(), [
+            'cover' => 'max:50000000',
+            'files' => 'max:50000000',
+        ]);
+
         if($request->hasFile('cover')){
             $cover = $request->file('cover');
             $directory  = 'img/freelancer/portfolio/'.$row->id.'/'.'cover/';
@@ -222,7 +227,7 @@ class FreelancerController extends Controller
             $btw = time();
             $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
             $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
-
+            
             Image::make($file)->fit(180, 180)->save($dir.$thumb);
             Image::make($file)->save($dir.$full);
 
