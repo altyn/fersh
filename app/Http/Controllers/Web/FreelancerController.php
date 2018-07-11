@@ -34,18 +34,33 @@ class FreelancerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function index($lang, $id){
-        $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-        $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
-        if($freelancer == null){
-            return redirect(app()->getLocale().'/profile/info');
-        }else{
-            $birthDate = explode("-", $freelancer->birthday);
-            $age = (date("Y") - $birthDate[0]);
-            $country = Country::where('country_id', $freelancer->country)->first();
-            $isVerify = User::where('id', $id)->first();
-            $skills = explode(',', $freelancer->spec['ru']['skills']);
-            return view('web.user.profile.freelancer.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios'));
+
+        if (0 != \auth()->user()->isAdmin){
+            $freelancer = UserDetails::where('user_id', $id)->first();
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else{
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', $id)->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+            }
+        } else {
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else {
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+            }
         }
     }
 
