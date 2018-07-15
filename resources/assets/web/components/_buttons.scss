@@ -37,6 +37,30 @@ a:visited {
         }
     }
 
+    &-signin {
+        color: #fff;
+        border-radius: 30px;
+        text-transform: uppercase;
+        font-family: $robotomedium;
+        padding: 10px 20px;
+        background: rgba($color: $green, $alpha: 0.7);
+        &:hover,
+        &:active {
+            color: #fff;
+            background: $green;
+        }
+        &:focus,
+        &:visited {
+            box-shadow: none;
+            color: #fff;
+        }
+        .jam {
+            position: relative;
+            top: 1px;
+            padding-left: 5px;
+        }
+    }
+
     &-sign{
         background: $violet;
         color: #fff;

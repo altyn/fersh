@@ -281,7 +281,7 @@
                             background: rgba($color: $violetnew, $alpha: 0.09);
 
                             &:hover{
-                                background: rgba($color: $violetnew, $alpha: 0.09);
+                                background: rgba($color: $violetnew, $alpha: 0.15);
                                 color: $black2;
 
                                 svg, span.jam{
@@ -331,9 +331,29 @@
         }
 
         &-middle{
+            &-ul{
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                li{
+                    span{
+                        color: $formtitle;
+                    }
+                    span.jam{
+                        color: $formtitle;
+                    }
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+            }
             img{
                 border-radius: 3px;
                 box-shadow: 5px 8px 45px rgba($color: #b6c9fc, $alpha: 1);
+                opacity: 0.8;
+
+                &:hover{
+                    opacity: 1;
+                }
             }
         }
     }
