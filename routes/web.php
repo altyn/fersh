@@ -77,6 +77,6 @@ Route::group(['prefix' => '/{lang}',], function (){
 Auth::routes();
 
 Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
-
+Route::get('/verify/{token}', 'WebAuthController@verifyUser');
 Route::get('/auth/{provider}/redirect/', 'WebAuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback/', 'WebAuthController@handleProviderCallback');

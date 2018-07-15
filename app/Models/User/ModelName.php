@@ -34,6 +34,9 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
         'updated_at',
     ];
 
+    /**
+     * @return mixed
+     */
     public function getLogin()
     {
         return $this->login;
@@ -46,6 +49,13 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
 
     public function getAuthPassword() {
         return $this->passwod;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function verifyUser(){
+        return $this->hasOne('App\Models\VerifyUsers\ModelName');
     }
 
 }

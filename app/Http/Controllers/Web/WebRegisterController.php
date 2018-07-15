@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Bash\Auth\RegisterController;
 use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
+use App\Models\VerifyUsers\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\WelcomeInfoMail;
@@ -54,11 +55,17 @@ class WebRegisterController extends RegisterController
         } else {
             $data['password'] = Hash::make($data['password']);
             $row = User::create($data);
+            $verifyUser = VerifyUsers::create([
+                'user_id' => $row->id,
+                'token' => str_random(40)
+            ]);
+
 
             if($row)
             {
                 $to_email = $data['email'];
-                Mail::to($to_email)->send(new WelcomeInfoMail($row));
+                $token = $verifyUser->token;
+                Mail::to($to_email)->send(new WelcomeInfoMail($row, $token));
                 return view('web.user.success', compact('to_email'));
             } else {
                 return back();
