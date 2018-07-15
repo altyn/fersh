@@ -74,8 +74,6 @@ Route::group(['prefix' => '/{lang}',], function (){
 
 });
 
-
-
 Auth::routes();
 
 Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');

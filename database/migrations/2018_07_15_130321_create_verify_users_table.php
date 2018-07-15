@@ -13,7 +13,7 @@ class CreateVerifyUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('verify_users', function (Blueprint $table) {
+        Schema::create('user_verify', function (Blueprint $table) {
             $table->integer('user_id');
             $table->string('token');
             $table->timestamps();

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\VerifyUsers;
+namespace App\Models\UserVerify;
 
 use Illuminate\Database\Eloquent\Model;
 
 class ModelName extends Model
 {
-    protected $table = 'verify_users';
+    protected $table = 'user_verify';
 
     protected $guarded = [];
 
