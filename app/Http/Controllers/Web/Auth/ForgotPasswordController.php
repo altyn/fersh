@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
 
+use App\Models\User\ModelName as User;
+use Illuminate\Support\Facades\Password;
+
 class ForgotPasswordController extends Controller
 {
     /*
@@ -24,14 +27,23 @@ class ForgotPasswordController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    public function sendResetLinkEmail(Request $request)
+
+    public function showLinkRequestForm()
     {
+        return view('web.user.password_reset');
+    }
+
+    /**
+     *  Password Broker for Web User Model
+     */
+    public function broker()
+    {
+        return Password::broker('users');
     }
 }

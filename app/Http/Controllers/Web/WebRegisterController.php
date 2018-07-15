@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Bash\Auth\RegisterController;
 use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
-use App\Models\VerifyUsers\ModelName as VerifyUsers;
+use App\Models\UserVerify\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\WelcomeInfoMail;
@@ -16,6 +16,9 @@ class WebRegisterController extends RegisterController
 {
     protected $reditectTo = 'profile/info';
 
+    /**
+     * WebRegisterController constructor.
+     */
     public function __construct()
     {
         $this->middleware('guest');

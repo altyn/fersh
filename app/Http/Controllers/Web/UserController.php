@@ -7,10 +7,13 @@ use App\Models\Country\ModelName as Country;
 use App\Models\UserDetails\ModelName as UserDetails;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Notifications\Notifiable;
 use Intervention\Image\ImageManagerStatic as Image;
+use App\Notifications\MailResetPasswordNotification;
 
 class UserController extends Controller
 {
+
     /**
      * UserController constructor.
      */
@@ -50,6 +53,7 @@ class UserController extends Controller
             return redirect()->route('home');
         } else {
             $data['countries'] = Country::orderBy('country_id', 'asc')->get();
+            $data['avatar'] = session()->get('user_avatar');
             return view('web.user.profile.info', $data);
         }
     }

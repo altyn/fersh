@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
 use App\Models\User\ModelName as User;
-use App\Models\VerifyUsers\ModelName as VerifyUsers;
+use App\Models\UserVerify\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Auth;
 class WebAuthController extends Controller
 {
