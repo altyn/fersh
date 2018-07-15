@@ -12,14 +12,16 @@ class WelcomeInfoMail extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+    public $token;
 
     /**
      * WelcomeInfoMail constructor.
      * @param $user
      */
-    public function __construct($user)
+    public function __construct($user, $token)
     {
         $this->user = $user;
+        $this->token = $token;
     }
 
     /**

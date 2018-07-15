@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
 use App\Models\User\ModelName as User;
+use App\Models\VerifyUsers\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Auth;
 class WebAuthController extends Controller
 {
@@ -91,5 +92,28 @@ class WebAuthController extends Controller
                 return redirect(app()->getLocale().'/sign_in');
             }
         }
+    }
+
+    /**
+     * @param $token
+     * @return RedirectResponse
+     */
+    public function verifyUser($token)
+    {
+        $verifyUser = VerifyUsers::where('token', $token)->first();
+        if(isset($verifyUser) ){
+            $user = $verifyUser->user;
+            if(!$user->activated) {
+                $verifyUser->user->activated = 1;
+                $verifyUser->user->save();
+                $status = "Ваш e-mail активирован. Теперь вы можете войти на сайт и заполнить профиль.";
+            }else{
+                $status = "Ваш e-mail был активирован. Вы можете войти на сайт.";
+            }
+        }else{
+            return redirect('ru/sign_in')->with('warning', "Извините, неправильные данные.");
+        }
+
+        return redirect('ru/sign_in')->with('status', $status);
     }
 }
