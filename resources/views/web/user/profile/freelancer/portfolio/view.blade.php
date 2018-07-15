@@ -68,8 +68,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="portfolio-view-middle ">
-                            <h6 class="mb-3"><span class="jam jam-link"></span> {{ count($portfolio->files['fulls']) }} файла</h6>
+                        <div class="portfolio-view-middle">
+                            <ul class="portfolio-view-middle-ul">
+                                <li>
+                                    <h6 class="mb-3 d-inline-block">
+                                        <span class="jam jam-link"></span> <span>{{ count($portfolio->files['fulls']) }} файла</span></h6>
+                                </li>
+                                <li>
+                                    <h6 class="mb-3 d-inline-block">
+                                        <span class="jam jam-eye"></span> <span>{{ $portfolio->views }}</span></h6>
+                                </li>
+                                <li>
+                                    <h6 class="mb-3 d-inline-block">
+                                        <span class="jam jam-calendar"></span> <span>{{ $portfolio->created_at }}</span></h6>
+                                </li>
+                                <li></li>
+                            </ul>
                             <div class="d-block">
                                 <div class="row">
                                     @foreach($portfolio->files['thumbs'] as $file)

@@ -14154,6 +14154,34 @@ a:visited {
   padding-left: 5px;
 }
 
+.btn-signin {
+  color: #fff;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-family: "roboto_medium", Arial, sans-serif;
+  padding: 10px 20px;
+  background: rgba(67, 208, 132, 0.7);
+}
+
+.btn-signin:hover,
+.btn-signin:active {
+  color: #fff;
+  background: #43d084;
+}
+
+.btn-signin:focus,
+.btn-signin:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+}
+
+.btn-signin .jam {
+  position: relative;
+  top: 1px;
+  padding-left: 5px;
+}
+
 .btn-sign {
   background: #8e43e7;
   color: #fff;
@@ -16142,7 +16170,7 @@ tags > div span {
 }
 
 .portfolio-view-top-right-links li a:hover {
-  background: rgba(116, 96, 238, 0.09);
+  background: rgba(116, 96, 238, 0.15);
   color: #414954;
 }
 
@@ -16191,9 +16219,33 @@ tags > div span {
   font-family: "roboto_regular", Arial, sans-serif;
 }
 
+.portfolio-view-middle-ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.portfolio-view-middle-ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.portfolio-view-middle-ul li span {
+  color: #656d9c;
+}
+
+.portfolio-view-middle-ul li span.jam {
+  color: #656d9c;
+}
+
 .portfolio-view-middle img {
   border-radius: 3px;
   -webkit-box-shadow: 5px 8px 45px #b6c9fc;
           box-shadow: 5px 8px 45px #b6c9fc;
+  opacity: 0.8;
+}
+
+.portfolio-view-middle img:hover {
+  opacity: 1;
 }
 

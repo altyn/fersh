@@ -67,6 +67,7 @@
                         </div>
                     </div>
                     <a href="/{{ app()->getLocale() }}/sign_up" class="btn btn-reg">Пройти регистрацию <span class="jam jam-arrow-right"></span> </a>
+                    <a href="/{{ app()->getLocale() }}/sign_in" class="btn btn-signin float-right">Войти на сайт <span class="jam jam-log-in"></span> </a>
                 </div>
             </div>
         </div>
