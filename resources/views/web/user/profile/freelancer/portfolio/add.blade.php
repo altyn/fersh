@@ -181,7 +181,7 @@
         console.log(e, e.detail);
     }
 
-    var url = "{{ asset('js/datamini.json') }}";
+    var url = "{{ route('specsjs') }}";
     jQuery.getJSON(url).done(
         function (data) {
             jQuery('.sphera-multi').select2({

@@ -15,7 +15,7 @@
     </div>
     <div class="profile-info">
         <div class="profile-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}}</div>
-        <div class="profile-info-spec">{{ $freelancer->bio['ru']['short'] }}</div>
+        <div class="profile-info-spec">{{ $sphere->title['ru'] }}</div>
         <div class="profile-info-loc"> 
             <span class="profile-info-loc-span">
             </span>{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет

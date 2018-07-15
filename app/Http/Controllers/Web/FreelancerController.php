@@ -9,12 +9,14 @@ use App\Http\Controllers\Controller;
 use App\Models\User\ModelName as User;
 use App\Models\UserDetails\ModelName as UserDetails;
 use App\Models\UserPortfolio\ModelName as UserPortfolio;
+use App\Models\Spec\ModelName as Spec;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use Input;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -37,6 +39,7 @@ class FreelancerController extends Controller
 
         if (0 != \auth()->user()->isAdmin){
             $freelancer = UserDetails::where('user_id', $id)->first();
+            $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
@@ -44,12 +47,14 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
+                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
             }
         } else {
-            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();            
+            $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else {
@@ -57,9 +62,10 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
+                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills'));
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
             }
         }
     }
@@ -86,20 +92,15 @@ class FreelancerController extends Controller
      */
     public function specialization(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
+        $spec = Spec::select('id', 'title')->get();
+        $json_a = json_decode($spec,true);
 
-        // $data = asset('js/datamini.json');
-
-        $string = file_get_contents(asset('js/datamini.json'));
-        $json_a = json_decode($string,true);
-        
         foreach ($json_a as $key => $value){
             if($freelancer->spec['ru']['sphere'] == $value['id']){
                 $sphere = $value;
                 break;
             }
         }
-
-
         return view('web.user.profile.freelancer.edit.specialization', compact('freelancer', 'sphere'));
     }
 
@@ -182,9 +183,10 @@ class FreelancerController extends Controller
             $age = (date("Y") - $birthDate[0]);
             $country = Country::where('country_id', $freelancer->country)->first();
             $isVerify = User::where('id', $id)->first();
+            $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
             $skills = explode(',', $freelancer->spec['ru']['skills']);
             return view('web.user.profile.freelancer.portfolio.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios'));
+                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
         }
     }
 

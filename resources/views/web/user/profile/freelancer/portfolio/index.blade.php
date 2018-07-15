@@ -43,6 +43,10 @@
                                                         <span class="jam jam-eye"></span>
                                                         <span class="portfolio-ul-li-text">{{ $portfolio->views }}</span>
                                                     </li>
+                                                    <li class="portfolio-ul-li files">
+                                                        <span class="jam jam-link"></span>
+                                                        <span class="portfolio-ul-li-text">{{ count($portfolio->files['fulls']) }} </span>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </a>

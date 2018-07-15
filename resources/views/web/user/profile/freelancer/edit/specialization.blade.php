@@ -175,9 +175,7 @@
     function onAddTag(e) {
         console.log(e, e.detail);
     }
-
-
-    var url = "{{ asset('js/datamini.json') }}";
+    var url = "{{ route('specsjs') }}";
     jQuery.getJSON(url).done(
         function (data) {
             jQuery('.sphera-multi').select2({
@@ -191,9 +189,10 @@
         }
     );
 
-    var sphere = '{{ $sphere['text'] }}';
+    var sphere = '{{ $sphere['title']['ru'] }}';
     var opt = "<option value='{{ $sphere['id'] }}' selected ='selected'>" + sphere + " </option>";
     $('.sphera-multi').html(opt);
+
 </script>
 
 @endsection

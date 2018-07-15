@@ -11,6 +11,9 @@
 |
 */
 
+// Json
+Route::get('specsjs', array('as'=>'specsjs', 'uses'=>'JsonController@specsjs'));
+
 Route::name('home')->get('/', function(){
     return redirect('/ru');
 });
@@ -35,7 +38,7 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     // Freeelancer info manipulations...
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
-       
+           
         Route::group(['prefix' => '/{id}'], function(){
         // Route::get('/', 'FreelancerController@index');
             Route::group(['prefix' => 'portfolio'], function(){
@@ -68,6 +71,8 @@ Route::group(['prefix' => '/{lang}',], function (){
     });
 
 });
+
+
 
 Auth::routes();
 

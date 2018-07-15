@@ -15882,8 +15882,6 @@ tags > div span {
   width: 100%;
   margin: 0 auto;
   display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
       justify-content: center;
@@ -15908,7 +15906,7 @@ tags > div span {
   left: 0;
   right: 0;
   padding: 5px;
-  font-family: "roboto_light", Arial, sans-serif;
+  font-family: "fira_sans_light", Arial, sans-serif;
 }
 
 .portfolio-item-img-overlay .portfolio-ul {
@@ -15917,6 +15915,7 @@ tags > div span {
 }
 
 .portfolio-item-img-overlay .portfolio-ul-li {
+  position: relative;
   display: inline-block;
   margin-right: 10px;
 }
@@ -16073,7 +16072,7 @@ tags > div span {
 }
 
 .portfolio-view-top-right {
-  padding: 15px 30px;
+  padding: 0 30px;
 }
 
 .portfolio-view-top-right-title {
@@ -16113,6 +16112,78 @@ tags > div span {
   font-size: 5px;
   padding: 0 8px;
   color: rgba(116, 96, 238, 0.4);
+}
+
+.portfolio-view-top-right-links {
+  padding: 15px 0;
+  margin: 0;
+  border-top: 1px solid rgba(116, 96, 238, 0.2);
+}
+
+.portfolio-view-top-right-links p {
+  font-family: "roboto_medium", Arial, sans-serif;
+  color: rgba(116, 96, 238, 0.7);
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-view-top-right-links li {
+  display: inline-block;
+}
+
+.portfolio-view-top-right-links li a {
+  display: block;
+  position: relative;
+  background: #fafaff;
+  padding: 0 10px;
+  border-radius: 3px;
+  margin-right: 5px;
+  background: rgba(116, 96, 238, 0.09);
+}
+
+.portfolio-view-top-right-links li a:hover {
+  background: rgba(116, 96, 238, 0.09);
+  color: #414954;
+}
+
+.portfolio-view-top-right-links li a:hover svg,
+.portfolio-view-top-right-links li a:hover span.jam {
+  opacity: 1;
+}
+
+.portfolio-view-top-right-links li a .links-item {
+  display: table-cell;
+  vertical-align: middle;
+  height: 28px;
+}
+
+.portfolio-view-top-right-links li a svg {
+  fill: #333;
+  opacity: 0.7;
+}
+
+.portfolio-view-top-right-links li a svg.behance {
+  fill: #1769FF;
+}
+
+.portfolio-view-top-right-links li a svg.dribble {
+  fill: #B2215A;
+}
+
+.portfolio-view-top-right-links li a span {
+  color: #606069;
+  font-size: 14px;
+  height: 20px;
+  display: table-cell;
+  padding-left: 5px;
+}
+
+.portfolio-view-top-right-links li a span.jam {
+  position: relative;
+  font-size: 18px;
+  padding: 0;
+  color: #515053;
+  opacity: 0.7;
 }
 
 .portfolio-view-top-right-desc {
