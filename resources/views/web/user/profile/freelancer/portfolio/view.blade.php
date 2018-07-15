@@ -20,9 +20,9 @@
                                 <div class="col-md-8 col-sm-9 col-12 portfolio-view-top-right">
                                     <div class="portfolio-view-top-right-title">
                                         <h2>{{ $portfolio->description['ru']['title'] }}</h2>
-                                        <ul class="portfolio-view-top-right-ul">
+                                        <ul class="portfolio-view-top-right-ul mt-3">
                                             <li>
-                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}">
+                                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}" class="link-fr">
                                                     <img class="img-fluid rounded-circle"  src="{{ asset($freelancer->avatar['50x50']) }}" height="25" width="25">
                                                     <h6 class="d-inline-block"><span>{{ $freelancer->first_name }} {{ $freelancer->last_name}}</span></h6>
                                                 </a>
@@ -49,7 +49,12 @@
                                         <article>{{ $portfolio->description['ru']['desc'] }}</article>
                                     </div>
                                     <ul class="portfolio-view-top-right-links">
+                                        @if((($portfolio->links['behance'] || $portfolio->links['dribble']) || $portfolio->links['other'] ) == null)
+                                        <p></p>
+                                        @else
                                         <p>Ссылки на других проектах:</p>
+                                        @endif
+                                        @if($portfolio->links['behance'])
                                         <li>
                                             <a href="{{ $portfolio->links['behance'] }}" target="_blank">
                                                 <div class="links-item">
@@ -60,6 +65,8 @@
                                                 </div>
                                             </a>
                                         </li>
+                                        @endif
+                                        @if($portfolio->links['dribble'])
                                         <li>
                                             <a href="{{ $portfolio->links['dribble'] }}" target="_blank">
                                                 <div class="links-item">
@@ -70,6 +77,8 @@
                                                 </div>
                                             </a>
                                         </li>
+                                        @endif
+                                        @if($portfolio->links['other'])
                                         <li>
                                             <a href="{{ $portfolio->links['other'] }}" target="_blank">
                                                 <div class="links-item">
@@ -80,6 +89,7 @@
                                                 </div>
                                             </a>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

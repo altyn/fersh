@@ -40,18 +40,18 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
            
         Route::group(['prefix' => '/{id}'], function(){
-        // Route::get('/', 'FreelancerController@index');
+            // Route::get('/', 'FreelancerController@index');
             Route::group(['prefix' => 'portfolio'], function(){
                 Route::get('/', 'FreelancerController@portfolio');
                 Route::get('/add', 'FreelancerController@portfolioAdd');
-                Route::get('/update', 'FreelancerController@portfolioUpdate');
+                Route::get('/update/{portfolioId}', 'FreelancerController@portfolioUpdate');
                 Route::post('/delete', 'FreelancerController@portfolioDelete');
                 Route::get('/{portfolioId}', 'FreelancerController@portfolioView'); 
-           });
+            });
         });
-
+        
         Route::get('/{id}', 'FreelancerController@index');
-
+        
         Route::group(['prefix' => 'edit'], function(){
             Route::get('/personal', 'FreelancerController@personal');
             Route::get('/contacts', 'FreelancerController@contacts');
@@ -60,10 +60,12 @@ Route::group(['prefix' => '/{lang}',], function (){
             Route::get('/notifications', 'FreelancerController@notifications');
             Route::get('/accounts', 'FreelancerController@accounts');
         });
-
+        
         // Post 
         Route::name('portfolioCreate')->post('/portfolio/create', 'FreelancerController@portfolioCreate');
         Route::name('portfolioEdit')->post('/portfolio/edit', 'FreelancerController@portfolioEdit');
+        // Route::name('portfolioDeleteFile')->post('/portfolio/deletefile', 'FreelancerController@portfolioDeleteFile');
+       
 
         Route::name('updateFreelancer')->post('/edit/personal', 'FreelancerController@updateFreelancer');
         Route::name('deleteFreelancerAvatar')->post('/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');

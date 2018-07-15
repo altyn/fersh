@@ -3,7 +3,7 @@ header{
 }
 
 .navbar{
-    font-family: $firasansmedium;
+    font-family: $robotoregular;
     padding: 1rem;
 
     &.light{
@@ -13,6 +13,7 @@ header{
     }
     &-brand{
         color: $violet;
+        font-family: $firasansmedium;
 
         &:hover {
             color: rgba($color: $violet, $alpha: 0.6);
@@ -35,12 +36,19 @@ header{
     }
 
     &-nav{
-        font-family: $firasansmedium;
+        font-family: $robotoregular;
     }
 
     .nav{
         &-link {
             color: $black;
+            line-height: 20px;
+
+            span.jam{
+                position: relative;
+                top: 1px;
+                padding-left: 5px;
+            }
 
             &:hover{
                 color: $orange;

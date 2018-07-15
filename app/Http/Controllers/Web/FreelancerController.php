@@ -276,15 +276,88 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags', 'freelancer'));
     }
 
-    public function portfolioUpdate(){
+    public function portfolioUpdate($lang, $id, $portfolioId){
 
-        return view('web.user.profile.freelancer.portfolio.update');
+        $portfolio = UserPortfolio::findOrFail($portfolioId);
+
+        return view('web.user.profile.freelancer.portfolio.update', compact('portfolio'));
+    }
+
+/**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|string
+     */
+    public function portfolioEdit(Request $request){
+
+        $id = $request->id;
+        $row = UserPortfolio::findOrFail($id);
+        $row->update($request->except('files', 'cover'));
+        
+        $validator = Validator::make($request->all(), [
+            'cover' => 'max:50000000',
+            'files' => 'max:50000000',
+        ]);
+
+        if($request->hasFile('cover')){
+            $cover = $request->file('cover');
+            $directory  = 'img/freelancer/portfolio/'.$row->id.'/'.'cover/';
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+            $btw = time();
+            $title = $btw.uniqid().'_400x300.'.$cover->getClientOriginalExtension();
+            Image::make($_FILES['cover']['tmp_name'])->fit(400, 300)->save($directory.$title);
+
+            $image = $directory.$title;
+            $row->cover = $image;
+            $row->save();
+        }
+
+        $files = $request->file('files');
+        if($files){
+            foreach($files as $key => $file)
+            {
+                $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
+                if (!file_exists($dir)) {
+                    mkdir($dir, 0777, true);
+                }
+    
+                $btw = time();
+                $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
+                $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
+                
+                Image::make($file)->fit(180, 180)->save($dir.$thumb);
+                Image::make($file)->save($dir.$full);
+    
+                $thumb = $dir.$thumb;
+                $original = $dir.$full;
+    
+                $thumbs[] = $thumb;
+                $originals[] = $original;
+            }
+            $links['thumbs'] = $thumbs;
+            $links['fulls'] = $originals;
+            $row->files = $links;
+            $row->save();
+        }
+
+
+        if($row){
+                return Redirect::back()->withSuccess('Портфолио изменено');
+            } else {
+                return redirect()->back();
+        }
+
     }
 
     public function portfolioDelete(){
 
         return view('web.user.profile.freelancer.portfolio.delete');
     }
+
+    // public function portfolioDeleteFile(Request $request){
+        
+    // }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
