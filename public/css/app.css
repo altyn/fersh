@@ -16112,6 +16112,28 @@ tags > div span {
   color: #7460EE;
 }
 
+.portfolio-view-top-right-ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.portfolio-view-top-right-ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.portfolio-view-top-right-ul li span {
+  color: #656d9c;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.portfolio-view-top-right-ul li span.jam {
+  color: #656d9c;
+  font-size: 16px;
+}
+
 .portfolio-view-top-right-tags {
   padding: 15px 0;
   margin: 0;

@@ -227,6 +227,25 @@
                     }
                 }
 
+                &-ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style-type: none;
+                    li {
+                        span {
+                            color: $formtitle;
+                            font-size: 14px;
+                            vertical-align: middle;
+                        }
+                        span.jam {
+                            color: $formtitle;
+                            font-size: 16px;
+                        }
+                        display: inline-block;
+                        margin-right: 10px;
+                    }
+                }
+
                 &-tags{
                     padding: 15px 0;
                     margin: 0;

@@ -5,7 +5,11 @@
     <title> @yield('title') </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico')}}">
+
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     @yield('styles')

@@ -271,8 +271,9 @@ class FreelancerController extends Controller
 
         $portfolio = UserPortfolio::findOrFail($portfolioId);
         $portfolio->incrementViewed();
+        $freelancer = UserDetails::where('user_id', $portfolio->user_id)->first();
         $tags = explode(',', $portfolio->tags['ru']['tags']);
-        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags'));
+        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags', 'freelancer'));
     }
 
     public function portfolioUpdate(){

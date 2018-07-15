@@ -44,7 +44,9 @@ class ModelName extends Model
 
     public function incrementViewed($step = 1)
     {
-        if(!$this->user_id == auth()->id()){
+        if($this->user_id == auth()->id()){
+            
+        }else{
             $this->views += $step;
             $this->save();
         }
