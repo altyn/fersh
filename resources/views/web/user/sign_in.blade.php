@@ -31,6 +31,16 @@
                             <span>или</span>
                         </div>
                     </div>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if (session('warning'))
+                        <div class="alert alert-warning">
+                            {{ session('warning') }}
+                        </div>
+                    @endif
                     <form class="needs-validation" action="{{ route('login') }}" method="post" novalidate>
                         @csrf
                         @if ($errors->any())
