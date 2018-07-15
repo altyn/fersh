@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User\ModelName as User;
-use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
@@ -36,14 +37,6 @@ class ForgotPasswordController extends Controller
 
     public function showLinkRequestForm()
     {
-        return view('web.user.password_reset');
-    }
-
-    /**
-     *  Password Broker for Web User Model
-     */
-    public function broker()
-    {
-        return Password::broker('users');
+        return view('web.user.password_reset_email');
     }
 }

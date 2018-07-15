@@ -42,11 +42,17 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
         return $this->login;
     }
 
+    /**
+     * @return mixed
+     */
     public function getEmail()
     {
         return $this->email;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAuthPassword() {
         return $this->passwod;
     }

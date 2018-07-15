@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Notifications\Notifiable;
 use Intervention\Image\ImageManagerStatic as Image;
-use App\Notifications\MailResetPasswordNotification;
+use App\Notifications\ResetPasswordNotification;
 
 class UserController extends Controller
 {
