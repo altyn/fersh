@@ -14,11 +14,13 @@
         @endif
     </div>
     <div class="profile-info">
-        <div class="profile-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}}</div>
-        <div class="profile-info-spec">{{ $sphere->title['ru'] }}</div>
+        <div class="profile-info-name">@if($freelancer->first_name){{ $freelancer->first_name }}@endif @if($freelancer->last_name){{ $freelancer->last_name}} @endif</div>
+        @if($sphere->title[app()->getLocale()])
+        <div class="profile-info-spec">{{ $sphere->title[app()->getLocale()] }}</div>
+        @endif
         <div class="profile-info-loc"> 
-            <span class="profile-info-loc-span">
-            </span>{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет
+            <span class="profile-info-loc-span"></span>
+            @if($country->title_ru)  {{ $country->title_ru }} @endif, @if($freelancer->city){{ $freelancer->city }} @endif, @if($age) {{ $age }} @endif лет
         </div>
     </div>
     <div class="profile-info-contact">
@@ -27,11 +29,15 @@
         </h6>
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Электронный адрес</div>
-            <div class="profile-info-contact-body">{{ $freelancer->contacts['ru']['email'] }}</div>
+            @if($freelancer->contacts[app()->getLocale()]['email'])
+            <div class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['email'] }}</div>
+            @endif
         </div>
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Телефонный номер</div>
-            <div class="profile-info-contact-body">{{ $freelancer->contacts['ru']['phone'] }}</div>
+            @if($freelancer->contacts[app()->getLocale()]['phone'])
+            <div class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['phone'] }}</div>
+            @endif
         </div>
     </div>
     <div class="profile-info-contact">

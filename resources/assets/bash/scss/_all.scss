@@ -14097,7 +14097,6 @@ body {
                     flex: 1;
                     -webkit-transition: all 0.2s ease;
                     transition: all 0.2s ease;
-                    font-family: $robotomedium;
                 }
                 .icon-w+span {
                     padding-left: 0px;
@@ -16178,10 +16177,6 @@ body {
 
 .element-wrapper {
     padding-bottom: 3rem;
-    .btn+.btn,
-    .all-wrapper .fc-button+.btn {
-        margin-left: 1rem;
-    }
 }
 
 .all-wrapper .element-wrapper .fc-button+.btn,

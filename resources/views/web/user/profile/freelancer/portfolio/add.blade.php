@@ -41,12 +41,6 @@
                                     <label for="desc">Описание проекта<span class="required">*</span></label>
                                     <textarea name="description[{{app()->getLocale()}}][desc]" id="desc" class="form-control" rows="6"></textarea>
                                 </div>
-                                <div class="col-sm-6 col-12 form-group">
-                                    <label for="bio">Сфера проекта</label>
-                                    <div class="d-block">
-                                        <select class="sphera-multi form-control" name="description[{{app()->getLocale()}}][sphere]" multiple="multiple" ></select>
-                                    </div>
-                                </div>
                                 <div class="col-12 form-group">
                                     <label for="tags">Тэги</label>
                                     <input type="text" class="form-control" id="tags" name="tags[{{app()->getLocale()}}][tags]">

@@ -15342,7 +15342,6 @@ body.menu-side-right .layout-w {
   flex: 1;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  font-family: "roboto_medium", Arial, sans-serif;
 }
 
 .menu-w ul.main-menu > li .icon-w + span {
@@ -17753,11 +17752,6 @@ body.menu-side-right .layout-w {
 
 .element-wrapper {
   padding-bottom: 3rem;
-}
-
-.element-wrapper .btn + .btn,
-.element-wrapper .all-wrapper .fc-button + .btn {
-  margin-left: 1rem;
 }
 
 .all-wrapper .element-wrapper .fc-button + .btn,

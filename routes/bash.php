@@ -13,7 +13,7 @@ Route::middleware('admin')->group(function(){
     Route::resource('spec', 'SpecController');
 
     // Json
-    Route::get('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
+    Route::post('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
     Route::get('specsjs', array('as'=>'specsjs','uses'=>'SpecController@specsjs'));
 
     // Delete routes

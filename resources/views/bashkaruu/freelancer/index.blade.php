@@ -22,39 +22,16 @@
                                 <p>{{ $message }}</p>
                             </div>
                         @endif
-
-                        <table id="datatables" class="dataTables_wrapper table-sm" cellspacing="0" width="100%">
+                        <table id="datatables" class="display responsive nowrap" cellspacing="0" width="100%">
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Last Name</th>
-                                <th>Birthday</th>
-                                <th width="180px">Action</th>
-                            </tr>
+                                <th>Id</th>
+                                <th>Логин</th>
+                                <th>Email</th>
+                                <th>Активация</th>
+                                <th>Ссылки</th>
+                                <th>Опции</th>
                             </thead>
-                            <tbody>
-                            @foreach ($freelancers as $freelancer)
-                                <tr>
-                                    <td>{{ $freelancer->id }}</td>
-                                    <td>{{ $freelancer->first_name }}</td>
-                                    <td>{{ $freelancer->last_name }}</td>
-                                    <td>{{ $freelancer->birthday }}</td>
-                                    <td class="dataTables_actions">
-                                        <a class="item_edit" href="{{ route('freelancers.show',$freelancer->id) }}">
-                                            <i class="os-icon os-icon-mail-18"></i>
-                                        </a>
-                                        <a class="item_edit" href="{{ route('freelancers.edit',$freelancer->id) }}">
-                                            <i class="os-icon os-icon-ui-49"></i>
-                                        </a>
-                                        <a class="item_edit" href="{{ route('freelancers.delete', $freelancer->id) }}">
-                                            <i class="os-icon os-icon-cancel-circle item_remove_icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                    </table>
                     </div>
                 </div>
             </div>
@@ -65,8 +42,38 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function() {
-            $('#datatables').DataTable();
+    $(document).ready(function () {
+        $('#datatables').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "pageLength": 25,
+            "responsive": true,
+            "order": [[ 0, "desc" ]],
+            "language": {
+		        url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json'
+		    },
+            "ajax":{
+                     "url": "/bashkaruu/usersjs",
+                     "dataType": "json",
+                     "type": "POST",
+                     "data":{ _token: "{{csrf_token()}}"}
+                   },
+            "columns": [
+                { "data": "id" },
+                { "data": "login" },
+                { "data": "email" },
+                { 
+                    "className": "dataTables_actions text-center",
+                    "data": "activated" 
+                },
+                { "data": "links" },
+                { 
+                    "className": "dataTables_actions",
+                  "data": "options" 
+                },
+            ]	 
+
         });
+    });
     </script>
 @endsection
