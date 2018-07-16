@@ -99,7 +99,7 @@
         <li>
             <a href="{{ route('freelancers.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-ui-02"></div>
+                    <div class="os-icon os-icon-user-male-circle2"></div>
                 </div>
                 <span>Фрилансеры</span>
             </a>
@@ -107,7 +107,7 @@
         <li>
             <a href="{{ route('freelancers.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-ui-02"></div>
+                    <div class="os-icon os-icon-cv-2"></div>
                 </div>
                 <span>Заказчики</span>
             </a>
@@ -116,25 +116,25 @@
         <li>
             <a href="{{ route('freelancers.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-ui-02"></div>
+                    <div class="os-icon os-icon-tasks-checked"></div>
                 </div>
                 <span>Тарифы</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('translations.index') }}">
+            <a href="{{ route('spec.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-ui-02"></div>
+                    <div class="os-icon os-icon-hierarchy-structure-2"></div>
                 </div>
-                <span>Локализация</span>
+                <span>Специализации</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('spec.index') }}">
+            <a href="{{ route('translations.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-ui-02"></div>
+                    <div class="os-icon os-icon-delivery-box-2"></div>
                 </div>
-                <span>Специализации</span>
+                <span>Локализация</span>
             </a>
         </li>
         <li class="sub-header"><span>Администраторы</span></li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
 use Spatie\Permission\Models\Role as Role;
+use App\Models\UserDetails\ModelName as UserDetails;
 
 class UserController extends Controller
 {
@@ -188,14 +189,23 @@ class UserController extends Controller
 
                 // $nestedData['email'] = substr(strip_tags($user->email),0,50)."...";
                 $nestedData['email'] = $user->email;
+
                 if($user->activated == 0){
                     $isactive = "-";
                 }else{
                     $isactive = "<span class='item_edit'><i class='os-icon os-icon-ui-02'></i></span>";
                 }
+                $profile = UserDetails::where('user_id', $user->id)->first();
+
                 $nestedData['activated'] = $isactive;
-                $nestedData['links'] = "&emsp;<a href='/ru/freelancer/".$user->id."' target='_blank' class='item_edit btn btn-outline-primary btn-sm'>Профиль</a>
-                                          &emsp;<a href='/ru/freelancer/".$user->id."/portfolio' target='_blank' class='item_edit btn btn-outline-success btn-sm'>Портфолио</a>";
+                
+                if(!empty($profile)){
+                    $nestedData['links'] = "&emsp;<a href='/ru/freelancer/".$user->id."' target='_blank' class='item_edit btn btn-outline-primary btn-sm'>Профиль</a>
+                                            &emsp;<a href='/ru/freelancer/".$user->id."/portfolio' target='_blank' class='item_edit btn btn-outline-success btn-sm'>Портфолио</a>";
+                }else{
+                    $nestedData['links'] = "-";
+
+                }
                 $nestedData['options'] = "&emsp;<a href='{$show}' login='SHOW' class='item_edit'><i class='os-icon os-icon-mail-18'></i></a>
                                           &emsp;<a href='{$edit}' login='EDIT' class='item_edit'><i class='os-icon os-icon-ui-49'></i></a>";
                 $data[] = $nestedData;

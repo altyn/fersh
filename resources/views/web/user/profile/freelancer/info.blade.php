@@ -15,7 +15,7 @@
     </div>
     <div class="profile-info">
         <div class="profile-info-name">@if($freelancer->first_name){{ $freelancer->first_name }}@endif @if($freelancer->last_name){{ $freelancer->last_name}} @endif</div>
-        @if($sphere->title[app()->getLocale()])
+        @if($sphere)
         <div class="profile-info-spec">{{ $sphere->title[app()->getLocale()] }}</div>
         @endif
         <div class="profile-info-loc"> 

@@ -1,4 +1,4 @@
-@extends('bashkaruu.layout')
+@extends('bashkaruu.layouts.default')
 
 @section('title', 'Которуулар' )
 

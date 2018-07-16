@@ -47,7 +47,13 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+
+                $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
@@ -62,7 +68,13 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
-                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+                $sphere = Spec::where('id', $usersphere)->first();
+
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
@@ -186,7 +198,12 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+                $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.portfolio.index',
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
@@ -201,7 +218,12 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+                $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.portfolio.index',
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
