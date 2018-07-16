@@ -174,19 +174,38 @@ class FreelancerController extends Controller
 
     public function portfolio($lang, $id){
 
-        $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-        $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
-        if($freelancer == null){
-            return redirect(app()->getLocale().'/profile/info');
+        if (0 != \auth()->user()->isAdmin){
+
+            $freelancer = UserDetails::where('user_id', $id)->first();
+            $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
+
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else{
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', $id)->first();
+                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.portfolio.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+            }
         }else{
-            $birthDate = explode("-", $freelancer->birthday);
-            $age = (date("Y") - $birthDate[0]);
-            $country = Country::where('country_id', $freelancer->country)->first();
-            $isVerify = User::where('id', $id)->first();
-            $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
-            $skills = explode(',', $freelancer->spec['ru']['skills']);
-            return view('web.user.profile.freelancer.portfolio.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();            
+            $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else{
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', $id)->first();
+                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.portfolio.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+            }
         }
     }
 

@@ -95,27 +95,33 @@
                             </div>
                         </div>
                         <div class="portfolio-view-middle">
+                            @if($portfolio->files['fulls'])
                             <ul class="portfolio-view-middle-ul">
                                 <li>
                                     <h6 class="mb-3 d-inline-block">
                                     <span class="jam jam-link"></span> <span>{{ count($portfolio->files['fulls']) }} файла</span></h6>
                                 </li>                                
                             </ul>
+                            @endif
                             <div class="d-block">
                                 <div class="row">
+                                    @if($portfolio->files['thumbs'])
                                     @foreach($portfolio->files['thumbs'] as $file)
                                         <div class="col-md-1 col-sm-1 col-4">
                                             <img src="{{ asset($file)}}" class="img-fluid mb-4" alt="">
                                         </div>
                                     @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="portfolio-view-bottom mt-4">
                             <div class="text-center mb-4">
+                                @if($portfolio->files['fulls'])
                                 @foreach($portfolio->files['fulls'] as $file)
                                     <img src="{{ asset($file)}}" class="img-fluid mb-4" alt="">
                                 @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

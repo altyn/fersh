@@ -28,12 +28,14 @@
                                 <div class="portfolio-header-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}} 
                                     @if($isVerify->activated == '1')
                                         <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
+                                    @else
+                                          {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
                                     @endif
-                                    @if(auth()->user() )
+                                    {{-- @if(auth()->user() )
                                         <div class="portfolio-header-control-right">
                                             <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/add" class="btn btn-add"><span class="jam jam-plus"></span>Добавить проект</a>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <div class="portfolio-header-info-spec">{{ $sphere->title['ru'] }}</div>
                                 <div class="portfolio-header-info-loc">{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет </div>
@@ -85,13 +87,15 @@
                                                     <span class="jam jam-eye"></span>
                                                     <span class="portfolio-ul-li-text">{{ $portfolio->views }}</span>
                                                 </li>
+                                                @if($portfolio->files['fulls'])
                                                 <li class="portfolio-ul-li files">
                                                     <span class="jam jam-link"></span>
                                                     <span class="portfolio-ul-li-text">{{ count($portfolio->files['fulls']) }} </span>
                                                 </li>
+                                                @endif
                                                 <li>
                                                     <h6 class="d-inline-block">
-                                                    <span class="jam jam-clock"></span> <span>{{ $portfolio->created_at->diffForHumans() }}</span></h6>
+                                                    <span class="jam jam-clock"></span><span>{{ $portfolio->created_at->diffForHumans() }}</span></h6>
                                                 </li>
                                             </ul>
                                             <div class="portfolio-item-info-title">
