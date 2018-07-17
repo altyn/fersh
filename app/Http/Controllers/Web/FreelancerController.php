@@ -47,7 +47,13 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+
+                $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
@@ -62,7 +68,13 @@ class FreelancerController extends Controller
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
-                $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+                $sphere = Spec::where('id', $usersphere)->first();
+
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
@@ -174,19 +186,48 @@ class FreelancerController extends Controller
 
     public function portfolio($lang, $id){
 
-        $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-        $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
-        if($freelancer == null){
-            return redirect(app()->getLocale().'/profile/info');
+        if (0 != \auth()->user()->isAdmin){
+
+            $freelancer = UserDetails::where('user_id', $id)->first();
+            $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
+
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else{
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', $id)->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+                $sphere = Spec::where('id', $usersphere)->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.portfolio.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+            }
         }else{
-            $birthDate = explode("-", $freelancer->birthday);
-            $age = (date("Y") - $birthDate[0]);
-            $country = Country::where('country_id', $freelancer->country)->first();
-            $isVerify = User::where('id', $id)->first();
-            $sphere = Spec::where('id', $freelancer->spec['ru']['sphere'])->first();
-            $skills = explode(',', $freelancer->spec['ru']['skills']);
-            return view('web.user.profile.freelancer.portfolio.index',
-                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();            
+            $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
+            if($freelancer == null){
+                return redirect(app()->getLocale().'/profile/info');
+            }else{
+                $birthDate = explode("-", $freelancer->birthday);
+                $age = (date("Y") - $birthDate[0]);
+                $country = Country::where('country_id', $freelancer->country)->first();
+                $isVerify = User::where('id', $id)->first();
+                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                    $usersphere = $freelancer->spec['ru']['sphere'];
+                }else{
+                    $usersphere = '0';
+                }
+                $sphere = Spec::where('id', $usersphere)->first();
+                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                return view('web.user.profile.freelancer.portfolio.index',
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+            }
         }
     }
 
@@ -271,19 +312,93 @@ class FreelancerController extends Controller
 
         $portfolio = UserPortfolio::findOrFail($portfolioId);
         $portfolio->incrementViewed();
+        $freelancer = UserDetails::where('user_id', $portfolio->user_id)->first();
         $tags = explode(',', $portfolio->tags['ru']['tags']);
-        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags'));
+        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags', 'freelancer'));
     }
 
-    public function portfolioUpdate(){
+    public function portfolioUpdate($lang, $id, $portfolioId){
 
-        return view('web.user.profile.freelancer.portfolio.update');
+        $portfolio = UserPortfolio::findOrFail($portfolioId);
+
+        return view('web.user.profile.freelancer.portfolio.update', compact('portfolio'));
+    }
+
+/**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|string
+     */
+    public function portfolioEdit(Request $request){
+
+        $id = $request->id;
+        $row = UserPortfolio::findOrFail($id);
+        $row->update($request->except('files', 'cover'));
+        
+        $validator = Validator::make($request->all(), [
+            'cover' => 'max:50000000',
+            'files' => 'max:50000000',
+        ]);
+
+        if($request->hasFile('cover')){
+            $cover = $request->file('cover');
+            $directory  = 'img/freelancer/portfolio/'.$row->id.'/'.'cover/';
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+            $btw = time();
+            $title = $btw.uniqid().'_400x300.'.$cover->getClientOriginalExtension();
+            Image::make($_FILES['cover']['tmp_name'])->fit(400, 300)->save($directory.$title);
+
+            $image = $directory.$title;
+            $row->cover = $image;
+            $row->save();
+        }
+
+        $files = $request->file('files');
+        if($files){
+            foreach($files as $key => $file)
+            {
+                $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
+                if (!file_exists($dir)) {
+                    mkdir($dir, 0777, true);
+                }
+    
+                $btw = time();
+                $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
+                $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
+                
+                Image::make($file)->fit(180, 180)->save($dir.$thumb);
+                Image::make($file)->save($dir.$full);
+    
+                $thumb = $dir.$thumb;
+                $original = $dir.$full;
+    
+                $thumbs[] = $thumb;
+                $originals[] = $original;
+            }
+            $links['thumbs'] = $thumbs;
+            $links['fulls'] = $originals;
+            $row->files = $links;
+            $row->save();
+        }
+
+
+        if($row){
+                return Redirect::back()->withSuccess('Портфолио изменено');
+            } else {
+                return redirect()->back();
+        }
+
     }
 
     public function portfolioDelete(){
 
         return view('web.user.profile.freelancer.portfolio.delete');
     }
+
+    // public function portfolioDeleteFile(Request $request){
+        
+    // }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

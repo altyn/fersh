@@ -95,62 +95,47 @@
     <h1 class="menu-page-header"></h1>
     <ul class="main-menu">
         <li class="sub-header"><span>Главная страница</span></li>
-        <li class=" has-sub-menu">
-            <a href="#">
-                <div class="icon-w">
-                    <div class="os-icon os-icon-wallet-loaded"></div>
-                </div>
-                <span>Тарифы</span>
-            </a>
-            <div class="sub-menu-w">
-                <ul class="sub-menu">
-                    <li><a href="#">Активные</a></li>
-                    <li><a href="#">Неактивные</a></li>
-                </ul>
-            </div>
-        </li>
         <li class="sub-header"><span>Пользователи</span></li>
-        <li class=" has-sub-menu">
-            <a href="#">
+        <li>
+            <a href="{{ route('freelancers.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-emoticon-smile"></div>
+                    <div class="os-icon os-icon-user-male-circle2"></div>
                 </div>
                 <span>Фрилансеры</span>
             </a>
-            <div class="sub-menu-w">
-                <ul class="sub-menu">
-                    <li><a href="{{ route('freelancers.index') }}">Все</a></li>
-                    <li><a href="#">Активные</a></li>
-                    <li><a href="#">Неактивные</a></li>
-                </ul>
-            </div>
         </li>
-        <li class="has-sub-menu">
-            <a href="#">
+        <li>
+            <a href="{{ route('freelancers.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-user-male-circle"></div>
+                    <div class="os-icon os-icon-cv-2"></div>
                 </div>
                 <span>Заказчики</span>
             </a>
-            <div class="sub-menu-w">
-                <ul class="sub-menu">
-                    <li><a href="#">Активные</a></li>
-                    <li><a href="#">Неактивные</a></li>
-                </ul>
-            </div>
         </li>
-        <li class="has-sub-menu">
-            <a href="#">
+        <li class="sub-header"><span>Настройки</span></li>
+        <li>
+            <a href="{{ route('freelancers.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-user-male-circle"></div>
+                    <div class="os-icon os-icon-tasks-checked"></div>
+                </div>
+                <span>Тарифы</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('spec.index') }}">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-hierarchy-structure-2"></div>
                 </div>
                 <span>Специализации</span>
             </a>
-            <div class="sub-menu-w">
-                <ul class="sub-menu">
-                    <li><a href="{{ route('spec.index') }}">Все</a></li>
-                </ul>
-            </div>
+        </li>
+        <li>
+            <a href="{{ route('translations.index') }}">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-delivery-box-2"></div>
+                </div>
+                <span>Локализация</span>
+            </a>
         </li>
         <li class="sub-header"><span>Администраторы</span></li>
         <li class="has-sub-menu">

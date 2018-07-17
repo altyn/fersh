@@ -12,6 +12,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Тарифы</a>
                     </li>
+                    @if(!auth()->user())
+                    <li class="nav-item">
+                        <a class="nav-link" href="/{{ app()->getLocale() }}/sign_in">Вход<span class="jam jam-log-in"></span></a>
+                    </li>
+                    @endif
                     @if( auth()->user() )
                         <li class="nav-item dropdown user-header">
                             <a class="user-header-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -15,11 +15,27 @@
                         <div class="portfolio-view-top">
                             <div class="row">
                                 <div class="col-md-4 col-sm-3 col-12 portfolio-view-top-left">
-                                    <img class="img-fluid" src="{{ asset($portfolio->cover) }}" alt="">
+                                    <img class="img-fluid" src="{{ asset($portfolio->cover) }}">
                                 </div>
                                 <div class="col-md-8 col-sm-9 col-12 portfolio-view-top-right">
                                     <div class="portfolio-view-top-right-title">
                                         <h2>{{ $portfolio->description['ru']['title'] }}</h2>
+                                        <ul class="portfolio-view-top-right-ul mt-3">
+                                            <li>
+                                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}" class="link-fr">
+                                                    <img class="img-fluid rounded-circle"  src="{{ asset($freelancer->avatar['50x50']) }}" height="25" width="25">
+                                                    <h6 class="d-inline-block"><span>{{ $freelancer->first_name }} {{ $freelancer->last_name}}</span></h6>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <h6 class="d-inline-block">
+                                                <span class="jam jam-eye"></span><span>{{ $portfolio->views }}</span></h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="d-inline-block">
+                                                <span class="jam jam-clock"></span> <span>{{ $portfolio->created_at->diffForHumans() }}</span></h6>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <ul class="portfolio-view-top-right-tags">
                                         @foreach($tags as $tag)
@@ -33,7 +49,12 @@
                                         <article>{{ $portfolio->description['ru']['desc'] }}</article>
                                     </div>
                                     <ul class="portfolio-view-top-right-links">
+                                        @if((($portfolio->links['behance'] || $portfolio->links['dribble']) || $portfolio->links['other'] ) == null)
+                                        <p></p>
+                                        @else
                                         <p>Ссылки на других проектах:</p>
+                                        @endif
+                                        @if($portfolio->links['behance'])
                                         <li>
                                             <a href="{{ $portfolio->links['behance'] }}" target="_blank">
                                                 <div class="links-item">
@@ -44,6 +65,8 @@
                                                 </div>
                                             </a>
                                         </li>
+                                        @endif
+                                        @if($portfolio->links['dribble'])
                                         <li>
                                             <a href="{{ $portfolio->links['dribble'] }}" target="_blank">
                                                 <div class="links-item">
@@ -54,6 +77,8 @@
                                                 </div>
                                             </a>
                                         </li>
+                                        @endif
+                                        @if($portfolio->links['other'])
                                         <li>
                                             <a href="{{ $portfolio->links['other'] }}" target="_blank">
                                                 <div class="links-item">
@@ -64,41 +89,39 @@
                                                 </div>
                                             </a>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="portfolio-view-middle">
+                            @if($portfolio->files['fulls'])
                             <ul class="portfolio-view-middle-ul">
                                 <li>
                                     <h6 class="mb-3 d-inline-block">
-                                        <span class="jam jam-link"></span> <span>{{ count($portfolio->files['fulls']) }} файла</span></h6>
-                                </li>
-                                <li>
-                                    <h6 class="mb-3 d-inline-block">
-                                        <span class="jam jam-eye"></span> <span>{{ $portfolio->views }}</span></h6>
-                                </li>
-                                <li>
-                                    <h6 class="mb-3 d-inline-block">
-                                        <span class="jam jam-calendar"></span> <span>{{ $portfolio->created_at }}</span></h6>
-                                </li>
-                                <li></li>
+                                    <span class="jam jam-link"></span> <span>{{ count($portfolio->files['fulls']) }} файла</span></h6>
+                                </li>                                
                             </ul>
+                            @endif
                             <div class="d-block">
                                 <div class="row">
+                                    @if($portfolio->files['thumbs'])
                                     @foreach($portfolio->files['thumbs'] as $file)
                                         <div class="col-md-1 col-sm-1 col-4">
                                             <img src="{{ asset($file)}}" class="img-fluid mb-4" alt="">
                                         </div>
                                     @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="portfolio-view-bottom mt-4">
                             <div class="text-center mb-4">
+                                @if($portfolio->files['fulls'])
                                 @foreach($portfolio->files['fulls'] as $file)
                                     <img src="{{ asset($file)}}" class="img-fluid mb-4" alt="">
                                 @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

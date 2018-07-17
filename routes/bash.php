@@ -11,9 +11,10 @@ Route::middleware('admin')->group(function(){
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
     Route::resource('spec', 'SpecController');
+    Route::resource('mail', 'MailController');
 
     // Json
-    Route::get('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
+    Route::post('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
     Route::get('specsjs', array('as'=>'specsjs','uses'=>'SpecController@specsjs'));
 
     // Delete routes

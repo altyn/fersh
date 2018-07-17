@@ -23,7 +23,7 @@
                 <div class="col-md-9 col-12">
                     <div class="infoform">
                         <div class="infoform-title">
-                            <h6>Добавить</h6>
+                            <h6>Новое портфолио</h6>
                         </div>
                         <form  action="/{{ app()->getLocale() }}/freelancer/portfolio/create" accept-charset="UTF-8" method="POST" enctype="multipart/form-data" id="uploadPortfolio">
                             @csrf
@@ -40,12 +40,6 @@
                                 <div class="col-12 form-group">
                                     <label for="desc">Описание проекта<span class="required">*</span></label>
                                     <textarea name="description[{{app()->getLocale()}}][desc]" id="desc" class="form-control" rows="6"></textarea>
-                                </div>
-                                <div class="col-sm-6 col-12 form-group">
-                                    <label for="bio">Сфера проекта</label>
-                                    <div class="d-block">
-                                        <select class="sphera-multi form-control" name="description[{{app()->getLocale()}}][sphere]" multiple="multiple" ></select>
-                                    </div>
                                 </div>
                                 <div class="col-12 form-group">
                                     <label for="tags">Тэги</label>
@@ -100,7 +94,7 @@
                                     <label for="files">Картинки</label>
                                     <div class="d-block portfolio-file-add">
                                         <small class="d-block">Иллюстрации проекта</small>
-                                        <small>Загрузите одну или более картинок, которые проиллюстрируют ваш проект. Картинки будут выводиться в полном размере. Поддерживаются форматы png и jpg.</small>
+                                        <small>Загрузите одну или более картинок, которые проиллюстрируют ваш проект. Размер 1110 x AUTO. Файлы будут выводиться в полном размере. Поддерживаются форматы png и jpg.</small>
                                         <div class="backhighlighter mt-4 mb-4">
                                             <div class="col">
                                                 <div class="imgfiles row">

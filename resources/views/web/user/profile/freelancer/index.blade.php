@@ -28,29 +28,29 @@
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Стоимость работы:</div>
                             <div class="user-profile-content-list-body">от 
-                                @if(!empty($freelancer->spec['ru']['rate']))
-                                {{ $freelancer->spec['ru']['rate'] }} 
+                                @if(!empty($freelancer->spec[app()->getLocale()]['rate']))
+                                {{ $freelancer->spec[app()->getLocale()]['rate'] }} 
                                 @endif
                                 сомов. за проект</div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
                             <div class="user-profile-content-list-body">Более
-                                @if(!empty($freelancer->spec['ru']['experience']))
-                                {{ $freelancer->spec['ru']['experience'] }} 
+                                @if(!empty($freelancer->spec[app()->getLocale()]['experience']))
+                                {{ $freelancer->spec[app()->getLocale()]['experience'] }} 
                                 @endif
                                 лет </div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Форма собственности:</div>
                             <div class="user-profile-content-list-body">
-                                @if(isset($freelancer->spec['ru']['firm']['LLC']))
+                                @if(isset($freelancer->spec[app()->getLocale()]['firm']['LLC']))
                                     Юр лицо,
                                 @endif
-                                @if(isset($freelancer->spec['ru']['firm']['self']))
+                                @if(isset($freelancer->spec[app()->getLocale()]['firm']['self']))
                                     ИП,
                                 @endif
-                                @if(isset($freelancer->spec['ru']['firm']['own_company']))
+                                @if(isset($freelancer->spec[app()->getLocale()]['firm']['own_company']))
                                     Физ. лицо
                                 @endif
                             </div>
@@ -58,26 +58,26 @@
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Способы оплаты:</div>
                             <div class="user-profile-content-list-body">
-                                @if(isset($freelancer->spec['ru']['payment_method']['cash']))
+                                @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['cash']))
                                     наличный расчёт,
                                 @endif
-                                @if(isset($freelancer->spec['ru']['payment_method']['bank']))
+                                @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['bank']))
                                     безналичный расчёт,
                                 @endif
-                                @if(isset($freelancer->spec['ru']['payment_method']['electron']))
+                                @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['electron']))
                                     электронные деньги
                                 @endif
                             </div>
                         </div>
 
                         <div class="user-profile-content-about">
-                            @if(isset($freelancer->bio['ru']['short']))
-                                {{ $freelancer->bio['ru']['short'] }}
+                            @if(isset($freelancer->bio[app()->getLocale()]['short']))
+                                {{ $freelancer->bio[app()->getLocale()]['short'] }}
                             @endif
                         <br>
                         <br>
-                            @if(isset($freelancer->bio['ru']['full']))
-                                {{ $freelancer->bio['ru']['full'] }}
+                            @if(isset($freelancer->bio[app()->getLocale()]['full']))
+                                {{ $freelancer->bio[app()->getLocale()]['full'] }}
                             @endif
                         </div>
 
@@ -129,7 +129,7 @@
                                     </a>
                                     <div class="portfolio-item-info">
                                         <div class="portfolio-item-info-title">
-                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/{{ $portfolio->id }}">{{ $portfolio->description['ru']['title'] }}</a>
+                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/{{ $portfolio->id }}">{{ $portfolio->description[app()->getLocale()]['title'] }}</a>
                                         </div>
                                     </div>
                                 </div>
