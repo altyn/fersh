@@ -63,7 +63,6 @@ class WebRegisterController extends RegisterController
                 'token' => str_random(40)
             ]);
 
-
             if($row)
             {
                 $to_email = $data['email'];
