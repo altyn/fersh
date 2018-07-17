@@ -2,26 +2,27 @@
     &-header{
         &-link{
             white-space: nowrap;
-
-
-            &-img, &-login{
-                display: inline-block;
-                vertical-align: middle;
-            }
-
-            &-img{
-                border-radius: 50%;
-                overflow: hidden;
-                margin: 0 5px;
-                img{
-                    height: 36px;
-                    width: auto;
-                }
-            }
+           
             &-login{
                 color: $black;
                 font-family: $robotoregular;
                 cursor: pointer;
+
+                &-img, &-title{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                &-img {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    margin: 0 5px;
+                    img {
+                        height: 36px;
+                        width: auto;
+                    }
+                }
+                
 
                 &:hover{
                     color: #000;

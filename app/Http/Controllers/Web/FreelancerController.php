@@ -39,6 +39,7 @@ class FreelancerController extends Controller
 
         if (0 != \auth()->user()->isAdmin){
             $freelancer = UserDetails::where('user_id', $id)->first();
+            $freelancer->incrementViewed();
             $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
@@ -59,7 +60,8 @@ class FreelancerController extends Controller
                     compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
             }
         } else {
-            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();            
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+            $freelancer->incrementViewed();
             $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');

@@ -37,7 +37,9 @@
                                         </div>
                                     @endif --}}
                                 </div>
+                                @if($sphere)
                                 <div class="portfolio-header-info-spec">{{ $sphere->title['ru'] }}</div>
+                                @endif
                                 <div class="portfolio-header-info-loc">{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет </div>
                                 <div class="portfolio-header-info-desc">
                                     @if(isset($freelancer->bio['ru']['short']))

@@ -15398,27 +15398,27 @@ tags > div span {
   white-space: nowrap;
 }
 
-.user-header-link-img,
 .user-header-link-login {
+  color: #515053;
+  font-family: "roboto_regular", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.user-header-link-login-img,
+.user-header-link-login-title {
   display: inline-block;
   vertical-align: middle;
 }
 
-.user-header-link-img {
+.user-header-link-login-img {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 5px;
 }
 
-.user-header-link-img img {
+.user-header-link-login-img img {
   height: 36px;
   width: auto;
-}
-
-.user-header-link-login {
-  color: #515053;
-  font-family: "roboto_regular", Arial, sans-serif;
-  cursor: pointer;
 }
 
 .user-header-link-login:hover {

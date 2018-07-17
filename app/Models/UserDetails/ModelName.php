@@ -47,4 +47,17 @@ class ModelName extends Model
         return $date;
     }
 
+    public function incrementViewed($step = 1)
+    {
+        if($this->user_id == auth()->id()){
+            if($this->views == 0){
+                $this->views += $step;
+                $this->save();
+            }
+        }else{
+            $this->views += $step;
+            $this->save();
+        }
+    }
+
 }
