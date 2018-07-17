@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Translation\ModelName as Translation;
@@ -25,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->loadLocalization();
         $this->loadLocalizationData();
+        Validator::extend(
+            'recaptcha',
+            'App\\Validators\\ReCaptcha@validate'
+        );
     }
 
     private function loadLocalization()

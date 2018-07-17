@@ -3,7 +3,7 @@
 @section('title', 'Freelance.kg' )
 
 @section('styles')
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection
 
 @section('content')
@@ -40,6 +40,7 @@
                                     Введите почту
                                 </div>
                             </div>
+                            <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
                             <button class="btn btn-sign" type="submit">Запросить</button>
                         </form>
                     </div>

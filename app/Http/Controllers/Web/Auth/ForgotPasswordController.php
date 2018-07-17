@@ -34,6 +34,16 @@ class ForgotPasswordController extends Controller
         $this->middleware('guest');
     }
 
+    /**
+     * @param Request $request
+     */
+    public function validateEmail(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'g-recaptcha-response'=>'required|recaptcha'
+        ]);
+    }
 
     public function showLinkRequestForm()
     {
