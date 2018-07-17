@@ -64,7 +64,9 @@
                     </div>
                     <div class="user-profile-content-list">
                         <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
-                        <div class="user-profile-content-list-body">Более {{ $freelancer->spec['ru']['experience'] }} лет </div>
+                        @if(isset($freelancer->spec['ru']['experience']))
+                            <div class="user-profile-content-list-body">Более {{ $freelancer->spec['ru']['experience'] }} лет </div>
+                        @endif
                     </div>
                     <div class="user-profile-content-list">
                         <div class="user-profile-content-list-capture">Форма собственности:</div>
