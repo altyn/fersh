@@ -14303,6 +14303,38 @@ a:visited {
   padding-right: 5px;
 }
 
+.btn-show {
+  color: #fff !important;
+  border-radius: 3px;
+  font-family: "roboto_regular", Arial, sans-serif;
+  padding: 5px 12px 5px 10px;
+  background: rgba(67, 208, 132, 0.8);
+  position: relative;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.btn-show:hover,
+.btn-show:active {
+  color: #fff;
+  background: #43d084;
+}
+
+.btn-show:focus,
+.btn-show:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff;
+}
+
+.btn-show .jam {
+  position: relative;
+  top: 1px;
+  padding-right: 5px;
+}
+
 .col-centered {
   float: none;
   margin: 0 auto !important;

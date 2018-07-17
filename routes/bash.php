@@ -29,8 +29,8 @@ Route::middleware('admin')->group(function(){
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/logout', 'Auth\LoginController@logout')->name('bash.logout');
 
-    Route::get('/activation_emails', array('as'=>'act_em','uses'=>'FreelancerController@resendTokensList'));
-    Route::post('/activation_emails', array('as'=>'act_em_post','uses'=>'FreelancerController@resendTokens'));
+    Route::get('/activation_emails', array('as'=>'act_em','uses'=>'MailController@resendTokensList'));
+    Route::post('/activation_emails', array('as'=>'act_em_post','uses'=>'MailController@resendTokens'));
 
 
 });

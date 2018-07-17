@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-xl-4">
+                    <div class="col-12 col-sm-6">
                         <div class="row">
                             <div class="col-sm-6 b-r b-b">
                                 <div class="el-tablo centered padded">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
+                    <div class="col-12 col-sm-6">
                         <div class="padded b-l b-r">
                             <div class="element-info-with-icon smaller">
                                 <div class="element-info-icon">
@@ -150,9 +150,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="hidden-lg-down col-xl-4">
-                  
                     </div>
                 </div>
             </div>

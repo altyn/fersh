@@ -220,3 +220,52 @@
         }
     }
 }
+
+
+#loader {
+    width: 100%;
+    height: 36px;
+    margin: -30px 0 50px 50px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.loader {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    position: relative;
+    animation: loader 0.9s ease alternate infinite;
+    animation-delay: 0.36s;
+    &-text {
+        font-family: $robotolight;
+        margin-left: 100px;
+    }
+    &:before {
+        left: -40px;
+        animation-delay: 0.18s;
+    }
+    &:after {
+        right: -40px;
+        animation-delay: 0.54s;
+    }
+}
+
+.loader:after,
+.loader:before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    animation: loader 0.9s ease alternate infinite;
+}
+
+@keyframes loader {
+    0% {
+        box-shadow: 0 28px 0 -28px #047bf8;
+    }
+    100% {
+        box-shadow: 0 28px 0 #047bf8;
+    }
+}

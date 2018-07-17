@@ -1,7 +1,5 @@
 <div class="top-bar color-scheme-light">
-    <div class="top-bar-left">
-        <a href="{{ url()->previous() }}" class="top-bar-left-btn"><i class="os-icon os-icon-arrow-left3"></i>Назад</a>
-    </div>
+
     <div class="top-menu-controls">
         <div class="element-search autosuggest-search-activator">
             <input placeholder="Поиск" type="text">

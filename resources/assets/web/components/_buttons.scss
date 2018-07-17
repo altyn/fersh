@@ -171,4 +171,35 @@ a:visited {
             padding-right: 5px;
         }
     }
+
+    &-show {
+        color: #fff !important;
+        border-radius: 3px;
+        font-family: $robotoregular;
+        padding: 5px 12px 5px 10px;
+        background: rgba($color: $green, $alpha: 0.8);
+        position: relative;
+        display: inline-block;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+            color: #fff;
+            background: $green;
+        }
+
+        &:focus,
+        &:visited {
+            box-shadow: none;
+            color: #fff;
+        }
+        
+        .jam {
+            position: relative;
+            top: 1px;
+            padding-right: 5px;
+        }
+    }
 }

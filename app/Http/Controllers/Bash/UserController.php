@@ -180,8 +180,8 @@ class UserController extends Controller
         {
             foreach ($users as $user)
             {
-                $show =  route('users.show',$user->id);
-                $edit =  route('users.edit',$user->id);
+                $show =  route('freelancers.show',$user->id);
+                $edit =  route('freelancers.edit',$user->id);
 
                 $nestedData['id'] = $user->id;
                 // $login = substr(strip_tags($user->login),0,1)."...";

@@ -36,7 +36,8 @@
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Телефонный номер</div>
             @if($freelancer->contacts[app()->getLocale()]['phone'])
-            <div class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['phone'] }}</div>
+                <a id="show" class="btn-show"><span class="jam jam-phone"></span>Показать номер</a>
+                <div id="hide" style="display: none; margin-top:12px" class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['phone'] }}</div>
             @endif
         </div>
     </div>
@@ -59,7 +60,7 @@
         </h6>
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Просмотры профиля</div>
-            <div class="profile-info-contact-body">123</div>
+            <div class="profile-info-contact-body">{{ $freelancer->views }}</div>
         </div>
     </div>
 </div>

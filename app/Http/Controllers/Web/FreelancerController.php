@@ -39,11 +39,11 @@ class FreelancerController extends Controller
 
         if (0 != \auth()->user()->isAdmin){
             $freelancer = UserDetails::where('user_id', $id)->first();
-            $freelancer->incrementViewed();
             $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
+                $freelancer->incrementViewed();
                 $birthDate = explode("-", $freelancer->birthday);
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
@@ -61,11 +61,11 @@ class FreelancerController extends Controller
             }
         } else {
             $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
-            $freelancer->incrementViewed();
             $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else {
+                $freelancer->incrementViewed();
                 $birthDate = explode("-", $freelancer->birthday);
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();

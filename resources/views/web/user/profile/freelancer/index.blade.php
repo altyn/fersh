@@ -152,6 +152,11 @@
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
+
+    $('#show').click(function () {
+        $('#hide').toggle();
+        $('#show').toggle();
+    })
 </script>
 
 @endsection
