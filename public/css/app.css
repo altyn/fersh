@@ -14304,13 +14304,12 @@ a:visited {
 }
 
 .btn-show {
-  color: #fff !important;
+  color: #7460EE !important;
   border-radius: 3px;
-  font-family: "roboto_regular", Arial, sans-serif;
-  padding: 5px 12px 5px 10px;
-  background: rgba(67, 208, 132, 0.8);
+  font-family: "fira_sans_light", Arial, sans-serif;
+  padding: 5px 0;
   position: relative;
-  display: inline-block;
+  display: block;
   font-size: 0.9rem;
   margin-top: 5px;
   cursor: pointer;
@@ -14318,15 +14317,14 @@ a:visited {
 
 .btn-show:hover,
 .btn-show:active {
-  color: #fff;
-  background: #43d084;
+  color: #43d084 !important;
 }
 
 .btn-show:focus,
 .btn-show:visited {
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #fff;
+  color: #43d084;
 }
 
 .btn-show .jam {
@@ -14445,6 +14443,10 @@ header {
 }
 
 .navbar-brand:hover {
+  color: rgba(142, 67, 231, 0.6);
+}
+
+.navbar-brand:focus {
   color: rgba(142, 67, 231, 0.6);
 }
 
@@ -15712,6 +15714,7 @@ tags > div span {
 
 .user-profile-aside .profile-info-contact-body {
   font-weight: 400;
+  font-family: "fira_sans_light", Arial, sans-serif;
 }
 
 .user-profile-aside .profile-info-skills {

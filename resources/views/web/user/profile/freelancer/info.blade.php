@@ -30,14 +30,15 @@
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Электронный адрес</div>
             @if($freelancer->contacts[app()->getLocale()]['email'])
-            <div class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['email'] }}</div>
+            <a id="showEmail" class="btn-show"><span class="jam jam-inbox"></span>Показать почту</a>
+            <div id="hideEmail" style="display: none; margin-top:12px" class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['email'] }}</div>
             @endif
         </div>
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Телефонный номер</div>
             @if($freelancer->contacts[app()->getLocale()]['phone'])
-                <a id="show" class="btn-show"><span class="jam jam-phone"></span>Показать номер</a>
-                <div id="hide" style="display: none; margin-top:12px" class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['phone'] }}</div>
+                <a id="showPhone" class="btn-show"><span class="jam jam-phone"></span>Показать номер</a>
+                <div id="hidePhone" style="display: none; margin-top:12px" class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['phone'] }}</div>
             @endif
         </div>
     </div>

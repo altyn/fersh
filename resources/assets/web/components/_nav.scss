@@ -19,6 +19,10 @@ header{
             color: rgba($color: $violet, $alpha: 0.6);
         }
 
+        &:focus{
+            color: rgba($color: $violet, $alpha: 0.6);
+        }
+
         .badge-beta{
             position: relative;
             top: -15px;

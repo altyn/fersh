@@ -31,7 +31,7 @@ class ModelName extends Model
         'contacts' => 'json',
         'avatar' => 'json',
         'spec' => 'json',
-        'bio' => 'json',
+        'bio' => 'json'
     ];
 
     public function user()

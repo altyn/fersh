@@ -14,7 +14,7 @@
             </td>
         </tr>
     </table>
-    <div style="padding: 60px 70px; border-top: 1px solid rgba(0,0,0,0.05);">
+    <div style="padding: 60px 15px; border-top: 1px solid rgba(0,0,0,0.05);">
         <h1 style="margin-top: 0px;">Здравствуйте {{ $user['login'] }}!</h1>
         <div style="color: #636363; font-size: 14px;">
             <p>Вы успешно прошли регистрацию на сайте <a href="https://freelance.kg/">Freelance.kg.</a></p>
@@ -25,7 +25,7 @@
                 <tr>
                     <td style="border-bottom: 1px solid rgba(0,0,0,0.05);">
                         <div style="font-weight: bold; color: #4B72FA; font-size: 16px;">Подтвердить почту</div>
-                        <div style="font-size: 14px; color: #B8B8B8;">Зтем войти</div>
+                        <div style="font-size: 14px; color: #B8B8B8;">Затем войти</div>
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                        <div style="font-weight: bold; color: #4B72FA; font-size: 16px;">Добавить протфолио</div>
+                        <div style="font-weight: bold; color: #4B72FA; font-size: 16px;">Добавить портфолио</div>
                         <div style="font-size: 14px; color: #B8B8B8;">Ваши лучшие работы</div>
                     </td>
                 </tr>

@@ -31,15 +31,32 @@
                                 @if(!empty($freelancer->spec[app()->getLocale()]['rate']))
                                 {{ $freelancer->spec[app()->getLocale()]['rate'] }} 
                                 @endif
-                                сомов. за проект</div>
+                                @if(!empty($freelancer->spec[app()->getLocale()]['currency']))
+                                    @if($freelancer->spec[app()->getLocale()]['currency'] == '1')
+                                    доллар
+                                    @elseif($freelancer->spec[app()->getLocale()]['currency'] == '2')
+                                    сом
+                                    @endif
+                                @endif
+                                за проект</div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
-                            <div class="user-profile-content-list-body">Более
+                            <div class="user-profile-content-list-body">
                                 @if(!empty($freelancer->spec[app()->getLocale()]['experience']))
-                                {{ $freelancer->spec[app()->getLocale()]['experience'] }} 
+                                    @if($freelancer->spec[app()->getLocale()]['experience'] == '1')
+                                        Менее года
+                                    @elseif($freelancer->spec[app()->getLocale()]['experience'] == '2')
+                                        Более года
+                                    @elseif($freelancer->spec[app()->getLocale()]['experience'] == '3')
+                                        Более трех лет
+                                    @elseif($freelancer->spec[app()->getLocale()]['experience'] == '4')
+                                        Более пяти лет
+                                    @elseif($freelancer->spec[app()->getLocale()]['experience'] == '5')
+                                        Более 10 лет
+                                    @endif
                                 @endif
-                                лет </div>
+                            </div>
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Форма собственности:</div>
@@ -153,9 +170,14 @@
       $('[data-toggle="tooltip"]').tooltip()
     })
 
-    $('#show').click(function () {
-        $('#hide').toggle();
-        $('#show').toggle();
+    $('#showEmail').click(function () {
+        $('#hideEmail').toggle();
+        $('#showEmail').toggle();
+    })
+    
+    $('#showPhone').click(function () {
+        $('#hidePhone').toggle();
+        $('#showPhone').toggle();
     })
 </script>
 

@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-md-6 col-12 form-group">
+                                        <div class="col-md-4 col-12 form-group">
                                             <label for="files">Обложка проекта</label>
                                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -65,8 +65,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <label class="custom-label">Ссылки на других ресурсах</label>
+                                        <div class="col-md-8 col-12">
+                                            <label class="custom-label">Ссылки в популярных ресурсах</label>
                                             <div class="row">
                                                 <div class="col-12 input-group mb-3">
                                                     <div class="input-group-prepend">
@@ -82,9 +82,21 @@
                                                 </div>
                                                 <div class="col-12 input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><span class="jam jam-aperture"></span></span>
+                                                        <span class="input-group-text"><span class="jam jam-github-circle"></span></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="links[other]" placeholder="Другой">
+                                                    <input type="text" class="form-control" name="links[github]" placeholder="github">
+                                                </div>
+                                            </div>
+                                            <label class="custom-label">Другой ресурс</label>
+                                            <div class="row">
+                                                <div class="col-12 mb-3">
+                                                    <input type="text" class="form-control" name="links[other][title]" placeholder="Название ресурса">
+                                                </div>
+                                                <div class="col-12 input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><span class="jam jam-link"></span></span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="links[other][link]" placeholder="Ссылка">
                                                 </div>
                                             </div>
                                         </div>

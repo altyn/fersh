@@ -153,6 +153,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <label for="bio">Опишите свой профессиональный опыт в кратце</label>
+                                    <textarea name="bio[{{app()->getLocale()}}][short]" id="" rows="3" class="form-control">@if($freelancer->bio[app()->getLocale()]['short']){{ $freelancer->bio[app()->getLocale()]['short'] }}@endif</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <label for="bio">Опишите свой профессиональный опыт, расскажите о наиболее сильных личностных качествах и специфических проектных решениях, которые выделяют вас среди других специалистов.</label>
+                                    <textarea name="bio[{{app()->getLocale()}}][full]" id="" rows="8" class="form-control">@if($freelancer->bio[app()->getLocale()]['full']){{ $freelancer->bio[app()->getLocale()]['full'] }}@endif</textarea>
+                                </div>
+                            </div>
                             <div class="form-group save">
                                 <button type="submit" class="btn btn-save mr-2">Сохранить</button>
                                 <a href="#" class="btn btn-cancel" role="button">Отмена</a>

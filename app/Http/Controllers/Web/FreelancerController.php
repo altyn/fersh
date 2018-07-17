@@ -44,6 +44,7 @@ class FreelancerController extends Controller
                 return redirect(app()->getLocale().'/profile/info');
             }else{
                 $freelancer->incrementViewed();
+
                 $birthDate = explode("-", $freelancer->birthday);
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
@@ -155,6 +156,46 @@ class FreelancerController extends Controller
             $row->avatar = $avatar;
             $row->save();
         }
+        
+        return Redirect::back()->withSuccess('Информация обновлена');
+    }
+    
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function updateSpec(Request $request){
+
+        $row = UserDetails::where('user_id', auth()->id())->first();
+        $data = $request->except('spec');
+        $row->update($data);
+
+        if (array_key_exists('experience', $request->spec[app()->getLocale()])) {
+            $experience = $request->spec[app()->getLocale()]['experience'];            
+            if($experience){
+                $row['spec->'.app()->getLocale().'->experience'] = $experience;
+                $row->save();
+            }
+        }
+       
+        if (array_key_exists('currency', $request->spec[app()->getLocale()])) {
+            $currency = $request->spec[app()->getLocale()]['currency'];            
+            if($currency){
+                $row['spec->'.app()->getLocale().'->currency'] = $currency;
+                $row->save();
+            }
+        }
+
+        $row['spec->'.app()->getLocale().'->sphere'] = $request->spec[app()->getLocale()]['sphere'];
+        $row['spec->'.app()->getLocale().'->skills'] = $request->spec[app()->getLocale()]['skills'];
+        $row['spec->'.app()->getLocale().'->rate'] = $request->spec[app()->getLocale()]['rate'];
+
+        $row['spec->'.app()->getLocale().'->payment_method'] = $request->spec[app()->getLocale()]['payment_method'];
+        $row['spec->'.app()->getLocale().'->firm'] = $request->spec[app()->getLocale()]['firm'];
+        $row->save();
+
+
+
         
         return Redirect::back()->withSuccess('Информация обновлена');
     }

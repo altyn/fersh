@@ -68,6 +68,7 @@ Route::group(['prefix' => '/{lang}',], function (){
        
 
         Route::name('updateFreelancer')->post('/edit/personal', 'FreelancerController@updateFreelancer');
+        Route::name('updateSpec')->post('/edit/specialization', 'FreelancerController@updateSpec');
         Route::name('deleteFreelancerAvatar')->post('/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
         Route::name('freelancerChangepassword')->post('/edit/changepassword', 'FreelancerController@changepasswordPost');
     });

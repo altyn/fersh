@@ -49,7 +49,7 @@
                                         <article>{{ $portfolio->description['ru']['desc'] }}</article>
                                     </div>
                                     <ul class="portfolio-view-top-right-links">
-                                        @if((($portfolio->links['behance'] || $portfolio->links['dribble']) || $portfolio->links['other'] ) == null)
+                                        @if((($portfolio->links['behance'] || $portfolio->links['dribble']) || $portfolio->links['github'] ) == null)
                                         <p></p>
                                         @else
                                         <p>Ссылки на других проектах:</p>
@@ -78,14 +78,26 @@
                                             </a>
                                         </li>
                                         @endif
-                                        @if($portfolio->links['other'])
+                                        @if($portfolio->links['github'])
                                         <li>
-                                            <a href="{{ $portfolio->links['other'] }}" target="_blank">
+                                            <a href="{{ $portfolio->links['github'] }}" target="_blank">
                                                 <div class="links-item">
-                                                    <span class="jam jam-aperture"></span>
+                                                    <span class="jam jam-github-circle"></span>
                                                 </div>
                                                 <div class="links-item">
-                                                    <span>Другой ресурс</span>
+                                                    <span>Github</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if($portfolio->links['other'])
+                                        <li>
+                                            <a href="{{ $portfolio->links['other']['link'] }}" target="_blank">
+                                                <div class="links-item">
+                                                    <span class="jam jam-link"></span>
+                                                </div>
+                                                <div class="links-item">
+                                                    <span>{{ $portfolio->links['other']['title'] }}</span>
                                                 </div>
                                             </a>
                                         </li>

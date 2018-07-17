@@ -173,27 +173,26 @@ a:visited {
     }
 
     &-show {
-        color: #fff !important;
+        color: $violetnew !important;
         border-radius: 3px;
-        font-family: $robotoregular;
-        padding: 5px 12px 5px 10px;
-        background: rgba($color: $green, $alpha: 0.8);
+        font-family: $firasanslight;
+        padding: 5px 0;
+        // background: rgba($color: $bluehalf, $alpha: 0.6);
         position: relative;
-        display: inline-block;
+        display: block;
         font-size: 0.9rem;
         margin-top: 5px;
         cursor: pointer;
 
         &:hover,
         &:active {
-            color: #fff;
-            background: $green;
+            color: $green !important;
         }
 
         &:focus,
         &:visited {
             box-shadow: none;
-            color: #fff;
+            color: $green;
         }
         
         .jam {

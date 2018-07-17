@@ -59,45 +59,49 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <label for="lastname">Дата рождения</label>
+                                <label for="lastname">Дата рождения <span class="required">*</span></label>
                                 <div class="form-group row">
                                     <div class="col">
-                                        <select class="form-control" id="day" name="day">
+                                        <select class="form-control" id="day" name="day" required>
                                             <option disabled selected value style="display: none">День</option>
                                             @for($i = 1; $i <= 31; $i++)
                                                 <option value="{{$i}}">{{$i}}</option>
                                             @endfor
                                         </select>
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control" id="month" name="month">
+                                        <select class="form-control" id="month" name="month" required>
                                             <option disabled selected value style="display: none">Месяц</option>
                                             @for($i = 1; $i <= 12; $i++)
                                                 <option value="{{$i}}">{{$i}}</option>
                                             @endfor
                                         </select>
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control" id="year" name="year">
+                                        <select class="form-control" id="year" name="year" required>
                                             <option disabled selected value style="display: none">Год</option>
                                             @for($i = 2001; $i > 1960; $i--)
                                                 <option value="{{$i}}">{{$i}}</option>
                                             @endfor
                                         </select>
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="form-group row">
                             <div class="col-md-6 form-group">
-                                <label for="country">Страна</label>
+                                <label for="country">Страна<span class="required">*</span></label>
                                 <div class="d-block">
-                                    <select class="form-control" id="country" name="country">
+                                    <select class="form-control" id="country" name="country" required>
                                         <option disabled selected value style="display: none">-- Выберите страну --</option>
                                         @foreach($countries as $row)
                                             <option value="{{$row->getId()}}">{{$row->getTitle()}}</option>
                                         @endforeach
                                     </select>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
@@ -138,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="step2">
+                <div id="step2" role="form" data-toggle="validator">
                     <div class="step-content-top">
                         <h4>Контакты</h4>
                         <span>Поля, помеченные * обязательны для заполнения.</span>
@@ -147,17 +151,18 @@
                         <div class="row">
                             <div class="form-group col-md-6 col-12">
                                 <label for="email">Ваш электронный адрес<span class="required">*</span></label>
-                                <input type="email" class="form-control" id="email" name="contacts[{{app()->getLocale()}}][email]">
+                                <input type="email" class="form-control" id="email" name="contacts[{{app()->getLocale()}}][email]" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group col-md-6 col-12">
                                 <label for="phone">Ваш номер телефона <span class="required">*</span></label>
-                                <input type="tel" name="contacts[{{app()->getLocale()}}][phone]" id="phone" placeholder="+996 555 555-555"  class="form-control" required />
+                                <input type="tel" class="form-control" id="phone" name="contacts[{{app()->getLocale()}}][phone]" placeholder="+996 555 555-555" required>
+                                <div class="help-block with-errors"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="step3">
+                <div id="step3" role="form" data-toggle="validator">
                     <div class="step-content-top">
                         <h4>Специализация</h4>
                         <span>Поля, помеченные * обязательны для заполнения.</span>
@@ -250,7 +255,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="step4">
+                <div id="step4" role="form" data-toggle="validator">
                     <div class="step-content-top">
                         <h4>О себе</h4>
                         <span>Поля, помеченные * обязательны для заполнения.</span>
@@ -296,30 +301,36 @@
                 $('<button type="submit"></button>').text('Сохранить')
                     .addClass('btn sw-btn-finish display-none')
                     .on('click', function () {
-                        // alert('Finsih button click');
+                        if( !$(this).hasClass('disabled')){
+                            var elmForm = $("#myForm");
+                            if(elmForm){
+                                elmForm.validator('validate');
+                                var elmErr = elmForm.find('.has-error');
+                                if(elmErr && elmErr.length > 0){
+                                    return false;
+                                }else{
+                                    return true;
+                                }
+                            }
+                        }
                     })
             ]
         },
         anchorSettings: {
-            markDoneStep: true, // add done css
-            markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
-            removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
-            enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+            markDoneStep: true,
+            markAllPreviousStepsAsDone: true,
+            removeDoneStepOnNavigateBack: true,
+            enableAnchorOnDoneStep: true
         }
     });
 
     $("#stepbystep").on("leaveStep", function (e, anchorObject, stepNumber, stepDirection) {
         var elmForm = $("#form-step-" + stepNumber);
-        console.log(elmForm);
-        console.log(stepNumber);
-
-        // stepDirection === 'forward' :- this condition allows to do the form validation
-        // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
-        if (stepDirection === 'forward' && elmForm == elmForm) {
+        
+        if (stepDirection === 'forward' && elmForm) {
             elmForm.validator('validate');
-            var elmErr = elmForm.children('.has-error');
+            var elmErr = elmForm.find('.has-error');
             if (elmErr && elmErr.length > 0) {
-                // Form validation failed                    
                 return false;
             }
         }
