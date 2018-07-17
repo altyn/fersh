@@ -16,41 +16,64 @@
             </div>
         </div>
         <ul class="main-menu">
-            <li class="has-sub-menu">
-                <a href="#">
+            <li class="sub-header"><span>Главная страница</span></li>
+            <li class="sub-header"><span>Пользователи</span></li>
+            <li>
+                <a href="{{ route('freelancers.index') }}">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
+                        <div class="os-icon os-icon-user-male-circle2"></div>
                     </div>
-                    <span>Главная страница</span>
+                    <span>Фрилансеры</span>
                 </a>
-                <ul class="sub-menu">
-                    <li><a href="#">Тарифы</a></li>
-                </ul>
             </li>
+            <li>
+                <a href="{{ route('freelancers.index') }}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-cv-2"></div>
+                    </div>
+                    <span>Заказчики</span>
+                </a>
+            </li>
+            <li class="sub-header"><span>Настройки</span></li>
+            <li>
+                <a href="{{ route('freelancers.index') }}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-tasks-checked"></div>
+                    </div>
+                    <span>Тарифы</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('spec.index') }}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-hierarchy-structure-2"></div>
+                    </div>
+                    <span>Специализации</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('translations.index') }}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-delivery-box-2"></div>
+                    </div>
+                    <span>Локализация</span>
+                </a>
+            </li>
+            <li class="sub-header"><span>Администраторы</span></li>
             <li class="has-sub-menu">
                 <a href="#">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-package"></div>
+                        <div class="os-icon os-icon-users"></div>
                     </div>
                     <span>Пользователи</span>
                 </a>
-                <ul class="sub-menu">
-                    <li><a href="#">Фрилансеры</a></li>
-                    <li><a href="#">Заказчики</a></li>
-                </ul>
-            </li>
-            <li class="has-sub-menu">
-                <a href="#">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-package"></div>
-                    </div>
-                    <span>Администраторы</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="{{route('users.index')}}">Все</a></li>
-                    <li><a href="{{route('roles.index')}}">Роли</a></li>
-                    <li><a href="{{route('permissions.index')}}">Права</a></li>
-                </ul>
+                <div class="sub-menu-w">
+                    <ul class="sub-menu">
+                        <li><a href="{{route('users.index')}}">Все</a></li>
+                        <li><a href="{{route('roles.index')}}">Роли</a></li>
+                        <li><a href="{{route('permissions.index')}}">Права</a></li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>
