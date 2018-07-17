@@ -137,6 +137,21 @@
                 <span>Локализация</span>
             </a>
         </li>
+        <li class="has-sub-menu">
+            <a href="#">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-mail"></div>
+                </div>
+                <span>E-Mail рассылка</span>
+            </a>
+            <div class="sub-menu-w">
+                <ul class="sub-menu">
+                    <li><a href="#">Отправить код активации</a></li>
+                    <li><a href="#">Роли</a></li>
+                    <li><a href="#">Права</a></li>
+                </ul>
+            </div>
+        </li>
         <li class="sub-header"><span>Администраторы</span></li>
         <li class="has-sub-menu">
             <a href="#">
