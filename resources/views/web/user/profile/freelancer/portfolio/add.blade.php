@@ -9,10 +9,6 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('/css/_profile_info.css') }}">
 
-<style>
- 
-</style>
-
 @endsection
 
 @section('content')
@@ -139,7 +135,7 @@
             </div>
         </div>
     </div>
-
+    <input type="text">
 @endsection
 
 @section('scripts')
@@ -157,12 +153,12 @@
     function getval(sel) {
         if (sel.files && sel.files[0]) {
             var reader = new FileReader();
-
+            console.log(sel.files[0].name);
+            
             reader.onload = function (e) {
                 $('<img class="preview" src="'+e.target.result+'" alt="your image" />').insertAfter(sel);
                 $(sel).closest('.img-upload-btn').css('background-image','url('+e.target.result+')' )
                 $('<button class="btn btn-link deletor" onclick="deletor(this);"><small>X</small></button>').insertAfter(sel);
-            //$(sel).css('visibility','hidden')
             }
 
             reader.readAsDataURL(sel.files[0]);

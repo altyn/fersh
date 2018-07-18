@@ -504,3 +504,17 @@
     padding: 2px;
     opacity: 0.6;
 }
+
+
+.note-editor{
+    &.note-frame {
+        border: 1px solid rgba(0, 0, 0, 0.125) !important;
+        .note-statusbar{
+            background-color: #fafbfe !important;
+        }
+        .note-editing-area .note-editable{
+            color: #212529 !important;
+            background-color: #fafbfe !important;
+        }
+    }
+}

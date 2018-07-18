@@ -27,7 +27,7 @@
                             <div class="portfolio-header-info">
                                 <div class="portfolio-header-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}} 
                                     @if($isVerify->activated == '1')
-                                        <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь верифицирован"><span class="jam jam-check"></span></div>
+                                        <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь активен"><span class="jam jam-check"></span></div>
                                     @else
                                           {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
                                     @endif
@@ -43,7 +43,7 @@
                                 <div class="portfolio-header-info-loc">{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет </div>
                                 <div class="portfolio-header-info-desc">
                                     @if(isset($freelancer->bio['ru']['short']))
-                                        {{ $freelancer->bio['ru']['short'] }}
+                                        {!! $freelancer->bio['ru']['short'] !!}
                                     @endif
                                 </div>
                             </div>

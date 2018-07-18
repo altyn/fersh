@@ -6,6 +6,8 @@
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -156,13 +158,13 @@
                             <div class="form-group row">
                                 <div class="col-12">
                                     <label for="bio">Опишите свой профессиональный опыт в кратце</label>
-                                    <textarea name="bio[{{app()->getLocale()}}][short]" id="" rows="3" class="form-control">@if($freelancer->bio[app()->getLocale()]['short']){{ $freelancer->bio[app()->getLocale()]['short'] }}@endif</textarea>
+                                    <textarea name="bio[{{app()->getLocale()}}][short]" rows="3" class="summernote form-control">@if($freelancer->bio[app()->getLocale()]['short']){{ $freelancer->bio[app()->getLocale()]['short'] }}@endif</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
                                     <label for="bio">Опишите свой профессиональный опыт, расскажите о наиболее сильных личностных качествах и специфических проектных решениях, которые выделяют вас среди других специалистов.</label>
-                                    <textarea name="bio[{{app()->getLocale()}}][full]" id="" rows="8" class="form-control">@if($freelancer->bio[app()->getLocale()]['full']){{ $freelancer->bio[app()->getLocale()]['full'] }}@endif</textarea>
+                                    <textarea name="bio[{{app()->getLocale()}}][full]" rows="8" class="summernote form-control">@if($freelancer->bio[app()->getLocale()]['full']){{ $freelancer->bio[app()->getLocale()]['full'] }}@endif</textarea>
                                 </div>
                             </div>
                             <div class="form-group save">
@@ -184,5 +186,25 @@
 @section('scripts')
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('.summernote').summernote({
+            toolbar: [],
+            minHeight: 75,
+            maxHeight: 300,
+            focus: true,
+            shortcuts: false,
+            callbacks: {
+                onPaste: function(e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                    e.preventDefault();
+                    document.execCommand('insertText', false, bufferText);
+                }
+            }
+        });
+    });
+</script>
 
 @endsection

@@ -15113,6 +15113,19 @@ header {
   opacity: 0.6;
 }
 
+.note-editor.note-frame {
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.note-editor.note-frame .note-statusbar {
+  background-color: #fafbfe !important;
+}
+
+.note-editor.note-frame .note-editing-area .note-editable {
+  color: #212529 !important;
+  background-color: #fafbfe !important;
+}
+
 .homepage {
   background: url("/img/home/bgi.png") no-repeat center center fixed;
   background-size: cover;
@@ -16532,6 +16545,10 @@ tags > div span {
   font-family: "roboto_regular", Arial, sans-serif;
 }
 
+.portfolio-header-info-desc p {
+  margin: 0;
+}
+
 .portfolio-header-info-contact {
   border-top: 1px dashed #dbe2f0;
   padding: 20px 0 15px 0;
@@ -16569,7 +16586,6 @@ tags > div span {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin: 0 5px 10px 0;
 }
 
 .photo-child img {
@@ -16579,7 +16595,8 @@ tags > div span {
 
 .photo-child a {
   position: absolute;
-  bottom: 0;
+  top: 0;
+  right: 0;
   border: none;
   width: 24px;
   height: 24px;
@@ -16593,14 +16610,12 @@ tags > div span {
 .image-edit,
 .image-edit:hover,
 .image-edit:focus {
-  left: 5px;
   color: #049F0C;
 }
 
 .image-delete,
 .image-delete:hover,
 .image-delete:focus {
-  left: 0;
   color: #fff;
 }
 

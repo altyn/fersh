@@ -287,11 +287,6 @@ class FreelancerController extends Controller
      */
     public function portfolioCreate(Request $request){
 
-        /**
-         * TODO: Validation and multiply files upload with dropzone in UI
-         */
-
-
         $row = UserPortfolio::create($request->except('file', 'cover'));
         $row->user_id = auth()->user()->getAuthIdentifier();
         $row->save();
@@ -317,9 +312,10 @@ class FreelancerController extends Controller
         }
 
         $files = $request->file('files');
-
-        foreach($files as $key => $file)
+        $i = 0;
+        foreach($files as $file)
         {
+            $i++;
             $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
             if (!file_exists($dir)) {
                 mkdir($dir, 0777, true);
@@ -332,14 +328,20 @@ class FreelancerController extends Controller
             Image::make($file)->fit(180, 180)->save($dir.$thumb);
             Image::make($file)->save($dir.$full);
 
-            $thumb = $dir.$thumb;
-            $original = $dir.$full;
+            $thumbs = array(
+                'title' => "File $i",
+                'file' => $dir.$thumb
+            );
 
-            $thumbs[] = $thumb;
-            $originals[] = $original;
+            $fulls = array(
+                'title' => "File $i",
+                'file' => $dir.$full
+            );
+
+            $links['thumbs'][$i] = $thumbs;
+            $links['fulls'][$i] = $fulls;
         }
-        $links['thumbs'] = $thumbs;
-        $links['fulls'] = $originals;
+
         $row->files = $links;
         $row->save();
 
@@ -398,33 +400,62 @@ class FreelancerController extends Controller
         }
 
         $files = $request->file('files');
+        if($row->files['fulls']){
+            $i =  count($row->files['fulls']);
+        }else{
+            $i = 0;
+        }
+
         if($files){
-            foreach($files as $key => $file)
+            foreach($files as $file)
             {
+                $i++;
                 $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
                 if (!file_exists($dir)) {
                     mkdir($dir, 0777, true);
                 }
-    
+
                 $btw = time();
                 $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
                 $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
                 
                 Image::make($file)->fit(180, 180)->save($dir.$thumb);
                 Image::make($file)->save($dir.$full);
-    
-                $thumb = $dir.$thumb;
-                $original = $dir.$full;
-    
-                $thumbs[] = $thumb;
-                $originals[] = $original;
+
+                $thumbs = array(
+                    'title' => "File $i",
+                    'file' => $dir.$thumb
+                );
+
+                $fulls = array(
+                    'title' => "File $i",
+                    'file' => $dir.$full
+                );
+
+                $thumbs_uploading[$i] = $thumbs;
+                $fulls_uploading[$i] = $fulls;
+
             }
-            $links['thumbs'] = $thumbs;
-            $links['fulls'] = $originals;
-            $row->files = $links;
+
+            if($row->files['thumbs']){
+                $thumbs_old = $row->files['thumbs'];
+                $new_thumbs = $thumbs_old+$thumbs_uploading;
+            }else{
+                $thumbs_old = [];
+                $new_thumbs = $thumbs_uploading;
+            }
+
+            if($row->files['fulls']){
+                $fulls_old = $row->files['fulls'];
+                $new_fulls = $fulls_old+$fulls_uploading;
+            }else{
+                $fulls_old = [];
+                $new_fulls = $fulls_uploading;
+            }
+            $ready= array("thumbs"=>$new_thumbs)+array("fulls"=>$new_fulls);
+            $row->files = $ready;
             $row->save();
         }
-
 
         if($row){
                 return Redirect::back()->withSuccess('Портфолио изменено');
@@ -439,9 +470,25 @@ class FreelancerController extends Controller
         return view('web.user.profile.freelancer.portfolio.delete');
     }
 
-    // public function portfolioDeleteFile(Request $request){
-        
-    // }
+    public function portfolioDeleteFile($lang, $portfolioId, $fileid){
+
+        $row = UserPortfolio::findOrFail($portfolioId);
+        $fulls = $row->files['fulls'];
+        $thumb = $row->files['thumbs'];
+        $file_full = $fulls[$fileid]['file'];
+        $file_thumb = $thumb[$fileid]['file'];
+        unset($fulls[$fileid]);
+        unset($thumb[$fileid]);
+        $ttt = array_merge(array("thumbs"=>$thumb), array("fulls"=>$fulls));
+        $row->files = $ttt;
+        $row->save();
+
+        if($row){
+            unlink($file_full);
+            unlink($file_thumb);
+        }
+        return redirect()->back();
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

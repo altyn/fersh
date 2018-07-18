@@ -49,10 +49,11 @@
                                         <article>{{ $portfolio->description['ru']['desc'] }}</article>
                                     </div>
                                     <ul class="portfolio-view-top-right-links">
-                                        @if((($portfolio->links['behance'] || $portfolio->links['dribble']) || $portfolio->links['github'] ) == null)
-                                        <p></p>
-                                        @else
+
+                                        @if(($portfolio->links['behance'] || $portfolio->links['dribble']) || ($portfolio->links['github'] || $portfolio->links['other']['link']))
                                         <p>Ссылки на других проектах:</p>
+                                        @else
+                                        <p></p>
                                         @endif
                                         @if($portfolio->links['behance'])
                                         <li>
@@ -90,7 +91,7 @@
                                             </a>
                                         </li>
                                         @endif
-                                        @if($portfolio->links['other'])
+                                        @if($portfolio->links['other']['link'])
                                         <li>
                                             <a href="{{ $portfolio->links['other']['link'] }}" target="_blank">
                                                 <div class="links-item">
@@ -120,7 +121,7 @@
                                     @if($portfolio->files['thumbs'])
                                     @foreach($portfolio->files['thumbs'] as $file)
                                         <div class="col-md-1 col-sm-1 col-4">
-                                            <img src="{{ asset($file)}}" class="img-fluid mb-4" alt="">
+                                            <img src="{{ asset($file['file'])}}" class="img-fluid mb-4" alt="">
                                         </div>
                                     @endforeach
                                     @endif
@@ -131,7 +132,7 @@
                             <div class="text-center mb-4">
                                 @if($portfolio->files['fulls'])
                                 @foreach($portfolio->files['fulls'] as $file)
-                                    <img src="{{ asset($file)}}" class="img-fluid mb-4" alt="">
+                                    <img src="{{ asset($file['file'])}}" class="img-fluid mb-4" alt="">
                                 @endforeach
                                 @endif
                             </div>

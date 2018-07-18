@@ -89,12 +89,11 @@
 
                         <div class="user-profile-content-about">
                             @if(isset($freelancer->bio[app()->getLocale()]['short']))
-                                {{ $freelancer->bio[app()->getLocale()]['short'] }}
+                                {!! $freelancer->bio[app()->getLocale()]['short'] !!}
                             @endif
                         <br>
-                        <br>
                             @if(isset($freelancer->bio[app()->getLocale()]['full']))
-                                {{ $freelancer->bio[app()->getLocale()]['full'] }}
+                                {!! $freelancer->bio[app()->getLocale()]['full'] !!}
                             @endif
                         </div>
 

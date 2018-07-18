@@ -9,10 +9,6 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('/css/_profile_info.css') }}">
 
-<style>
- 
-</style>
-
 @endsection
 
 @section('content')
@@ -89,17 +85,35 @@
                                                         <span class="input-group-text"><img class="input-img" src="//cdn.dribbble.com/assets/icon-team-dribbble-8706862cdb0afa7f43f9e0218b073515f0a2bef19780961d324ae4620ebe249b.png" alt="Dribble"></span>
                                                     </div>
                                                     <input type="text" class="form-control" name="links[dribble]" 
-                                                    @if($portfolio->links['behance'])
-                                                        value="{{ $portfolio->links['behance'] }}"
+                                                    @if($portfolio->links['dribble'])
+                                                        value="{{ $portfolio->links['dribble'] }}"
                                                     @endif>
                                                 </div>
                                                 <div class="col-12 input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><span class="jam jam-aperture"></span></span>
+                                                        <span class="input-group-text"><span class="jam jam-github-circle"></span></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="links[other]" 
-                                                    @if($portfolio->links['behance'])
-                                                        value="{{ $portfolio->links['behance'] }}"
+                                                    <input type="text" class="form-control" name="links[github]" 
+                                                    @if($portfolio->links['github'])
+                                                        value="{{ $portfolio->links['github'] }}"
+                                                    @endif>
+                                                </div>
+                                            </div>
+                                            <label class="custom-label">Другой ресурс</label>
+                                            <div class="row">
+                                                <div class="col-12 mb-3">
+                                                    <input type="text" class="form-control" name="links[other][title]" 
+                                                    @if($portfolio->links['other']['title'])
+                                                        value="{{ $portfolio->links['other']['title']}}"
+                                                    @endif>
+                                                </div>
+                                                <div class="col-12 input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><span class="jam jam-link"></span></span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="links[other][link]"
+                                                    @if($portfolio->links['other']['link'])
+                                                        value="{{ $portfolio->links['other']['link']}}"
                                                     @endif>
                                                 </div>
                                             </div>
@@ -112,14 +126,21 @@
                                         <small class="d-block">Иллюстрации проекта</small>
                                         <small>Загрузите одну или более картинок, которые проиллюстрируют ваш проект. Размер 1110 x AUTO. Файлы будут выводиться в полном размере. Поддерживаются форматы png и jpg.</small>
                                         <div class="body images mt-4 mb-4">
-                                            @foreach($portfolio->files['fulls'] as $file)
-                                                <div class="photo-child">
-                                                    <img src="{{ asset($file)}}" >
-                                                    {{-- <a class="image-delete"  href="/{{ app()->getLocale() }}/freelancer/portfolio/deletefile">
-                                                        <span class="jam jam-close"></span>
-                                                    </a> --}}
-                                                </div>
-                                            @endforeach
+                                            <div class="row">
+                                                @if(isset($portfolio->files['fulls']))
+                                                    @foreach($portfolio->files['fulls'] as $key => $file)
+                                                        <div class="col-md-3">
+                                                            <div class="photo-child">
+                                                                <img class="img-fluid" src="{{ asset($file['file'])}}">
+                                                                <a class="image-delete" href="/{{app()->getLocale()}}/freelancer/portfolio/{{$portfolio->id}}/deletefile/{{ $key }}">
+                                                                    <span class="jam jam-close"></span>
+                                                                    <input type="hidden" name="fileid" class="fileid" value="{{ $key }}">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="backhighlighter mt-4 mb-4">
                                             <div class="col">
@@ -142,7 +163,7 @@
                             <div class="form-group">
                                 <div id="loader">
                                     <div class="loader"></div>
-                                    <div class="loader-text">Загружаются картинки...</div>
+                                    <div class="loader-text">Загружаются файлы...</div>
                                 </div>
                                 <button type="submit" id="button" class="btn btn-save mr-2">Сохранить</button>
                                 <a href="#" class="btn btn-cancel" role="button">Отмена</a>
@@ -153,7 +174,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('scripts')
@@ -170,15 +190,13 @@
 
     function getval(sel) {
         if (sel.files && sel.files[0]) {
-            console.log(sel.files[0]);
-            
             var reader = new FileReader();
-
+            console.log(sel.files[0].name);
+            
             reader.onload = function (e) {
                 $('<img class="preview" src="'+e.target.result+'" alt="your image" />').insertAfter(sel);
                 $(sel).closest('.img-upload-btn').css('background-image','url('+e.target.result+')' )
                 $('<button class="btn btn-link deletor" onclick="deletor(this);"><small>X</small></button>').insertAfter(sel);
-            //$(sel).css('visibility','hidden')
             }
 
             reader.readAsDataURL(sel.files[0]);

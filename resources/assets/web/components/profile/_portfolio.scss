@@ -554,6 +554,10 @@
                 color: #444;
                 font-size: 16px;
                 font-family: $robotoregular;
+
+                p{
+                  margin: 0;  
+                }
             }
             &-contact {
                 border-top: 1px dashed #dbe2f0;
@@ -591,7 +595,6 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin: 0 5px 10px 0;
 }
 
 .photo-child img {
@@ -601,7 +604,8 @@
 
 .photo-child a {
     position: absolute;
-    bottom: 0;
+    top: 0;
+    right: 0;
     border: none;
     width: 24px;
     height: 24px;
@@ -615,14 +619,12 @@
 .image-edit,
 .image-edit:hover,
 .image-edit:focus {
-    left: 5px;
     color: #049F0C;
 }
 
 .image-delete,
 .image-delete:hover,
 .image-delete:focus {
-    left: 0;
     color: #fff;
 }
 
