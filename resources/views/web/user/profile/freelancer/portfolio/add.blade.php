@@ -135,7 +135,6 @@
             </div>
         </div>
     </div>
-    <input type="text">
 @endsection
 
 @section('scripts')

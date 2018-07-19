@@ -58,18 +58,22 @@
                      "type": "POST",
                      "data":{ _token: "{{csrf_token()}}"}
                    },
-            "columns": [
-                { "data": "id" },
-                { "data": "login" },
+            "aoColumns": [
+                { "mData": "id" },
+                { "mData": "login" },
                 { "data": "email" },
                 { 
                     "className": "dataTables_actions text-center",
-                    "data": "activated" 
+                    "mData": "activated" 
                 },
-                { "data": "links" },
+                { 
+                    "mData": function (data, type, dataToSet) {
+                        return data.profile + "" + data.portfolio;
+                    }
+                },
                 { 
                     "className": "dataTables_actions",
-                  "data": "options" 
+                  "mData": "options" 
                 },
             ]	 
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
 use Spatie\Permission\Models\Role as Role;
 use App\Models\UserDetails\ModelName as UserDetails;
+use App\Models\UserPortfolio\ModelName as UserPortfolio;
 
 class UserController extends Controller
 {
@@ -195,15 +196,25 @@ class UserController extends Controller
                 }else{
                     $isactive = "<span class='item_edit'><i class='os-icon os-icon-ui-02'></i></span>";
                 }
-                $profile = UserDetails::where('user_id', $user->id)->first();
-
                 $nestedData['activated'] = $isactive;
+
+                $profile = UserDetails::where('user_id', $user->id)->first();
+                $portfolio = UserPortfolio::where('user_id', $user->id)->first();
+
+                $isprofile = "&emsp;<a href='/ru/freelancer/".$user->id."' target='_blank' class='item_edit btn btn-outline-primary btn-sm'>Профиль</a>";
+                $isportfolio = "&emsp;<a href='/ru/freelancer/".$user->id."/portfolio' target='_blank' class='item_edit btn btn-outline-success btn-sm'>Портфолио</a>";
                 
                 if(!empty($profile)){
-                    $nestedData['links'] = "&emsp;<a href='/ru/freelancer/".$user->id."' target='_blank' class='item_edit btn btn-outline-primary btn-sm'>Профиль</a>
-                                            &emsp;<a href='/ru/freelancer/".$user->id."/portfolio' target='_blank' class='item_edit btn btn-outline-success btn-sm'>Портфолио</a>";
+                    $nestedData['profile'] = $isprofile;
                 }else{
-                    $nestedData['links'] = "-";
+                    $nestedData['profile'] = "";
+
+                }
+                
+                if(!empty($portfolio)){
+                    $nestedData['portfolio'] = $isportfolio;
+                }else{
+                    $nestedData['portfolio'] = "";
 
                 }
                 $nestedData['options'] = "&emsp;<a href='{$show}' login='SHOW' class='item_edit'><i class='os-icon os-icon-mail-18'></i></a>

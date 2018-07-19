@@ -112,7 +112,7 @@
                         <h6>Портфолио</h6>
                         @if(auth()->user())
                             <div class="user-profile-content-title-right">
-                                <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio">
                                     <span class="jam jam-cog" data-toggle="tooltip" data-placement="left" title="Редактировать"></span>
                                 </a>
                             </div>
@@ -124,7 +124,7 @@
                             @foreach($portfolios as $portfolio)
                             <div class="col-md-4 col-sm-6 col-12">
                                 <div class="portfolio-item">
-                                    <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/{{ $portfolio->id }}" class="portfolio-item-img">
+                                    <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/{{ $portfolio->id }}" class="portfolio-item-img">
                                         <img class="img-fluid" src="{{ asset($portfolio->cover) }}" alt="">
                                         <div class="portfolio-item-img-overlay" id="showOverlay">
                                             <ul class="portfolio-ul">
@@ -145,7 +145,7 @@
                                     </a>
                                     <div class="portfolio-item-info">
                                         <div class="portfolio-item-info-title">
-                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/{{ $portfolio->id }}">{{ $portfolio->description[app()->getLocale()]['title'] }}</a>
+                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id}}/portfolio/{{ $portfolio->id }}">{{ $portfolio->description[app()->getLocale()]['title'] }}</a>
                                         </div>
                                     </div>
                                 </div>

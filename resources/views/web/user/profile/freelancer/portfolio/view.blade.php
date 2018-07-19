@@ -50,12 +50,12 @@
                                     </div>
                                     <ul class="portfolio-view-top-right-links">
 
-                                        @if(($portfolio->links['behance'] || $portfolio->links['dribble']) || ((isset($portfolio->links['dribble'])) || $portfolio->links['other']['link']))
+                                        @if(($portfolio->links['behance'] || $portfolio->links['dribble']) || ((isset($portfolio->links['dribble'])) || isset($portfolio->links['other']['link'])))
                                         <p>Ссылки на других проектах:</p>
                                         @else
                                         <p></p>
                                         @endif
-                                        @if($portfolio->links['behance'])
+                                        @if(isset($portfolio->links['behance']))
                                         <li>
                                             <a href="{{ $portfolio->links['behance'] }}" target="_blank">
                                                 <div class="links-item">
@@ -67,7 +67,7 @@
                                             </a>
                                         </li>
                                         @endif
-                                        @if($portfolio->links['dribble'])
+                                        @if(isset($portfolio->links['dribble']))
                                         <li>
                                             <a href="{{ $portfolio->links['dribble'] }}" target="_blank">
                                                 <div class="links-item">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="portfolio-view-middle">
-                            @if($portfolio->files['fulls'])
+                            @if(isset($portfolio->files['fulls']))
                             <ul class="portfolio-view-middle-ul">
                                 <li>
                                     <h6 class="mb-3 d-inline-block">
@@ -130,7 +130,7 @@
                         </div>
                         <div class="portfolio-view-bottom mt-4">
                             <div class="text-center mb-4">
-                                @if($portfolio->files['fulls'])
+                                @if(isset($portfolio->files['fulls']))
                                 @foreach($portfolio->files['fulls'] as $file)
                                     <img src="{{ asset($file['file'])}}" class="img-fluid mb-4" alt="">
                                 @endforeach
