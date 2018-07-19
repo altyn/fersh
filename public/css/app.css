@@ -14279,15 +14279,16 @@ a:visited {
   border-radius: 3px;
   font-family: "roboto_light", Arial, sans-serif;
   padding: 5px 10px;
-  background: #43d084;
-  -webkit-box-shadow: -1px 1px 10px rgba(67, 208, 132, 0.8);
-  box-shadow: -1px 1px 10px rgba(67, 208, 132, 0.8);
+  font-size: 14px;
+  background: #777D9E;
+  -webkit-box-shadow: -1px 1px 10px rgba(119, 125, 158, 0.8);
+  box-shadow: -1px 1px 10px rgba(119, 125, 158, 0.8);
 }
 
 .btn-add:hover,
 .btn-add:active {
   color: #fff;
-  background: rgba(67, 208, 132, 0.8);
+  background: rgba(119, 125, 158, 0.8);
 }
 
 .btn-add:focus,
@@ -15010,7 +15011,6 @@ header {
 
 .infoform .custom-control-label {
   font-size: 16px !important;
-  text-transform: uppercase;
   color: rgba(81, 80, 83, 0.5) !important;
 }
 
@@ -15244,6 +15244,12 @@ header {
   h4,
   .h4 {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio-view-top-right {
+    padding: 15px !important;
   }
 }
 
@@ -15960,7 +15966,11 @@ tags > div span {
   background: rgba(116, 96, 238, 0.3);
 }
 
-.portfolio-item:hover #showOverlay ul {
+.portfolio-item:hover #showControl {
+  display: block;
+}
+
+.portfolio-item:hover #showControl ul {
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -15977,7 +15987,7 @@ tags > div span {
           flex-flow: column;
 }
 
-.portfolio-item:hover #showOverlay ul li span {
+.portfolio-item:hover #showControl ul li span {
   color: #fff;
 }
 
@@ -16005,30 +16015,71 @@ tags > div span {
   font-family: "fira_sans_light", Arial, sans-serif;
 }
 
-.portfolio-item-img-overlay .portfolio-ul {
+.portfolio-item-img-control {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  font-family: "fira_sans_light", Arial, sans-serif;
+}
+
+.portfolio-item-img-control .portfolio-ul-control {
   padding: 0;
   margin: 0;
-}
-
-.portfolio-item-img-overlay .portfolio-ul-li {
   position: relative;
-  display: inline-block;
-  margin-right: 10px;
+  display: block;
 }
 
-.portfolio-item-img-overlay .portfolio-ul-li span {
+.portfolio-item-img-control .portfolio-ul-control a {
+  position: relative;
+  display: block;
+}
+
+.portfolio-item-img-control .portfolio-ul-control .update {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(67, 208, 132, 0.8);
+}
+
+.portfolio-item-img-control .portfolio-ul-control .update:hover {
+  background: #43d084;
+}
+
+.portfolio-item-img-control .portfolio-ul-control .delete {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgba(244, 67, 54, 0.8);
+}
+
+.portfolio-item-img-control .portfolio-ul-control .delete:hover {
+  background: #f44336;
+}
+
+.portfolio-item-img-control .portfolio-ul-control-li {
+  position: relative;
+  display: block;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.portfolio-item-img-control .portfolio-ul-control-li span {
   display: table-cell;
   vertical-align: middle;
   color: #7684a0;
 }
 
-.portfolio-item-img-overlay .portfolio-ul-li .jam {
+.portfolio-item-img-control .portfolio-ul-control-li .jam {
   padding-right: 5px;
-  font-size: 20px;
+  font-size: 14px;
 }
 
-.portfolio-item-img-overlay .portfolio-ul-li-text {
-  font-size: 18px;
+.portfolio-item-img-control .portfolio-ul-control-li-text {
+  font-size: 14px;
 }
 
 .portfolio-item-info {
@@ -16448,8 +16499,8 @@ tags > div span {
 }
 
 .portfolio-header-control-right {
-  display: inline-block;
-  float: right;
+  display: block;
+  margin: 10px 0;
 }
 
 .portfolio-header-info {

@@ -50,7 +50,7 @@
                                     </div>
                                     <ul class="portfolio-view-top-right-links">
 
-                                        @if(($portfolio->links['behance'] || $portfolio->links['dribble']) || ($portfolio->links['github'] || $portfolio->links['other']['link']))
+                                        @if(($portfolio->links['behance'] || $portfolio->links['dribble']) || ((isset($portfolio->links['dribble'])) || $portfolio->links['other']['link']))
                                         <p>Ссылки на других проектах:</p>
                                         @else
                                         <p></p>
@@ -79,7 +79,7 @@
                                             </a>
                                         </li>
                                         @endif
-                                        @if($portfolio->links['github'])
+                                        @if(isset($portfolio->links['github']))
                                         <li>
                                             <a href="{{ $portfolio->links['github'] }}" target="_blank">
                                                 <div class="links-item">
@@ -91,7 +91,7 @@
                                             </a>
                                         </li>
                                         @endif
-                                        @if($portfolio->links['other']['link'])
+                                        @if(isset($portfolio->links['other']['link']))
                                         <li>
                                             <a href="{{ $portfolio->links['other']['link'] }}" target="_blank">
                                                 <div class="links-item">
@@ -120,7 +120,7 @@
                                 <div class="row">
                                     @if($portfolio->files['thumbs'])
                                     @foreach($portfolio->files['thumbs'] as $file)
-                                        <div class="col-md-1 col-sm-1 col-4">
+                                        <div class="col-sm-1 col-3">
                                             <img src="{{ asset($file['file'])}}" class="img-fluid mb-4" alt="">
                                         </div>
                                     @endforeach

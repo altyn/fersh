@@ -129,7 +129,7 @@
                                             <div class="row">
                                                 @if(isset($portfolio->files['fulls']))
                                                     @foreach($portfolio->files['fulls'] as $key => $file)
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-3 mb-4">
                                                             <div class="photo-child">
                                                                 <img class="img-fluid" src="{{ asset($file['file'])}}">
                                                                 <a class="image-delete" href="/{{app()->getLocale()}}/freelancer/portfolio/{{$portfolio->id}}/deletefile/{{ $key }}">

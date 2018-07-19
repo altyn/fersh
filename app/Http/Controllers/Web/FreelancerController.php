@@ -18,6 +18,8 @@ use Input;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 
+use File;
+
 use Intervention\Image\ImageManagerStatic as Image;
 
 class FreelancerController extends Controller
@@ -465,12 +467,24 @@ class FreelancerController extends Controller
 
     }
 
-    public function portfolioDelete(){
+    public function portfolioDelete($lang, $id, $portfolioId){
 
-        return view('web.user.profile.freelancer.portfolio.delete');
+        $row = UserPortfolio::findOrFail($portfolioId);
+        
+        $row->delete();
+
+        File::deleteDirectory(public_path('img/freelancer/portfolio/'.$portfolioId));
+
+        if($row){
+                return Redirect::back()->withSuccess('Портфолио удалено');
+            } else {
+                return redirect()->back();
+        }
+
     }
 
     public function portfolioDeleteFile($lang, $portfolioId, $fileid){
+
 
         $row = UserPortfolio::findOrFail($portfolioId);
         $fulls = $row->files['fulls'];

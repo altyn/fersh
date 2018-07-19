@@ -45,7 +45,7 @@ Route::group(['prefix' => '/{lang}',], function (){
                 Route::get('/', 'FreelancerController@portfolio');
                 Route::get('/add', 'FreelancerController@portfolioAdd');
                 Route::get('/update/{portfolioId}', 'FreelancerController@portfolioUpdate');
-                Route::post('/delete', 'FreelancerController@portfolioDelete');
+                Route::get('/delete/{portfolioId}', 'FreelancerController@portfolioDelete');
                 Route::get('/{portfolioId}', 'FreelancerController@portfolioView');                
             });
         });
