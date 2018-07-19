@@ -58,9 +58,11 @@
                     <div class="portfolio-body">
                         <div class="row">
                             @if ($message = Session::get('success'))
+                            <div class="col-12">
                                 <div class="alert alert-success">
                                     {{ $message }}
                                 </div>
+                            </div>
 						    @endif
                             @if($portfolios)
                                 @foreach($portfolios as $portfolio)

@@ -76,7 +76,7 @@
                                                         <span class="input-group-text"><span class="jam jam-behance"></span></span>
                                                     </div>
                                                     <input type="text" class="form-control" name="links[behance]" 
-                                                    @if($portfolio->links['behance'])
+                                                    @if(isset($portfolio->links['behance']))
                                                         value="{{ $portfolio->links['behance'] }}"
                                                     @endif>
                                                 </div>
@@ -85,7 +85,7 @@
                                                         <span class="input-group-text"><img class="input-img" src="//cdn.dribbble.com/assets/icon-team-dribbble-8706862cdb0afa7f43f9e0218b073515f0a2bef19780961d324ae4620ebe249b.png" alt="Dribble"></span>
                                                     </div>
                                                     <input type="text" class="form-control" name="links[dribble]" 
-                                                    @if($portfolio->links['dribble'])
+                                                    @if(isset($portfolio->links['dribble']))
                                                         value="{{ $portfolio->links['dribble'] }}"
                                                     @endif>
                                                 </div>
@@ -94,7 +94,7 @@
                                                         <span class="input-group-text"><span class="jam jam-github-circle"></span></span>
                                                     </div>
                                                     <input type="text" class="form-control" name="links[github]" 
-                                                    @if($portfolio->links['github'])
+                                                    @if(isset($portfolio->links['github']))
                                                         value="{{ $portfolio->links['github'] }}"
                                                     @endif>
                                                 </div>
@@ -103,7 +103,7 @@
                                             <div class="row">
                                                 <div class="col-12 mb-3">
                                                     <input type="text" class="form-control" name="links[other][title]" 
-                                                    @if($portfolio->links['other']['title'])
+                                                    @if(isset($portfolio->links['other']['title']))
                                                         value="{{ $portfolio->links['other']['title']}}"
                                                     @endif>
                                                 </div>
@@ -112,7 +112,7 @@
                                                         <span class="input-group-text"><span class="jam jam-link"></span></span>
                                                     </div>
                                                     <input type="text" class="form-control" name="links[other][link]"
-                                                    @if($portfolio->links['other']['link'])
+                                                    @if(isset($portfolio->links['other']['link']))
                                                         value="{{ $portfolio->links['other']['link']}}"
                                                     @endif>
                                                 </div>

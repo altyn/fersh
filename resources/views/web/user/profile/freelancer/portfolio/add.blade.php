@@ -124,7 +124,7 @@
                             <div class="form-group">
                                 <div id="loader">
                                     <div class="loader"></div>
-                                    <div class="loader-text">Загружаются картинки...</div>
+                                    <div class="loader-text">Загружаются файлы...</div>
                                 </div>
                                 <button type="submit" id="button" class="btn btn-save mr-2">Сохранить</button>
                                 <a href="#" class="btn btn-cancel" role="button">Отмена</a>
