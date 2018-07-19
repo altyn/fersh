@@ -9,6 +9,7 @@ use DB;
 use Carbon\Carbon;
 use App\Models\User\ModelName as User;
 use App\Models\UserDetails\ModelName as UserDetails;
+use App\Models\UserPortfolio\ModelName as UserPortfolio;
 
 class BashController extends Controller
 {
@@ -21,6 +22,7 @@ class BashController extends Controller
 
     public function index () 
     {
+
         $dt = Carbon::now();
         $allusers = User::count();
 
@@ -40,10 +42,15 @@ class BashController extends Controller
         $profilepersent = $isProfile/$allusers*100;
         $profilepersenttoday = $isProfiletoday/$allusers*100;
 
+        $isPortfolio = UserPortfolio::count();
+        $isPortfoliotoday = UserPortfolio::whereDate('created_at', Carbon::today())->count();
+
+        $portfoliopersent = $isPortfolio/$allusers*100;
+        $portfoliopersenttoday = $isPortfoliotoday/$allusers*100;
     
     	return view('bashkaruu.index', compact(
             'allusers', 'today', 'lastweek', 'lastmonth', 'isactive', 
             'isProfile', 'isactivetoday', 'isProfiletoday', 'activepersent', 'activepersenttoday', 
-            'profilepersent', 'profilepersenttoday'));
+            'profilepersent', 'profilepersenttoday', 'isPortfolio', 'isPortfoliotoday', 'portfoliopersent', 'portfoliopersenttoday'));
     }
 }

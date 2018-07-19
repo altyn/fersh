@@ -4,7 +4,9 @@
             @if(isset($freelancer->avatar['200x200']))
                 <img class="img-fluid"  src="{{ asset($freelancer->avatar['200x200']) }}" alt="">
             @else
-                <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
+                @if(Auth::user()->id == $freelancer->user_id)
+                    <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
+                @endif
             @endif
         </div>
         @if($isVerify->activated == '1')
@@ -61,7 +63,7 @@
         </h6>
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Просмотры профиля</div>
-            <div class="profile-info-contact-body">{{ $freelancer->views }}</div>
+            <div class="profile-info-contact-body">{{ $views }}</div>
         </div>
     </div>
 </div>

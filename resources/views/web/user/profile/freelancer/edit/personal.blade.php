@@ -194,7 +194,7 @@
             toolbar: [],
             minHeight: 75,
             maxHeight: 300,
-            focus: true,
+            focus: false,
             shortcuts: false,
             callbacks: {
                 onPaste: function(e) {

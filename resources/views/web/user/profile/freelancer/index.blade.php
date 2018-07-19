@@ -3,7 +3,7 @@
 @section('title', 'Freelance.kg' )
 
 @section('styles')
-
+    <meta name="_token" content="{{ csrf_token() }}"/>
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
                 <div class="user-profile-content">
                     <div class="user-profile-content-title">
                         <h6>Информация</h6>
-                        @if(auth()->user())
+                        @if(Auth::user()->id == $freelancer->user_id)
                             <div class="user-profile-content-title-right">
                                 <a href="/{{ app()->getLocale()}}/freelancer/edit/personal">
                                     <span class="jam jam-cog" data-toggle="tooltip" data-placement="left" title="Редактировать"></span>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="user-profile-content-title">
                         <h6>Портфолио</h6>
-                        @if(auth()->user())
+                        @if(Auth::user()->id == $freelancer->user_id)
                             <div class="user-profile-content-title-right">
                                 <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio">
                                     <span class="jam jam-cog" data-toggle="tooltip" data-placement="left" title="Редактировать"></span>
@@ -127,20 +127,6 @@
                                     <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/{{ $portfolio->id }}" class="portfolio-item-img">
                                         <img class="img-fluid" src="{{ asset($portfolio->cover) }}" alt="">
                                         <div class="portfolio-item-img-overlay" id="showOverlay">
-                                            <ul class="portfolio-ul">
-                                                {{-- <li class="portfolio-ul-li likes">
-                                                    <span class="jam jam-heart"></span>
-                                                    <span class="portfolio-ul-li-text">123</span>
-                                                </li> --}}
-                                                {{-- <li class="portfolio-ul-li comments">
-                                                    <span class="jam jam-message"></span>
-                                                    <span class="portfolio-ul-li-text">5</span>
-                                                </li> --}}
-                                                <li class="portfolio-ul-li views">
-                                                    <span class="jam jam-eye"></span>
-                                                    <span class="portfolio-ul-li-text">{{ $portfolio->views }}</span>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </a>
                                     <div class="portfolio-item-info">
@@ -169,15 +155,46 @@
       $('[data-toggle="tooltip"]').tooltip()
     })
 
-    $('#showEmail').click(function () {
-        $('#hideEmail').toggle();
-        $('#showEmail').toggle();
-    })
-    
-    $('#showPhone').click(function () {
-        $('#hidePhone').toggle();
-        $('#showPhone').toggle();
-    })
+    $(document).ready(function(){
+
+        $.ajaxSetup({
+            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+        });
+       
+
+        $('#showEmail').click(function () {
+            $('#hideEmail').toggle();
+            $('#showEmail').toggle();
+
+            var url = "{{ route('showemail') }}";
+            var user_id = "{{ $freelancer->user_id }}";
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: url,
+                data: {id: user_id},
+                success : function(data){
+                }
+            }); 
+        })
+        
+        
+        $('#showPhone').click(function () {
+            $('#hidePhone').toggle();
+            $('#showPhone').toggle();
+
+            var url = "{{ route('showphone') }}";
+            var user_id = "{{ $freelancer->user_id }}";
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: url,
+                data: {id: user_id},
+                success : function(data){
+                }
+            }); 
+        })
+    }); 
 </script>
 
 @endsection

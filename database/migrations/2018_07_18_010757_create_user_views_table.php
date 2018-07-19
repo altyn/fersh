@@ -15,12 +15,15 @@ class CreateUserViewsTable extends Migration
     {
         Schema::create('user_views', function (Blueprint $table) {
             $table->integer('user_id')->unsigned()->nullable()->default(null);
+            $table->integer('auth_id')->default(0);
 
             $table->integer('profile')->default(0);
             $table->integer('profile_email')->default(0);
             $table->integer('profile_phone')->default(0);
             $table->integer('portfolio')->default(0);
             $table->integer('portfolio_project')->default(0);
+
+            $table->text('ip_address')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();

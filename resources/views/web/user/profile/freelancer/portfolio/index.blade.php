@@ -18,7 +18,9 @@
                                     @if(isset($freelancer->avatar['200x200']))
                                         <img class="img-fluid"  src="{{ asset($freelancer->avatar['200x200']) }}" alt="">
                                     @else
+                                        @if(Auth::user()->id == $freelancer->user_id)
                                         <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
+                                        @endif
                                     @endif
                                 </div>
                             </div>
@@ -97,7 +99,7 @@
                                             <ul class="portfolio-item-info-ul">
                                                 <li class="portfolio-ul-li views">
                                                     <span class="jam jam-eye"></span>
-                                                    <span class="portfolio-ul-li-text">{{ $portfolio->views }}</span>
+                                                    <span class="portfolio-ul-li-text">{{ $views }}</span>
                                                 </li>
                                                 @if($portfolio->files['fulls'])
                                                 <li class="portfolio-ul-li files">

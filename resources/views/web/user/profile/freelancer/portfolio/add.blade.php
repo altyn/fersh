@@ -181,20 +181,6 @@
     function onAddTag(e) {
         console.log(e, e.detail);
     }
-
-    var url = "{{ route('specsjs') }}";
-    jQuery.getJSON(url).done(
-        function (data) {
-            jQuery('.sphera-multi').select2({
-                placeholder: 'Выберите сферу',
-                allowClear: true,
-                multiple: false,
-                data: data,
-                theme: "bootstrap4",
-                width: '100%'
-            });
-        }
-    );
 </script>
 
 @endsection

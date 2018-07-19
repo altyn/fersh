@@ -137,6 +137,21 @@
                             <div class="os-progress-bar blue">
                                 <div class="bar-labels">
                                     <div class="bar-label-left">
+                                        <span>Заполнено портфолио</span><span class="positive">+{{$isPortfoliotoday}}</span>
+                                    </div>
+                                    <div class="bar-label-right">
+                                        <span class="info">{{$isPortfolio}}/{{$allusers}}</span>
+                                    </div>
+                                </div>
+                                <div class="bar-level-1" style="width: 100%">
+                                    <div class="bar-level-2" style="width: {{(int)round($portfoliopersent)}}%">
+                                        <div class="bar-level-3" style="width: {{(int)round($portfoliopersenttoday)}}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="os-progress-bar blue">
+                                <div class="bar-labels">
+                                    <div class="bar-label-left">
                                         <span>Верифицировано пользователей</span><span class="negative">0</span>
                                     </div>
                                     <div class="bar-label-right">
@@ -156,4 +171,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+
 @endsection

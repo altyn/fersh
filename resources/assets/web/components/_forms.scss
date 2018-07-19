@@ -24,34 +24,51 @@
             }
             .soc-icons{
                 padding: 0;
-                margin: 0;
+                margin: 20px 0;
                 list-style-type: none;
 
                 li{
                     display: inline-block;
 
                     a{
-                        font-size: 40px;
-                        color: rgba($color: $black, $alpha: 0.8);
+                        font-size: 18px;
+                        font-family: $robotolight;
+                        margin-right: 10px;
+                        padding: 5px 12px;
+                        border-radius: 2px;
 
+                        &.facebook{
+                            background: $formtitle;
+                            color: #fff;
+
+                            &:hover{
+                                background: rgba($color: #3b5998, $alpha: 1);
+                            }
+                        }
+                        &.github{
+                            background: $formtitle;
+                            color: #fff;
+
+                            &:hover{
+                                background: rgba($color: #333, $alpha: 1);
+                            }
+                        }
+                        &.google{
+                            background: $formtitle;
+                            color: #fff;
+
+                            &:hover{
+                                background: rgba($color: #ea4335, $alpha: 1);
+                            }
+                        }
+
+                        span, span.jam{
+                          
+                        }
                         .jam{
-                            &-facebook-square{
-                                &:hover{
-                                    color: #3b5998;
-                                }
-                            }
-                            &-twitter-square{
-                                &:hover{
-                                    color: #1da1f2;
 
-                                }
-                            }
-                            &-google-square{
-                                &:hover{
-                                    color: #dd4b39;
-
-                                }
-                            }
+                            font-size: 18px;
+                            padding-right: 5px;
                         }
                     }
                 }

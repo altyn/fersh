@@ -15,6 +15,7 @@ Route::middleware('admin')->group(function(){
 
     // Json
     Route::post('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
+    Route::post('freelancersjs', array('as'=>'freelancersjs','uses'=>'FreelancerController@freelancersjs'));
     Route::get('specsjs', array('as'=>'specsjs','uses'=>'SpecController@specsjs'));
 
     // Delete routes

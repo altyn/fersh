@@ -53,7 +53,7 @@
 		        url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json'
 		    },
             "ajax":{
-                     "url": "/bashkaruu/usersjs",
+                     "url": "/bashkaruu/freelancersjs",
                      "dataType": "json",
                      "type": "POST",
                      "data":{ _token: "{{csrf_token()}}"}

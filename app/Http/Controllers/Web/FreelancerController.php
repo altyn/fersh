@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User\ModelName as User;
 use App\Models\UserDetails\ModelName as UserDetails;
 use App\Models\UserPortfolio\ModelName as UserPortfolio;
+use App\Models\UserView\ModelName as UserView;
 use App\Models\Spec\ModelName as Spec;
 
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,8 @@ use Validator;
 use Input;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+
+use Request as XRequest;
 
 use File;
 
@@ -39,13 +42,29 @@ class FreelancerController extends Controller
      */
     public function index($lang, $id){
 
+        $user_id = $id;
+        $ip = XRequest::ip();
+
+        if(auth()->id()){
+            $auth = auth()->id();
+        }else{
+            $auth = '0';
+        }
+
+        UserView::create([
+            'user_id' => $user_id,
+            'auth_id' => auth()->id(),
+            'profile' => true,
+            'ip_address' => $ip,
+        ]);
+        $views = UserView::where('user_id', $id)->sum('profile');
+
         if (0 != \auth()->user()->isAdmin){
             $freelancer = UserDetails::where('user_id', $id)->first();
             $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
-                $freelancer->incrementViewed();
 
                 $birthDate = explode("-", $freelancer->birthday);
                 $age = (date("Y") - $birthDate[0]);
@@ -60,7 +79,7 @@ class FreelancerController extends Controller
                 $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
             }
         } else {
             $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
@@ -68,7 +87,6 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else {
-                $freelancer->incrementViewed();
                 $birthDate = explode("-", $freelancer->birthday);
                 $age = (date("Y") - $birthDate[0]);
                 $country = Country::where('country_id', $freelancer->country)->first();
@@ -82,7 +100,7 @@ class FreelancerController extends Controller
 
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
             }
         }
     }
@@ -231,6 +249,24 @@ class FreelancerController extends Controller
 
     public function portfolio($lang, $id){
 
+        $user_id = $id;
+        $ip = XRequest::ip();
+
+        if(auth()->id()){
+            $auth = auth()->id();
+        }else{
+            $auth = '0';
+        }
+
+        UserView::create([
+            'user_id' => $user_id,
+            'auth_id' => auth()->id(),
+            'portfolio' => true,
+            'ip_address' => $ip,
+        ]);
+
+        $views = UserView::where('user_id', $id)->sum('portfolio_project');
+
         if (0 != \auth()->user()->isAdmin){
 
             $freelancer = UserDetails::where('user_id', $id)->first();
@@ -251,7 +287,7 @@ class FreelancerController extends Controller
                 $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.portfolio.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
             }
         }else{
             $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();            
@@ -271,7 +307,7 @@ class FreelancerController extends Controller
                 $sphere = Spec::where('id', $usersphere)->first();
                 $skills = explode(',', $freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.portfolio.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere'));
+                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
             }
         }
     }
@@ -356,12 +392,28 @@ class FreelancerController extends Controller
     }
 
     public function portfolioView($lang, $id, $portfolioId){
+      
+        $user_id = $id;
+        $ip = XRequest::ip();
 
+        if(auth()->id()){
+            $auth = auth()->id();
+        }else{
+            $auth = '0';
+        }
+
+        UserView::create([
+            'user_id' => $user_id,
+            'auth_id' => auth()->id(),
+            'portfolio_project' => true,
+            'ip_address' => $ip,
+        ]);
+
+        $views = UserView::where('user_id', $id)->sum('portfolio_project');
         $portfolio = UserPortfolio::findOrFail($portfolioId);
-        $portfolio->incrementViewed();
         $freelancer = UserDetails::where('user_id', $portfolio->user_id)->first();
         $tags = explode(',', $portfolio->tags['ru']['tags']);
-        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags', 'freelancer'));
+        return view('web.user.profile.freelancer.portfolio.view', compact('portfolio', 'tags', 'freelancer', 'views'));
     }
 
     public function portfolioUpdate($lang, $id, $portfolioId){

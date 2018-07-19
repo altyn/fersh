@@ -74,6 +74,12 @@ Route::group(['prefix' => '/{lang}',], function (){
 
 });
 
+// ajax view counters
+
+Route::post('/showphone', 'AjaxController@showPhone')->name('showphone');
+Route::post('/showemail', 'AjaxController@showEmail')->name('showemail');
+
+
 Auth::routes();
 
 Route::post('/profile/info', 'UserController@profileStore')->name('profile.info.post')->middleware('auth');
