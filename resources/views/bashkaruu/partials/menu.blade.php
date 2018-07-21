@@ -42,6 +42,14 @@
                     <span>Заказчики</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('userview.index') }}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-robot-2"></div>
+                    </div>
+                    <span>Просмотры</span>
+                </a>
+            </li>
             <li class="sub-header"><span>Настройки</span></li>
             <li>
                 <a href="{{ route('freelancers.index') }}">
@@ -162,6 +170,14 @@
                     <div class="os-icon os-icon-cv-2"></div>
                 </div>
                 <span>Заказчики</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('userview.index') }}">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-robot-2"></div>
+                </div>
+                <span>Просмотры</span>
             </a>
         </li>
         <li class="sub-header"><span>Настройки</span></li>

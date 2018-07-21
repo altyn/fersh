@@ -14638,12 +14638,13 @@ header {
 
 .sign-right-middle .soc-icons {
   padding: 0;
-  margin: 20px 0;
   list-style-type: none;
+  margin: 5px 0;
 }
 
 .sign-right-middle .soc-icons li {
   display: inline-block;
+  margin: 8px 0;
 }
 
 .sign-right-middle .soc-icons li a {

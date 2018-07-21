@@ -12,9 +12,11 @@ Route::middleware('admin')->group(function(){
     Route::resource('permissions', 'PermissionController');
     Route::resource('spec', 'SpecController');
     Route::resource('mail', 'MailController');
+    Route::resource('userview', 'UserViewController');
 
     // Json
     Route::post('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));
+    Route::post('userviewsjs', array('as'=>'userviewsjs','uses'=>'UserViewController@userviewsjs'));
     Route::post('freelancersjs', array('as'=>'freelancersjs','uses'=>'FreelancerController@freelancersjs'));
     Route::get('specsjs', array('as'=>'specsjs','uses'=>'SpecController@specsjs'));
 

@@ -12336,6 +12336,7 @@ a.text-dark:focus {
 
 .all-wrapper table.dataTable {
   border-collapse: collapse !important;
+  margin: 0 !important;
 }
 
 .table.table-padded {
@@ -32489,6 +32490,14 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:fir
 
 div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child {
   padding-right: 0;
+}
+
+table.dataTable tr.group td {
+  font-weight: normal !important;
+  background-color: #f2f4f8 !important;
+  text-transform: uppercase;
+  font-family: "roboto_bold", Arial, sans-serif;
+  color: #0c55ff;
 }
 
 .element-box-content {

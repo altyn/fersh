@@ -273,3 +273,12 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:first-chi
 div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-child {
     padding-right: 0
 }
+
+
+table.dataTable tr.group td {
+    font-weight: normal !important;
+    background-color: #f2f4f8 !important;
+    text-transform: uppercase;
+    font-family: "roboto_bold", Arial, sans-serif;
+    color: #0c55ff;
+}

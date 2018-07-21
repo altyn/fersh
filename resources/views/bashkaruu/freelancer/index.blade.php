@@ -42,42 +42,42 @@
 
 @section('scripts')
     <script>
-    $(document).ready(function () {
-        $('#datatables').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 25,
-            "responsive": true,
-            "order": [[ 0, "desc" ]],
-            "language": {
-		        url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json'
-		    },
-            "ajax":{
-                     "url": "/bashkaruu/freelancersjs",
-                     "dataType": "json",
-                     "type": "POST",
-                     "data":{ _token: "{{csrf_token()}}"}
-                   },
-            "aoColumns": [
-                { "mData": "id" },
-                { "mData": "login" },
-                { "data": "email" },
-                { 
-                    "className": "dataTables_actions text-center",
-                    "mData": "activated" 
+        $(document).ready(function () {
+            $('#datatables').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "pageLength": 25,
+                "responsive": true,
+                "order": [[ 0, "desc" ]],
+                "language": {
+                    url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json'
                 },
-                { 
-                    "mData": function (data, type, dataToSet) {
-                        return data.profile + "" + data.portfolio;
-                    }
-                },
-                { 
-                    "className": "dataTables_actions",
-                  "mData": "options" 
-                },
-            ]	 
+                "ajax":{
+                        "url": "/bashkaruu/freelancersjs",
+                        "dataType": "json",
+                        "type": "POST",
+                        "data":{ _token: "{{csrf_token()}}"}
+                    },
+                "aoColumns": [
+                    { "mData": "id" },
+                    { "mData": "login" },
+                    { "data": "email" },
+                    { 
+                        "className": "dataTables_actions text-center",
+                        "mData": "activated" 
+                    },
+                    { 
+                        "mData": function (data, type, dataToSet) {
+                            return data.profile + "" + data.portfolio;
+                        }
+                    },
+                    { 
+                        "className": "dataTables_actions",
+                    "mData": "options" 
+                    },
+                ]	 
 
+            });
         });
-    });
     </script>
 @endsection
