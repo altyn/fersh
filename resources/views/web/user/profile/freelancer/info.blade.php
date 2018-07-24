@@ -9,11 +9,11 @@
                 @endif
             @endif
         </div>
-        @if($isVerify->activated == '1')
+        {{-- @if($isVerify->activated == '1')
             <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь активен"><span class="jam jam-check"></span></div>
         @else
-            {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
-        @endif
+            <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div>
+        @endif --}}
     </div>
     <div class="profile-info">
         <div class="profile-info-name">@if($freelancer->first_name){{ $freelancer->first_name }}@endif @if($freelancer->last_name){{ $freelancer->last_name}} @endif</div>

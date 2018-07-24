@@ -350,38 +350,41 @@ class FreelancerController extends Controller
         }
 
         $files = $request->file('files');
-        $i = 0;
-        foreach($files as $file)
-        {
-            $i++;
-            $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
-            if (!file_exists($dir)) {
-                mkdir($dir, 0777, true);
+
+        if($files){
+            $i = 0;
+            foreach($files as $file)
+            {
+                $i++;
+                $dir  = 'img/freelancer/portfolio/'.$row->id.'/'.'attachment/';
+                if (!file_exists($dir)) {
+                    mkdir($dir, 0777, true);
+                }
+    
+                $btw = time();
+                $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
+                $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
+                
+                Image::make($file)->fit(180, 180)->save($dir.$thumb);
+                Image::make($file)->save($dir.$full);
+    
+                $thumbs = array(
+                    'title' => "File $i",
+                    'file' => $dir.$thumb
+                );
+    
+                $fulls = array(
+                    'title' => "File $i",
+                    'file' => $dir.$full
+                );
+    
+                $links['thumbs'][$i] = $thumbs;
+                $links['fulls'][$i] = $fulls;
             }
-
-            $btw = time();
-            $thumb = $btw.uniqid().'_thumb.'.$file->getClientOriginalExtension();
-            $full = $btw.uniqid().'.'.$file->getClientOriginalExtension();
-            
-            Image::make($file)->fit(180, 180)->save($dir.$thumb);
-            Image::make($file)->save($dir.$full);
-
-            $thumbs = array(
-                'title' => "File $i",
-                'file' => $dir.$thumb
-            );
-
-            $fulls = array(
-                'title' => "File $i",
-                'file' => $dir.$full
-            );
-
-            $links['thumbs'][$i] = $thumbs;
-            $links['fulls'][$i] = $fulls;
+    
+            $row->files = $links;
+            $row->save();
         }
-
-        $row->files = $links;
-        $row->save();
 
         if($row){
                 return Redirect::back()->withSuccess('Портфолио добавлено');

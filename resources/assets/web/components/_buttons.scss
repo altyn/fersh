@@ -153,13 +153,13 @@ a:visited {
         padding: 5px 10px;
         font-size: 14px;
         background: $violetgray;
-        -webkit-box-shadow: -1px 1px 10px rgba($color: $violetgray, $alpha: 0.8);
-        box-shadow: -1px 1px 10px rgba($color: $violetgray, $alpha: 0.8);
+        -webkit-box-shadow: -1px 1px 10px rgba($color: $violetgray, $alpha: 0.6);
+        box-shadow: -1px 1px 10px rgba($color: $violetgray, $alpha: 0.6);
 
         &:hover,
         &:active {
             color: #fff;
-            background: rgba($color: $violetgray, $alpha: 0.8);
+            background: rgba($color: $violetgray, $alpha: 0.6);
         }
         &:focus,
         &:visited {

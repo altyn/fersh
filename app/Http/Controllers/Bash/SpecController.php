@@ -6,6 +6,10 @@ use App\Models\Spec\ModelName as Spec;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use DB;
+
+use App\Models\UserDetails\ModelName as UserDetails;
+
 class SpecController extends Controller
 {
 
@@ -14,8 +18,11 @@ class SpecController extends Controller
      */
     public function index()
     {
-        $rows = Spec::all()->except('created_at', 'updated_at');
-        return view('bashkaruu.spec.index', compact('rows'));
+
+        $users = UserDetails::get();
+        $rows = Spec::select('id', 'title')->get();
+
+        return view('bashkaruu.spec.index', compact('rows', 'users'));
     }
 
     /**
@@ -54,8 +61,10 @@ class SpecController extends Controller
     public function show($id)
     {
         $row = Spec::findOrFail($id);
-//        return response()->json($row);
-        return view('bashkaruu.spec.show', compact('row'));
+
+        $users = UserDetails::where('spec->ru->sphere', $id)->get();
+        // dd($users);
+        return view('bashkaruu.spec.show', compact('row', 'users'));
     }
 
     /**

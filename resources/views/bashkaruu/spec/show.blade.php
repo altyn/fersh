@@ -58,6 +58,23 @@
           	<a class="btn btn-danger float-right" href="{{ route('spec.delete', $row) }}">Өчүрүү</a>
         </div>
 	</div>
+
+	<h6 class="element-header mt-4">
+		<p>Фрилансеры ({{ count($users) }})</p>
+	</h6>
+
+	<div class="element-box timeline">
+		@foreach($users as $user)
+		<div class="entry">
+			<div class="title">
+				<h3>{{ $user->first_name }} {{ $user->last_name }}</h3>
+			</div>
+			<div class="body">
+				<a href='/ru/freelancer/{{ $user->user_id }}' target='_blank' class=' btn btn-outline-primary btn-sm'>Профиль</a>
+			</div>
+		</div>
+		@endforeach
+	</div>
 </div>
 
 @endsection

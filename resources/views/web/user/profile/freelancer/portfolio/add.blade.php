@@ -80,7 +80,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><span class="jam jam-github-circle"></span></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="links[github]" placeholder="github">
+                                                    <input type="text" class="form-control" name="links[github]" placeholder="Github">
                                                 </div>
                                             </div>
                                             <label class="custom-label">Другой ресурс</label>

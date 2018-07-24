@@ -21,6 +21,7 @@ Route::name('home')->get('/', function(){
 Route::group(['prefix' => '/{lang}',], function (){
 
     Route::get('/', 'WebController@index');
+    Route::get('/beta', 'WebController@beta');
 
     // Authentication Routes...
     Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');

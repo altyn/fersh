@@ -28,11 +28,11 @@
                         <div class="col-md-9 col-12">
                             <div class="portfolio-header-info">
                                 <div class="portfolio-header-info-name">{{ $freelancer->first_name }} {{ $freelancer->last_name}} 
-                                    @if($isVerify->activated == '1')
+                                    {{-- @if($isVerify->activated == '1')
                                         <div class="verify" data-toggle="tooltip" data-placement="bottom" title="Пользователь активен"><span class="jam jam-check"></span></div>
                                     @else
-                                          {{-- <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div> --}}
-                                    @endif
+                                          <div class="noverify" data-toggle="tooltip" data-placement="bottom" title="Пользователь еще верифицирован"><span class="jam jam-close-circle"></span></div>
+                                    @endif --}}
                                     
                                 </div>
                                 @if($sphere)
@@ -72,7 +72,11 @@
                                     <div class="portfolio-item">
                                         <div class="portfolio-item-img">
                                             <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id}}/portfolio/{{ $portfolio->id }}" class="portfolio-item-img">
+                                                @if(isset($portfolio->cover))
                                                 <img class="img-fluid" src="{{ asset($portfolio->cover) }}">
+                                                @else
+                                                <img class="img-fluid" src="{{ asset('img/home/no-img.png') }}">
+                                                @endif
                                                 <div class="portfolio-item-img-overlay" id="showOverlay"></div>
                                             </a>
                                             @if(Auth::user()->id == $freelancer->user_id )
@@ -101,7 +105,7 @@
                                                     <span class="jam jam-eye"></span>
                                                     <span class="portfolio-ul-li-text">{{ $views }}</span>
                                                 </li>
-                                                @if($portfolio->files['fulls'])
+                                                @if(isset($portfolio->files['fulls']))
                                                 <li class="portfolio-ul-li files">
                                                     <span class="jam jam-link"></span>
                                                     <span class="portfolio-ul-li-text">{{ count($portfolio->files['fulls']) }}</span>

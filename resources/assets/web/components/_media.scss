@@ -3,6 +3,46 @@
     .portfolio-view-top-right{
         padding: 15px !important;
     }
+
+    .portfolio-header-ava-img{
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .homepage{
+        &-info-block {
+            padding: 30px 30px 80px 30px;
+        }
+    }
+
+    .first{
+        #scrolldown{
+            display: none;
+        }
+
+        &-info-text img{
+            height: 25px;
+            float: none;
+            margin-bottom: 10px;
+        }
+
+        &-info-second-text{
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+    }
+
+    .btn{
+        &-reg{
+            width: 100%;
+        }
+        &-signin{
+            position: relative;
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
 }
 
 @media (max-width: 768px) {
@@ -37,11 +77,6 @@
 
     #main-nav {
         display: inline-block !important;
-    }
-
-    .user-profile-aside .profile-ava-img {
-        height: 100px !important;
-        width: 100px !important;
     }
 
     .portfolio-item-info-title{

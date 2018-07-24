@@ -14,7 +14,7 @@
 	          <a class="mr-2 mb-2 btn btn-success" href="spec/create">
 	            <i class="fa fa-plus"></i> Добавить cпециализаци</a>
 	        </div>
-		</div>
+        </div>
 
 		<div class="table-responsive">
 			<table id="datatables" class="dataTables_wrapper table-sm" cellspacing="0" width="100%">
@@ -24,6 +24,7 @@
 						<th>Кыргызча</th>
 						<th>Русский</th>
 						<th>English</th>
+						<th>Пользователей</th>
 						<th>Башкаруу</th>
 					</tr>
 				</thead>
@@ -45,6 +46,9 @@
                             @if(isset($row->title['en']))
                                 {{ $row->title['en']}}
                             @endif
+                        </td>
+                        <td>
+
                         </td>
                         <td class="dataTables_actions">
                             <a class="item_edit" href="{{ route('spec.show',$row->id) }}">

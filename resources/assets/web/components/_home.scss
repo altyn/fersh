@@ -1,5 +1,13 @@
+.home{
+    background: url('/img/home/bgi.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .homepage{
-    background: url('/img/home/bgi.png') no-repeat center center fixed;
+    background: url('/img/home/bgi.png') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -89,6 +97,129 @@
                     }
                 }
             }
+        }
+    }
+
+}
+
+.first {
+    background: url('/img/home/first.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    &-info {
+        width: 100%;
+        height: 90vh;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 30px 0;
+        &-text {
+            font-family: $firasansbold;
+            color: $black;
+            img, blockquote{
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            img{
+                height: 58px;
+                width: auto;
+                float: left;
+                margin-right: 30px;
+            }
+
+            blockquote{
+                color: $black2;
+
+                h2{
+                    margin: 0;
+                }
+
+                h6{
+                    font-family: $firasansmedium;
+                }
+            }
+        }
+        &-second {
+            &-text {
+                padding-top: 30px;
+                margin-top: 30px;
+                margin-bottom: 60px;
+                font-family: $firasansmedium;
+                color: $black2;
+                border-top: 1px dashed #c3b8b2;
+
+                h3{
+                    margin-bottom: 15px;
+                }
+
+            }
+        }
+    }
+
+    #scrolldown {
+        bottom: 15px;
+        height: 100px;
+        margin-left: -50px;
+        position: absolute;
+        left: 50%;
+        text-align: center;
+        width: 100px;
+        z-index: 100;
+
+        &:hover{
+            cursor: pointer;
+            p,{
+                color: $red;
+            }
+            .mouse{
+                border-color: $red;
+            }
+        }
+    }
+
+    #scrolldown p {
+        font: 700 0.7em/1em 'Avenir', sans-serif;
+        animation-duration: 2s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-name: scroll;
+        color: #333;
+    }
+
+    #scrolldown>p {
+        text-transform: uppercase;
+        text-indent: 3px;
+    }
+
+    .mouse {
+        border: 2px solid #fff;
+        border-radius: 13px;
+        display: block;
+        height: 46px;
+        left: 50%;
+        margin: 10px 0 0 -13px;
+        position: absolute;
+        width: 26px;
+        background: rgba($color: #fff, $alpha: 0.3);
+    }
+
+    .mouse span {
+        display: block;
+        font-size: 1.5em;
+        margin: 6px auto;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(10px);
         }
     }
 

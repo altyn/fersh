@@ -36,6 +36,8 @@
                                     доллар
                                     @elseif($freelancer->spec[app()->getLocale()]['currency'] == '2')
                                     сом
+                                    @else
+                                    доллар
                                     @endif
                                 @endif
                                 за проект</div>
@@ -125,7 +127,11 @@
                             <div class="col-md-4 col-sm-6 col-12">
                                 <div class="portfolio-item">
                                     <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/{{ $portfolio->id }}" class="portfolio-item-img">
-                                        <img class="img-fluid" src="{{ asset($portfolio->cover) }}" alt="">
+                                        @if(isset($portfolio->cover))
+                                            <img class="img-fluid" src="{{ asset($portfolio->cover) }}">
+                                        @else
+                                            <img class="img-fluid" src="{{ asset('img/home/no-img.png') }}">
+                                        @endif
                                         <div class="portfolio-item-img-overlay" id="showOverlay">
                                         </div>
                                     </a>

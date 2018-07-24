@@ -27,7 +27,9 @@
 </head>
 
 @if($home == $locale)
-    <body class="homepage">
+    <body class="home">
+@elseif($current_url == 'beta')
+    <body class="first">
 @else
     <body>
 @endif
@@ -35,7 +37,8 @@
     @include('web.layouts.header')
 
     @yield('content')
-    
+
+    @include('web.layouts.footer')
     <script src="{{ mix('/js/app.js')}}"></script>
     @yield('scripts')
 
