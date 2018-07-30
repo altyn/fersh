@@ -11,15 +11,23 @@ use App\Models\User\ModelName as User;
 use App\Models\UserVerify\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeInfoMail;
+use App\Jobs\SendActivationCode;
 
 class MailController extends Controller
 {
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create(){
         $mail =  1;
         return view('bashkaruu.mail.create', compact('mail'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $email = $request->input('email');
@@ -52,7 +60,7 @@ class MailController extends Controller
     }
 
     /**
-     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function resendTokens(){
         $data = User::where('activated', false)->get();
@@ -73,4 +81,29 @@ class MailController extends Controller
         return back()->with('status', $status);
     }
 
+    public function resendTokensDirect()
+    {
+        $users = User::paginate(20);
+        return view('bashkaruu.mail.send_activation_directly', compact('users'));
+    }
+
+    public function resendTokensDirectJob(Request $request)
+    {
+        $users = $request->input('userId');
+        foreach ($users as $key=>$value){
+            $user = User::find($value);
+            $verifyUser = VerifyUsers::create([
+                'user_id' => $user->id,
+                'token' => str_random(40)
+            ]);
+
+            if($verifyUser){
+                $token = $verifyUser->token;
+                dispatch(new SendActivationCode($user, $token));
+//                dd($token);
+            }
+        }
+
+        return back()->with('status', "Рассылка отправляется в порядке очереди");
+    }
 }

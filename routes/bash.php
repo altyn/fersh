@@ -33,7 +33,10 @@ Route::middleware('admin')->group(function(){
     Route::post('/logout', 'Auth\LoginController@logout')->name('bash.logout');
 
     Route::get('/activation_emails', array('as'=>'act_em','uses'=>'MailController@resendTokensList'));
+    Route::get('/activation_direct', array('as'=>'act_direct','uses'=>'MailController@resendTokensDirect'));
+
     Route::post('/activation_emails', array('as'=>'act_em_post','uses'=>'MailController@resendTokens'));
+    Route::post('/activation_direct', array('as'=>'act_direct_post','uses'=>'MailController@resendTokensDirectJob'));
 
 
 });
