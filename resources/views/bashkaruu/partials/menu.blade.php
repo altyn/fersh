@@ -216,6 +216,9 @@
                 <ul class="sub-menu">
                     <li><a href="/bashkaruu/activation_emails">Отправить код активации</a></li>
                 </ul>
+                <ul class="sub-menu">
+                    <li><a href="/bashkaruu/activation_direct">Отправить код активации адресная</a></li>
+                </ul>
             </div>
         </li>
         <li class="sub-header"><span>Администраторы</span></li>
