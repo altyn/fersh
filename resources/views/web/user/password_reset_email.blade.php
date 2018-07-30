@@ -40,7 +40,7 @@
                                     Введите почту
                                 </div>
                             </div>
-                            <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                            <div class="g-recaptcha mb-2 mb-3" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
                             <button class="btn btn-sign" type="submit">Запросить</button>
                         </form>
                     </div>

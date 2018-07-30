@@ -15150,6 +15150,10 @@ header {
   background-color: #fafbfe !important;
 }
 
+.has-error .invalid-feedback {
+  display: block;
+}
+
 .home {
   background: url("/img/home/bgi.png") no-repeat center center;
   background-size: cover;

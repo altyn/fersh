@@ -100,7 +100,6 @@ class MailController extends Controller
             if($verifyUser){
                 $token = $verifyUser->token;
                 dispatch(new SendActivationCode($user, $token));
-//                dd($token);
             }
         }
 
