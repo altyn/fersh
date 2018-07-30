@@ -4,7 +4,7 @@
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
     z-index: 3;
     padding: 60px 15px;
-    margin-top: 60px;
+
     &-title {
         h6 {
             font-family: $robotoregular;
@@ -16,6 +16,7 @@
             text-transform: uppercase;
         }
     }
+    
     &-body {
         margin-bottom: 15px;
         font-family: $robotoregular;

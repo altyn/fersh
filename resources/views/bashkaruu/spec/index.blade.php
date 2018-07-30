@@ -42,13 +42,19 @@
                                 {{ $row->title['ru']}}
                             @endif
                         </td>
-                        <td>
+                        <td class="dataTables_actions">
                             @if(isset($row->title['en']))
                                 {{ $row->title['en']}}
                             @endif
                         </td>
                         <td>
-
+                            @if(isset($specs[$row->id]))
+                                <a href='{{ route('spec.show',$row->id) }}' class=' btn btn-outline-primary btn-sm'>Список
+                                    <strong>{{ $specs[$row->id] }}</strong>
+                                </a>
+                            @else
+                                Неизвестно
+                            @endif
                         </td>
                         <td class="dataTables_actions">
                             <a class="item_edit" href="{{ route('spec.show',$row->id) }}">

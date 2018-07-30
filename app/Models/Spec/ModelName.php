@@ -10,6 +10,7 @@ namespace App\Models\Spec;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\UserDetails\ModelName as UserDetails;
 
 class ModelName extends Model
 {
@@ -46,5 +47,10 @@ class ModelName extends Model
         return $this->id;
     }
 
+    public function getCountSpecs()
+    {
+        $users = UserDetails::where('spec->ru->sphere', $this->id)->get();
+        return count($users);
+    }
 
 }
