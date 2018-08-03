@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Bash\Auth\RegisterController;
 use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
+use App\Models\UserDetails\ModelName as UserDetails;
 use App\Models\UserVerify\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\WelcomeInfoMail;
 use Illuminate\Support\Facades\Mail;
+use Image;
 
 
 class WebRegisterController extends RegisterController
@@ -58,6 +60,41 @@ class WebRegisterController extends RegisterController
         } else {
             $data['password'] = Hash::make($data['password']);
             $row = User::create($data);
+
+            if($request->input('avatar'))
+            {
+                $file = file_get_contents(public_path().$request->input('avatar'));
+                $dir  = 'img/freelancer/avatar/'.$row->id.'/';
+                if (!file_exists($dir)) {
+                    mkdir($dir, 0777, true);
+                }
+                $ext = pathinfo(public_path().$request->input('avatar'), PATHINFO_EXTENSION);
+
+                $btw = time();
+
+                $name50 = $btw.uniqid().'_50.'.$ext;
+                $name100 = $btw.uniqid().'_100.'.$ext;
+                $name200 = $btw.uniqid().'_200.'.$ext;
+                $name360 = $btw.uniqid().'_360.'.$ext;
+
+                Image::make($file)->fit(50, 50)->save($dir.$name50);
+                Image::make($file)->fit(100, 100)->save($dir.$name100);
+                Image::make($file)->fit(200, 200)->save($dir.$name200);
+                Image::make($file)->fit(360, 360)->save($dir.$name360);
+
+                $avatar['50x50'] = $dir.$name50;
+                $avatar['100x100'] = $dir.$name100;
+                $avatar['200x200'] = $dir.$name200;
+                $avatar['360x360'] = $dir.$name360;
+
+                $user_avatar = $avatar;
+            }
+            UserDetails::create([
+                "user_id" => $row->id,
+                "first_name" => $data['first_name'],
+                "last_name" => $data['last_name'],
+                "avatar" => $user_avatar
+            ]);
             $verifyUser = VerifyUsers::create([
                 'user_id' => $row->id,
                 'token' => str_random(40)

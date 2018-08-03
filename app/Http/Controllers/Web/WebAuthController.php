@@ -33,6 +33,15 @@ class WebAuthController extends Controller
         $user_details['email'] = session()->get('user_email');
         $user_details['name'] = session()->get('user_name');
         $user_details['avatar'] = session()->get('user_avatar');
+        $user_details['user_provider'] = session()->get('user_provider');
+        $fileContents = file_get_contents($user_details['avatar']);
+        $pic_id = str_random(16);
+        file_put_contents(public_path() . '/img/sign/' . $pic_id . ".jpg", $fileContents);
+        $user_details['avatar'] = '/img/sign/' . $pic_id . ".jpg";
+
+        if(!empty($user_details['user_provider'])){
+            return view('web.user.sign_up_social', compact('user_details'));
+        }
         return view('web.user.sign_up', compact('user_details'));
     }
 
@@ -68,6 +77,15 @@ class WebAuthController extends Controller
             $user_avatar = $memberInfo->getAvatar();
             $user_provider = $provider;
             $user_soc_id = $memberInfo->getId();
+            if($user_avatar = $memberInfo->getAvatar()) {
+                if ($provider == 'google') {
+                    $user_avatar = str_replace('?sz=50', '', $user_avatar);
+                } elseif ($provider == 'twitter') {
+                    $user_avatar = str_replace('_normal', '', $user_avatar);
+                } elseif ($provider == 'facebook') {
+                    $user_avatar = str_replace('type=normal', 'type=large', $user_avatar);
+                }
+            }
 
             $user = User::where(['email' => $memberInfo->getEmail(),
                                  'provider_user_id' => $user_soc_id,
@@ -86,6 +104,7 @@ class WebAuthController extends Controller
                 session()->put('user_avatar', $user_avatar);
                 session()->put('user_provider', $user_provider);
                 session()->put('user_soc_id', $user_soc_id);
+
                 return redirect(app()->getLocale().'/sign_up');
             }
         }catch (GuzzleReqException $exception){
