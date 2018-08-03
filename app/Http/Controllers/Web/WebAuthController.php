@@ -116,4 +116,8 @@ class WebAuthController extends Controller
 
         return redirect('ru/sign_in')->with('status', $status);
     }
+
+    public function resendActivationMail(Request $request){
+        dd($request);
+    }
 }
