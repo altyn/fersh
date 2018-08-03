@@ -19,15 +19,18 @@ class AjaxController extends Controller
         if(auth()->id()){
             $auth = auth()->id();
         }else{
-            $auth = '0';
+            $auth = false;
         }
 
-        $row = UserView::create([
-            'user_id' => $user_id,
-            'auth_id' => auth()->id(),
-            'profile_phone' => true,
-            'ip_address' => $ip,
-        ]);
+        if(auth()->id() != $user_id){
+            $row = UserView::create([
+                'user_id' => $user_id,
+                'auth_id' => $auth,
+                'profile_phone' => true,
+                'ip_address' => $ip,
+            ]);
+        }
+
     }
 
     public function showEmail(Xrequest $request){
@@ -38,14 +41,17 @@ class AjaxController extends Controller
         if(auth()->id()){
             $auth = auth()->id();
         }else{
-            $auth = '0';
+            $auth = false;
         }
 
-        $row = UserView::create([
-            'user_id' => $user_id,
-            'auth_id' => auth()->id(),
-            'profile_email' => true,
-            'ip_address' => $ip,
-        ]);
+        if(auth()->id() != $user_id){
+            $row = UserView::create([
+                'user_id' => $user_id,
+                'auth_id' => $auth,
+                'profile_email' => true,
+                'ip_address' => $ip,
+            ]);
+        }
+
     }
 }

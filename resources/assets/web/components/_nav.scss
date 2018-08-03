@@ -64,17 +64,20 @@ header{
 #main-nav {
     position: fixed;
     z-index: 199;
-    left: -100%;
+    right: -100%;
     top: 0;
     width: 260px;
     height: 100%;
     @include boxshadow;
-    @include transition;
+    -webkit-transition: right 0.4s ease;
+    -moz-transition: right 0.4s ease;
+    -o-transition: right 0.4s ease;
+    transition: right 0.4s ease;
     
     background: #fff;
     padding-top: 10px;
     &.speed-in {
-        left: 0;
+        right: 0;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
     }

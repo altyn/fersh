@@ -51,13 +51,4 @@
             </a>
         </li>
     </ul>
-    <ul class="list-menu">
-        <li class="list-menu-item list-menu-title"><span class="jam jam-coin"></span>Финансы</li>
-        <li class="list-menu-item">
-            <a href="/{{ app()->getLocale()}}/freelancer/edit/tariff">
-                <span class="jam jam-box"></span>
-                <span class="list-menu-item-title">Тариф</span>
-            </a>
-        </li>                        
-    </ul>
 </div>

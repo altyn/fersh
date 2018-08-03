@@ -127,6 +127,11 @@
                             
                         </div>
                     </div>
+                    {{-- <div class="portfolio-footer">
+                        <nav>
+                            {{ $portfolios->links() }}
+                        </nav>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -304,6 +304,7 @@
         max-width: 300px;
         width: 100%;
         margin: 20px auto;
+       
         .btn-file {
             position: absolute;
             right: 12px;
@@ -333,6 +334,43 @@
                     margin: auto;
                     display: block;
                     font-size: 30px;
+                }
+            }
+        }
+        .btn-newavatar {
+            position: relative;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            
+            label {
+                margin-bottom: 6px;
+                font-family: $robotolight;
+                color: $green;
+                border-bottom: 1px dashed rgba($color: $green, $alpha: 0.5);
+                font-size: 14px;
+                position: relative;
+
+            }
+            &:hover label{
+                color: rgba($color: $green, $alpha: 0.5);
+                border-bottom: 1px dashed $green;
+                background: none;
+                cursor: pointer;
+            }
+        }
+        .fileinput {
+            text-align: center;
+            .delete-avatar {
+                font-family: $robotolight;
+                color: $red;
+                border-bottom: 1px dashed rgba($color: $red, $alpha: 0.5);
+                font-size: 14px;
+
+                &:hover {
+                    color: rgba($color: $red, $alpha: 0.5);
+                    border-bottom: 1px dashed $red;
+                    background: none;
                 }
             }
         }
@@ -574,5 +612,11 @@
             }
 
         }
+    }
+}
+
+.fileinput{
+    &-new.input-group .btn-file{
+        border-radius: 4px !important;
     }
 }

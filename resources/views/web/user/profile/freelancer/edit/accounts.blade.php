@@ -7,20 +7,22 @@
 @endsection
 
 @section('content')
-    <div class="container user-profile">
-        <div class="inner">
-            <div class="row">
+    <div class="container">
+        <div class="user-profile">
+            <div class="inner">
+                <div class="row">
 
-                @include('web.user.profile.freelancer.edit.sidebar')
+                    @include('web.user.profile.freelancer.edit.sidebar')
 
-                <div class="col-md-9 col-12">
-                    <div class="infoform">
-                        <div class="infoform-title">
-                            <h6>Связанные аккаунты</h6>
+                    <div class="col-md-9 col-12">
+                        <div class="infoform">
+                            <div class="infoform-title">
+                                <h6>Связанные аккаунты</h6>
+                            </div>
+                            <form action="#">
+                                <h6>Страница на стадии разработки</h6>
+                            </form>
                         </div>
-                        <form action="#">
-                            <h6>Страница на стадии разработки</h6>
-                        </form>
                     </div>
                 </div>
             </div>

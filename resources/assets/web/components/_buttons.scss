@@ -148,19 +148,17 @@ a:visited {
     }
 
     &-add {
-        color: #fff;
+        color: $violetgray;
         border-radius: 3px;
         font-family: $robotolight;
         padding: 5px 10px;
         font-size: 14px;
-        background: $violetgray;
-        -webkit-box-shadow: -1px 1px 10px rgba($color: $violetgray, $alpha: 0.6);
-        box-shadow: -1px 1px 10px rgba($color: $violetgray, $alpha: 0.6);
+        border: 1px solid $violetgray;
 
         &:hover,
         &:active {
             color: #fff;
-            background: rgba($color: $violetgray, $alpha: 0.6);
+            background: rgba($color: $violetgray, $alpha: 1);
         }
         &:focus,
         &:visited {

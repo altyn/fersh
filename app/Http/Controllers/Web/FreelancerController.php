@@ -48,15 +48,18 @@ class FreelancerController extends Controller
         if(auth()->id()){
             $auth = auth()->id();
         }else{
-            $auth = '0';
+            $auth = false;
         }
 
-        UserView::create([
-            'user_id' => $user_id,
-            'auth_id' => auth()->id(),
-            'profile' => true,
-            'ip_address' => $ip,
-        ]);
+        if(auth()->id() != $id){
+            UserView::create([
+                'user_id' => $user_id,
+                'auth_id' => $auth,
+                'profile' => true,
+                'ip_address' => $ip,
+            ]);
+        }
+
         $views = UserView::where('user_id', $id)->sum('profile');
 
         if (0 != \auth()->user()->isAdmin){
@@ -78,6 +81,9 @@ class FreelancerController extends Controller
                 }
 
                 $sphere = Spec::where('id', $usersphere)->first();
+                if(!empty($freelancer->spec['ru']['skills'])) {
+                    $skills = explode(',', $freelancer->spec['ru']['skills']);
+                }
                 $services = false;
                 if(
                     isset($freelancer->spec[app()->getLocale()]['rate']) ||
@@ -94,8 +100,8 @@ class FreelancerController extends Controller
                     compact('user', 'freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views', 'services'));
             }
         } else {
-            $freelancer = UserDetails::where('user_id', $id)->first();
-            $user = User::where('id', $id)->first();
+            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+            $user = User::where('id', auth()->user()->getAuthIdentifier())->first();
             $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
@@ -266,9 +272,10 @@ class FreelancerController extends Controller
     public function deleteFreelancerAvatar(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
         if(!file_exists(asset($row->avatar['50x50']))){
-            // $row->avatar = null;
-            // $row->save();
-            return Redirect::back()->withSuccess('Аватар удалён или временно перемещен в другое мест. Рекомендуем загрузить новый аватар');
+            $row->avatar = null;
+            $row->save();
+            // return Redirect::back()->withSuccess('Аватар удалён или временно перемещен в другое мест. Рекомендуем загрузить новый аватар');
+            return Redirect::back()->withSuccess('Аватар удалён.');
         }else{
             if($row->avatar['50x50']) unlink($row->avatar['50x50']);
             if($row->avatar['100x100']) unlink($row->avatar['100x100']);
@@ -294,15 +301,17 @@ class FreelancerController extends Controller
         if(auth()->id()){
             $auth = auth()->id();
         }else{
-            $auth = '0';
+            $auth = false;
         }
 
-        UserView::create([
-            'user_id' => $user_id,
-            'auth_id' => auth()->id(),
-            'portfolio' => true,
-            'ip_address' => $ip,
-        ]);
+        if(auth()->id() != $id){
+            UserView::create([
+                'user_id' => $user_id,
+                'auth_id' => $auth,
+                'portfolio' => true,
+                'ip_address' => $ip,
+            ]);
+        }
 
         $views = UserView::where('user_id', $id)->sum('portfolio_project');
 
@@ -369,8 +378,8 @@ class FreelancerController extends Controller
         $row->save();
 
         $validator = Validator::make($request->all(), [
-            'cover' => 'max:50000000',
-            'files' => 'max:50000000',
+            'cover' => 'max:100000',
+            'files' => 'max:100000',
         ]);
 
         if($request->hasFile('cover')){
@@ -426,7 +435,7 @@ class FreelancerController extends Controller
         }
 
         if($row){
-                return Redirect::back()->withSuccess('Портфолио добавлено');
+                return redirect(app()->getLocale().'/freelancer/'.auth()->user()->getAuthIdentifier().'/portfolio')->withSuccess('Портфолио добавлено');
             } else {
                 return redirect()->back();
         }
@@ -441,15 +450,17 @@ class FreelancerController extends Controller
         if(auth()->id()){
             $auth = auth()->id();
         }else{
-            $auth = '0';
+            $auth = false;
         }
 
-        UserView::create([
-            'user_id' => $user_id,
-            'auth_id' => auth()->id(),
-            'portfolio_project' => true,
-            'ip_address' => $ip,
-        ]);
+        if(auth()->id() != $id){
+            UserView::create([
+                'user_id' => $user_id,
+                'auth_id' => $auth,
+                'portfolio_project' => true,
+                'ip_address' => $ip,
+            ]);
+        }
 
         $views = UserView::where('user_id', $id)->sum('portfolio_project');
         $portfolio = UserPortfolio::findOrFail($portfolioId);
@@ -476,8 +487,8 @@ class FreelancerController extends Controller
         $row->update($request->except('files', 'cover'));
         
         $validator = Validator::make($request->all(), [
-            'cover' => 'max:50000000',
-            'files' => 'max:50000000',
+            'cover' => 'max:100000',
+            'files' => 'max:100000',
         ]);
 
         if($request->hasFile('cover')){
@@ -554,7 +565,7 @@ class FreelancerController extends Controller
         }
 
         if($row){
-                return Redirect::back()->withSuccess('Портфолио изменено');
+                return redirect(app()->getLocale().'/freelancer/'.auth()->user()->getAuthIdentifier().'/portfolio/'.$id)->withSuccess('Портфолио изменено');
             } else {
                 return redirect()->back();
         }
