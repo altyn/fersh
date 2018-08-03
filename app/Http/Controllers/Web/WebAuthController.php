@@ -6,11 +6,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\RequestException as GuzzleReqException;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use App\Mail\WelcomeInfoMail;
 use Socialite;
 use App\Models\User\ModelName as User;
 use App\Models\UserVerify\ModelName as VerifyUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 class WebAuthController extends Controller
 {
 
@@ -118,6 +120,15 @@ class WebAuthController extends Controller
     }
 
     public function resendActivationMail(Request $request){
-        dd($request);
+        $to_email = $request->input('email');
+        if ($to_email){
+            $user = User::where('email', $to_email)->first();
+            $token = VerifyUsers::where('user_id', $user->id)->first();
+
+            Mail::to($to_email)->send(new WelcomeInfoMail($user, $token->token));
+
+            return view('web.user.success', compact('to_email'));
+
+        }
     }
 }
