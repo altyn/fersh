@@ -61,6 +61,7 @@ class FreelancerController extends Controller
 
         if (0 != \auth()->user()->isAdmin){
             $freelancer = UserDetails::where('user_id', $id)->first();
+            $user = User::where('id', $id)->first();
             $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
@@ -77,12 +78,24 @@ class FreelancerController extends Controller
                 }
 
                 $sphere = Spec::where('id', $usersphere)->first();
-                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                $services = false;
+                if(
+                    isset($freelancer->spec[app()->getLocale()]['rate']) ||
+                    isset($freelancer->spec[app()->getLocale()]['experience']) ||
+                    isset($freelancer->spec[app()->getLocale()]['firm']) ||
+                    isset($freelancer->spec[app()->getLocale()]['payment_method']) ||
+                    isset($freelancer->bio[app()->getLocale()]['short']) ||
+                    isset($freelancer->bio[app()->getLocale()]['full'])
+                ){
+                    $services = true;
+                }
+
                 return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
+                    compact('user', 'freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views', 'services'));
             }
         } else {
-            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();
+            $freelancer = UserDetails::where('user_id', $id)->first();
+            $user = User::where('id', $id)->first();
             $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
@@ -98,9 +111,25 @@ class FreelancerController extends Controller
                 }
                 $sphere = Spec::where('id', $usersphere)->first();
 
-                $skills = explode(',', $freelancer->spec['ru']['skills']);
+                if(!empty($freelancer->spec['ru']['skills'])) {
+                    $skills = explode(',', $freelancer->spec['ru']['skills']);
+                }
+                
+                $services = false;
+                if(
+                    isset($freelancer->spec[app()->getLocale()]['rate']) ||
+                    isset($freelancer->spec[app()->getLocale()]['experience']) ||
+                    isset($freelancer->spec[app()->getLocale()]['firm']) ||
+                    isset($freelancer->spec[app()->getLocale()]['payment_method']) ||
+                    isset($freelancer->bio[app()->getLocale()]['short']) ||
+                    isset($freelancer->bio[app()->getLocale()]['full'])
+                ){
+                    $services = true;
+                }
+                
+                // dd($freelancer->spec['ru']['skills']);
                 return view('web.user.profile.freelancer.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
+                    compact('user', 'freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views', 'services'));
             }
         }
     }
@@ -144,7 +173,6 @@ class FreelancerController extends Controller
      * @return mixed
      */
     public function updateFreelancer(Request $request){
-
         $row = UserDetails::where('user_id', auth()->id())->first();
         $row->update($request->except('avatar'));
 
@@ -206,12 +234,23 @@ class FreelancerController extends Controller
             }
         }
 
-        $row['spec->'.app()->getLocale().'->sphere'] = $request->spec[app()->getLocale()]['sphere'];
-        $row['spec->'.app()->getLocale().'->skills'] = $request->spec[app()->getLocale()]['skills'];
-        $row['spec->'.app()->getLocale().'->rate'] = $request->spec[app()->getLocale()]['rate'];
-
-        $row['spec->'.app()->getLocale().'->payment_method'] = $request->spec[app()->getLocale()]['payment_method'];
-        $row['spec->'.app()->getLocale().'->firm'] = $request->spec[app()->getLocale()]['firm'];
+        if(isset($request->spec[app()->getLocale()]['sphere'])){
+            $row['spec->'.app()->getLocale().'->sphere'] = $request->spec[app()->getLocale()]['sphere'];
+        }
+        if(isset($request->spec[app()->getLocale()]['skills'])){
+            $row['spec->'.app()->getLocale().'->skills'] = $request->spec[app()->getLocale()]['skills'];
+        }else{
+            $row['spec->'.app()->getLocale().'->skills'] = null;
+        }
+        if(isset($request->spec[app()->getLocale()]['rate'])){
+            $row['spec->'.app()->getLocale().'->rate'] = $request->spec[app()->getLocale()]['rate'];
+        }
+        if(isset($request->spec[app()->getLocale()]['payment_method'])){
+            $row['spec->'.app()->getLocale().'->payment_method'] = $request->spec[app()->getLocale()]['payment_method'];
+        }
+        if(isset($request->spec[app()->getLocale()]['firm'])){
+            $row['spec->'.app()->getLocale().'->firm'] = $request->spec[app()->getLocale()]['firm'];
+        }
         $row->save();
 
 

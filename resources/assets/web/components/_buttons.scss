@@ -118,6 +118,7 @@ a:visited {
         font-family: $robotolight;
         padding: 5px 10px;
         display: inline-block;
+        cursor: pointer;
         &:hover,
         &:active {
             background: rgba($color: $green, $alpha: 0.5);

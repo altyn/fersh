@@ -23,7 +23,7 @@
                         <div class="infoform-title">
                             <h6>Специализация</h6>
                         </div>
-                        <form action="/{{app()->getLocale()}}/freelancer/edit/specialization" method="POST">
+                        <form action="/{{app()->getLocale()}}/freelancer/edit/specialization" method="POST" novalidate>
                             @csrf
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -42,7 +42,7 @@
                                 <div class="col-12">
                                     <label for="skills">Опишите услуги, которые Вы оказываете в выбранной сфере<span class="required">*</span></label>
                                     <input type="text" class="form-control" id="skills" name="spec[{{app()->getLocale()}}][skills]"
-                                    @if($freelancer->spec[app()->getLocale()]['skills'])
+                                    @if(isset($freelancer->spec[app()->getLocale()]['skills']))
                                         value="{{ $freelancer->spec[app()->getLocale()]['skills'] }}"
                                     @endif required>
                                     <small>Напишите каждое предложение(слово) через запятую</small>
@@ -80,7 +80,7 @@
                                     <div class="input-group">
                                         <label for="valuta" class="col-2 col-form-label">от</label>                                    
                                         <input type="text" class="form-control col-10" placeholder="500" name="spec[{{app()->getLocale()}}][rate]" 
-                                        @if($freelancer->spec[app()->getLocale()]['rate'])
+                                        @if(isset($freelancer->spec[app()->getLocale()]['rate']))
                                             value="{{ $freelancer->spec[app()->getLocale()]['rate'] }}"
                                         @endif  aria-describedby="valuta">
                                         <div class="input-group-append">

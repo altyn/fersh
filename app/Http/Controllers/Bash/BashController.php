@@ -42,7 +42,7 @@ class BashController extends Controller
         $profilepersent = $isProfile/$allusers*100;
         $profilepersenttoday = $isProfiletoday/$allusers*100;
 
-        $isPortfolio = UserPortfolio::count();
+        $isPortfolio = UserPortfolio::pluck('id','user_id')->count();
         $isPortfoliotoday = UserPortfolio::whereDate('created_at', Carbon::today())->count();
 
         $portfoliopersent = $isPortfolio/$allusers*100;

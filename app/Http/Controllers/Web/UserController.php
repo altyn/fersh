@@ -59,6 +59,22 @@ class UserController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function profileTest()
+    {
+        $user_details = UserDetails::where('user_id','=', auth()->user()->getAuthIdentifier())->count();
+
+        if ($user_details != 0){
+            return redirect()->route('home');
+        } else {
+            $data['countries'] = Country::orderBy('country_id', 'asc')->get();
+            $data['avatar'] = session()->get('user_avatar');
+            return view('web.user.profile.test', $data);
+        }
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -102,7 +118,7 @@ class UserController extends Controller
             }
 
             if($row){
-                return redirect(app()->getLocale().'/profile')
+                return redirect(app()->getLocale().'/freelancer/'.$row->user_id)
                     ->with('success','Your profile updated successfully');
             } else {
                 return redirect()->back();

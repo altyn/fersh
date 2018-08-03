@@ -9,9 +9,6 @@
             </div>
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Тарифы</a>
-                    </li>
                     @if(!auth()->user())
                     <li class="nav-item">
                         <a class="nav-link" href="/{{ app()->getLocale() }}/sign_in">Вход<span class="jam jam-log-in"></span></a>
@@ -20,7 +17,6 @@
                     @if( auth()->user() )
                         <li class="nav-item dropdown user-header">
                             <a class="user-header-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
                                 @if(!empty($userinfo))
                                     <div class="user-header-link-login">
                                         <div class="user-header-link-login-img">

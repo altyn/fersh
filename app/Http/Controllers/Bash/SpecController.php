@@ -89,9 +89,8 @@ class SpecController extends Controller
     public function show($id)
     {
         $row = Spec::findOrFail($id);
-
         $users = UserDetails::where('spec->ru->sphere', $id)->get();
-        // dd($users);
+
         return view('bashkaruu.spec.show', compact('row', 'users'));
     }
 

@@ -25,13 +25,15 @@
                         @endif
                     </div>
                     <div class="user-profile-content-body">
+                       
+                        @if($services)
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Стоимость работы:</div>
-                            <div class="user-profile-content-list-body">от 
-                                @if(!empty($freelancer->spec[app()->getLocale()]['rate']))
-                                {{ $freelancer->spec[app()->getLocale()]['rate'] }} 
-                                @endif
-                                @if(!empty($freelancer->spec[app()->getLocale()]['currency']))
+                            @if(isset($freelancer->spec[app()->getLocale()]['rate']))
+                            <div class="user-profile-content-list-body"> 
+                                от
+                                {{ $freelancer->spec[app()->getLocale()]['rate'] }}                                 
+                                @if(isset($freelancer->spec[app()->getLocale()]['currency']))
                                     @if($freelancer->spec[app()->getLocale()]['currency'] == '1')
                                     доллар
                                     @elseif($freelancer->spec[app()->getLocale()]['currency'] == '2')
@@ -39,8 +41,10 @@
                                     @else
                                     доллар
                                     @endif
+                                    за проект
                                 @endif
-                                за проект</div>
+                            </div>
+                            @endif
                         </div>
                         <div class="user-profile-content-list">
                             <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
@@ -89,25 +93,40 @@
                             </div>
                         </div>
 
-                        <div class="user-profile-content-about">
-                            @if(isset($freelancer->bio[app()->getLocale()]['short']))
+                        @if(isset($freelancer->bio[app()->getLocale()]['short']) || isset($freelancer->bio[app()->getLocale()]['full']))
+                            <div class="user-profile-content-about">
                                 {!! $freelancer->bio[app()->getLocale()]['short'] !!}
-                            @endif
-                        <br>
-                            @if(isset($freelancer->bio[app()->getLocale()]['full']))
+                                <br>
                                 {!! $freelancer->bio[app()->getLocale()]['full'] !!}
+                            </div>
+                        @endif
+                        @else
+                            @if(Auth::user()->id == $freelancer->user_id)
+                            <div class="alert alert-warning mb-2" role="alert">
+                                Этот раздел еще не заполнен предлагаем заполнить его.
+                                <a href="/{{ app()->getLocale()}}/freelancer/edit/specialization">Изменить</a>
+                            </div>
                             @endif
-                        </div>
+                        @endif
 
                         <div class="user-profile-content-list">
-                            <div class="user-profile-content-list-skill-title">Услуги</div>
+                            <div class="user-profile-content-title">
+                                <h6>Услуги</h6>
+                            </div>
+                            @if(isset($skills))
                             <ul class="user-profile-content-list-skill-list">
-                                @if($skills)
-                                    @foreach($skills as $skill)
-                                        <li><span>{{ $skill }}</span></li>
-                                    @endforeach
-                                @endif
+                                @foreach($skills as $skill)
+                                <li><span>{{ $skill }}</span></li>
+                                @endforeach
                             </ul>
+                            @else
+                                @if(Auth::user()->id == $freelancer->user_id)
+                                <div class="alert alert-warning mb-2" role="alert">
+                                    Услуги еще не добавлены.
+                                    <a href="/{{ app()->getLocale()}}/freelancer/edit/specialization">Добавить</a>
+                                </div>
+                                @endif
+                            @endif
                         </div>
                     </div>
                     <div class="user-profile-content-title">
@@ -121,7 +140,7 @@
                         @endif
                     </div>
                     <div class="user-profile-content-body user-profile-portfolio">
-                        @if($portfolios)
+                        @if(!$portfolios->isEmpty())
                         <div class="row">
                             @foreach($portfolios as $portfolio)
                             <div class="col-md-4 col-sm-6 col-12">
@@ -144,6 +163,13 @@
                             </div>
                             @endforeach
                         </div>
+                        @else
+                            @if(Auth::user()->id == $freelancer->user_id)
+                            <div class="alert alert-warning mb-2" role="alert">
+                                Вы еще не добавили проекта.
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/add">Добавить</a>
+                            </div>
+                            @endif
                         @endif
                     </div>
                 </div>

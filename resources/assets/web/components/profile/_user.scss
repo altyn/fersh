@@ -281,18 +281,19 @@
         }
         &-content{
             margin: 20px 0;
-            box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.09);
-            height: 100%;
+            box-shadow: 0px 15px 15px 8px rgba(69, 101, 173, 0.03);
+            padding: 20px;
 
             &-title{
-                padding: 20px 20px 10px 20px;
-                font-family: $robotomedium;
-                background: $gray;
+                padding: 10px 0;
                 text-transform: uppercase;
-                color: #56606F;
+                border-bottom: 1px solid #eee;
 
                 h6{
                     display: inline-block;
+                    margin: 0;
+                    color: $violetnew;
+                    font-size: 0.9rem;
                 }
 
                 &-right {
@@ -309,7 +310,7 @@
             }
 
             &-body{
-                padding: 20px;
+                padding: 10px 0;
             }
             
             &-list{
@@ -320,14 +321,16 @@
                 }
 
                 &-capture {
-                    font-family: $robotobold;
-                    color: $black2;
+                    // font-family: $robotobold;
+                    color: #56606F;
                     padding-right: 15px;
+                    width: 30%;
                 }
                 
                 &-body {
                     font-family: $robotoregular;
                     font-weight: 400;
+                    color: #333;
                 }
 
                 &-skill{
@@ -339,7 +342,7 @@
                         margin-bottom: 15px;
                     }
                     &-list{
-                        padding: 0;
+                        padding: 15px 0 0 0;
                         margin: 0;
                         list-style-type: none;
                         li {
@@ -442,6 +445,19 @@
 
             form{
                 padding: 20px;
+            }
+        }
+
+        .alert{
+            font-family: $robotolight;
+            a{
+                margin-left: 10px;
+                color: $newtitlecolor;
+                font-family: $robotoregular;
+
+                &:hover{
+                    color: $link;
+                }
             }
         }
     }

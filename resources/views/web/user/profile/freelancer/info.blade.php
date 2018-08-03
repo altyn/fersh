@@ -31,9 +31,9 @@
         </h6>
         <div class="profile-info-contact-list">
             <div class="profile-info-contact-capture">Электронный адрес</div>
-            @if($freelancer->contacts[app()->getLocale()]['email'])
+            @if($user->email)
             <a id="showEmail" class="btn-show"><span class="jam jam-inbox"></span>Показать почту</a>
-            <div id="hideEmail" style="display: none; margin-top:12px" class="profile-info-contact-body">{{ $freelancer->contacts[app()->getLocale()]['email'] }}</div>
+            <div id="hideEmail" style="display: none; margin-top:12px" class="profile-info-contact-body">{{ $user->email }}</div>
             @endif
         </div>
         <div class="profile-info-contact-list">

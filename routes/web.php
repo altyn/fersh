@@ -35,6 +35,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
         Route::get('/', 'UserController@profile')->name('profile');
         Route::get('/info', 'UserController@profileInfo')->name('profile.info');
+        Route::get('/test', 'UserController@profileTest')->name('profile.test');
     });
 
     // Freeelancer info manipulations...
