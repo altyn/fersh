@@ -41,10 +41,11 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->line('Вы получили данное письмо так как запросили сброс пароля')
-            ->action('Сбросить праоль', url('password/reset', $this->token))
-            ->line('If you did not request a password reset, no further action is required.');
+        $token_line = $this->token;
+        return (new MailMessage)->view('emails.auth.password_reset', compact('token_line'))->subject('Запрос на восстановление пароля');
+            // ->line('Вы получили данное письмо так как запросили сброс пароля')
+            // ->action('Сбросить праоль', url('password/reset', $this->token))
+            // ->line('If you did not request a password reset, no further action is required.');
     }
 
     /**

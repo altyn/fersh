@@ -65,7 +65,7 @@
                         <button class="btn btn-sign" type="submit">Войти</button>
                     </form>
                     <div class="sign-bottom">
-                        <a href="#">Напомнить пароль</a>
+                        <a href="/password/reset">Напомнить пароль</a>
                         <a href="/{{ app()->getLocale() }}/sign_up" class="sign-new">Зарегистрируйте новый аккаунт</a>
                     </div>
                 </div>

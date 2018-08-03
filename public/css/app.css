@@ -15150,6 +15150,10 @@ header {
   background-color: #fafbfe !important;
 }
 
+.has-error .invalid-feedback {
+  display: block;
+}
+
 .home {
   background: url("/img/home/bgi.png") no-repeat center center;
   background-size: cover;
@@ -15170,7 +15174,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 30px 0;
+  padding: 60px 0 90px 0;
 }
 
 .homepage-info-text {
@@ -15306,13 +15310,16 @@ header {
   padding-top: 30px;
   margin-top: 30px;
   margin-bottom: 60px;
-  font-family: "fira_sans_medium", Arial, sans-serif;
+  font-family: "fira_sans_bold", Arial, sans-serif;
   color: #414954;
-  border-top: 1px dashed #c3b8b2;
+  border-top: 1px solid #c3b8b2;
+  display: block;
+  width: 100%;
 }
 
 .first-info-second-text h3 {
   margin-bottom: 15px;
+  font-size: 1.65rem;
 }
 
 .first #scrolldown {
@@ -15408,7 +15415,6 @@ header {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
   z-index: 3;
   padding: 60px 15px;
-  margin-top: 60px;
 }
 
 .footer-title h6 {
@@ -15498,6 +15504,10 @@ header {
   .first-info-second-text {
     padding-top: 15px;
     margin-top: 10px;
+  }
+
+  .first-info-second-text h3 {
+    font-size: 1.25rem;
   }
 
   .btn-reg {

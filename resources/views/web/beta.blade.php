@@ -17,25 +17,25 @@
                         <img src="{{ asset('img/home/quote.png') }}" alt="Quote by Rohith M S from the Noun Project">
                         <blockquote>
                             <h2>Люди верят в то, что они видят</h2>
-                            <h6>Ник Паттель, интернет-маркетолог входящий в топ 10</h6>
+                            <h6>Ник Патель, интернет-маркетолог входящий в мировую топ 10</h6>
                         </blockquote>
                         <div class="first-info-second-text">
-                             <h3>Клиентам нужно знать какие работы вы выполняли и кто были вашим закачиками.</h3>
+                             <h3>Клиентам нужно знать какие работы вы выполняли и кто были вашими заказчиками.</h3>
                              <h3>Заполняя портфолио в каталоге фриланс услуг, вы увеличите свои продажи в 2 раза.</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-            <div id="scrolldown">
+            <a id="scrolldown" href="#homepage">
                 <p>scroll</p>
                 <div class="mouse">
                     <span><p>↓</p></span>
                 </div>
-            </div>
+            </a>
     </div>
 </div>
-<div class="homepage">
+<div class="homepage" id="homepage">
     <div class="container">
         <div class="homepage-info">
             <div class="row">
@@ -118,26 +118,21 @@
 @section('scripts')
 
 <script>
-        (function() {
-        'use strict';
+$(document).ready(function(){
+  $("#scrolldown").on('click', function(event) {  
 
-        var btnScrollDown = document.querySelector('#scrolldown');
-
-        function scrollDown() {
-            var windowCoords = document.documentElement.clientHeight;
-            (function scroll() {
-            if (window.pageYOffset < windowCoords) {
-                window.scrollBy(0, 10);
-                setTimeout(scroll, 0);
-            }
-            if (window.pageYOffset > windowCoords) {
-                window.scrollTo(0, windowCoords);
-            }
-            })();
-        }
-
-        btnScrollDown.addEventListener('click', scrollDown);
-        })();
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;      
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+        window.location.hash = hash;
+      });
+    } 
+    
+  });    
+});
 </script>
 
 @endsection

@@ -18,11 +18,39 @@ class SpecController extends Controller
      */
     public function index()
     {
+        
+        $userspecs = UserDetails::select('spec')->get();
 
-        $users = UserDetails::get();
-        $rows = Spec::select('id', 'title')->get();
+        $result = array(
+            'data' => Spec::select('id', 'title')->get()
+        );
 
-        return view('bashkaruu.spec.index', compact('rows', 'users'));
+        for($i = 0; $i < sizeof($result['data']); $i++){
+
+            if (isset($result['data'][$i]['id'])) {
+                $specid = $result['data'][$i]['id'];
+            }else{
+                $specid = 0;
+            }
+            
+            $specCounts = array();
+            foreach ($userspecs as $row) {
+                if(isset($row->spec['ru']['sphere'])){
+                    $specCounts[] = $row->spec['ru']['sphere'];
+                }else{
+                    $specCounts[] = '0';
+                }
+            }
+            $countsspec = array_count_values($specCounts);
+
+            $result['data'][$i]['title'] = $result['data'][$i]['title'];
+
+        }
+
+        $rows = $result['data'];
+        $specs = $countsspec;
+
+        return view('bashkaruu.spec.index', compact('rows', 'specs'));
     }
 
     /**
