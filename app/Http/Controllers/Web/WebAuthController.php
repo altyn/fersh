@@ -24,17 +24,31 @@ class WebAuthController extends Controller
         return view('web.user.sign_in');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function signUpForm(Request $request)
+    // /**
+    //  * @param Request $request
+    //  * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    //  */
+    // public function signUpForm(Request $request)
+    // {
+    //     $user_details['email'] = session()->get('user_email');
+    //     $user_details['name'] = session()->get('user_name');
+    //     $user_details['avatar'] = session()->get('user_avatar');
+    //     return view('web.user.sign_up', compact('user_details'));
+    // }
+
+     public function signUpForm(Request $request)
     {
         $user_details['email'] = session()->get('user_email');
         $user_details['name'] = session()->get('user_name');
         $user_details['avatar'] = session()->get('user_avatar');
         $user_details['user_provider'] = session()->get('user_provider');
-        $fileContents = file_get_contents($user_details['avatar']);
+
+        if(isset($user_details['avatar'])){
+            $fileContents = file_get_contents($user_details['avatar']);
+        }else{
+            $fileContents = '';
+        }
+        
         $pic_id = str_random(16);
         file_put_contents(public_path() . '/img/sign/' . $pic_id . ".jpg", $fileContents);
         $user_details['avatar'] = '/img/sign/' . $pic_id . ".jpg";
@@ -77,6 +91,7 @@ class WebAuthController extends Controller
             $user_avatar = $memberInfo->getAvatar();
             $user_provider = $provider;
             $user_soc_id = $memberInfo->getId();
+
             if($user_avatar = $memberInfo->getAvatar()) {
                 if ($provider == 'google') {
                     $user_avatar = str_replace('?sz=50', '', $user_avatar);

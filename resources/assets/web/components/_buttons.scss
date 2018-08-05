@@ -154,16 +154,20 @@ a:visited {
         padding: 5px 10px;
         font-size: 14px;
         border: 1px solid $violetgray;
-
+        box-shadow: none;
+        outline: none;
+        
         &:hover,
-        &:active {
+        &:active,
+        &:focus {
             color: #fff;
             background: rgba($color: $violetgray, $alpha: 1);
         }
-        &:focus,
+
         &:visited {
             box-shadow: none;
-            color: #fff;
+            color: none;
+            background: none;
         }
         .jam {
             position: relative;
@@ -195,6 +199,67 @@ a:visited {
             color: $green;
         }
         
+        .jam {
+            position: relative;
+            top: 1px;
+            padding-right: 5px;
+        }
+    }
+
+    &-term {
+        color: #fff;
+        border-radius: 3px;
+        font-family: $robotolight;
+        padding: 5px 10px;
+        font-size: 14px;
+        box-shadow: none;
+        outline: none;
+        background: $violet;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $violet;
+            background: rgba($color: $violetgray, $alpha: 0);
+            border: 1px solid $violet;
+        }
+        &:visited {
+            box-shadow: none;
+            color: none;
+            background: none;
+            border: 1px solid $violet;
+        }
+        .jam {
+            position: relative;
+            top: 1px;
+            padding-right: 5px;
+        }
+    }
+
+    &-search {
+        color: #fff;
+        border-radius: 3px;
+        font-family: $robotolight;
+        padding: 10px 20px;
+        font-size: 20px;
+        box-shadow: none;
+        outline: none;
+        background: $violet;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $violet;
+            background: rgba($color: $violetgray, $alpha: 0);
+            border: 1px solid $violet;
+            box-shadow: none;
+            outline: none;
+        }
+        &:visited {
+            box-shadow: none;
+            outline: none;
+            color: none;
+            background: none;
+            border: 1px solid $violet;
+        }
         .jam {
             position: relative;
             top: 1px;

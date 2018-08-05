@@ -39,14 +39,16 @@
         <div class="title-header">
             <h6>Активные исполнители</h6>
         </div>
-        <div class="wrap-content user-list">
+        <div class="wrap-content user-list-alpha">
             <div class="row">
                 @foreach($users as $user)
-                <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-6">
                     <div class="user-item">
                         <div class="user-item-picture">
                             <div class="user-item-img">
-                                <img class="img-fluid" src="{{ asset($user->avatar['200x200']) }}">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                    <img class="img-fluid" src="{{ asset($user->avatar['200x200']) }}">
+                                </a>
                             </div>
                         </div>
                         <div class="user-item-info">

@@ -4,6 +4,7 @@ namespace App\Models\UserDetails;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User\ModelName as User;
+use App\Models\Spec\ModelName as Spec;
 
 class ModelName extends Model
 {
@@ -47,17 +48,36 @@ class ModelName extends Model
         return $date;
     }
 
-    public function incrementViewed($step = 1)
+    public function getFio()
     {
-        if($this->user_id == auth()->id()){
-            if($this->views == 0){
-                $this->views += $step;
-                $this->save();
-            }
-        }else{
-            $this->views += $step;
-            $this->save();
+        $first = '';
+        if(isset($this->first_name)){
+            $first = $this->first_name;
         }
+
+        $last = '';
+        if(isset($this->last_name)){
+            $last = $this->last_name;
+        }
+        
+        return $first.' '.$last;
+    }
+    public function getSphere()
+    {
+        $spec = '';
+        if(isset($this->spec['ru']['sphere'])){
+            $spec = Spec::where('id', $this->spec['ru']['sphere'])->select('title')->first();
+        }
+        return $spec;
+    }
+    
+    public function getShortBio(){
+        $short = '';
+        if(isset($this->bio['ru']['short'])){
+            $short  = mb_substr($this->bio['ru']['short'], 0, 120, 'UTF-8')."...";
+        }
+        return $short;
+        
     }
 
 }

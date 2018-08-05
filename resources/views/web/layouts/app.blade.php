@@ -28,6 +28,8 @@
 
 @if($home == $locale)
     <body class="homepage">
+@elseif($current_url == 'beta')
+    <body class="beta">
 @else
     <body>
 @endif

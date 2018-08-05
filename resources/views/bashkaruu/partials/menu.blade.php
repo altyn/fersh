@@ -17,13 +17,18 @@
         </div>
         <ul class="main-menu">
             <li class="sub-header"><span>Страницы</span></li>
-            <li>
-                <a href="/bashkaruu">
+            <li class="has-sub-menu">
+                <a href="#">
                     <div class="icon-w">
                         <div class="os-icon os-icon-layout"></div>
                     </div>
                     <span>Главная страница</span>
                 </a>
+                <div class="sub-menu-w">
+                    <ul class="sub-menu">
+                        <li><a href="/bashkaruu/activation_emails">Активные пользователи</a></li>
+                    </ul>
+                </div>
             </li>
             <li class="sub-header"><span>Пользователи</span></li>
             <li>
@@ -86,6 +91,9 @@
                     <ul class="sub-menu">
                         <li><a href="/bashkaruu/activation_emails">Отправить код активации</a></li>
                     </ul>
+                    <ul class="sub-menu">
+                        <li><a href="/bashkaruu/activation_direct">Отправить код активации адресная</a></li>
+                    </ul>
                 </div>
             </li>
             <li class="sub-header"><span>Администраторы</span></li>
@@ -147,13 +155,18 @@
     <h1 class="menu-page-header"></h1>
     <ul class="main-menu">
         <li class="sub-header"><span>Страницы</span></li>
-        <li>
-            <a href="/bashkaruu">
+        <li class="has-sub-menu">
+            <a href="#">
                 <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
                 </div>
                 <span>Главная страница</span>
             </a>
+            <div class="sub-menu-w">
+                <ul class="sub-menu">
+                    <li><a href="/bashkaruu/activation_emails">Активные пользователи</a></li>
+                </ul>
+            </div>
         </li>
         <li class="sub-header"><span>Пользователи</span></li>
         <li>

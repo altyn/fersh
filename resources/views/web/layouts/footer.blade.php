@@ -25,6 +25,16 @@
                     </ul>
 				</div>
 			</div>
+            <div class="col-sm-4 col-12">
+				<div class="footer-title">
+					<h6></h6>
+				</div>
+				<div class="footer-body">
+                    <ul>
+					<li><a href="/{{ app()->getLocale() }}/privacy" target="_blank">Политика конфиденциальности</a></li>
+                    </ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </footer>

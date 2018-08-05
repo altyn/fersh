@@ -83,7 +83,7 @@
                                 <input type="checkbox" class="custom-control-input" id="notify">
                                 <label class="custom-control-label" for="notify">Получать информацию о заказах и новостях сайта</label>
                             </div>
-                            <span class="terms">Регистрируясь вы принимаете условия <a href="#">Пользовательского соглашения</a></span>
+                            <span class="terms">Регистрируясь вы принимаете условия <a class="term-link" data-toggle="modal" data-target="#termsModal">Пользовательского соглашения</a></span>
                         </div>
                         <button class="btn btn-sign" type="submit">Зарегистрироваться</button>
                      <div class="sign-bottom">
@@ -93,6 +93,28 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalLabel">Пользовательское соглашение</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col">
+              @include('web.user.terms')
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-term" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection

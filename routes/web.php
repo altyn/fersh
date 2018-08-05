@@ -22,6 +22,8 @@ Route::group(['prefix' => '/{lang}',], function (){
 
     Route::get('/', 'WebController@index');
     Route::get('/beta', 'WebController@beta');
+    Route::get('/alpha', 'WebController@alpha');
+    Route::get('/privacy', 'WebController@privacy');
 
     // Authentication Routes...
     Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');
@@ -72,6 +74,13 @@ Route::group(['prefix' => '/{lang}',], function (){
         Route::name('updateSpec')->post('/edit/specialization', 'FreelancerController@updateSpec');
         Route::name('deleteFreelancerAvatar')->post('/edit/deletefreelanceravatar', 'FreelancerController@deleteFreelancerAvatar');
         Route::name('freelancerChangepassword')->post('/edit/changepassword', 'FreelancerController@changepasswordPost');
+    });
+
+    // Freelancers page
+    
+    Route::group(['prefix' => 'freelancers'], function(){
+        Route::get('/', 'KatalogController@index')->name('allfreelancers');
+        Route::get('/{id}', 'KatalogController@sphere');
     });
 
 });

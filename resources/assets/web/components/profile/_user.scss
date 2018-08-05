@@ -357,6 +357,11 @@
                             margin-right: 5px;
                             border-radius: 30px;
                             font-family: $robotolight;
+
+                            &:hover{
+                                background: rgba($color: $violetnew, $alpha: 0.1);
+                                border:1px solid rgba($color: $violetnew, $alpha: 0.1);
+                            }
                         }
                     }
                 }
@@ -490,6 +495,173 @@
             flex-flow: column;
             font-family: $robotolight;
             color: $black2;
+        }
+    }
+
+    &-list{
+        .user-item{
+            padding: 25px 0;
+            &-picture,
+            &-info{
+                display: table-cell;
+                vertical-align: top;
+            }
+            &-img {
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                position: relative;
+                box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+                -moz-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+                -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+                img,
+                .no-ava {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                .no-ava {
+                    height: 100%;
+                    width: 100%;
+                    margin: 0 auto;
+                    display: -webkit-box;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    flex-flow: column;
+                    font-family: $robotolight;
+                    color: $black2;
+                    font-size: 14px;
+                    &:hover {
+                        background: $gray;
+                    }
+                    span {
+                        border-bottom: 1px dashed rgba($color: $black2, $alpha: 0.39);
+                    }
+                }
+            }
+            &-info{
+                padding-left: 15px;
+                &-name{
+                    font-family: $robotomedium;
+                    font-size: 16px;
+                    a{
+                        color: #4f4b67;
+                        &:hover{
+                            color: $orange;
+                        }
+                    }
+                }
+                &-spec{
+                    a {
+                        color: $violetnew;
+                        &:hover {
+                            color: $orange;
+                        }
+                    }
+                }
+                &-desc{
+                    font-family: $robotolight;
+                    font-size: 0.9rem;
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        &-alpha{
+            .mb-6{
+                margin-bottom: 2rem;
+            }
+            .user-item {
+                padding: 25px;
+                height: 100%;
+                box-shadow: 5px 8px 45px rgba(182, 201, 252, 0.2);
+                border-radius: 3px;
+
+                &:hover{
+                    box-shadow: 5px 8px 45px rgba(182, 201, 252, 0.7);
+                    margin-top: 2px;
+                    overflow: hidden;
+                }
+                &-picture,
+                &-info {
+                    display: block;
+                    text-align: center;
+                }
+                &-img {
+                    margin: 0 auto;
+                    width: 100px;
+                    height: 100px;
+                    overflow: hidden;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    border-radius: 50%;
+                    position: relative;
+                    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+                    -moz-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+                    -webkit-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+                    img,
+                    .no-ava {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                    .no-ava {
+                        height: 100%;
+                        width: 100%;
+                        margin: 0 auto;
+                        display: -webkit-box;
+                        display: flex;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        flex-flow: column;
+                        font-family: $robotolight;
+                        color: $black2;
+                        font-size: 14px;
+                        &:hover {
+                            background: $gray;
+                        }
+                        span {
+                            border-bottom: 1px dashed rgba($color: $black2, $alpha: 0.39);
+                        }
+                    }
+                }
+                &-info {
+                    margin-top: 15px;
+                    &-name {
+                        font-family: $robotomedium;
+                        font-size: 16px;
+                        a {
+                            color: #4f4b67;
+                            &:hover {
+                                color: $orange;
+                            }
+                        }
+                    }
+                    &-spec {
+                        a {
+                            color: $violetnew;
+                            &:hover {
+                                color: $orange;
+                            }
+                        }
+                    }
+                    &-desc {
+                        font-family: $robotolight;
+                        font-size: 0.9rem;
+                        margin-top: 5px;
+                    }
+                }
+            }
         }
     }
 }
