@@ -30,6 +30,9 @@ class BashController extends Controller
         $lastweek = User::where(DB::raw("WEEKOFYEAR(created_at)"), $dt->weekOfYear)->count();
         $lastmonth = User::whereMonth('created_at', '=', date('m'))->count();
 
+        $withAvatar = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->count();
+        $withAvatarpercent = $withAvatar/$allusers*100;
+
         $isactive = User::where('activated', 1)->count();
         $isactivetoday = User::whereDate('created_at', Carbon::today())->where('activated', 1)->count();
         
@@ -51,6 +54,7 @@ class BashController extends Controller
     	return view('bashkaruu.index', compact(
             'allusers', 'today', 'lastweek', 'lastmonth', 'isactive', 
             'isProfile', 'isactivetoday', 'isProfiletoday', 'activepersent', 'activepersenttoday', 
-            'profilepersent', 'profilepersenttoday', 'isPortfolio', 'isPortfoliotoday', 'portfoliopersent', 'portfoliopersenttoday'));
+            'profilepersent', 'profilepersenttoday', 'isPortfolio', 'isPortfoliotoday', 'portfoliopersent', 'portfoliopersenttoday', 'withAvatar',
+            'withAvatarpercent'));
     }
 }

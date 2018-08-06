@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Spec\ModelName as Spec;
 use App\Models\UserDetails\ModelName as UserDetails;
+use App\Models\Home\ModelName as Home;
 
 class WebController extends Controller
 {
@@ -23,7 +24,18 @@ class WebController extends Controller
         $userinfo = DB::table('user_details')->where('user_id', auth()->id())->select('first_name', 'last_name', 'avatar')->first();
         $specs = Spec::select('id', 'title')->get();
         $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->take(45)->get();
-        return view('web.beta', compact('specs', 'users'));
+        $homeinfo = Home::where('id', 1)->first();
+
+        $active_users_explode = explode(',', $homeinfo->active_users);
+        $active_users_array = str_replace( array('[',']') , ''  , $active_users_explode );
+        
+        $active_users = array();
+        foreach ($active_users_array as $key => $test) {
+            $frees = UserDetails::where('user_id', $test)->first();
+            $active_users[] = $frees;
+        }
+
+        return view('web.beta', compact('specs', 'users', 'homeinfo', 'active_users'));
     }
 
     public function alpha() 
@@ -31,7 +43,19 @@ class WebController extends Controller
         $userinfo = DB::table('user_details')->where('user_id', auth()->id())->select('first_name', 'last_name', 'avatar')->first();
         $specs = Spec::select('id', 'title')->get();
         $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->take(44)->get();
-        return view('web.alpha', compact('specs', 'users'));
+        
+        $homeinfo = Home::where('id', 1)->first();
+
+        $active_users_explode = explode(',', $homeinfo->active_users);
+        $active_users_array = str_replace( array('[',']') , ''  , $active_users_explode );
+        
+        $active_users = array();
+        foreach ($active_users_array as $key => $test) {
+            $frees = UserDetails::where('user_id', $test)->first();
+            $active_users[] = $frees;
+        }
+
+        return view('web.alpha', compact('specs', 'users', 'homeinfo', 'active_users'));
     }
 
     public function sphere($lang, $id) 

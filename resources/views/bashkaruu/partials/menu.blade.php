@@ -26,7 +26,7 @@
                 </a>
                 <div class="sub-menu-w">
                     <ul class="sub-menu">
-                        <li><a href="/bashkaruu/home">Активные пользователи</a></li>
+                        <li><a href="/bashkaruu/home/edit">Активные пользователи</a></li>
                     </ul>
                 </div>
             </li>
@@ -164,7 +164,7 @@
             </a>
             <div class="sub-menu-w">
                 <ul class="sub-menu">
-                    <li><a href="/bashkaruu/home">Активные пользователи</a></li>
+                    <li><a href="/bashkaruu/home/edit">Активные пользователи</a></li>
                 </ul>
             </div>
         </li>

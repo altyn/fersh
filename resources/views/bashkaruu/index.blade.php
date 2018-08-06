@@ -152,6 +152,21 @@
                             <div class="os-progress-bar blue">
                                 <div class="bar-labels">
                                     <div class="bar-label-left">
+                                    <span>Пользователи с аватаром</span>
+                                    </div>
+                                    <div class="bar-label-right">
+                                        <span class="info">{{$withAvatar}}/{{$allusers}}</span>
+                                    </div>
+                                </div>
+                                <div class="bar-level-1" style="width: 100%">
+                                    <div class="bar-level-2" style="width: {{(int)round($profilepersent)}}%">
+                                        <div class="bar-level-3" style="width: {{(int)round($withAvatarpercent)}}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="os-progress-bar blue">
+                                <div class="bar-labels">
+                                    <div class="bar-label-left">
                                         <span>Верифицировано пользователей</span><span class="negative">0</span>
                                     </div>
                                     <div class="bar-label-right">
