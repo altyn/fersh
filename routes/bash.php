@@ -13,6 +13,15 @@ Route::middleware('admin')->group(function(){
     Route::resource('spec', 'SpecController');
     Route::resource('mail', 'MailController');
     Route::resource('userview', 'UserViewController');
+    
+    // Home
+    Route::group(['prefix' => '/home',], function() {
+        Route::get('/', 'HomeController@index');
+        Route::get('/edit','HomeController@edit')->name('home.edit');
+        Route::post('/update','HomeController@update')->name('home.update');
+        Route::get('/view', 'HomeController@view');
+        Route::get('/delete', 'HomeController@delete');
+    });
 
     // Json
     Route::post('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));

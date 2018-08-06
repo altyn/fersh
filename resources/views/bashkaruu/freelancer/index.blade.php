@@ -2,6 +2,12 @@
 
 @section('title', 'Все пользователи' )
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+@endsection
+
+
 @section('content')
 
     <div class="row">
@@ -24,8 +30,8 @@
                         @endif
                         <table id="datatables" class="display responsive nowrap" cellspacing="0" width="100%">
                             <thead>
-                                <th>Id</th>
                                 <th>Логин</th>
+                                <th>Id</th>
                                 <th>Email</th>
                                 <th>Активация</th>
                                 <th>Ссылки</th>
@@ -41,26 +47,29 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#datatables').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "pageLength": 25,
-                "responsive": true,
-                "order": [[ 0, "desc" ]],
-                "language": {
+                processing: true,
+                serverSide: true,
+                pageLength: 25,
+                responsive: true,
+                order: [[ 0, "desc" ]],
+                language: {
                     url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json'
                 },
-                "ajax":{
+                ajax:{
                         "url": "/bashkaruu/freelancersjs",
                         "dataType": "json",
                         "type": "POST",
                         "data":{ _token: "{{csrf_token()}}"}
                     },
-                "aoColumns": [
-                    { "mData": "id" },
+                aoColumns: [
                     { "mData": "login" },
+                    { "mData": "id" },
                     { "data": "email" },
                     { 
                         "className": "dataTables_actions text-center",
@@ -75,7 +84,11 @@
                         "className": "dataTables_actions",
                         "mData": "options" 
                     },
-                ]	 
+                ],
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: 1 },
+                ]
 
             });
         });

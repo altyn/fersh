@@ -1,18 +1,18 @@
 @extends('bashkaruu.layouts.default')
 
-@section('title', 'Все пользователи' )
+@section('title', 'Главная страница' )
 
 @section('content')
 
     <div class="row">
         <div class="col-sm-12">
             <div class="element-wrapper">
-                <h6 class="element-header">Все фрилансеры</h6>
+                <h6 class="element-header">Главная страница</h6>
                 <div class="element-box">
                     <div class="element-box-content clearfix">
                         <div class="float-left">
-                            <a class="mr-2 mb-2 btn btn-success" href="{{ route('freelancers.create') }}">
-                                <i class="fa fa-plus"></i> Новый фрилансер</a>
+                            <a class="mr-2 mb-2 btn btn-success" href="{{ route('home.edit') }}">
+                                <i class="fa fa-plus"></i>Редактировать</a>
                         </div>
                     </div>
 
@@ -27,10 +27,16 @@
                                 <th>Id</th>
                                 <th>Логин</th>
                                 <th>Email</th>
-                                <th>Активация</th>
-                                <th>Ссылки</th>
-                                <th>Опции</th>
                             </thead>
+                            <tbody>
+                                @foreach($users as $user)
+                                <tr>
+                                    <th>{{ $user->id}}</th>
+                                    <th>{{ $user->login}}</th>
+                                    <th>{{ $user->email}}</th>
+                                </tr>
+                                @endforeach
+                            </tbody>
                     </table>
                     </div>
                 </div>
@@ -41,43 +47,4 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function () {
-            $('#datatables').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "pageLength": 25,
-                "responsive": true,
-                "order": [[ 0, "desc" ]],
-                "language": {
-                    url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Russian.json'
-                },
-                "ajax":{
-                        "url": "/bashkaruu/freelancersjs",
-                        "dataType": "json",
-                        "type": "POST",
-                        "data":{ _token: "{{csrf_token()}}"}
-                    },
-                "aoColumns": [
-                    { "mData": "id" },
-                    { "mData": "login" },
-                    { "data": "email" },
-                    { 
-                        "className": "dataTables_actions text-center",
-                        "mData": "activated" 
-                    },
-                    { 
-                        "mData": function (data, type, dataToSet) {
-                            return data.profile + "" + data.portfolio;
-                        }
-                    },
-                    { 
-                        "className": "dataTables_actions",
-                        "mData": "options" 
-                    },
-                ]	 
-
-            });
-        });
-    </script>
 @endsection

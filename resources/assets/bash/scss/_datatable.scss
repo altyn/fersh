@@ -282,3 +282,17 @@ table.dataTable tr.group td {
     font-family: "roboto_bold", Arial, sans-serif;
     color: #0c55ff;
 }
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    background: $green !important;
+    border: 2px solid $green !important;
+    box-shadow: none !important;
+    top: 18px !important;
+    width: 15px !important;
+    height: 15px !important;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child{
+    padding-left: 40px !important;
+}
