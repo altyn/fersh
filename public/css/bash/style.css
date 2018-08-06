@@ -14171,7 +14171,6 @@ body.full-screen .menu-position-side .logged-user-menu {
   -webkit-box-shadow: none;
           box-shadow: none;
   border-radius: 0px;
-  background-image: url(/images/bg-pattern2.png?0c1059a9a13efba3c6b7c9fd3e7cf014);
   background-size: contain;
   background-repeat: repeat;
   background-position: 0 0;
@@ -14262,7 +14261,6 @@ body.menu-side-right .layout-w {
 
 .content-w {
   background-color: #f2f4f8;
-  background-image: url(/images/bg-pattern.png?0d4597cbbf9229366a9a4246eae474a7);
   background-repeat: no-repeat;
   background-position: 20px 50px;
   vertical-align: top;
@@ -16978,8 +16976,6 @@ body.menu-side-right .layout-w {
 }
 
 .menu-position-top.menu-w.menu-with-image {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(21, 32, 70, 0.1)), color-stop(75%, rgba(16, 20, 41, 0.2)), to(rgba(14, 21, 53, 0.65))), url(/images/menu_bg.jpg?0e748899a176d55535b6545349caecab) !important;
-  background-image: linear-gradient(to bottom, rgba(21, 32, 70, 0.1) 0%, rgba(16, 20, 41, 0.2) 75%, rgba(14, 21, 53, 0.65) 100%), url(/images/menu_bg.jpg?0e748899a176d55535b6545349caecab) !important;
   background-color: transparent;
   background-size: cover;
   background-position: center center;
@@ -17047,11 +17043,6 @@ body.menu-side-right .layout-w {
 
 .menu-position-top.menu-w.menu-with-image h1.menu-page-header {
   font-size: 3.25rem;
-}
-
-.menu-position-top.menu-w.menu-with-image.color-scheme-light {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(75%, rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.85))), url(/images/menu_bg.jpg?0e748899a176d55535b6545349caecab) !important;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0.85) 100%), url(/images/menu_bg.jpg?0e748899a176d55535b6545349caecab) !important;
 }
 
 .menu-position-top.menu-w.menu-with-image.color-scheme-light .top-icon > .os-icon,
@@ -19310,15 +19301,11 @@ a.el-tablo:hover .label {
 }
 
 .cta-w.purple {
-  background-image: url(/images/cta-pattern-light.png?51e7bcf5ffbf2bcec0f905975f58a37f), -webkit-gradient(linear, left top, left bottom, from(#4B72FA), to(#934BFA));
-  background-image: url(/images/cta-pattern-light.png?51e7bcf5ffbf2bcec0f905975f58a37f), linear-gradient(-180deg, #4B72FA 0%, #934BFA 100%);
   background-size: cover;
   color: #fff;
 }
 
 .cta-w.orange {
-  background-image: url(/images/cta-pattern-light.png?51e7bcf5ffbf2bcec0f905975f58a37f), -webkit-gradient(linear, left top, left bottom, from(#FF218E), to(#E36C0F));
-  background-image: url(/images/cta-pattern-light.png?51e7bcf5ffbf2bcec0f905975f58a37f), linear-gradient(-180deg, #FF218E 0%, #E36C0F 100%);
   background-size: cover;
   color: #fff;
 }
@@ -27441,7 +27428,6 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .onboarding-modal .onboarding-content.with-gradient {
   padding: 70px 50px 40px;
-  background-image: url(/images/onboarding-gradient-hor.png?80baae2712442a8cc29b74d8cb6f78e7);
   background-size: 100% auto;
   background-position: top center;
   background-repeat: no-repeat;
@@ -29326,16 +29312,6 @@ body.color-scheme-dark .onboarding-modal button.close,
   color: #ccd9e8;
 }
 
-body.color-scheme-dark .onboarding-modal .onboarding-content.with-gradient,
-.content-panel.color-scheme-dark .onboarding-modal .onboarding-content.with-gradient {
-  background-image: url(/images/onboarding-gradient-hor-dark.png?41c3d509c1dd6ba1a6686661379c9983);
-}
-
-body.color-scheme-dark .onboarding-modal .onboarding-side-by-side .onboarding-content.with-gradient,
-.content-panel.color-scheme-dark .onboarding-modal .onboarding-side-by-side .onboarding-content.with-gradient {
-  background-image: url(/images/onboarding-gradient-ver-dark.png?801f14ff159b86356aa02c151658a133);
-}
-
 body.color-scheme-dark .onboarding-modal .onboarding-content .onboarding-title,
 .content-panel.color-scheme-dark .onboarding-modal .onboarding-content .onboarding-title {
   color: #fff;
@@ -31110,7 +31086,6 @@ Contents:
   }
 
   .onboarding-modal .onboarding-side-by-side .onboarding-content.with-gradient {
-    background-image: url(/images/onboarding-gradient-hor.png?80baae2712442a8cc29b74d8cb6f78e7);
     background-position: top center;
     padding: 40px 20px;
   }

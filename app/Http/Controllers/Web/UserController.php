@@ -61,7 +61,7 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function profileTest()
+    public function profileStep()
     {
         $user_details = UserDetails::where('user_id','=', auth()->user()->getAuthIdentifier())->count();
 
@@ -70,7 +70,7 @@ class UserController extends Controller
         } else {
             $data['countries'] = Country::orderBy('country_id', 'asc')->get();
             $data['avatar'] = session()->get('user_avatar');
-            return view('web.user.profile.test', $data);
+            return view('web.user.profile.step', $data);
         }
     }
 
