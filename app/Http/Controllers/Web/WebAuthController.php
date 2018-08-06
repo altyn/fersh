@@ -45,18 +45,16 @@ class WebAuthController extends Controller
 
         if(isset($user_details['avatar'])){
             $fileContents = file_get_contents($user_details['avatar']);
-        }else{
-            $fileContents = '';
-        }
-        
-        $pic_id = str_random(16);
-        file_put_contents(public_path() . '/img/sign/' . $pic_id . ".jpg", $fileContents);
-        $user_details['avatar'] = '/img/sign/' . $pic_id . ".jpg";
+            $pic_id = str_random(16);
+            file_put_contents(public_path() . '/img/sign/' . $pic_id . ".jpg", $fileContents);
+            $user_details['avatar'] = '/img/sign/' . $pic_id . ".jpg";
 
-        if(!empty($user_details['user_provider'])){
-            return view('web.user.sign_up_social', compact('user_details'));
+            if(!empty($user_details['user_provider'])){
+                return view('web.user.sign_up_social', compact('user_details'));
+            }
         }
-        return view('web.user.sign_up', compact('user_details'));
+
+        return view('web.user.sign_up');
     }
 
     /**

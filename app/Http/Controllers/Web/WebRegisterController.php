@@ -35,11 +35,13 @@ class WebRegisterController extends RegisterController
         $data = $request->all();
         $data['provider_user_id'] = $request->session()->get('user_soc_id');
         $data['provider_name'] = $request->session()->get('user_provider');
+        $data['newsletter'] =  is_null($request->get('newsletter')) ? 0 : 1;
         $validator = Validator::make($data,
                 [
                     'login'                 => 'bail|required|max:255|unique:users',
                     'email'                 => 'bail|required|email|max:255|unique:users',
                     'password'              => 'bail|required|min:6|max:30|confirmed',
+                    'newsletter'              => 'bail|required',
                 ],
                 [
                     'login.unique'          => 'Пользователь с таким именем уже существует',
@@ -53,6 +55,7 @@ class WebRegisterController extends RegisterController
                     'password.confirmed'    => 'Введенные пароли не совпадают',
                 ]
             );
+
 
         // The user data is valid...
         if($validator->fails()){
@@ -89,12 +92,15 @@ class WebRegisterController extends RegisterController
 
                 $user_avatar = $avatar;
             }
-            UserDetails::create([
-                "user_id" => $row->id,
-                "first_name" => $data['first_name'],
-                "last_name" => $data['last_name'],
-                "avatar" => $user_avatar
-            ]);
+
+            if (!is_null($data['provider_name'])){
+                UserDetails::create([
+                    "user_id" => $row->id,
+                    "first_name" => $data['first_name'],
+                    "last_name" => $data['last_name'],
+                    "avatar" => $user_avatar
+                ]);
+            }
             $verifyUser = VerifyUsers::create([
                 'user_id' => $row->id,
                 'token' => str_random(40)
