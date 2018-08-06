@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <title>@yield('title')</title>
         <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link rel="stylesheet" href="{{ asset('/css/tagify.css')}}">
         <link rel="stylesheet" href="{{ asset('/css/bash/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/bash/dataTables.bootstrap4.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/tagify.css')}}">
         @yield('styles')
         @yield('headercripts')
     </head>

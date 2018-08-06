@@ -4,8 +4,8 @@
     </legend>
    <div class="form-group row">
        <div class="col">
-           {!! Form::label('name', 'Надпись на баннере'); !!}
-           {!! Form::text('name', null, array('placeholder' => 'Название','class' => 'form-control')) !!}
+           {!! Form::label('info[bannertitle]', 'Надпись на баннере'); !!}
+           {!! Form::text('info[bannertitle]', null, array('placeholder' => 'Название','class' => 'form-control')) !!}
         </div>
    </div>   
    <legend>
@@ -22,24 +22,24 @@
     </legend>
     <div class="form-group row">
         <div class="col">
-           {!! Form::label('name', 'Заголовок'); !!}
-           {!! Form::text('name', null, array('placeholder' => 'Заголовок','class' => 'form-control')) !!}
+           {!! Form::label('info[bottomtitle]', 'Заголовок'); !!}
+           {!! Form::text('info[bottomtitle]', null, array('placeholder' => 'Заголовок','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="form-group row">
         <div class="col-6">
-            {!! Form::label('name', 'Название левого блока'); !!}
-            {!! Form::text('name', null, array('class' => 'form-control')) !!}
+            {!! Form::label('info[left][title]', 'Название левого блока'); !!}
+            {!! Form::text('info[left][title]', null, array('class' => 'form-control')) !!}
             <br>
-            {!! Form::label('name', 'Текст'); !!}
-            {!! Form::textarea('descKy', null, ["class" => "summernote form-control", 'rows' =>3]) !!}
+            {!! Form::label('info[left][content]', 'Текст'); !!}
+            {!! Form::textarea('info[left][content]', null, ["class" => "summernote form-control", 'rows' =>3]) !!}
         </div>
         <div class="col-6">
-            {!! Form::label('name', 'Название правого блока'); !!}
-            {!! Form::text('name', null, array('class' => 'form-control')) !!}
+            {!! Form::label('info[right][title]', 'Название правого блока'); !!}
+            {!! Form::text('info[right][title]', null, array('class' => 'form-control')) !!}
             <br>
-            {!! Form::label('name', 'Текст'); !!}
-            {!! Form::textarea('descKy', null, ["class" => "summernote form-control", 'rows' =>3]) !!}
+            {!! Form::label('info[right][title]', 'Текст'); !!}
+            {!! Form::textarea('info[right][content]', null, ["class" => "summernote form-control", 'rows' =>3]) !!}
         </div>
     </div>
 	

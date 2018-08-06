@@ -32454,7 +32454,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child {
 /* Tagify */
 
 tags {
-  border-color: none;
+  border-color: #ccd8ef;
   background: #fafbfe;
   border-radius: 0.125rem;
   background-clip: padding-box;
@@ -32474,6 +32474,7 @@ tags tag > div {
 tags tag > div > span {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+  line-height: 1rem;
   position: relative;
   z-index: 1;
   display: block;
@@ -32533,7 +32534,6 @@ tags > div {
 tags > div > input {
   line-height: 1rem;
   padding: .25rem 0;
-  background: none;
 }
 
 tags > div > input.placeholder ~ span {

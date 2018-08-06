@@ -2,92 +2,57 @@
 
 namespace App\Http\Controllers\Bash;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Models\Home\ModelName as Home;
-use Illuminate\Http\Request;
+
+use App\Models\UserDetails\ModelName as UserDetails;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $users = Home::select('active_users')->get();
+        // $users = Home::select('active_users')->get();
 
-        return view('bashkaruu.home.index', compact('users'));
+        $freelancers = UserDetails::where('freelancer',1)->get();
+        return view('bashkaruu.home.index', compact('freelancers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $row = Home::first();
         return redirect()->route('home.show', $row);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $row = Home::first();
         return redirect()->route('home.show', $row);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
+
     public function show()
     {
         $row = Home::first();
         return redirect()->route('home.show', $row);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
     public function edit()
     {
         $row = Home::first();
-        return view('bashkaruu.home.edit',[
-            'row' => $row
-        ]);
+        $freelancers = UserDetails::where('freelancer',1)->get();
+        return view('bashkaruu.home.edit', compact('row', 'freelancers'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function update()
+    public function update(Request $request)
     {
-        $row = Home::first();
-        return redirect()->route('home.show', $row);
+
+        Home::create($request->all());
+ 
+        return redirect()->route('home.index', $row);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
     public function destroy()
     {
         //

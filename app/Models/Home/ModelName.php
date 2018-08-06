@@ -9,6 +9,13 @@ class ModelName extends Model
 {
     protected $table = 'home';
 
+    protected $fillable = [
+        'active_users',
+        'info'
+    ];
+
+    public $timestamps = false;
+
     protected $casts = [
         'active_users' => 'json',
         'info' => 'json'
