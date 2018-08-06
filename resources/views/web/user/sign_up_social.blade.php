@@ -85,7 +85,7 @@
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notify">
+                                <input type="checkbox" name="newsletter" class="custom-control-input" id="notify" checked>
                                 <label class="custom-control-label" for="notify">Получать информацию о заказах и новостях сайта</label>
                             </div>
                             <span class="terms">Регистрируясь вы принимаете условия <a href="#">Пользовательского соглашения</a></span>

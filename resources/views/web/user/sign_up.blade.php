@@ -48,21 +48,13 @@
                         </div>
                     @endif
                         <div class="form-group">
-                            <input type="text" class="form-control" name="login" placeholder="Логин"
-                                @if($user_details['name'])
-                                    value="{{ $user_details['name'] }}"
-                                @endif
-                                required>
+                            <input type="text" class="form-control" name="login" placeholder="Логин" value="" required>
                             <div class="invalid-feedback">
                                 Введите ваш логин
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" placeholder="Почта"
-                                @if($user_details['email'])
-                                    value="{{ $user_details['email'] }}"
-                                @endif
-                                required>
+                            <input type="email" class="form-control" name="email" placeholder="Почта" value="" required>
                             <div class="invalid-feedback">
                                 Введите почту
                             </div>
@@ -80,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notify">
+                                <input type="checkbox" name="newsletter" class="custom-control-input" id="notify" checked>
                                 <label class="custom-control-label" for="notify">Получать информацию о заказах и новостях сайта</label>
                             </div>
                             <span class="terms">Регистрируясь вы принимаете условия <a class="term-link" data-toggle="modal" data-target="#termsModal">Пользовательского соглашения</a></span>
@@ -134,6 +126,10 @@
         }else{
         }
     }
+
+    $('input[type="checkbox"]').change(function(){
+        this.value = (Number(this.checked));
+    });
 </script>
 
 @endsection

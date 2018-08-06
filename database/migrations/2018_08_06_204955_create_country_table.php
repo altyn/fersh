@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHomeTable extends Migration
+class CreateCountryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHomeTable extends Migration
      */
     public function up()
     {
-        Schema::create('home', function (Blueprint $table) {
-            $table->integer('id');
-            $table->json('active_users')->nullable();
-            $table->json('info')->nullable();
+        Schema::create('countries', function (Blueprint $table) {
+            $table->increments('country_id')->index();
+            $table->json('title');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateHomeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home');
+        Schema::dropIfExists('country');
     }
 }

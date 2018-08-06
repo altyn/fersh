@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('provider_user_id')->nullable();
             $table->string('provider_name')->nullable();
             $table->boolean('isAdmin')->default(0);
+            $table->boolean('newsletter')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
