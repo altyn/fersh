@@ -10,6 +10,7 @@ class ModelName extends Model
     protected $table = 'home';
 
     protected $fillable = [
+        'id',
         'active_users',
         'info'
     ];

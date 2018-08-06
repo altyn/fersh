@@ -13,7 +13,7 @@
 	</legend>
    <div class="form-group row">
         <div class="col">
-            {!! Form::text('users', null, ['class' => 'form-control']) !!}
+            {!! Form::text('active_users', null, ['class' => 'form-control']) !!}
             <small>Напишите каждого пользователя через запятую</small>
         </div>
     </div>

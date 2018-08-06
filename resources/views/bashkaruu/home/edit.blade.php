@@ -37,7 +37,7 @@
                 lang: 'ru-RU'
             });
         });
-        var usersInput = document.querySelector('input[name=users]'),
+        var usersInput = document.querySelector('input[name=active_users]'),
             users = new Tagify(usersInput, {
                 whitelist : [
                     @foreach($freelancers as $freelancer)
