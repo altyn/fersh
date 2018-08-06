@@ -30,7 +30,6 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
         'password',
         'provider_user_id',
         'provider_name',
-        'newsletter',
         'created_at',
         'updated_at',
     ];

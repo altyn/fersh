@@ -22,7 +22,7 @@
         @endif
         <div class="profile-info-loc"> 
             <span class="profile-info-loc-span"></span>
-            @if($country->title_ru)  {{ $country->title_ru }} @endif, @if($freelancer->city){{ $freelancer->city }} @endif, @if($age) {{ $age }} @endif лет
+            @if(isset($country->title_ru))  {{ $country->title_ru }}, @endif @if($freelancer->city){{ $freelancer->city }}, @endif @if(isset($age)) {{ $age }} лет @endif
         </div>
     </div>
     <div class="profile-info-contact">

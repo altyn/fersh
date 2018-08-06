@@ -35,10 +35,12 @@
                                     @endif --}}
                                     
                                 </div>
-                                @if($sphere)
+                                @if(isset($sphere))
                                 <div class="portfolio-header-info-spec">{{ $sphere->title['ru'] }}</div>
                                 @endif
+                                @if(isset($country))
                                 <div class="portfolio-header-info-loc">{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет </div>
+                                @endif
                                 <div class="portfolio-header-info-desc">
                                     @if(isset($freelancer->bio['ru']['short']))
                                         {!! $freelancer->bio['ru']['short'] !!}
@@ -66,7 +68,7 @@
                                 </div>
                             </div>
 						    @endif
-                            @if($portfolios)
+                            @if(isset($portfolios))
                                 @foreach($portfolios as $portfolio)
                                 <div class="col-md-3 col-sm-6 col-12">
                                     <div class="portfolio-item">

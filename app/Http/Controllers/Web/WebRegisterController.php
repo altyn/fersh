@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User\ModelName as User;
 use App\Models\UserDetails\ModelName as UserDetails;
 use App\Models\UserVerify\ModelName as VerifyUsers;
+use App\Models\Newsletter\ModelName as Newsletter;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\WelcomeInfoMail;
@@ -35,13 +36,12 @@ class WebRegisterController extends RegisterController
         $data = $request->all();
         $data['provider_user_id'] = $request->session()->get('user_soc_id');
         $data['provider_name'] = $request->session()->get('user_provider');
-        $data['newsletter'] =  is_null($request->get('newsletter')) ? 0 : 1;
+        $newsletter =  is_null($request->get('newsletter')) ? 0 : 1;
         $validator = Validator::make($data,
                 [
                     'login'                 => 'bail|required|max:255|unique:users',
                     'email'                 => 'bail|required|email|max:255|unique:users',
                     'password'              => 'bail|required|min:6|max:30|confirmed',
-                    'newsletter'              => 'bail|required',
                 ],
                 [
                     'login.unique'          => 'Пользователь с таким именем уже существует',
@@ -108,6 +108,9 @@ class WebRegisterController extends RegisterController
 
             if($row)
             {
+                Newsletter::create([
+                   'user_id' => $row->id
+                ]);
                 $to_email = $data['email'];
                 $token = $verifyUser->token;
                 Mail::to($to_email)->send(new WelcomeInfoMail($row, $token));

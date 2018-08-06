@@ -36,11 +36,15 @@
                             </ul>
                         </div>
                     @endif
-                        <div class="form-group">
-                            @if($user_details['avatar'])
-                                <img src="{{ $user_details['avatar'] }}">
-                                <input type="hidden" value="{{ $user_details['avatar'] }}"  name="avatar">
-                            @endif
+                        <div class="form-group user-profile-aside">
+                            <div class="profile-ava">
+                                <div class="profile-ava-img">
+                                    @if($user_details['avatar'])
+                                        <img class="img-fluid" src="{{ $user_details['avatar'] }}">
+                                        <input type="hidden" value="{{ $user_details['avatar'] }}"  name="avatar">
+                                    @endif
+                                </div>
+                            </div>
                             <input type="text" class="form-control" name="login" placeholder="Логин"
                                 @if($user_details['name'])
                                     value="{{ $user_details['name'] }}"

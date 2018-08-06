@@ -69,12 +69,14 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
-
-                $birthDate = explode("-", $freelancer->birthday);
-                $age = (date("Y") - $birthDate[0]);
+                if (!is_null($freelancer->birthday)){
+                    $birthDate = explode("-", $freelancer->birthday);
+                    $age = (date("Y") - $birthDate[0]);
+                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
                 if(array_key_exists('sphere', $freelancer->spec['ru'])){
+//                if(array_key_exists('sphere', $freelancer->spec['ru'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';
@@ -106,11 +108,14 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else {
-                $birthDate = explode("-", $freelancer->birthday);
-                $age = (date("Y") - $birthDate[0]);
+                if (!is_null($freelancer->birthday)){
+                    $birthDate = explode("-", $freelancer->birthday);
+                    $age = (date("Y") - $birthDate[0]);
+                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
-                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+//                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                if(is_null($freelancer->spec['ru']['sphere'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';
@@ -169,6 +174,8 @@ class FreelancerController extends Controller
             if($freelancer->spec['ru']['sphere'] == $value['id']){
                 $sphere = $value;
                 break;
+            } else {
+                $sphere['title']['en'] = "No";
             }
         }
         return view('web.user.profile.freelancer.edit.specialization', compact('freelancer', 'sphere'));
@@ -343,11 +350,13 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
-                $birthDate = explode("-", $freelancer->birthday);
-                $age = (date("Y") - $birthDate[0]);
+                if(!is_null($freelancer->birthday)){
+                    $birthDate = explode("-", $freelancer->birthday);
+                    $age = (date("Y") - $birthDate[0]);
+                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                if(array_key_exists('sphere', $freelancer->spec['ru'])){
+                if(is_null($freelancer->spec['ru']['sphere'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';
