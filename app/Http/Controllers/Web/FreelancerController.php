@@ -42,23 +42,29 @@ class FreelancerController extends Controller
      */
     public function index($lang, $id){
 
-        $user_id = $id;
-        $ip = XRequest::ip();
-
-        if(auth()->id()){
-            $auth = auth()->id();
+        $isUser =  User::findOrFail($id);
+        if (isset($isUser)) {
+            $user_id = $id;
+            $ip = XRequest::ip();
+    
+            if(auth()->id()){
+                $auth = auth()->id();
+            }else{
+                $auth = false;
+            }
+    
+            if(auth()->id() != $id){
+                UserView::create([
+                    'user_id' => $user_id,
+                    'auth_id' => $auth,
+                    'profile' => true,
+                    'ip_address' => $ip,
+                ]);
+            }   
         }else{
-            $auth = false;
+            $user_id = false;
         }
-
-        if(auth()->id() != $id){
-            UserView::create([
-                'user_id' => $user_id,
-                'auth_id' => $auth,
-                'profile' => true,
-                'ip_address' => $ip,
-            ]);
-        }
+        
 
         $views = UserView::where('user_id', $id)->sum('profile');
 
@@ -300,22 +306,27 @@ class FreelancerController extends Controller
 
     public function portfolio($lang, $id){
 
-        $user_id = $id;
-        $ip = XRequest::ip();
-
-        if(auth()->id()){
-            $auth = auth()->id();
+        $isUser =  User::findOrFail($id);
+        if (isset($isUser)) {
+            $user_id = $id;
+            $ip = XRequest::ip();
+    
+            if(auth()->id()){
+                $auth = auth()->id();
+            }else{
+                $auth = false;
+            }
+    
+            if(auth()->id() != $id){
+                UserView::create([
+                    'user_id' => $user_id,
+                    'auth_id' => $auth,
+                    'profile' => true,
+                    'ip_address' => $ip,
+                ]);
+            }   
         }else{
-            $auth = false;
-        }
-
-        if(auth()->id() != $id){
-            UserView::create([
-                'user_id' => $user_id,
-                'auth_id' => $auth,
-                'portfolio' => true,
-                'ip_address' => $ip,
-            ]);
+            $user_id = false;
         }
 
         $views = UserView::where('user_id', $id)->sum('portfolio_project');
@@ -464,22 +475,27 @@ class FreelancerController extends Controller
 
     public function portfolioView($lang, $id, $portfolioId){
       
-        $user_id = $id;
-        $ip = XRequest::ip();
-
-        if(auth()->id()){
-            $auth = auth()->id();
+        $isUser =  User::findOrFail($id);
+        if (isset($isUser)) {
+            $user_id = $id;
+            $ip = XRequest::ip();
+    
+            if(auth()->id()){
+                $auth = auth()->id();
+            }else{
+                $auth = false;
+            }
+    
+            if(auth()->id() != $id){
+                UserView::create([
+                    'user_id' => $user_id,
+                    'auth_id' => $auth,
+                    'profile' => true,
+                    'ip_address' => $ip,
+                ]);
+            }   
         }else{
-            $auth = false;
-        }
-
-        if(auth()->id() != $id){
-            UserView::create([
-                'user_id' => $user_id,
-                'auth_id' => $auth,
-                'portfolio_project' => true,
-                'ip_address' => $ip,
-            ]);
+            $user_id = false;
         }
 
         $views = UserView::where('user_id', $id)->sum('portfolio_project');
