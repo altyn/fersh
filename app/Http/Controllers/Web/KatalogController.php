@@ -54,7 +54,7 @@ class KatalogController extends Controller
                             '</div>'.
                             '<div class="user-item-info">'.
                                 '<div class="user-item-info-name"><a href="/'.app()->getLocale().'/freelancer/'.$user->user_id.'">'.$user->getFio().'</a></div>'.
-                                '<div class="user-item-info-desc"><article>'.$user->getShortBio().'</article></div>'.
+                                '<div class="user-item-info-desc"><article>'.strip_tags($user->getShortBio()).'</article></div>'.
                             '</div>'.
                         '</div>'.
                     '</div>';
@@ -73,15 +73,15 @@ class KatalogController extends Controller
 
         if($request->ajax()){
             $keyword = $request->search;
-            $sphere = $request->sphere;
+            $sphere_id = $request->sphere;
             $output = "";
-            $freelancers = UserDetails::where(function ($query) use($keyword) {
-                $query->where('spec->ru->skills', 'like', '%' . $keyword . '%')
+            $freelancers = UserDetails::where(function ($query) use($keyword, $sphere_id) {
+                $query->where('spec->ru->sphere', $sphere_id)
+                    ->where('spec->ru->skills', 'like', '%' . $keyword . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . ucfirst($keyword) . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . lcfirst($keyword) . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . strtoupper($keyword) . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . strtolower($keyword) . '%')
-                    ->where('sphere', 1)
                     ->where('freelancer', 1)
                     ->whereNotNull('avatar');
             })
@@ -99,7 +99,7 @@ class KatalogController extends Controller
                         '</div>'.
                         '<div class="user-item-info">'.
                         '<div class="user-item-info-name"><a href="/'.app()->getLocale().'/freelancer/'.$user->user_id.'">'.$user->getFio().'</a></div>'.
-                        '<div class="user-item-info-desc"><article>'.$user->getShortBio().'</article></div>'.
+                        '<div class="user-item-info-desc"><article>'.strip_tags($user->getShortBio()).'</article></div>'.
                         '</div>'.
                         '</div>'.
                         '</div>';
@@ -114,8 +114,8 @@ class KatalogController extends Controller
     public function sphere($lang, $id) 
     {
         $sphere = Spec::findOrFail($id);
-        // $users = UserDetails::where('spec->ru->sphere', $id)->where('freelancer', 1)->whereNotNull('avatar')->take(45)->get();
-        $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->paginate(45);
+         $users = UserDetails::where('spec->ru->sphere', $id)->where('freelancer', 1)->whereNotNull('avatar')->paginate(45);
+//        $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->paginate(45);
         return view('web.pages.freelancers.sphere', compact('sphere', 'users'));
     }
 }
