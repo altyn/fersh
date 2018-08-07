@@ -69,9 +69,8 @@ class KatalogController extends Controller
             $keyword = $request->search;
             $sphere_id = $request->sphere;
             $output = "";
-            $freelancers = UserDetails::where(function ($query) use($keyword, $sphere_id) {
-                $query->where('spec->ru->sphere', $sphere_id)
-                    ->where('spec->ru->skills', 'like', '%' . $keyword . '%')
+            $freelancers = UserDetails::where('spec->ru->sphere', $sphere_id)->where(function ($query) use($keyword) {
+                $query->where('spec->ru->skills', 'like', '%' . $keyword . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . ucfirst($keyword) . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . lcfirst($keyword) . '%')
                     ->orWhere('spec->ru->skills', 'like', '%' . strtoupper($keyword) . '%')
