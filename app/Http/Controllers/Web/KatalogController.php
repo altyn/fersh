@@ -66,6 +66,51 @@ class KatalogController extends Controller
         return view('web.pages.freelancers.index', compact('specs', 'users'));
     }
 
+    public function searchBySphere(Request $request)
+    {
+        $specs = Spec::select('id', 'title')->get();
+        $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->paginate(45);
+
+        if($request->ajax()){
+            $keyword = $request->search;
+            $sphere = $request->sphere;
+            $output = "";
+            $freelancers = UserDetails::where(function ($query) use($keyword) {
+                $query->where('spec->ru->skills', 'like', '%' . $keyword . '%')
+                    ->orWhere('spec->ru->skills', 'like', '%' . ucfirst($keyword) . '%')
+                    ->orWhere('spec->ru->skills', 'like', '%' . lcfirst($keyword) . '%')
+                    ->orWhere('spec->ru->skills', 'like', '%' . strtoupper($keyword) . '%')
+                    ->orWhere('spec->ru->skills', 'like', '%' . strtolower($keyword) . '%')
+                    ->where('sphere', 1)
+                    ->where('freelancer', 1)
+                    ->whereNotNull('avatar');
+            })
+                ->get();
+
+            if($freelancers){
+
+                foreach ($freelancers as $user) {
+                    $output.='<div class="col-lg-4 col-md-6 col-sm-12">'.
+                        '<div class="user-item">'.
+                        '<div class="user-item-picture">'.
+                        '<div class="user-item-img">'.
+                        '<img class="img-fluid"  src='.asset($user->avatar["200x200"]).'>'.
+                        '</div>'.
+                        '</div>'.
+                        '<div class="user-item-info">'.
+                        '<div class="user-item-info-name"><a href="/'.app()->getLocale().'/freelancer/'.$user->user_id.'">'.$user->getFio().'</a></div>'.
+                        '<div class="user-item-info-desc"><article>'.$user->getShortBio().'</article></div>'.
+                        '</div>'.
+                        '</div>'.
+                        '</div>';
+                }
+                return response($output);
+            }
+        }
+
+        return view('web.pages.freelancers.sphere', compact('specs', 'users'));
+    }
+
     public function sphere($lang, $id) 
     {
         $sphere = Spec::findOrFail($id);
