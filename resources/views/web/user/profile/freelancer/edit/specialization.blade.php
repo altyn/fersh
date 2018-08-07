@@ -191,7 +191,10 @@
     );
 
     var sphere = '{{ $sphere['title'][app()->getLocale()] }}';
+    @if(isset($sphere['id']))
     var opt = "<option value='{{ $sphere['id'] }}' selected ='selected'>" + sphere + " </option>";
+    @endif
+    
     $('.sphera-multi').html(opt);
 
 </script>

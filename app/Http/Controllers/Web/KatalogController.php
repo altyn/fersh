@@ -21,10 +21,14 @@ class KatalogController extends Controller
             $keyword = $request->search;
             $output = "";
             $freelancers = UserDetails::where(function ($query) use($keyword) {
-                    $query->where('first_name', 'like', '%' . $keyword . '%')
-                    ->orWhere('last_name', 'like', '%' . $keyword . '%')->where('freelancer', 1)->whereNotNull('avatar');
+                    $query->where('spec->ru->skills', 'like', '%' . $keyword . '%')->where('freelancer', 1)->whereNotNull('avatar');
                 })
             ->get();
+            // $freelancers = UserDetails::where(function ($query) use($keyword) {
+            //         $query->where('first_name', 'like', '%' . $keyword . '%')
+            //         ->orWhere('last_name', 'like', '%' . $keyword . '%')->where('freelancer', 1)->whereNotNull('avatar');
+            //     })
+            // ->get();
 
             if($freelancers){
                 

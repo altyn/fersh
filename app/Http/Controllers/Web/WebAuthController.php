@@ -107,7 +107,7 @@ class WebAuthController extends Controller
             if($user)
             {
                 if (Auth::loginUsingId($user['id'])){
-                    return redirect(app()->getLocale().'/profile/info');
+                    return redirect(app()->getLocale().'/profile/step');
                 } else {
                     return redirect(app()->getLocale().'/sign_in');
                 }

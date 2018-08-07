@@ -63,6 +63,6 @@ class LoginController extends Controller
                 with('warning', 'Ваша почта не подтверждена. Пожалуйста проверьте почту, мы отправили Вам ссылку для активации.');
         }
         // return redirect()->intended($this->redirectPath());
-        return redirect(app()->getLocale().'/profile/test');
+        return redirect(app()->getLocale().'/profile/step');
     }
 }
