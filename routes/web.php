@@ -80,6 +80,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     
     Route::group(['prefix' => 'freelancers'], function(){
         Route::get('/', 'KatalogController@index')->name('allfreelancers');
+        Route::get('/search', 'KatalogController@searchBySphere')->name('freelancersByCategory');
         Route::get('/{id}', 'KatalogController@sphere');
     });
 
