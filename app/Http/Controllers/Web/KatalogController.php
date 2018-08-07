@@ -21,9 +21,21 @@ class KatalogController extends Controller
             $keyword = $request->search;
             $output = "";
             $freelancers = UserDetails::where(function ($query) use($keyword) {
-                    $query->where('spec->ru->skills', 'like', '%' . $keyword . '%')->where('freelancer', 1)->whereNotNull('avatar');
+                    $query->where('spec->ru->skills', 'like', '%' . $keyword . '%')
+                        ->orWhere('spec->ru->skills', 'like', '%' . ucfirst($keyword) . '%')
+                        ->orWhere('spec->ru->skills', 'like', '%' . lcfirst($keyword) . '%')
+                        ->orWhere('spec->ru->skills', 'like', '%' . strtoupper($keyword) . '%')
+                        ->orWhere('spec->ru->skills', 'like', '%' . strtolower($keyword) . '%')
+                        ->where('freelancer', 1)
+                        ->whereNotNull('avatar');
                 })
             ->get();
+//            $freelancers = UserDetails::where(function ($query) use($keyword) {
+////                    $query->whereRaw(DB::raw('upper(spec->"$.ru.skills")'), 'LIKE', '%'.$keyword.'%')->where('freelancer', 1)->whereNotNull('avatar');
+//                    $query->whereRaw('LOWER(spec->ru->skills) LIKE ? ','%'.[trim(strtolower($keyword)).'%'])->where('freelancer', 1)->whereNotNull('avatar');
+////                SELECT * FROM user_details WHERE UPPER(spec->"$.ru.skills") LIKE UPPER('%anGuLAR%');
+//                })
+//            ->get();
             // $freelancers = UserDetails::where(function ($query) use($keyword) {
             //         $query->where('first_name', 'like', '%' . $keyword . '%')
             //         ->orWhere('last_name', 'like', '%' . $keyword . '%')->where('freelancer', 1)->whereNotNull('avatar');
