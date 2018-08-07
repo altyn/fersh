@@ -5,7 +5,7 @@
            
             &-login{
                 color: $black;
-                font-family: $robotoregular;
+                font-family: $robotolight;
                 cursor: pointer;
 
                 &-img, &-title{
@@ -501,6 +501,7 @@
     &-list{
         .user-item{
             padding: 25px 0;
+            overflow: hidden;
 
             &:hover {
                 .user-item-img{

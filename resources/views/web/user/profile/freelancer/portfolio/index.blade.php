@@ -15,8 +15,8 @@
                         <div class="col-md-3 col-12">
                             <div class="portfolio-header-ava">
                                 <div class="portfolio-header-ava-img">
-                                    @if(isset($freelancer->avatar['200x200']))
-                                        <img class="img-fluid"  src="{{ asset($freelancer->avatar['200x200']) }}" alt="">
+                                    @if(isset($freelancer->avatar['360x360']))
+                                        <img class="img-fluid"  src="{{ asset($freelancer->avatar['360x360']) }}" alt="">
                                     @else
                                         @if(Auth::user()->id == $freelancer->user_id)
                                         <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
@@ -39,7 +39,7 @@
                                 <div class="portfolio-header-info-spec">{{ $sphere->title['ru'] }}</div>
                                 @endif
                                 @if(isset($country))
-                                <div class="portfolio-header-info-loc">{{ $country->title_ru }}, {{ $freelancer->city }}, {{ $age }} лет </div>
+                                <div class="portfolio-header-info-loc">{{ $country->title_ru }}, {{ $freelancer->city }}</div>
                                 @endif
                                 <div class="portfolio-header-info-desc">
                                     @if(isset($freelancer->bio['ru']['short']))

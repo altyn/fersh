@@ -34,7 +34,16 @@
         $(document).ready(function() {
             $('.summernote').summernote({
                 height: 300,
-                lang: 'ru-RU'
+                lang: 'ru-RU',
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['roboto_regular']],
+                    ['fontsize', ['16px']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
             });
         });
         var usersInput = document.querySelector('input[name=active_users]'),
