@@ -13,7 +13,7 @@
 <div class="container">
     <div class="wrapper">
         <div class="title-header">
-            <h6>Cферы</h6>
+            <h6>Категории</h6>
         </div>
          <div class="wrapper-content">
             <div class="specs">
@@ -32,7 +32,7 @@
         <div class="wrapper-content search">
             <form action="">
                 <fieldset class="field-container">
-                    <input type="text" placeholder="Поиск..." class="field" id="search" name="search" />
+                    <input type="text" placeholder="Поиск по тэгам..." class="field" id="search" name="search" />
                     <div class="icons-container">
                         <div class="icon-search"></div>
                         <div class="icon-close" id="searchclear">
@@ -51,13 +51,13 @@
                         <div class="user-item-picture">
                             <div class="user-item-img">
                                 <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
-                                    <img class="img-fluid"  src="{{ asset($user->avatar['200x200']) }}">
+                                    <img class="img-fluid"  src="{{ asset($user->avatar['360x360']) }}">
                                 </a>
                             </div>
                         </div>
                         <div class="user-item-info">
                             <div class="user-item-info-name"><a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getFio()}}</a></div>
-                            <div class="user-item-info-spec">@if(isset($user->getSphere()->title))<a href="/{{app()->getLocale()}}/freelancers/{{$spec->id}}">{{ $user->getsphere()->title['ru'] }}</a>@endif</div>
+                            <div class="user-item-info-spec">@if(isset($user->getSphere()->title))<a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getsphere()->title['ru'] }}</a>@endif</div>
                             <div class="user-item-info-desc"><article>{!! $user->getShortBio() !!}  </article></div>
                         </div>
                     </div>

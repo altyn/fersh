@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="title-header">
-            <h6>Активные исполнители</h6>
+            <h6>Опытные исполнители</h6>
         </div>
         <div class="wrap-content user-list">
             <div class="row">
@@ -47,13 +47,13 @@
                         <div class="user-item-picture">
                             <div class="user-item-img">
                                 <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
-                                    <img class="img-fluid" src="{{ asset($user->avatar['200x200']) }}">
+                                    <img class="img-fluid" src="{{ asset($user->avatar['360x360']) }}">
                                 </a>
                             </div>
                         </div>
                         <div class="user-item-info">
                             <div class="user-item-info-name"><a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getFio()}}</a></div>
-                            <div class="user-item-info-spec">@if(isset($user->getSphere()->title))<a href="/{{app()->getLocale()}}/freelancers/{{$spec->id}}">{{ $user->getsphere()->title['ru'] }}</a>@endif</div>
+                            <div class="user-item-info-spec">@if(isset($user->getSphere()->title))<a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getsphere()->title['ru'] }}</a>@endif</div>
                             <div class="user-item-info-desc"><article>{!! $user->getShortBio() !!}  </article></div>
                         </div>
                     </div>

@@ -204,3 +204,20 @@ header{
         }
     }
 }
+
+.left-navbar{
+    font-family: $firasansmedium;
+
+    .nav-item{
+        .nav-link{
+            color: $formtitle;
+            padding: 0;
+            margin: 0.5rem;
+
+            &:hover{
+                color: $violet;
+                border-bottom: 1px dashed $violet;
+            }
+        }
+    }
+}

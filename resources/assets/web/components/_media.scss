@@ -53,6 +53,20 @@
         margin: 0 !important;
         padding: 0 !important;
     }
+
+    .left-navbar {
+        padding: 0;
+        margin-bottom: 15px;
+
+        .nav-item{
+            padding: 10px 0;
+            
+            .nav-link {
+                margin: 0;
+                border: none;
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
