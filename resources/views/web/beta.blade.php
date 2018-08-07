@@ -23,7 +23,7 @@
 <div class="container">
     <div class="wrap">
         <div class="title-header">
-            <h6>Каталог фрилансеров</h6>
+            <h6>Категории</h6>
         </div>
         <div class="wrap-content">
             <div class="specs">
@@ -46,7 +46,9 @@
                     <div class="user-item">
                         <div class="user-item-picture">
                             <div class="user-item-img">
-                                <img class="img-fluid" src="{{ asset($user->avatar['200x200']) }}">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                    <img class="img-fluid" src="{{ asset($user->avatar['200x200']) }}">
+                                </a>
                             </div>
                         </div>
                         <div class="user-item-info">

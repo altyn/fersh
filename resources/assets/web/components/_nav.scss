@@ -69,10 +69,10 @@ header{
     width: 260px;
     height: 100%;
     @include boxshadow;
-    -webkit-transition: right 0.4s ease;
-    -moz-transition: right 0.4s ease;
-    -o-transition: right 0.4s ease;
-    transition: right 0.4s ease;
+    -webkit-transition: right 0.3s ease;
+    -moz-transition: right 0.3s ease;
+    -o-transition: right 0.3s ease;
+    transition: right 0.3s ease;
     
     background: #fff;
     padding-top: 10px;
@@ -142,7 +142,7 @@ header{
 #shadow-layer {
     position: fixed;
     z-index: 198;
-    left: 0;
+    right: 0;
     top: 0;
     display: none;
     min-height: 100%;
@@ -200,10 +200,6 @@ header{
                    color: $violetnew;
                    background: rgba($color: $violetnew, $alpha: 0.1);
                 }
-            }
-
-            &-title{
-
             }
         }
     }

@@ -501,6 +501,14 @@
     &-list{
         .user-item{
             padding: 25px 0;
+
+            &:hover {
+                .user-item-img{
+                    box-shadow: 0 0 30px rgba($color: $violetnew, $alpha: 0.3);
+                    -moz-box-shadow: 0 0 30px rgba($color: $violetnew, $alpha: 0.3);
+                    -webkit-box-shadow: 0 0 30px rgba($color: $violetnew, $alpha: 0.3);
+                }
+            }
             &-picture,
             &-info{
                 display: table-cell;

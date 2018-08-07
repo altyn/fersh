@@ -14945,8 +14945,8 @@ header {
   height: 100%;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  -webkit-transition: right 0.4s ease;
-  transition: right 0.4s ease;
+  -webkit-transition: right 0.3s ease;
+  transition: right 0.3s ease;
   background: #fff;
   padding-top: 10px;
 }
@@ -15003,7 +15003,7 @@ header {
 #shadow-layer {
   position: fixed;
   z-index: 198;
-  left: 0;
+  right: 0;
   top: 0;
   display: none;
   min-height: 100%;
@@ -16871,6 +16871,12 @@ tags > div span {
 
 .user-list .user-item {
   padding: 25px 0;
+}
+
+.user-list .user-item:hover .user-item-img {
+  box-shadow: 0 0 30px rgba(116, 96, 238, 0.3);
+  -moz-box-shadow: 0 0 30px rgba(116, 96, 238, 0.3);
+  -webkit-box-shadow: 0 0 30px rgba(116, 96, 238, 0.3);
 }
 
 .user-list .user-item-picture,
