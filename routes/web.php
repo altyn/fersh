@@ -89,6 +89,12 @@ Route::group(['prefix' => '/{lang}',], function (){
         Route::get('/{id}', 'WebController@blog');
     });
 
+    // Tasks page
+    Route::group(['prefix' => 'bid'], function(){
+        Route::get('/new', 'BidsController@new');
+        Route::post('/new', 'BidsController@new');
+    });
+
 });
 
 // ajax view counters

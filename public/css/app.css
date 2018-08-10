@@ -14409,6 +14409,44 @@ a:visited {
   padding-right: 5px;
 }
 
+.btn-order {
+  color: #fff;
+  border-radius: 3px;
+  font-family: "roboto_light", Arial, sans-serif;
+  padding: 10px 20px;
+  font-size: 20px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background: #43d084;
+}
+
+.btn-order:hover,
+.btn-order:active,
+.btn-order:focus {
+  color: #43d084;
+  background: rgba(119, 125, 158, 0);
+  border: 1px solid #43d084;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.btn-order:visited {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  color: none;
+  background: none;
+  border: 1px solid #43d084;
+}
+
+.btn-order .jam {
+  position: relative;
+  top: 1px;
+  padding-right: 5px;
+}
+
 a:hover {
   color: #8e43e7;
 }
@@ -15275,7 +15313,7 @@ header {
 .navbar-brand .badge-beta {
   position: relative;
   top: -15px;
-  font-size: 70%;
+  font-size: 60%;
   display: inline-block;
   padding: 0.3em 0.5em;
   line-height: 1;
@@ -15288,11 +15326,11 @@ header {
 }
 
 .navbar-nav {
-  font-family: "roboto_regular", Arial, sans-serif;
+  font-family: "roboto_medium", Arial, sans-serif;
 }
 
 .navbar .nav-link {
-  color: #515053;
+  color: #656d9c;
   line-height: 20px;
 }
 
@@ -16309,7 +16347,7 @@ header {
 }
 
 .top {
-  background: url("/img/home/first.png") no-repeat center center;
+  background: url("/img/home/bgi.png") no-repeat center top;
   background-size: cover;
   margin-top: -20px;
 }
@@ -16317,7 +16355,7 @@ header {
 .top-info {
   width: 100%;
   max-height: 100%;
-  height: 350px;
+  height: 400px;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16328,10 +16366,14 @@ header {
   padding: 30px 0;
 }
 
+.top-info-text h3 {
+  color: #515053;
+  font-family: "fira_sans_medium", Arial, sans-serif;
+}
+
 .top-info-text h4 {
   color: #515053;
-  font-family: "roboto_light", Arial, sans-serif;
-  text-align: center;
+  font-family: "fira_sans_medium", Arial, sans-serif;
 }
 
 .wrap {

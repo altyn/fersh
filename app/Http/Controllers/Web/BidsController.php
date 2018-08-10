@@ -11,6 +11,8 @@ class BidsController extends Controller
         $this->middleware('web');
     }
 
-    public function index(){}
-
+    public function new(){
+        return view('web.bid.new');
+    }
+    
 }
