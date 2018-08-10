@@ -22,9 +22,14 @@ class WebController extends Controller
 
     public function beta() 
     {
-        $userinfo = DB::table('user_details')->where('user_id', auth()->id())->select('first_name', 'last_name', 'avatar')->first();
+        $userinfo = DB::table('user_details')
+                        ->where('user_id', auth()->id())
+                        ->select('first_name', 'last_name', 'avatar')->first();
         $specs = Spec::select('id', 'title')->get();
-        $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->take(45)->get();
+        $users = UserDetails::where('freelancer', 1)
+                        ->whereNotNull('avatar')
+                        ->take(45)->get();
+
         $homeinfo = Home::where('id', 1)->first();
 
         $active_users_explode = explode(',', $homeinfo->active_users);
