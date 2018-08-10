@@ -20,11 +20,13 @@ class BidsController extends Controller
     public function store(BidsRequests $requests)
     {
         $validated = $requests->validated();
-
         $bids = Bids::create($validated);
-
-        dd($bids);
-
+        if($bids){
+            $status = "Спасибо что оставили заявку, в скором времени ваше письмо дойдет до исполнителей";
+        } else {
+            $status = "К сожалению создать заявку не удалосьб пожалуйста попробуйте еще раз!";
+        }
+        return back()->with('status', $status);
     }
     
 }
