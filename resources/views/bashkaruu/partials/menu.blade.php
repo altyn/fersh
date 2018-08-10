@@ -27,6 +27,8 @@
                 <div class="sub-menu-w">
                     <ul class="sub-menu">
                         <li><a href="/bashkaruu/home/edit">Активные пользователи</a></li>
+                        <li><a href="/bashkaruu/blog">Блог</a></li>
+                        <li><a href="/bashkaruu/home/excel">Excel</a></li>
                     </ul>
                 </div>
             </li>
@@ -165,6 +167,8 @@
             <div class="sub-menu-w">
                 <ul class="sub-menu">
                     <li><a href="/bashkaruu/home/edit">Активные пользователи</a></li>
+                    <li><a href="/bashkaruu/blog">Блог</a></li>
+                    <li><a href="/bashkaruu/home/excel">Excel</a></li>
                 </ul>
             </div>
         </li>

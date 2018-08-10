@@ -5,6 +5,7 @@ namespace App\Models\UserDetails;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User\ModelName as User;
 use App\Models\Spec\ModelName as Spec;
+use App\Models\UserPortfolio\ModelName as UserPortfolio;
 
 class ModelName extends Model
 {
@@ -40,12 +41,19 @@ class ModelName extends Model
         return $this->belongsTo(User::class);
     }
 
+
+
     // Methods
     public function getDate()
     {
         $fullDate = $this->created_at;
         $date = date('d.m.Y', strtotime($fullDate));
         return $date;
+    }
+
+    public function portfolio()
+    {
+       return $this->hasMany('App\Models\UserPortfolio\ModelName', 'user_id', 'user_id');
     }
 
     public function getFio()

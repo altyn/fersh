@@ -1,0 +1,91 @@
+.blog{
+    &-item{
+        padding: 30px 0;
+        border-bottom: 1px solid #eee;
+        &-info{
+            &-title{
+                font-family: $firasansmedium;
+                color: $formtitle;
+                margin: 0;
+            }
+            &-desc{
+                font-family: $robotoregular;
+                padding: 10px 0;
+                color: #444;
+            }
+            &-date{
+                font-family: $robotoregular;
+                color: #909192;
+                .jam{
+                    padding-right: 10px;
+                }
+            }
+
+            &-content{
+                position: relative;
+                display: inline-block;
+            }
+
+            a{
+                &:hover{
+                    .blog-item-info-title{
+                        color: $violetnew;
+                    }
+                }
+            }
+        }
+
+        &-img{
+            img{
+                border-radius: 3px;
+                overflow: hidden;
+            }
+        }
+    }
+
+
+    &-article {
+        a{
+            &:hover {
+                .blog-item-info-title {
+                    color: $violetnew;
+                }
+            }
+        }
+        &-title {
+            font-family: $firasansmedium;
+            color: $formtitle;
+            margin: 0;
+        }
+        &-desc {
+            font-family: $robotoregular;
+            padding: 10px 0;
+            color: #444;
+        }
+        &-date {
+            font-family: $robotoregular;
+            color: #909192;
+            padding: 15px 0;
+            .jam {
+                padding-right: 10px;
+            }
+        }
+        &-content {
+            position: relative;
+            display: inline-block;
+        }
+
+        &-footer{
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+        }
+       
+    }
+    &-img {
+        img {
+            border-radius: 3px;
+            overflow: hidden;
+        }
+    }
+}

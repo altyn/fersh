@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Spec\ModelName as Spec;
 use App\Models\UserDetails\ModelName as UserDetails;
 use App\Models\Home\ModelName as Home;
+use App\Models\Blog\ModelName as Blog;
 
 class WebController extends Controller
 {
@@ -64,6 +65,19 @@ class WebController extends Controller
         // $users = UserDetails::where('spec->ru->sphere', $id)->where('freelancer', 1)->whereNotNull('avatar')->take(45)->get();
         $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->take(45)->get();
         return view('web.pages.sphere.index', compact('sphere', 'users'));
+    }
+
+    // Blogs 
+    public function blogs($lang) 
+    {
+        $blogs = Blog::where('status', 1)->orderby('id', 'desc')->get();
+        return view('web.pages.blog.index', compact('blogs'));
+    }
+
+    public function blog($lang, $id) 
+    {
+        $blog = Blog::findOrFail($id);
+        return view('web.pages.blog.blog', compact('blog'));
     }
 
     public function privacy() 

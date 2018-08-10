@@ -9,7 +9,7 @@
         </div>
    </div>   
    <legend>
-        <span>Активные пользователи</span>
+        <span>Опытные пользователи</span>
 	</legend>
    <div class="form-group row">
         <div class="col">

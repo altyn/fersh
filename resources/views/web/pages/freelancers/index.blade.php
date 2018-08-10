@@ -46,12 +46,25 @@
         <div class="wrapper-content user-list">
             <div class="row-result row">
                 @foreach($users as $user)
+                <?php
+                    if(isset($user->spec['ru']['skills'])) {
+                        $skills = explode(',', $user->spec['ru']['skills']);
+                    }
+                ?>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="user-item">
                         <div class="user-item-picture">
                             <div class="user-item-img">
                                 <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
-                                    <img class="img-fluid"  src="{{ asset($user->avatar['360x360']) }}">
+                                    @if(isset($user->avatar['360x360']))
+                                        <img class="img-fluid"  src="{{ asset($user->avatar['360x360']) }}">
+                                    @else
+                                        @if($user->sex == 0)
+                                            <img class="img-fluid" src="{{ asset('img/icons/woman.jpg') }}">
+                                        @else
+                                            <img class="img-fluid" src="{{ asset('img/icons/man.jpg') }}">
+                                        @endif
+                                    @endif
                                 </a>
                             </div>
                         </div>

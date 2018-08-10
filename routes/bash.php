@@ -13,12 +13,18 @@ Route::middleware('admin')->group(function(){
     Route::resource('spec', 'SpecController');
     Route::resource('mail', 'MailController');
     Route::resource('userview', 'UserViewController');
+    Route::resource('blog', 'BlogController');
     
     // Home
     Route::group(['prefix' => '/home',], function() {
         Route::get('/edit','HomeController@edit')->name('home.edit');
         Route::post('/update','HomeController@update')->name('home.update');
+        Route::get('/excel', 'HomeController@excel')->name('home.excel');
+        Route::get('exceljs', array('as'=>'exceljs','uses'=>'HomeController@exceljs'));
     });
+
+    // Image upload blog
+	Route::name('bloguploadfiles')->post('blog/bloguploadfiles', 'BlogController@uploadfiles');
 
     // Json
     Route::post('usersjs', array('as'=>'usersjs','uses'=>'UserController@usersjs'));

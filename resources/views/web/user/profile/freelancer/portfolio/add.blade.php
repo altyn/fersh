@@ -64,6 +64,7 @@
                                             </div>
                                             <div class="col-md-8 col-12">
                                                 <label class="custom-label">Ссылки в популярных ресурсах</label>
+                                                <small class="d-block mb-1">Ссылки должны быть абсолютными. Н: <strong> https://sitename.com/project/</strong></small>
                                                 <div class="row">
                                                     <div class="col-12 input-group mb-3">
                                                         <div class="input-group-prepend">

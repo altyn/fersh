@@ -13,7 +13,7 @@
                         <a class="nav-link" href="/{{app()->getLocale()}}/freelancers/">Поиск</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Блог</a>
+                        <a class="nav-link" href="/{{app()->getLocale()}}/blog/">Блог</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">

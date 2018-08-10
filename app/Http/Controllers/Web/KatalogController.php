@@ -9,13 +9,18 @@ use DB;
 
 use App\Models\Spec\ModelName as Spec;
 use App\Models\UserDetails\ModelName as UserDetails;
+use App\Models\User\ModelName as User;
 
 class KatalogController extends Controller
 {
     public function index(Request $request) 
     {
         $specs = Spec::select('id', 'title')->get();
-        $users = UserDetails::where('freelancer', 1)->whereNotNull('avatar')->paginate(45);
+
+
+        $users = UserDetails::where('freelancer', 1)->orderByRaw('-avatar DESC')->paginate(45);
+        // $users = UserDetails::where('freelancer', 1)->orderByRaw('-avatar DESC')->withCount('portfolio')->paginate(45);
+        // dd($users->portfolio->get());
 
         if($request->ajax()){
             $keyword = $request->search;
@@ -26,9 +31,8 @@ class KatalogController extends Controller
                         ->orWhere('spec->ru->skills', 'like', '%' . lcfirst($keyword) . '%')
                         ->orWhere('spec->ru->skills', 'like', '%' . strtoupper($keyword) . '%')
                         ->orWhere('spec->ru->skills', 'like', '%' . strtolower($keyword) . '%')
-                        ->where('freelancer', 1)
-                        ->whereNotNull('avatar');
-                })
+                        ->where('freelancer', 1);
+                })->orderByRaw('-avatar DESC')
             ->get();
             if($freelancers){
                 
@@ -38,12 +42,21 @@ class KatalogController extends Controller
                     }else{
                         $spheretext = '';
                     }
+
+                    if(isset($user->avatar["360x360"])){ 
+                        $avatar = '<img class="img-fluid"  src='.asset($user->avatar["360x360"]).'>';
+                    }else{
+                        if($user->sex == 0){
+                            $avatar = '<img class="img-fluid"  src='.asset("img/icons/woman.jpg").'>';
+                        }else{
+                            $avatar = '<img class="img-fluid"  src='.asset("img/icons/man.jpg").'>';
+                        }
+                    }
+                    
                     $output.='<div class="col-lg-4 col-md-6 col-sm-12">'.
                         '<div class="user-item">'.
                             '<div class="user-item-picture">'.
-                                '<div class="user-item-img">'.
-                                    '<img class="img-fluid"  src='.asset($user->avatar["200x200"]).'>'.
-                                '</div>'.
+                                '<div class="user-item-img">'. $avatar .'</div>'.
                             '</div>'.
                             '<div class="user-item-info">'.
                                 '<div class="user-item-info-name"><a href="/'.app()->getLocale().'/freelancer/'.$user->user_id.'">'.$user->getFio().'</a></div>'.

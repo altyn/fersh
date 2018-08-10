@@ -505,9 +505,9 @@
 
             &:hover {
                 .user-item-img{
-                    box-shadow: 0 0 30px rgba($color: $violetnew, $alpha: 0.3);
-                    -moz-box-shadow: 0 0 30px rgba($color: $violetnew, $alpha: 0.3);
-                    -webkit-box-shadow: 0 0 30px rgba($color: $violetnew, $alpha: 0.3);
+                    box-shadow: 0 0 10px rgba($color: $violetnew, $alpha: 0.3);
+                    -moz-box-shadow: 0 0 10px rgba($color: $violetnew, $alpha: 0.3);
+                    -webkit-box-shadow: 0 0 10px rgba($color: $violetnew, $alpha: 0.3);
                 }
             }
             &-picture,

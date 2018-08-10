@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/img/freelancer
+/public/img/sign
 /storage/*.key
 /vendor
 /.idea

@@ -41,7 +41,7 @@
         </div>
         <div class="wrap-content user-list">
             <div class="row">
-                @foreach($users as $user)
+                @foreach($active_users as $user)
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="user-item">
                         <div class="user-item-picture">
@@ -54,7 +54,7 @@
                         <div class="user-item-info">
                             <div class="user-item-info-name"><a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getFio()}}</a></div>
                             <div class="user-item-info-spec">@if(isset($user->getSphere()->title))<a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getsphere()->title['ru'] }}</a>@endif</div>
-                            <div class="user-item-info-desc"><article>{!! $user->getShortBio() !!}  </article></div>
+                            <div class="user-item-info-desc"><article>{!! strip_tags($user->getShortBio()) !!}  </article></div>
                         </div>
                     </div>
                 </div>

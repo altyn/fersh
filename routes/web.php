@@ -77,11 +77,16 @@ Route::group(['prefix' => '/{lang}',], function (){
     });
 
     // Freelancers page
-    
     Route::group(['prefix' => 'freelancers'], function(){
         Route::get('/', 'KatalogController@index')->name('allfreelancers');
         Route::get('/search', 'KatalogController@searchBySphere')->name('freelancersByCategory');
         Route::get('/{id}', 'KatalogController@sphere');
+    });
+
+    // Blog page
+    Route::group(['prefix' => 'blog'], function(){
+        Route::get('/', 'WebController@blogs');
+        Route::get('/{id}', 'WebController@blog');
     });
 
 });

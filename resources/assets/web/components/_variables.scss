@@ -620,3 +620,82 @@ a{
         }
     }
 }
+
+// Goodshare buttons
+.share {
+    list-style-type: none;
+    padding: 0;
+    &-link-in {
+        float: left;
+        padding: 5px 15px;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        margin-right: 10px;
+        color: #fff;
+        @include transition;
+        font-family: $robotolight;
+    }
+    .jam{
+        padding-right: 5px;
+    }
+    .fb {
+        background-color: #3b5998;
+        border-color: #3b5998;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #fff;
+            color: #3b5998;
+        }
+    }
+    .ok {
+        background-color: #ed812b;
+        border-color: #ed812b;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #fff;
+            color: #ed812b;
+        }
+    }
+    .vk {
+        background-color: #45668e;
+        border-color: #45668e;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #fff;
+            color: #45668e;
+        }
+    }
+    .tw {
+        background-color: #1da1f2;
+        border-color: #1da1f2;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #fff;
+            color: #1da1f2;
+        }
+    }
+    .wt {
+        background-color: #25d366;
+        border-color: #25d366;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #fff;
+            color: #25d366;
+        }
+    }
+    .tm {
+        background-color: #0088cc;
+        border-color: #0088cc;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #fff;
+            color: #0088cc;
+        }
+    }
+}

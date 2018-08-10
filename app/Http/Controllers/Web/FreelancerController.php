@@ -75,13 +75,9 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
-                if (!is_null($freelancer->birthday)){
-                    $birthDate = explode("-", $freelancer->birthday);
-                    $age = (date("Y") - $birthDate[0]);
-                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
-                if(!is_null($freelancer->spec['ru']['sphere'])){
+                if(isset($freelancer->spec['ru']['sphere'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';
@@ -113,13 +109,9 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else {
-                if (!is_null($freelancer->birthday)){
-                    $birthDate = explode("-", $freelancer->birthday);
-                    $age = (date("Y") - $birthDate[0]);
-                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', auth()->user()->getAuthIdentifier())->first();
-                if(!is_null($freelancer->spec['ru']['sphere'])){
+                if(isset($freelancer->spec['ru']['sphere'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';
@@ -339,13 +331,9 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
-                if(!is_null($freelancer->birthday)){
-                    $birthDate = explode("-", $freelancer->birthday);
-                    $age = (date("Y") - $birthDate[0]);
-                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                if(!is_null($freelancer->spec['ru']['sphere'])){
+                if(isset($freelancer->spec['ru']['sphere'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';
@@ -366,13 +354,9 @@ class FreelancerController extends Controller
             if($freelancer == null){
                 return redirect(app()->getLocale().'/profile/info');
             }else{
-                if(!is_null($freelancer->birthday)){
-                    $birthDate = explode("-", $freelancer->birthday);
-                    $age = (date("Y") - $birthDate[0]);
-                }
                 $country = Country::where('country_id', $freelancer->country)->first();
                 $isVerify = User::where('id', $id)->first();
-                if(!is_null($freelancer->spec['ru']['sphere'])){
+                if(isset($freelancer->spec['ru']['sphere'])){
                     $usersphere = $freelancer->spec['ru']['sphere'];
                 }else{
                     $usersphere = '0';

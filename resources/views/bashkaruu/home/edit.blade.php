@@ -36,13 +36,15 @@
                 height: 300,
                 lang: 'ru-RU',
                 toolbar: [
-                    // [groupName, [list of button]]
                     ['style', ['bold', 'italic', 'underline', 'clear']],
                     ['fontname', ['roboto_regular']],
                     ['fontsize', ['16px']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']]
+                    ['height', ['height']],
+                    ["table", ["table"]],
+                     ["insert", ["link", "picture", "video"]],
+                    ["view", ["fullscreen", "codeview", "help"]]
                 ]
             });
         });

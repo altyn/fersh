@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Home\ModelName as Home;
 
 use App\Models\UserDetails\ModelName as UserDetails;
+use App\Models\User\ModelName as User;
 
 class HomeController extends Controller
 {
@@ -79,4 +80,28 @@ class HomeController extends Controller
         }
         return $dataList;
     }
+
+    public function excel()
+    {
+        return view('bashkaruu.home.excel');
+    }
+
+    public function exceljs()
+    {
+        $rows = User::orderBy('id','asc')->get();
+        $data=array();
+        foreach ($rows as $row) {
+            $data[]=array(
+                'id'=>$row->id,
+                'login'=>$row->login,
+                'email'=>$row->email,
+                'created_at'=>$row->created_at
+            );
+        }
+        $result = array(
+            'data' => $data
+        );
+        return response()->json($result, 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+    }
+
 }
