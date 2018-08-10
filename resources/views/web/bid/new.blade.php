@@ -24,21 +24,25 @@
                 @csrf
                 <fieldset class="bidform">
                     <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label for="name">Ваше имя<span class="required">*</span></label>
-                                <input type="text" class="form-control" name="name" required>
-                                <div class="help-block with-errors"></div>
+                        <div class="col-md-8">                           
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                     <div class="form-group">
+                                        <label for="name">Ваше имя<span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="name" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>                                
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="email">Электронный адрес<span class="required">*</span></label>
                                         <input type="email" class="form-control" name="email" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="phone">Контактный телефон<span class="required">*</span></label>
                                         <input type="text" class="form-control" name="phone" required>
@@ -46,7 +50,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-4">
                                 <label for="name">Название<span class="required">*</span></label>
                                 <input type="text" class="form-control" name="name" required>
                                 <div class="help-block with-errors"></div>
@@ -56,14 +60,16 @@
                                 <textarea name="desc" rows="3" class="summernote form-control" required></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-4">
                                 <label for="sphere">Категория</label>
                                 <div class="d-block">
                                     <select class="sphera form-control" name="sphere"></select>
                                 </div>
                             </div>
-                            <div class="g-recaptcha mb-2 mb-3" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
-                            <button type="submit" id="button" class="btn btn-save mr-2">Сохранить</button>
+                            <div class="mt-4">
+                                <div class="g-recaptcha mb-3" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                            </div>
+                            <button type="submit" id="button" class="btn btn-save mr-2">Отправить</button>
                         </div> 
                     </div>
                 </fieldset>
