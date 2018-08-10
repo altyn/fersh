@@ -13,4 +13,5 @@ class BidsController extends Controller
     }
 
     public function index(){}
+
 }
