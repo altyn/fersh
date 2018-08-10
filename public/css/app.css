@@ -15367,8 +15367,13 @@ header {
 
 .speed-in .nav-link {
   color: #515053;
-  margin: 15px;
   border-bottom: 1px solid #eee;
+}
+
+.speed-in .nav-link span.jam {
+  position: relative;
+  top: 1px;
+  padding-left: 5px;
 }
 
 .speed-in .nav-link:hover {
@@ -16011,6 +16016,56 @@ header {
   color: #007bff;
 }
 
+.bidform .form-control {
+  font-family: "roboto_regular", Arial, sans-serif;
+  border-radius: 2px;
+  border-color: rgba(81, 80, 83, 0.15);
+  background: #fafbfe;
+}
+
+.bidform .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: #fff;
+  color: #515053;
+  border: 1px solid #656d9c;
+  -webkit-box-shadow: 0 0 4px rgba(135, 121, 189, 0.53);
+          box-shadow: 0 0 4px rgba(135, 121, 189, 0.53);
+}
+
+.bidform .form-group label {
+  font-family: "roboto_regular", Arial, sans-serif;
+  color: #656d9c;
+  font-size: 15px;
+  text-align: right;
+}
+
+.bidform .form-group span.required {
+  color: #ff6908;
+  padding-left: 5px;
+}
+
+.bidform .has-error .with-errors {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.bidform .has-error .form-control:invalid {
+  border-color: #dc3545;
+}
+
+.bidform .has-error .form-control:invalid:focus {
+  border-color: #dc3545;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.bidform .has-error label {
+  color: #dc3545;
+}
+
 .custom-label {
   font-family: "fira_sans_medium", Arial, sans-serif;
   color: #656d9c;
@@ -16585,6 +16640,10 @@ header {
   .portfolio-header-info {
     text-align: center !important;
   }
+
+  .bidform .form-group label {
+    text-align: left;
+  }
 }
 
 @media (max-width: 992px) {
@@ -16744,37 +16803,6 @@ tags > div span {
   line-height: 1rem;
   top: .5rem;
   color: #5d77bc;
-}
-
-.tooltip {
-  opacity: 1 !important;
-}
-
-.tooltip-inner {
-  background-color: #43d084;
-  background: #43d084;
-  color: #fff;
-  font-family: "roboto_medium", Arial, sans-serif;
-}
-
-.tooltip.bs-tooltip-right .arrow:before,
-.tooltip.bs-tooltip-auto[x-placement^="right"] .arrow:before {
-  border-right-color: #43d084 !important;
-}
-
-.tooltip.bs-tooltip-left .arrow:before,
-.tooltip.bs-tooltip-auto[x-placement^="left"] .arrow:before {
-  border-left-color: #43d084 !important;
-}
-
-.tooltip.bs-tooltip-bottom .arrow:before,
-.tooltip.bs-tooltip-auto[x-placement^="bottom"] .arrow:before {
-  border-bottom-color: #43d084 !important;
-}
-
-.tooltip.bs-tooltip-top .arrow:before,
-.tooltip.bs-tooltip-auto[x-placement^="top"] .arrow:before {
-  border-top-color: #43d084 !important;
 }
 
 .user-header-link {

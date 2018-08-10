@@ -87,8 +87,14 @@ header{
 .speed-in{
     .nav-link {
         color: $black;
-        margin: 15px;
         border-bottom: 1px solid #eee;
+
+        span.jam {
+            position: relative;
+            top: 1px;
+            padding-left: 5px;
+        }
+        
         &:hover {
             background: none;
             color: $orange;
