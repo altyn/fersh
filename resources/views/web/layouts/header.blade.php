@@ -9,18 +9,27 @@
             </div>
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="navbar-nav mr-auto left-navbar">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/{{app()->getLocale()}}/freelancers/">Поиск</a>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="/{{app()->getLocale()}}/freelancers">Поиск</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/{{app()->getLocale()}}/blog/">Блог</a>
+                        <a class="nav-link" href="/{{app()->getLocale()}}/blog">Оставить заявку</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/{{app()->getLocale()}}/blog">Блог</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/{{app()->getLocale()}}/about">О нас</a>
+                    </li> --}}
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @if(!auth()->user())
-                    <li class="nav-item">
-                        <a class="nav-link" href="/{{ app()->getLocale() }}/sign_in">Вход<span class="jam jam-log-in"></span></a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/{{ app()->getLocale() }}/sign_up">Регистрация<span class="jam jam-user-plus"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/{{ app()->getLocale() }}/sign_in">Вход<span class="jam jam-log-in"></span></a>
+                        </li>
                     @endif
                     @if( auth()->user() )
                         <li class="nav-item dropdown user-header">

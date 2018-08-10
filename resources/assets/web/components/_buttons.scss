@@ -266,4 +266,36 @@ a:visited {
             padding-right: 5px;
         }
     }
+
+    &-order {
+        color: #fff;
+        border-radius: 3px;
+        font-family: $robotolight;
+        padding: 10px 20px;
+        font-size: 20px;
+        box-shadow: none;
+        outline: none;
+        background: $green;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $green;
+            background: rgba($color: $violetgray, $alpha: 0);
+            border: 1px solid $green;
+            box-shadow: none;
+            outline: none;
+        }
+        &:visited {
+            box-shadow: none;
+            outline: none;
+            color: none;
+            background: none;
+            border: 1px solid $green;
+        }
+        .jam {
+            position: relative;
+            top: 1px;
+            padding-right: 5px;
+        }
+    }
 }

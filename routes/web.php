@@ -89,6 +89,12 @@ Route::group(['prefix' => '/{lang}',], function (){
         Route::get('/{id}', 'WebController@blog');
     });
 
+    // Tasks page
+    Route::group(['prefix' => 'task'], function(){
+        Route::get('/new', 'TaskController@new');
+        Route::post('/new', 'TaskController@new');
+    });
+
 });
 
 // ajax view counters

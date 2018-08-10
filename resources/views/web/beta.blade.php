@@ -12,9 +12,11 @@
     <div class="top-info">
         <div class="container">
             <div class="top-info-text">
-                <h4>{{ $homeinfo->info['bannertitle'] }}</h4>
-                <div class="text-center mb-4 mt-4">
+                <h3>Онлайн помощник</h3>
+                <h4>для поиска и подбора исполнителей под ваши проекты и бизнес задачи</h4>
+                <div class="mb-4 mt-4">
                     <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-search">Найти исполнителя</a>
+                    <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-order">Разместить заказ</a>
                 </div>
             </div>
         </div>
