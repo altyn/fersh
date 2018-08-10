@@ -90,9 +90,9 @@ Route::group(['prefix' => '/{lang}',], function (){
     });
 
     // Tasks page
-    Route::group(['prefix' => 'task'], function(){
-        Route::get('/new', 'TaskController@new');
-        Route::post('/new', 'TaskController@new');
+    Route::group(['prefix' => 'bid'], function(){
+        Route::get('/new', 'BidsController@new');
+        Route::post('/new', 'BidsController@new');
     });
 
 });

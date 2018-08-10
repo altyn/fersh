@@ -16,7 +16,7 @@
                 <h4>для поиска и подбора исполнителей под ваши проекты и бизнес задачи</h4>
                 <div class="mb-4 mt-4">
                     <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-search">Найти исполнителя</a>
-                    <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-order">Разместить заказ</a>
+                    <a href="/{{app()->getLocale()}}/bid/new" class="btn btn-order">Оставить заявку</a>
                 </div>
             </div>
         </div>
