@@ -29,9 +29,9 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label for="email">Ваш электронный адрес<span class="required">*</span></label>
-                                        <input type="email" class="form-control" id="email" name="contacts[{{app()->getLocale()}}][email]"
-                                        @if($freelancer->contacts['ru']['email'])
-                                            value="{{ $freelancer->contacts['ru']['email'] }}"
+                                        <input type="email" class="form-control" name="email"
+                                        @if($user->email)
+                                            value="{{ $user->email}}"
                                         @endif>
                                     </div>
                                     <div class="form-group col-md-6 col-12">

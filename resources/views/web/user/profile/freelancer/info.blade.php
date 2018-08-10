@@ -52,10 +52,12 @@
             <div class="profile-info-contact-capture">Зарегистрирован</div>
             <div class="profile-info-contact-body">{{ $freelancer->getdate() }}</div>
         </div>
-        <div class="profile-info-contact-list">
-            <div class="profile-info-contact-capture">Был последний раз</div>
-            <div class="profile-info-contact-body">{{ date('d.m.Y') }}</div>
-        </div>
+        @if(isset($user->last_login_at))
+            <div class="profile-info-contact-list">
+                <div class="profile-info-contact-capture">Был последний раз</div>
+                <div class="profile-info-contact-body">{{ $user->getLastLogin() }}</div>
+            </div>
+        @endif
     </div>
     <div class="profile-info-contact">
         <h6 class="profile-title">

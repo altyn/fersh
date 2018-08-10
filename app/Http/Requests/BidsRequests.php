@@ -28,6 +28,7 @@ class BidsRequests extends FormRequest
             'phone'                 => 'required',
             'email'                 => 'required|email',
             'spec'                  => 'required|integer',
+            'title'                  => 'required',
             'desc'                  => 'required',
             'g-recaptcha-response'  => 'required|recaptcha'
         ];
@@ -43,6 +44,7 @@ class BidsRequests extends FormRequest
             'phone.required'        => 'Введите номер телефона!',
             'email.required'        => 'Введите email!',
             'email.email'           => 'Введите правильный формат email!',
+            'title.required'        => 'Напишите название!',
             'spec.required'         => 'Выберите специализацию!',
             'spec.integer'          => 'Введите одну из специальностей',
             'desc.required'         => 'Напишите подробнее о цели работы!',

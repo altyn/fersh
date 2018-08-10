@@ -18,6 +18,7 @@ class ModelName extends Model
         'phone',
         'email',
         'spec',
+        'title',
         'desc'
     ];
 

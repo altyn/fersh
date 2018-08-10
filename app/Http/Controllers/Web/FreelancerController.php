@@ -155,7 +155,8 @@ class FreelancerController extends Controller
      */
     public function contacts(){
         $freelancer = UserDetails::where('user_id', auth()->id())->first();
-        return view('web.user.profile.freelancer.edit.contacts', compact('freelancer'));
+        $user = User::where('id', auth()->user()->getAuthIdentifier())->first();
+        return view('web.user.profile.freelancer.edit.contacts', compact('freelancer', 'user'));
     }
 
     /**
@@ -183,8 +184,15 @@ class FreelancerController extends Controller
      */
     public function updateFreelancer(Request $request){
         $row = UserDetails::where('user_id', auth()->id())->first();
-        $row->update($request->except('avatar'));
+        $row->update($request->except('avatar', 'email'));
 
+        $email = $request->email;
+
+        if($email){
+            User::where('id', auth()->id())->update([
+                'email' => $email
+            ]);
+        }
         if($request->hasFile('avatar'))
         {
             $file = $request->file('avatar');

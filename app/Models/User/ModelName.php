@@ -64,4 +64,9 @@ class ModelName extends Model implements AuthenticatableContract, CanResetPasswo
         return $this->hasOne('App\Models\VerifyUsers\ModelName');
     }
 
+    public function getLastLogin()
+    {
+        return date('d.m.Y', strtotime($this->last_login_at));
+    }
+
 }
