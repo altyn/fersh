@@ -15,4 +15,5 @@ class BidsController extends Controller
     public function new(){
         return view('web.bid.new');
     }
+    
 }

@@ -30,6 +30,7 @@ class WebController extends Controller
                         ->whereNotNull('avatar')
                         ->take(45)->get();
 
+        dd($users);
         $homeinfo = Home::where('id', 1)->first();
 
         $active_users_explode = explode(',', $homeinfo->active_users);

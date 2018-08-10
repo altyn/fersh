@@ -45,6 +45,9 @@ class ForgotPasswordController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showLinkRequestForm()
     {
         return view('web.user.password_reset_email');
