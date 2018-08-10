@@ -18,7 +18,7 @@
             <h6>Оставить заявку</h6>
         </div>
         <div class="wrapper-content bid">
-            <form action="" method="POST"  data-toggle="validator" class="needs-validation" novalidate enctype="multipart/form-data">
+            <form action="/{{app()->getLocale()}}/bid/new" method="POST"  data-toggle="validator" class="needs-validation" novalidate enctype="multipart/form-data">
                 @csrf
                 <fieldset class="infoform">
                     <div class="row">
