@@ -106,6 +106,10 @@
             text-align: center !important;
         }
     }
+
+    .bidform .form-group label{
+        text-align: left;
+    }
 }
 
 @media (max-width: 992px) {

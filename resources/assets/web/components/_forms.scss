@@ -537,6 +537,58 @@
     }
 }
 
+.bidform {
+    .form {
+        &-control {
+            font-family: $robotoregular;
+            border-radius: 2px;
+            border-color: rgba($color: $black, $alpha: 0.15);
+            background: #fafbfe;
+            &:focus {
+                box-shadow: none;
+                background: #fff;
+                color: $black;
+                border: 1px solid #656d9c;
+                box-shadow: 0 0 4px rgba(135, 121, 189, 0.53);
+            }
+        }
+        &-group {
+            label {
+                font-family: $robotoregular;
+                color: #656d9c;
+                font-size: 15px;
+                text-align: right;
+            }
+            span.required {
+                color: $orange;
+                padding-left: 5px;
+            }
+        }
+    }
+
+    .has-error {
+        .with-errors {
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+        }
+        .form-control {
+            &:invalid {
+                border-color: #dc3545;
+                &:focus {
+                    border-color: #dc3545;
+                    -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                }
+            }
+        }
+        label {
+            color: #dc3545;
+        }
+    }
+}
+
 .custom-label {
     font-family: $firasansmedium;
     color: #656d9c;
