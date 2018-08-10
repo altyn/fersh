@@ -19,9 +19,31 @@
         <div class="title-header">
             <h6>Оставить заявку</h6>
         </div>
+
         <div class="wrapper-content bid">
-            <form action="" method="POST"  data-toggle="validator" class="needs-validation" novalidate enctype="multipart/form-data">
+            <form action="/{{app()->getLocale()}}/bid/new" method="POST"  data-toggle="validator" class="needs-validation" novalidate enctype="multipart/form-data">
                 @csrf
+                <div class="row">
+                    <div class="col-md-8">
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-2 mb-2" role="alert">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        @if (session('warning'))
+                            <div class="alert alert-warning">
+                                {{ session('warning') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
                 <fieldset class="bidform">
                     <div class="row">
                         <div class="col-md-8">                           
@@ -29,7 +51,7 @@
                                 <div class="col-md-6 col-12">
                                      <div class="form-group">
                                         <label for="name">Ваше имя<span class="required">*</span></label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>                                
@@ -38,32 +60,32 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="email">Электронный адрес<span class="required">*</span></label>
-                                        <input type="email" class="form-control" name="email" required>
+                                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="phone">Контактный телефон<span class="required">*</span></label>
-                                        <input type="text" class="form-control" name="phone" required>
+                                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-4">
                                 <label for="name">Название<span class="required">*</span></label>
-                                <input type="text" class="form-control" name="name" required>
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="desc">Описание<span class="required">*</span></label>
-                                <textarea name="desc" rows="3" class="summernote form-control" required></textarea>
+                                <textarea name="desc" rows="3" class="summernote form-control" required>{{ old('desc') }}</textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="sphere">Категория</label>
                                 <div class="d-block">
-                                    <select class="sphera form-control" name="sphere"></select>
+                                    <select class="sphera form-control" name="spec"></select>
                                 </div>
                             </div>
                             <div class="mt-4">

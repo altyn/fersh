@@ -92,7 +92,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     // Tasks page
     Route::group(['prefix' => 'bid'], function(){
         Route::get('/new', 'BidsController@new');
-        Route::post('/new', 'BidsController@new');
+        Route::post('/new', 'BidsController@store');
     });
 
 });
