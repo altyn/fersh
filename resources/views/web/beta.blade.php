@@ -52,9 +52,23 @@
                             </div>
                         </div>
                         <div class="user-item-info">
-                            <div class="user-item-info-name"><a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getFio()}}</a></div>
-                            <div class="user-item-info-spec">@if(isset($user->getSphere()->title))<a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">{{ $user->getsphere()->title['ru'] }}</a>@endif</div>
-                            <div class="user-item-info-desc"><article>{!! strip_tags($user->getShortBio()) !!}  </article></div>
+                            <div class="user-item-info-name">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                    {{ $user->getFio()}}
+                                </a>
+                            </div>
+                            <div class="user-item-info-spec">
+                                @if(isset($user->getSphere()->title))
+                                    <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                        {{ $user->getsphere()->title['ru'] }}
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="user-item-info-desc">
+                                <article>
+                                    {!! strip_tags($user->getShortBio()) !!}
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </div>
