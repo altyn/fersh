@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-@if($homeinfo->open == 1)
 <div class="top">
     <div class="top-info">
         <div class="container">
@@ -15,8 +14,8 @@
                 <h3>Онлайн помощник</h3>
                 <h4>для поиска и подбора исполнителей под ваши проекты и бизнес задачи</h4>
                 <div class="mb-4 mt-4">
-                    <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-search">Найти исполнителя</a>
-                    <a href="/{{app()->getLocale()}}/bid/new" class="btn btn-order">Оставить заявку</a>
+                    <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-search mb-2">Найти исполнителя</a>
+                    <a href="/{{app()->getLocale()}}/bid/new" class="btn btn-order mb-2">Оставить заявку</a>
                 </div>
             </div>
         </div>
@@ -118,54 +117,8 @@
 </div>
 
 
-@else
-    <div id="countdown">
-    
-        <div id="wrap">
-            <div class="c"></div>
-            <div class="o"></div>
-            <div class="u"></div>
-            <div class="n"></div>
-            <div class="t"></div>
-        </div>
-    
-        <svg>
-            <defs>
-                <filter id="filter">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
-                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10" result="filter" />
-                <feComposite in="SourceGraphic" in2="filter" operator="atop" />
-                </filter>
-            </defs>
-        </svg>
-    </div>
-
-@endif
-
 @endsection
 
 @section('scripts')
-
-<script>
-        var i = 9;
-        $wrap = $('#wrap');
-        
-        function countdown(){
-        if (i == 0) {
-            location.reload();
-        }
-        $wrap.removeAttr('class');
-            setTimeout(function(){
-                $wrap.addClass('wrap-' + i);
-                setTimeout(function(){
-                i--;
-                countdown();
-                }, 1000);
-            }, 600);
-        }
-        countdown();
-
-
-</script>
 
 @endsection

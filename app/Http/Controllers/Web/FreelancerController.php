@@ -403,55 +403,28 @@ class FreelancerController extends Controller
 
         $views = UserView::where('user_id', $id)->sum('portfolio_project');
 
-        if (0 != \auth()->user()->isAdmin){
+        $freelancer = UserDetails::where('user_id', $id)->first();
+        $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
 
-            $freelancer = UserDetails::where('user_id', $id)->first();
-            $portfolios = UserPortfolio::where('user_id', $id)->orderBy('id', 'desc')->get();
-
-            if($freelancer == null){
-                return redirect(app()->getLocale().'/profile/info');
-            }else{
-                $country = Country::where('country_id', $freelancer->country)->first();
-                $isVerify = User::where('id', $id)->first();
-                if(isset($freelancer->spec['ru']['sphere'])){
-                    $usersphere = $freelancer->spec['ru']['sphere'];
-                }else{
-                    $usersphere = '0';
-                }
-                $sphere = Spec::where('id', $usersphere)->first();
-                if(isset($freelancer->spec['ru']['skills'])){
-                    $skills = $freelancer->spec['ru']['skills'];
-                }else{
-                    $skills = '0';
-                }
-
-                return view('web.user.profile.freelancer.portfolio.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
-            }
+        if($freelancer == null){
+            return redirect(app()->getLocale().'/profile/info');
         }else{
-            $freelancer = UserDetails::where('user_id', auth()->user()->getAuthIdentifier())->first();            
-            $portfolios = UserPortfolio::where('user_id', auth()->user()->getAuthIdentifier())->orderBy('id', 'desc')->get();
-            if($freelancer == null){
-                return redirect(app()->getLocale().'/profile/info');
+            $country = Country::where('country_id', $freelancer->country)->first();
+            $isVerify = User::where('id', $id)->first();
+            if(isset($freelancer->spec['ru']['sphere'])){
+                $usersphere = $freelancer->spec['ru']['sphere'];
             }else{
-                $country = Country::where('country_id', $freelancer->country)->first();
-                $isVerify = User::where('id', $id)->first();
-                if(isset($freelancer->spec['ru']['sphere'])){
-                    $usersphere = $freelancer->spec['ru']['sphere'];
-                }else{
-                    $usersphere = '0';
-                }
-                $sphere = Spec::where('id', $usersphere)->first();
-
-                if(isset($freelancer->spec['ru']['skills'])){
-                    $skills = $freelancer->spec['ru']['skills'];
-                }else{
-                    $skills = '0';
-                }
-
-                return view('web.user.profile.freelancer.portfolio.index',
-                    compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
+                $usersphere = '0';
             }
+            $sphere = Spec::where('id', $usersphere)->first();
+            if(isset($freelancer->spec['ru']['skills'])){
+                $skills = $freelancer->spec['ru']['skills'];
+            }else{
+                $skills = '0';
+            }
+
+            return view('web.user.profile.freelancer.portfolio.index',
+                compact('freelancer', 'country', 'age', 'isVerify', 'skills', 'portfolios', 'sphere', 'views'));
         }
     }
 

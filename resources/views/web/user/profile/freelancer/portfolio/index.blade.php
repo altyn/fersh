@@ -18,8 +18,10 @@
                                     @if(isset($freelancer->avatar['360x360']))
                                         <img class="img-fluid"  src="{{ asset($freelancer->avatar['360x360']) }}" alt="">
                                     @else
-                                        @if(Auth::user()->id == $freelancer->user_id)
-                                        <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
+                                        @if(Auth::check())
+                                            @if(Auth::user()->id == $freelancer->user_id)
+                                            <a href="/{{ app()->getLocale()}}/freelancer/edit/personal"><div class="no-ava"><span>Загрузить аватар</span></div></a>
+                                            @endif
                                         @endif
                                     @endif
                                 </div>
@@ -46,10 +48,12 @@
                                         {!! $freelancer->bio['ru']['short'] !!}
                                     @endif
                                 </div>
-                                @if(Auth::user()->id == $freelancer->user_id)
-                                    <div class="portfolio-header-control-right">
-                                        <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/add" class="btn btn-add"><span class="jam jam-plus"></span>Добавить проект</a>
-                                    </div>
+                                @if(Auth::check())
+                                    @if(Auth::user()->id == $freelancer->user_id)
+                                        <div class="portfolio-header-control-right">
+                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/add" class="btn btn-add"><span class="jam jam-plus"></span>Добавить проект</a>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -81,23 +85,25 @@
                                                 @endif
                                                 <div class="portfolio-item-img-overlay" id="showOverlay"></div>
                                             </a>
-                                            @if(Auth::user()->id == $freelancer->user_id )
-                                            <div class="portfolio-item-img-control" id="showControl">
-                                                <ul class="portfolio-ul-control">
-                                                    <li class="portfolio-ul-control-li update">
-                                                        <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/update/{{ $portfolio->id }}">
-                                                            <span class="jam jam-pencil-f"></span>
-                                                            <span class="portfolio-ul-control-li-text">Изменить</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="portfolio-ul-control-li delete">
-                                                        <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/delete/{{ $portfolio->id }}">
-                                                            <span class="jam jam-trash-f"></span>
-                                                            <span class="portfolio-ul-control-li-text">Удалить</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            @if(Auth::check())                                           
+                                                @if(Auth::user()->id == $freelancer->user_id )
+                                                <div class="portfolio-item-img-control" id="showControl">
+                                                    <ul class="portfolio-ul-control">
+                                                        <li class="portfolio-ul-control-li update">
+                                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/update/{{ $portfolio->id }}">
+                                                                <span class="jam jam-pencil-f"></span>
+                                                                <span class="portfolio-ul-control-li-text">Изменить</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="portfolio-ul-control-li delete">
+                                                            <a href="/{{ app()->getLocale()}}/freelancer/{{ $freelancer->user_id }}/portfolio/delete/{{ $portfolio->id }}">
+                                                                <span class="jam jam-trash-f"></span>
+                                                                <span class="portfolio-ul-control-li-text">Удалить</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                @endif
                                             @endif
                                         </div>
                                         
