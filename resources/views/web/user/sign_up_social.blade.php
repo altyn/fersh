@@ -48,6 +48,8 @@
                             <input type="text" class="form-control" name="login" placeholder="Логин"
                                 @if($user_details['name'])
                                     value="{{ $user_details['name'] }}"
+                                @else
+                                    value="{{ old('login') }}"
                                 @endif
                                 required>
                             <div class="invalid-feedback">
@@ -55,13 +57,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="first_name" placeholder="Имя" required>
+                        <input type="text" class="form-control" name="first_name" placeholder="Имя" value="{{ old('first_name') }}" required>
                             <div class="invalid-feedback">
                                 Введите Имя
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="last_name" placeholder="Фамилия" required>
+                        <input type="text" class="form-control" name="last_name" placeholder="Фамилия" value="{{ old('last_name') }}" required>
                             <div class="invalid-feedback">
                                 Введите Фамилию
                             </div>
@@ -70,6 +72,8 @@
                             <input type="email" class="form-control" name="email" placeholder="Почта"
                                 @if($user_details['email'])
                                     value="{{ $user_details['email'] }}"
+                                @else
+                                    value="{{ old('email') }}"    
                                 @endif
                                 required>
                             <div class="invalid-feedback">

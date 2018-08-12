@@ -255,10 +255,17 @@ class FreelancerController extends Controller
      * @return mixed
      */
     public function updateFreelancer(Request $request){
+
         $row = UserDetails::where('user_id', auth()->id())->first();
         $row->update($request->except('avatar', 'email'));
 
         $email = $request->email;
+
+        $date = date('Y-m-d', strtotime($request->year.'-'.$request->month.'-'.$request->day));
+        if($date){
+            $row->birthday = $date;
+            $row->save();
+        }
 
         if($email){
             User::where('id', auth()->id())->update([
