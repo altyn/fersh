@@ -15,6 +15,7 @@ class CreateHomeTable extends Migration
     {
         Schema::create('home', function (Blueprint $table) {
             $table->integer('id');
+            $table->integer('open');
             $table->json('active_users')->nullable();
             $table->json('info')->nullable();
         });

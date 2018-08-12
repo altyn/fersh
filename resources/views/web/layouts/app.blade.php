@@ -27,7 +27,7 @@
 </head>
 
 @if($home == $locale)
-    <body class="homepage">
+    <body class="beta">
 @elseif($current_url == 'beta')
     <body class="beta">
 @else

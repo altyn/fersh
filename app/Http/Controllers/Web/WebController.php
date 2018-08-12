@@ -14,13 +14,13 @@ use App\Models\Blog\ModelName as Blog;
 
 class WebController extends Controller
 {
-    public function index() 
+    public function beta() 
     {
         $userinfo = DB::table('user_details')->where('user_id', auth()->id())->select('first_name', 'last_name', 'avatar')->first();
-        return view('web.index');
+        return view('web.beta');
     }
 
-    public function beta() 
+    public function index() 
     {
         $userinfo = DB::table('user_details')
                         ->where('user_id', auth()->id())
@@ -39,7 +39,7 @@ class WebController extends Controller
             $active_users[] = $frees;
         }
 
-        return view('web.beta', compact('specs', 'users', 'homeinfo', 'active_users'));
+        return view('web.index', compact('specs', 'users', 'homeinfo', 'active_users'));
     }
 
     public function alpha() 
@@ -86,6 +86,13 @@ class WebController extends Controller
     public function privacy() 
     {
         return view('web.pages.privacy');
+    }
+
+    public function about() 
+    {
+        $homeinfo = Home::where('id', 1)->first();
+
+        return view('web.pages.about', compact('homeinfo'));
     }
 
 }

@@ -119,6 +119,12 @@ a{
                 text-transform: uppercase;
                 margin: 0;
             }
+            h5 {
+                color: #4f4b67;
+                text-transform: uppercase;
+                margin: 0;
+                font-family: $robotomedium;
+            }
         }
     }
     &-content {
@@ -557,6 +563,51 @@ a{
         }
     }
 
+}
+
+.wrapper-inner{
+    position: relative;
+    display: block;
+    background: #fff;
+    border-radius: 3px;
+    .title {
+        &-header {
+            border-bottom: 1px solid #eee;
+            padding: 0 0 15px 0;
+            h6 {
+                color: $violetnew;
+                text-transform: uppercase;
+                margin: 0;
+            }
+        }
+    }
+
+    &-content {
+        margin-bottom: 30px;
+        padding: 15px 0;
+        .specs {
+            &-link {
+                color: $black;
+                font-family: $robotolight;
+                &:hover {
+                    color: $violet;
+                }
+            }
+        }
+    }
+
+    &-info {
+        &-top {
+            padding: 15px 0;
+            h5 {
+                color: #4f4b67;
+                text-transform: uppercase;
+                margin: 0;
+                font-family: $robotomedium;
+            }
+        }
+        &-article {}
+    }
 }
 
 .pagination {

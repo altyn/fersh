@@ -21,78 +21,85 @@
                         <div class="user-profile-content-body">
                         
                             @if($services)
-                                <div class="user-profile-content-list">
-                                    <div class="user-profile-content-list-capture">Стоимость работы:</div>
-                                    @if(isset($freelancer->spec[app()->getLocale()]['rate']))
-                                    <div class="user-profile-content-list-body"> 
-                                        от
-                                        {{ $freelancer->spec[app()->getLocale()]['rate'] }}                                 
-                                        @if(isset($freelancer->spec[app()->getLocale()]['currency']))
-                                            @if($freelancer->spec[app()->getLocale()]['currency'] == '1')
-                                            доллар
-                                            @elseif($freelancer->spec[app()->getLocale()]['currency'] == '2')
-                                            сом
-                                            @else
-                                            доллар
-                                            @endif
-                                            за проект
+                            <div class="user-profile-content-list">
+                                <div class="user-profile-content-list-capture">Стоимость работы:</div>
+                                @if(isset($freelancer->spec[app()->getLocale()]['rate']))
+                                <div class="user-profile-content-list-body"> 
+                                    от
+                                    {{ $freelancer->spec[app()->getLocale()]['rate'] }}                                 
+                                    @if(isset($freelancer->spec[app()->getLocale()]['currency']))
+                                        @if($freelancer->spec[app()->getLocale()]['currency'] == '1')
+                                        доллар
+                                        @elseif($freelancer->spec[app()->getLocale()]['currency'] == '2')
+                                        сом
+                                        @else
+                                        доллар
                                         @endif
-                                    </div>
+                                        за проект
                                     @endif
                                 </div>
-                                <div class="user-profile-content-list">
-                                    <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
-                                    <div class="user-profile-content-list-body">
-                                        @if(!empty($freelancer->spec[app()->getLocale()]['experience']))
-                                            @if($freelancer->spec[app()->getLocale()]['experience'] == '1')
-                                                Менее года
-                                            @elseif($freelancer->spec[app()->getLocale()]['experience'] == '2')
-                                                Более года
-                                            @elseif($freelancer->spec[app()->getLocale()]['experience'] == '3')
-                                                Более трех лет
-                                            @elseif($freelancer->spec[app()->getLocale()]['experience'] == '4')
-                                                Более пяти лет
-                                            @elseif($freelancer->spec[app()->getLocale()]['experience'] == '5')
-                                                Более 10 лет
-                                            @endif
+                                @endif
+                            </div>
+                            <div class="user-profile-content-list">
+                                <div class="user-profile-content-list-capture">Профессиональный опыт:</div>
+                                <div class="user-profile-content-list-body">
+                                    @if(!empty($freelancer->spec[app()->getLocale()]['experience']))
+                                        @if($freelancer->spec[app()->getLocale()]['experience'] == '1')
+                                            Менее года
+                                        @elseif($freelancer->spec[app()->getLocale()]['experience'] == '2')
+                                            Более года
+                                        @elseif($freelancer->spec[app()->getLocale()]['experience'] == '3')
+                                            Более трех лет
+                                        @elseif($freelancer->spec[app()->getLocale()]['experience'] == '4')
+                                            Более пяти лет
+                                        @elseif($freelancer->spec[app()->getLocale()]['experience'] == '5')
+                                            Более 10 лет
                                         @endif
-                                    </div>
+                                    @endif
                                 </div>
-                                <div class="user-profile-content-list">
-                                    <div class="user-profile-content-list-capture">Форма собственности:</div>
-                                    <div class="user-profile-content-list-body">
-                                        @if(isset($freelancer->spec[app()->getLocale()]['firm']['LLC']))
-                                            Юр лицо,
-                                        @endif
-                                        @if(isset($freelancer->spec[app()->getLocale()]['firm']['self']))
-                                            ИП,
-                                        @endif
-                                        @if(isset($freelancer->spec[app()->getLocale()]['firm']['own_company']))
-                                            Физ. лицо
-                                        @endif
-                                    </div>
+                            </div>
+                            <div class="user-profile-content-list">
+                                <div class="user-profile-content-list-capture">Форма собственности:</div>
+                                <div class="user-profile-content-list-body">
+                                    @if(isset($freelancer->spec[app()->getLocale()]['firm']['LLC']))
+                                        Юр лицо,
+                                    @endif
+                                    @if(isset($freelancer->spec[app()->getLocale()]['firm']['self']))
+                                        ИП,
+                                    @endif
+                                    @if(isset($freelancer->spec[app()->getLocale()]['firm']['own_company']))
+                                        Физ. лицо
+                                    @endif
                                 </div>
-                                <div class="user-profile-content-list">
-                                    <div class="user-profile-content-list-capture">Способы оплаты:</div>
-                                    <div class="user-profile-content-list-body">
-                                        @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['cash']))
-                                            наличный расчёт,
-                                        @endif
-                                        @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['bank']))
-                                            безналичный расчёт,
-                                        @endif
-                                        @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['electron']))
-                                            электронные деньги
-                                        @endif
-                                    </div>
+                            </div>
+                            <div class="user-profile-content-list">
+                                <div class="user-profile-content-list-capture">Способы оплаты:</div>
+                                <div class="user-profile-content-list-body">
+                                    @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['cash']))
+                                        наличный расчёт,
+                                    @endif
+                                    @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['bank']))
+                                        безналичный расчёт,
+                                    @endif
+                                    @if(isset($freelancer->spec[app()->getLocale()]['payment_method']['electron']))
+                                        электронные деньги
+                                    @endif
                                 </div>
+                            </div>
 
-                                @if(isset($freelancer->bio[app()->getLocale()]['short']) || isset($freelancer->bio[app()->getLocale()]['full']))
-                                    <div class="user-profile-content-about">
-                                        {!! $freelancer->bio[app()->getLocale()]['short'] !!}
-                                        <br>
-                                        {!! $freelancer->bio[app()->getLocale()]['full'] !!}
-                                    </div>
+                            @if(isset($freelancer->bio[app()->getLocale()]['short']) || isset($freelancer->bio[app()->getLocale()]['full']))
+                                <div class="user-profile-content-about">
+                                    {!! $freelancer->bio[app()->getLocale()]['short'] !!}
+                                    <br>
+                                    {!! $freelancer->bio[app()->getLocale()]['full'] !!}
+                                </div>
+                            @endif
+                            @else
+                                @if(Auth::user()->id == $freelancer->user_id)
+                                <div class="alert alert-warning mb-2" role="alert">
+                                    Этот раздел еще не заполнен предлагаем заполнить его.
+                                    <a href="/{{ app()->getLocale()}}/freelancer/edit/specialization">Изменить</a>
+                                </div>
                                 @endif
                             @endif
 
@@ -106,6 +113,13 @@
                                     <li><span>{{ $skill }}</span></li>
                                     @endforeach
                                 </ul>
+                                @else
+                                    @if(Auth::user()->id == $freelancer->user_id)
+                                    <div class="alert alert-warning mb-2" role="alert">
+                                        Услуги еще не добавлены.
+                                        <a href="/{{ app()->getLocale()}}/freelancer/edit/specialization">Добавить</a>
+                                    </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -173,6 +187,13 @@
                                 @endif
                             </div>
                             @else
+                                @if(Auth::user()->id == $freelancer->user_id)
+                                <div class="alert alert-warning mb-2" role="alert">
+                                    Вы еще не добавили проекта.
+                                    <a href="/{{ app()->getLocale()}}/freelancer/{{ auth()->id()}}/portfolio/add">Добавить</a>
+                                </div>
+                                @else(Auth::guest())
+                                @endif
                             @endif
                         </div>
                     </div>

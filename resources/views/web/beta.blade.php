@@ -49,7 +49,15 @@
                         <div class="user-item-picture">
                             <div class="user-item-img">
                                 <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
-                                    <img class="img-fluid" src="{{ asset($user->avatar['360x360']) }}">
+                                    @if(isset($user->avatar['360x360']))
+                                        <img class="img-fluid"  src="{{ asset($user->avatar['360x360']) }}">
+                                    @else
+                                        @if($user->sex == 0)
+                                            <img class="img-fluid" src="{{ asset('img/icons/woman.jpg') }}">
+                                        @else
+                                            <img class="img-fluid" src="{{ asset('img/icons/man.jpg') }}">
+                                        @endif
+                                    @endif
                                 </a>
                             </div>
                         </div>

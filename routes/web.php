@@ -24,6 +24,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     Route::get('/beta', 'WebController@beta');
     Route::get('/alpha', 'WebController@alpha');
     Route::get('/privacy', 'WebController@privacy');
+    Route::get('/about', 'WebController@about');
 
     // Authentication Routes...
     Route::get('/sign_in', 'WebAuthController@showLoginForm')->name('web.login');
@@ -41,7 +42,7 @@ Route::group(['prefix' => '/{lang}',], function (){
     });
 
     // Freeelancer info manipulations...
-    Route::group(['prefix' => 'freelancer',  'middleware' => 'auth'], function(){
+    Route::group(['prefix' => 'freelancer',  'middleware' => 'web'], function(){
            
         Route::group(['prefix' => '/{id}'], function(){
             // Route::get('/', 'FreelancerController@index');
@@ -54,7 +55,8 @@ Route::group(['prefix' => '/{lang}',], function (){
             });
         });
         
-        Route::get('/{id}', 'FreelancerController@index');
+        // Route::get('/{id}', 'FreelancerController@index');
+        Route::get('/{id}', 'FreelancerController@indextwo');
         
         Route::group(['prefix' => 'edit'], function(){
             Route::get('/personal', 'FreelancerController@personal');

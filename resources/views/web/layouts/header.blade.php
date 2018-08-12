@@ -9,18 +9,18 @@
             </div>
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="navbar-nav mr-auto left-navbar">
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="/{{app()->getLocale()}}/freelancers">Поиск</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/{{app()->getLocale()}}/blog">Оставить заявку</a>
+                        <a class="nav-link" href="/{{app()->getLocale()}}/bid/new">Оставить заявку</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/{{app()->getLocale()}}/blog">Блог</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/{{app()->getLocale()}}/about">О нас</a>
-                    </li> --}}
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @if(!auth()->user())

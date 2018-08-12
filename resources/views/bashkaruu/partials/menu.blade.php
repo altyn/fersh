@@ -29,6 +29,7 @@
                         <li><a href="/bashkaruu/home/edit">Активные пользователи</a></li>
                         <li><a href="/bashkaruu/blog">Блог</a></li>
                         <li><a href="/bashkaruu/home/excel">Excel</a></li>
+                        <li><a href="/bashkaruu/home/open"><strong class="badge badge-danger">Открыть сайт</strong></a></li>
                     </ul>
                 </div>
             </li>
@@ -58,14 +59,6 @@
                 </a>
             </li>
             <li class="sub-header"><span>Настройки</span></li>
-            <li>
-                <a href="{{ route('freelancers.index') }}">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-tasks-checked"></div>
-                    </div>
-                    <span>Тарифы</span>
-                </a>
-            </li>
             <li>
                 <a href="{{ route('spec.index') }}">
                     <div class="icon-w">
@@ -169,6 +162,7 @@
                     <li><a href="/bashkaruu/home/edit">Активные пользователи</a></li>
                     <li><a href="/bashkaruu/blog">Блог</a></li>
                     <li><a href="/bashkaruu/home/excel">Excel</a></li>
+                    <li><a href="/bashkaruu/home/open"><strong class="badge badge-danger">Открыть сайт</strong></a></li>
                 </ul>
             </div>
         </li>
@@ -198,14 +192,6 @@
             </a>
         </li>
         <li class="sub-header"><span>Настройки</span></li>
-        <li>
-            <a href="{{ route('freelancers.index') }}">
-                <div class="icon-w">
-                    <div class="os-icon os-icon-tasks-checked"></div>
-                </div>
-                <span>Тарифы</span>
-            </a>
-        </li>
         <li>
             <a href="{{ route('spec.index') }}">
                 <div class="icon-w">

@@ -18,7 +18,9 @@ Route::middleware('admin')->group(function(){
     // Home
     Route::group(['prefix' => '/home',], function() {
         Route::get('/edit','HomeController@edit')->name('home.edit');
+        Route::get('/open','HomeController@open')->name('home.open');
         Route::post('/update','HomeController@update')->name('home.update');
+        Route::post('/updateopen','HomeController@updateopen')->name('home.updateopen');
         Route::get('/excel', 'HomeController@excel')->name('home.excel');
         Route::get('exceljs', array('as'=>'exceljs','uses'=>'HomeController@exceljs'));
     });

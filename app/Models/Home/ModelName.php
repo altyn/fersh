@@ -11,6 +11,7 @@ class ModelName extends Model
 
     protected $fillable = [
         'id',
+        'open',
         'active_users',
         'info'
     ];

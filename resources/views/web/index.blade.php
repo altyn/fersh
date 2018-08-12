@@ -7,11 +7,165 @@
 @endsection
 
 @section('content')
+@if($homeinfo->open == 1)
+<div class="top">
+    <div class="top-info">
+        <div class="container">
+            <div class="top-info-text">
+                <h3>Онлайн помощник</h3>
+                <h4>для поиска и подбора исполнителей под ваши проекты и бизнес задачи</h4>
+                <div class="mb-4 mt-4">
+                    <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-search">Найти исполнителя</a>
+                    <a href="/{{app()->getLocale()}}/bid/new" class="btn btn-order">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="wrap">
+        <div class="title-header">
+            <h6>Категории</h6>
+        </div>
+        <div class="wrap-content">
+            <div class="specs">
+                <div class="row">
+                    @foreach($specs as $spec)
+                    <div class="col-md-3 col-sm-6 col-xs-6 col-12">
+                        <a href="/{{app()->getLocale()}}/freelancers/{{$spec->id}}" class="specs-link">{{ $spec->title['ru'] }}</a>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="title-header">
+            <h6>Опытные исполнители</h6>
+        </div>
+        <div class="wrap-content user-list">
+            <div class="row">
+                @foreach($active_users as $user)
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="user-item">
+                        <div class="user-item-picture">
+                            <div class="user-item-img">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                    @if(isset($user->avatar['360x360']))
+                                        <img class="img-fluid"  src="{{ asset($user->avatar['360x360']) }}">
+                                    @else
+                                        @if($user->sex == 0)
+                                            <img class="img-fluid" src="{{ asset('img/icons/woman.jpg') }}">
+                                        @else
+                                            <img class="img-fluid" src="{{ asset('img/icons/man.jpg') }}">
+                                        @endif
+                                    @endif
+                                </a>
+                            </div>
+                        </div>
+                        <div class="user-item-info">
+                            <div class="user-item-info-name">
+                                <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                    {{ $user->getFio()}}
+                                </a>
+                            </div>
+                            <div class="user-item-info-spec">
+                                @if(isset($user->getSphere()->title))
+                                    <a href="/{{ app()->getLocale()}}/freelancer/{{ $user->user_id }}">
+                                        {{ $user->getsphere()->title['ru'] }}
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="user-item-info-desc">
+                                <article>
+                                    {!! strip_tags($user->getShortBio()) !!}
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="col text-center">
+                <a href="/{{app()->getLocale()}}/freelancers/" class="btn btn-signin">Все исполнители<span class="jam jam-arrow-right"></span></a>
+            </div>
+        </div>
+        <div class="title-header"></div>
+        <div class="wrap-content wrap-info">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="wrap-info-top mb-4 mt-3">
+                        <h5>{{ $homeinfo->info['bottomtitle'] }}</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="title-header">
+                        <h6>{{ $homeinfo->info['left']['title'] }}</h6>
+                    </div>
+                    <div class="wrap-info-article mt-3">
+                        {!! $homeinfo->info['left']['content'] !!}
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="title-header">
+                        <h6>{{ $homeinfo->info['right']['title'] }}</h6>
+                    </div>
+                    <div class="wrap-info-article mt-3">
+                        {!! $homeinfo->info['right']['content'] !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    @include('web.app.home')
+
+@else
+    <div id="countdown">
+    
+        <div id="wrap">
+            <div class="c"></div>
+            <div class="o"></div>
+            <div class="u"></div>
+            <div class="n"></div>
+            <div class="t"></div>
+        </div>
+    
+        <svg>
+            <defs>
+                <filter id="filter">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10" result="filter" />
+                <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+@endif
 
 @endsection
 
 @section('scripts')
+
+<script>
+        var i = 9;
+        $wrap = $('#wrap');
+        
+        function countdown(){
+        if (i == 0) {
+            location.reload();
+        }
+        $wrap.removeAttr('class');
+            setTimeout(function(){
+                $wrap.addClass('wrap-' + i);
+                setTimeout(function(){
+                i--;
+                countdown();
+                }, 1000);
+            }, 600);
+        }
+        countdown();
+
+
+</script>
 
 @endsection

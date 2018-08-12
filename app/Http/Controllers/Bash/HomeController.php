@@ -12,7 +12,7 @@ use App\Models\User\ModelName as User;
 class HomeController extends Controller
 {
 
-       public function edit()
+    public function edit()
     {
         $row =  Home::where('id', 1)->first();
         if($row->active_users) {
@@ -25,6 +25,28 @@ class HomeController extends Controller
     }
 
     public function update(Request $request)
+    {
+        $row = Home::where('id', 1)->first();
+
+        $row->update($request->except('active_users'));
+
+        $usersList = $request->input('active_users');
+        // dd($usersList);
+
+        if($usersList != null) {
+            $row->active_users = $this->getUsersId($usersList);
+            $row->save();
+        }else {
+            $row->active_users = '';
+            $row->save();
+        }
+
+
+        $row->save();
+ 
+        return redirect()->route('home.edit');
+    }
+    public function openupdate(Request $request)
     {
         $row = Home::where('id', 1)->first();
 
@@ -103,5 +125,24 @@ class HomeController extends Controller
         );
         return response()->json($result, 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
+
+    public function open()
+    {
+        $row =  Home::where('id', 1)->first();
+
+        return view('bashkaruu.home.open', compact('row'));
+    }
+
+    public function updateopen(Request $request)
+    {
+        $row = Home::where('id', 1)->first();
+
+        $row->update($request->except('info'));
+
+        $row->save();
+ 
+        return redirect()->route('home.open')->withSuccess('Сайт открыт');
+    }
+
 
 }
