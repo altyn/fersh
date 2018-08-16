@@ -28,7 +28,7 @@ class BidsRequests extends FormRequest
             'phone'                 => 'required',
             'email'                 => 'required|email',
             'spec'                  => 'required|integer',
-            'title'                  => 'required',
+            'title'                 => 'required',
             'desc'                  => 'required',
             'g-recaptcha-response'  => 'required|recaptcha'
         ];

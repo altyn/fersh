@@ -44,7 +44,7 @@ class ModelName extends Model
 
     public function specialization() :BelongsTo
     {
-        return $this->belongsTo(Spec::class);
+        return $this->belongsTo(Spec::class, 'id');
     }
 
     public function getDescription()

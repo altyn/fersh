@@ -191,6 +191,14 @@
                 <span>Просмотры</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('bids.index') }}">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-robot-2"></div>
+                </div>
+                <span>Заявки</span>
+            </a>
+        </li>
         <li class="sub-header"><span>Настройки</span></li>
         <li>
             <a href="{{ route('spec.index') }}">

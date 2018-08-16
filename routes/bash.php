@@ -14,7 +14,8 @@ Route::middleware('admin')->group(function(){
     Route::resource('mail', 'MailController');
     Route::resource('userview', 'UserViewController');
     Route::resource('blog', 'BlogController');
-    
+    Route::resource('bids', 'BidsController');
+
     // Home
     Route::group(['prefix' => '/home',], function() {
         Route::get('/edit','HomeController@edit')->name('home.edit');
@@ -51,7 +52,6 @@ Route::middleware('admin')->group(function(){
 
     Route::post('/activation_emails', array('as'=>'act_em_post','uses'=>'MailController@resendTokens'));
     Route::post('/activation_direct', array('as'=>'act_direct_post','uses'=>'MailController@resendTokensDirectJob'));
-
 
 });
 
