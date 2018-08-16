@@ -37,7 +37,7 @@
                             <td>{{ $row->name}}</td>
                             <td>{{ $row->email}}</td>
                             <td>{{ $row->phone}}</td>
-                            <td>{{ $row->specialization->title['ru']}}</td>
+                            <td>{{ $row->specialization->title['ru'] }}</td>
                             <td>{{ $row->created_at}}</td>
                             <td class="dataTables_actions">
                                 <a class="item_edit" href="{{ route('bids.show',$row->id) }}">
